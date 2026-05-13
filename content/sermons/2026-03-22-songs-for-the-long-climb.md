@@ -1,14 +1,14 @@
 ---
-title: "Songs for the Long Climb"
-series: "Psalms of Ascent"
-speaker: "Mike Hardin"
+title: The Victories that come when We go Without Food
 date: 2026-03-22
-scripture: "Psalm 120-121"
-book: "Psalms"
-youtubeId: "dQw4w9WgXcQ"
-thumbnail: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1200&q=80"
+speaker: Pastor Joseph Tartaglia
+series: Victorious in 2026
+scripture: Matthew 6
+book: Matthew
+youtubeId: Rucp0ubHOds
 audioUrl: "#"
 notesUrl: "#"
+thumbnail: /images/uploads/utgw8.jpg
 ---
 
 An introduction to the pilgrim psalms and why they're medicine for tired souls on a long road.

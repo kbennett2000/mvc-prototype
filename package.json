@@ -1,10 +1,40 @@
 {
-  "name": "mvc-revamp",
+  "name": "church-site-template",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "description": "Open-source Next.js + Decap CMS starter for small churches. Editors update content in the browser. Free hosting on Vercel.",
+  "keywords": [
+    "church",
+    "church-website",
+    "website",
+    "template",
+    "starter",
+    "nextjs",
+    "next-js",
+    "react",
+    "tailwind",
+    "tailwindcss",
+    "cms",
+    "decap-cms",
+    "netlify-cms",
+    "nonprofit",
+    "ministry",
+    "static-site"
+  ],
+  "license": "MIT",
+  "author": "Church Site Template contributors",
+  "homepage": "https://github.com/your-org/your-repo#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/your-repo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/your-repo/issues"
+  },
   "scripts": {
     "setup": "node scripts/setup.js",
     "start": "node scripts/dev.js",
+    "cms": "npx -y decap-server",
     "deploy": "node scripts/deploy-setup.js",
     "doctor": "node scripts/doctor.js",
     "dev": "next dev",

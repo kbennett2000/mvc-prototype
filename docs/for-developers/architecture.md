@@ -119,6 +119,34 @@ We don't use:
 
 ---
 
+## Loader pattern
+
+Markdown-based content (`/content/sermons/`, `/content/staff/`, `/content/elders/`, `/content/ministries/`) is loaded by `content/<type>.ts` modules using `fs.readdirSync` + `gray-matter`. Each loader **exports functions, not top-level `const`**:
+
+```ts
+// content/sermons.ts
+export function getAllSermons(): Sermon[] { return loadAll(); }
+export function getLatestSermon() { return loadAll()[0]; }
+export function getSermon(id: string) { return loadAll().find(s => s.id === id); }
+```
+
+**Why functions instead of `const`:** Next.js's file watcher tracks JS/TS/JSON files that are imported, but not files read via `fs` at module-load time. If we cached the array at the top level (`export const allSermons = loadAll()`), CMS edits to `.md` files would only show up after a full dev-server restart. Function exports re-read on each call. In dev, server components re-execute per request, so editors see edits after a browser refresh; at build time, every route is prerendered with fresh data anyway.
+
+Consumer pattern:
+
+```tsx
+import { getAllSermons } from "@/content/sermons";
+
+export default function WatchPage() {
+  const allSermons = getAllSermons();
+  // ...
+}
+```
+
+JSON-based content (`content/site.json`, `content/beliefs.json`, `content/events.json`) doesn't need this treatment — `import data from "./foo.json"` is a real module import that Next.js tracks. Those loaders use top-level `const`.
+
+---
+
 ## Why static generation everywhere
 
 Every page is pre-rendered at build time into HTML. Benefits:

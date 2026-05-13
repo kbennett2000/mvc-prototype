@@ -130,7 +130,8 @@ If you're working on a Sunday sermon entry at midnight and you're not sure about
 ## Stuck?
 
 - [Troubleshooting](./troubleshooting.md) — common problems and fixes.
-- Email a tech volunteer or open an issue: [GitHub Issues](https://github.com/your-org/your-repo/issues)
+- **Ask your church's tech volunteer.** They can sit next to you, share screens, or look over the problem with you. This is your fastest path to help.
+- If you'd rather report something in writing: [open a GitHub issue](https://github.com/your-org/your-repo/issues) (this is the tech-volunteer route — your tech volunteer can help you do it if needed).
 
 ---
 *Was this helpful? [Tell us how to improve this doc](https://github.com/your-org/your-repo/issues/new?template=docs-feedback.md&title=Feedback:%20Publishing%20Changes).*

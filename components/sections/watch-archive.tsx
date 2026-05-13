@@ -157,7 +157,10 @@ export function WatchArchive({ sermons }: { sermons: Sermon[] }) {
                 <p className="mt-1.5 text-sm font-medium text-accent">
                   {s.scripture}
                 </p>
-                <p className="mt-3 line-clamp-2 text-sm text-muted-foreground">
+                <p
+                  className="mt-3 line-clamp-2 text-sm text-muted-foreground"
+                  title={s.description}
+                >
                   {s.description}
                 </p>
 

@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { ministries } from "@/content/ministries";
+import { getMinistries } from "@/content/ministries";
 
 export function MinistriesGrid() {
+  const ministries = getMinistries();
   return (
     <section className="bg-muted/40 py-20 md:py-28">
       <div className="container">

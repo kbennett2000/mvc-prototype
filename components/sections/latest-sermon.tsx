@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Play, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { latestSermon } from "@/content/sermons";
+import { getLatestSermon } from "@/content/sermons";
 
 function formatDate(iso: string) {
   return new Date(iso + "T12:00:00").toLocaleDateString("en-US", {
@@ -14,6 +14,7 @@ function formatDate(iso: string) {
 }
 
 export function LatestSermon() {
+  const latestSermon = getLatestSermon();
   if (!latestSermon) return null;
   return (
     <section className="bg-muted/40 py-20 md:py-28">

@@ -51,6 +51,10 @@ Run `npm run start` and **open** [http://localhost:3000](http://localhost:3000).
 
 ### 2. Fine-tune colors beyond the four setup palettes
 
+> **Code editing starts here.** Everything below this point involves opening real code files (CSS, TypeScript, JSX) and changing values inside them. If your church's brand colors are *close* to one of the four palettes from `npm run setup`, **stop here — that's good enough**. Push the fine-tuning to a developer or skip it entirely.
+>
+> If you do want to proceed, take a deep breath. The changes are small and reversible (every edit is in git history — you can roll back).
+
 The four palettes are starting points. To match your church's exact brand colors, edit the CSS variables in `app/globals.css`.
 
 #### 2a. Understand the color system

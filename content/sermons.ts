@@ -3,12 +3,14 @@ import path from "node:path";
 import matter from "gray-matter";
 import type { Sermon } from "@/lib/sermons";
 
-// Reads sermon markdown files from /content/sermons/ at build time.
-// Each .md file has YAML frontmatter (title, date, speaker, etc.) and a
-// short description as the body.
+// Reads sermon markdown files from /content/sermons/ on every call.
 //
-// This is consumed by app/watch/page.tsx and the homepage latest-sermon
-// section. Both are server components, so fs at module top-level is fine.
+// Why functions instead of top-level `const`: Next.js's file watcher tracks
+// modules that are imported (JS/TS/JSON), but not files read via `fs` at
+// module-load time. If we cached the array at the top level, CMS edits to
+// .md files would only appear after a full dev-server restart. Functions
+// re-read on each render in dev (server components re-execute per request)
+// AND still work fine at build time for static export.
 
 const SERMONS_DIR = path.join(process.cwd(), "content/sermons");
 const DEFAULT_THUMBNAIL = "/images/imported/plan-visit-interior.jpg";
@@ -45,5 +47,14 @@ function loadAll(): Sermon[] {
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export const allSermons: Sermon[] = loadAll();
-export const latestSermon: Sermon | undefined = allSermons[0];
+export function getAllSermons(): Sermon[] {
+  return loadAll();
+}
+
+export function getLatestSermon(): Sermon | undefined {
+  return loadAll()[0];
+}
+
+export function getSermon(id: string): Sermon | undefined {
+  return loadAll().find((s) => s.id === id);
+}

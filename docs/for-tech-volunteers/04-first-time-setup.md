@@ -169,6 +169,20 @@ You should now see your church's website — with the name, address, phone, and 
 
 In the terminal, press **Ctrl+C** to stop the running site.
 
+### 10. Optional: try the CMS locally
+
+If you want to test the editing experience yourself before inviting editors:
+
+1. Open a **second terminal** in the same project folder.
+2. Run `npm run cms`. You should now see `Decap CMS Proxy Server listening on port 8081`.
+3. With both terminals running, open [http://localhost:3000/admin](http://localhost:3000/admin) in your browser.
+4. Click **Login** (no GitHub prompt). You'll land in the editor.
+5. Edit something — a sermon, a staff bio — and refresh the public site to see the change.
+
+Edits in this mode write directly to your local `/content/` folder. They won't reach the live site until you commit and push the files (or until editors do the same from a deployed CMS).
+
+This is local-development mode only. In production, the CMS uses the GitHub-backed flow described in [Grant editor access](./08-grant-editor-access.md).
+
 ---
 
 ## What got changed

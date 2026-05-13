@@ -13,13 +13,13 @@ import {
   Phone,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ministries, getMinistry } from "@/content/ministries";
+import { getMinistries, getMinistry } from "@/content/ministries";
 import { churchInfo } from "@/lib/church-info";
 
 type Params = { slug: string };
 
 export function generateStaticParams() {
-  return ministries.map((m) => ({ slug: m.slug }));
+  return getMinistries().map((m) => ({ slug: m.slug }));
 }
 
 export async function generateMetadata({

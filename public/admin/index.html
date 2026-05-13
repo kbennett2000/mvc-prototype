@@ -3,6 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Forces relative URLs (including Decap's "config.yml" fetch) to resolve
+      under /admin/ even when the page is served at /admin without a trailing
+      slash. Without this, config.yml 404s because the browser resolves it
+      against the parent path.
+    -->
+    <base href="/admin/" />
     <title>Content Manager · Majestic View Church</title>
     <link rel="icon" href="/favicon.ico" />
   </head>

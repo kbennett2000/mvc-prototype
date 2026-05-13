@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { ContactForm } from "@/components/sections/contact-form";
-import { staff } from "@/content/staff";
+import { getStaff } from "@/content/staff";
 import { churchInfo } from "@/lib/church-info";
 
 export const metadata: Metadata = {
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const staff = getStaff();
   return (
     <>
       <section className="border-b border-border bg-muted/40">

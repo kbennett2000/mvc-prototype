@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { ministries } from "@/content/ministries";
+import { getMinistries } from "@/content/ministries";
 
 export const metadata: Metadata = {
   title: "Ministries",
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function MinistriesIndex() {
+  const ministries = getMinistries();
   return (
     <>
       <section className="border-b border-border bg-muted/40">

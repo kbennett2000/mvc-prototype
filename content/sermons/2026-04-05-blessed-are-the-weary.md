@@ -1,14 +1,14 @@
 ---
-title: "Blessed Are the Weary"
-series: "Sermon on the Mount"
-speaker: "Pastor John Smith"
+title: The Last Request
 date: 2026-04-05
-scripture: "Matthew 5:1-12"
-book: "Matthew"
-youtubeId: "dQw4w9WgXcQ"
-thumbnail: "https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1200&q=80"
+speaker: Pastor John Smith
+series: Victorious in 2026
+scripture: Luke 23:33-49
+book: Luke
+youtubeId: ZSuPi3SqGqc
 audioUrl: "#"
 notesUrl: "#"
+thumbnail: /images/uploads/w5dcl.jpg
 ---
 
 The Beatitudes turn every value our culture chases upside down — and offer something better in its place.

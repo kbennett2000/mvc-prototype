@@ -11,7 +11,7 @@ import {
   BookOpen,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { allSermons, latestSermon } from "@/content/sermons";
+import { getAllSermons, getLatestSermon } from "@/content/sermons";
 import { churchInfo } from "@/lib/church-info";
 import { WatchArchive } from "@/components/sections/watch-archive";
 
@@ -31,6 +31,8 @@ function formatLongDate(iso: string) {
 }
 
 export default function WatchPage() {
+  const allSermons = getAllSermons();
+  const latestSermon = getLatestSermon();
   const archiveSermons = allSermons.slice(1);
 
   return (

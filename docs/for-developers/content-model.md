@@ -50,33 +50,35 @@ thumbnail: "/images/uploads/sermon-ruth-2.jpg"
 Boaz steps onto the page as a picture of faithful, quiet kindness.
 ```
 
-**TypeScript type** — `lib/sermons.ts`:
+**TypeScript type** — `lib/sermons.ts` (type only):
 
 ```ts
-export interface Sermon {
-  slug: string;          // derived from filename
+export type Sermon = {
+  id: string;            // derived from filename
   title: string;
   date: string;          // ISO date string, "YYYY-MM-DD"
   speaker: string;
   series: string;
   scripture: string;
   book: string;
-  youtubeId?: string;
-  audioUrl?: string;
-  notesUrl?: string;
-  thumbnail?: string;
-  body: string;          // the markdown content after frontmatter
-}
+  youtubeId: string;
+  audioUrl: string;
+  notesUrl: string;
+  thumbnail: string;
+  description: string;   // the markdown body after frontmatter
+};
 ```
+
+**Loader** — `content/sermons.ts` exports `getAllSermons()`, `getLatestSermon()`, `getSermon(id)`. Function exports (not top-level `const`) so CMS edits hot-reload in dev — see [architecture.md](./architecture.md#loader-pattern) for the rationale.
 
 **Decap config** — `public/admin/config.yml`, collection `sermons`.
 
 **Where consumed:**
 - `app/watch/page.tsx` — sermon archive grid.
+- `app/watch/[id]/page.tsx` — single sermon view with embedded video and prev/next navigation.
 - `components/sections/latest-sermon.tsx` — featured most-recent sermon on the homepage.
-- `app/watch/[slug]/page.tsx` (if implemented) — single sermon view.
 
-**Slug:** Decap generates filenames as `{{year}}-{{month}}-{{day}}-{{slug}}.md`. The loader uses the filename (minus `.md`) as `slug`.
+**ID:** Decap generates filenames as `{{year}}-{{month}}-{{day}}-{{slug}}.md`. The loader uses the filename (minus `.md`) as `id`, and the dynamic route is `app/watch/[id]/page.tsx`.
 
 ---
 

@@ -4,8 +4,8 @@ import Link from "next/link";
 import { Mail, BookOpen, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { beliefs } from "@/content/beliefs";
-import { staff } from "@/content/staff";
-import { elders } from "@/content/elders";
+import { getStaff } from "@/content/staff";
+import { getElders } from "@/content/elders";
 import { siteContent } from "@/content/site";
 import { churchInfo } from "@/lib/church-info";
 
@@ -16,6 +16,8 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const staff = getStaff();
+  const elders = getElders();
   return (
     <>
       <section className="relative overflow-hidden">

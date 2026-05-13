@@ -24,10 +24,13 @@ When you see ${c.bold}"Ready in ..."${c.reset} below, your site is running:
 ${c.dim}Leave this window open while you're working on the site.${c.reset}
 `);
 
-const cmd = process.platform === "win32" ? "npx.cmd" : "npx";
-const child = spawn(cmd, ["next", "dev"], {
+// shell:true is required on Windows since Node 18.20 / 20.12 / 22 — spawning
+// .cmd or .bat files without it throws EINVAL (CVE-2024-27980 patch). On
+// Mac/Linux shell:true is harmless. Lets the OS resolve `npx` from PATH.
+const child = spawn("npx", ["next", "dev"], {
   stdio: "inherit",
   cwd: process.cwd(),
+  shell: true,
 });
 
 child.on("close", (code) => process.exit(code ?? 0));

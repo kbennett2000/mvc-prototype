@@ -3,6 +3,9 @@ import path from "node:path";
 import matter from "gray-matter";
 import type { Elder } from "@/lib/elders";
 
+// Function export (not top-level const) so CMS edits hot-reload in dev.
+// See content/sermons.ts for the rationale.
+
 const ELDERS_DIR = path.join(process.cwd(), "content/elders");
 
 function loadAll(): Elder[] {
@@ -25,4 +28,6 @@ function loadAll(): Elder[] {
     .map(({ _order, ...rest }) => rest as Elder);
 }
 
-export const elders: Elder[] = loadAll();
+export function getElders(): Elder[] {
+  return loadAll();
+}

@@ -2,9 +2,19 @@
 # Edit this file to change which fields editors see in the CMS.
 # Every collection below maps to files in /content/ that Next.js reads at build.
 
-# ---------- Backend (GitHub) ----------
-# IMPORTANT: replace `your-org/your-repo` with the real repo path before deploying.
-# The CMS uses GitHub OAuth — see docs/CMS_GUIDE.md for one-time auth setup.
+# ---------- Backend ----------
+# In production: Decap uses GitHub (the `backend.name: github` setting below).
+# In local development: when `local_backend: true` AND the decap-server proxy
+# is running on localhost:8081, Decap writes directly to your /content/ folder
+# without going through GitHub at all. Falls back to GitHub automatically in
+# production (where the localhost proxy doesn't exist).
+#
+# Start the local backend with:    npm run cms
+# (run it in a separate terminal alongside `npm run start`)
+local_backend: true
+
+# Production backend. Update `repo:` to your real GitHub repo before deploying.
+# The CMS uses GitHub OAuth — see docs/for-tech-volunteers/08-grant-editor-access.md.
 backend:
   name: github
   repo: your-org/mvc-revamp
@@ -16,8 +26,8 @@ backend:
     uploadMedia: "Upload '{{path}}' (via CMS)"
     deleteMedia: "Delete '{{path}}' (via CMS)"
 
-# Every change becomes a Pull Request rather than a direct commit.
-# A tech-savvy volunteer reviews and merges, then the site auto-deploys.
+# Every change becomes a Pull Request rather than a direct commit (production).
+# In local_backend mode, changes are written directly to disk.
 publish_mode: editorial_workflow
 
 # Image uploads land here. The /public/ prefix is stripped in the URLs.
@@ -280,7 +290,30 @@ collections:
               - { name: needsRsvp, label: "Needs RSVP?", widget: boolean, default: false, required: false, hint: "Turn on for events like Wednesday Supper or potlucks. An RSVP button shows up in the event details." }
 
   # =====================================================================
-  # 8. PAGE — The "Our Story" prose on /about.
+  # 8. ANNOUNCEMENTS — Weekly bulletin items shown on the homepage.
+  # =====================================================================
+  - name: announcements
+    label: "Announcements"
+    label_singular: "Announcement"
+    folder: content/announcements
+    create: true
+    delete: true
+    format: frontmatter
+    extension: md
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} ({{date | date('YYYY-MM-DD')}})"
+    sortable_fields: [date, pinned, title]
+    fields:
+      - { name: title, label: "Title", widget: string, hint: "Short headline. e.g. 'Wednesday supper tonight' or 'Communion this Sunday'." }
+      - { name: date, label: "Date Posted", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: false, hint: "When this announcement was written. Used for sorting and the 'Posted X' label." }
+      - { name: expires, label: "Auto-hide after this date", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: false, required: false, hint: "Optional. The announcement disappears from the site automatically after this date. Leave blank to keep it showing until you remove it manually." }
+      - { name: pinned, label: "Pin to top?", widget: boolean, default: false, required: false, hint: "Pinned announcements show first with a small 'Pinned' badge. Use sparingly." }
+      - { name: link, label: "Optional link", widget: string, required: false, default: "", hint: "Where the 'Learn more' button should go. Internal paths like '/calendar' or full URLs both work. Leave blank if no link." }
+      - { name: linkLabel, label: "Link button text", widget: string, required: false, default: "", hint: "What the button says. e.g. 'See full menu', 'Sign up', 'Read more'. Defaults to 'Learn more' if left blank." }
+      - { name: body, label: "Message", widget: text, hint: "1-2 sentences. Keep it short — link out for longer details." }
+
+  # =====================================================================
+  # 9. PAGE — The "Our Story" prose on /about.
   # =====================================================================
   - name: pages
     label: "Pages"

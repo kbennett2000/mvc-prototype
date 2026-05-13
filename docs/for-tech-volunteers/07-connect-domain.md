@@ -102,9 +102,11 @@ The page you're looking for has a list (often a table) of DNS records.
 
 ### 5. Remove any conflicting records
 
+> **Don't panic about email.** Email and websites use completely different DNS record types. Email lives in **MX records** and (sometimes) **TXT records**. Websites live in **A records** and **CNAME records**. We're only touching the website records in this step. Your email will keep working as long as you don't touch the MX or TXT records.
+
 Look for any **existing A records** or **CNAME records** for `@` (root) or `www` and **delete them**. These would conflict with the records Vercel wants.
 
-> **Warning:** If you have email running through this domain, **do not delete any MX records or TXT records**. Those handle email and shouldn't be touched. Only delete A/CNAME records for `@` and `www`.
+> **Warning:** If you have email running through this domain, **do not delete any MX records or TXT records**. If you accidentally delete one, your registrar's UI usually lets you undo within a few minutes — but check with your email provider (Google Workspace, Microsoft 365, etc.) for the exact values to restore if you're unsure.
 
 ### 6. Add the A record (for the root domain)
 

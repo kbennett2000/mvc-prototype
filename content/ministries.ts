@@ -3,9 +3,8 @@ import path from "node:path";
 import matter from "gray-matter";
 import type { Ministry } from "@/lib/ministries";
 
-// Reads ministry markdown files from /content/ministries/ at build time.
-// Each .md has rich frontmatter (tagline, meetings, leader, gallery, etc.)
-// and an optional prose body (not currently rendered, preserved for future use).
+// Function exports (not top-level const) so CMS edits hot-reload in dev.
+// See content/sermons.ts for the rationale.
 
 const MINISTRIES_DIR = path.join(process.cwd(), "content/ministries");
 
@@ -42,8 +41,10 @@ function loadAll(): Ministry[] {
     });
 }
 
-export const ministries: Ministry[] = loadAll();
+export function getMinistries(): Ministry[] {
+  return loadAll();
+}
 
 export function getMinistry(slug: string): Ministry | undefined {
-  return ministries.find((m) => m.slug === slug);
+  return loadAll().find((m) => m.slug === slug);
 }

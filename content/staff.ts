@@ -3,8 +3,8 @@ import path from "node:path";
 import matter from "gray-matter";
 import type { StaffMember } from "@/lib/staff";
 
-// Reads markdown files from /content/staff/ at build time.
-// Sorted by the `order` field (1-indexed, lowest first).
+// Function export (not top-level const) so CMS edits hot-reload in dev.
+// See content/sermons.ts for the rationale.
 
 const STAFF_DIR = path.join(process.cwd(), "content/staff");
 
@@ -29,4 +29,6 @@ function loadAll(): StaffMember[] {
     .map(({ _order, ...rest }) => rest as StaffMember);
 }
 
-export const staff: StaffMember[] = loadAll();
+export function getStaff(): StaffMember[] {
+  return loadAll();
+}

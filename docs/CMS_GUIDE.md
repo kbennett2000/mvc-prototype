@@ -4,6 +4,8 @@ This site uses **Decap CMS** — a free, web-based editor. You don't need to kno
 
 If something here is unclear, ask one of our tech-savvy volunteers — they can walk you through it. This guide assumes you've never used GitHub or any developer tool.
 
+> **Tech volunteer testing locally?** Decap has a local-development mode that bypasses GitHub entirely. With `local_backend: true` already set in `public/admin/config.yml`, run `npm run cms` in a second terminal alongside `npm run start`. Then `/admin/` works without a GitHub login — edits write straight to your local `/content/` folder. In production deployments the CMS automatically falls back to the GitHub-backed flow described below.
+
 ---
 
 ## What you can do here

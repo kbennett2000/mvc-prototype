@@ -22,10 +22,12 @@ For every new collection:
 
 1. **Decide the schema** — what fields does each entry have?
 2. **Create** the content folder + a seed file.
-3. **Define** the TypeScript type and loader in `lib/`.
+3. **Define** the TypeScript type in `lib/<type>.ts` and the loader in `content/<type>.ts`.
 4. **Add** the collection to `public/admin/config.yml`.
 
 Then test in the CMS and consume on a page.
+
+> **Important:** Loaders go in `content/`, not `lib/`. `lib/` holds only the type definition. The split exists so dev-mode hot-reload works correctly when editors save in the CMS — see [architecture.md](./architecture.md#loader-pattern) for the rationale. Always export loaders as **functions** (`getBlogPosts()`), never top-level `const`.
 
 ---
 
@@ -68,7 +70,21 @@ Welcome to our brand new blog! We'll use this space to share...
 
 ### 3. Create the TypeScript type and loader
 
-Create `lib/blog.ts`:
+Type in `lib/blog.ts`:
+
+```ts
+export type BlogPost = {
+  slug: string;
+  title: string;
+  date: string;
+  author: string;
+  excerpt: string;
+  cover?: string;
+  body: string;
+};
+```
+
+Loader in `content/blog.ts`:
 
 ```ts
 import fs from "node:fs";
@@ -77,13 +93,7 @@ import matter from "gray-matter";
 
 export interface BlogPost {
   slug: string;
-  title: string;
-  date: string;
-  author: string;
-  excerpt: string;
-  cover?: string;
-  body: string;
-}
+import type { BlogPost } from "@/lib/blog";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
@@ -117,7 +127,7 @@ export function getBlogPost(slug: string): BlogPost | undefined {
 }
 ```
 
-> **Tip:** This is the same template as `lib/sermons.ts`, `lib/ministries.ts`, etc. Copy from whichever existing loader most resembles the new content shape, then rename fields.
+> **Tip:** This is the same template as `content/sermons.ts`, `content/ministries.ts`, etc. Copy from whichever existing loader most resembles the new content shape, then rename fields. Always export functions (not top-level `const`) so CMS edits hot-reload in dev.
 
 ### 4. Add the Decap collection
 

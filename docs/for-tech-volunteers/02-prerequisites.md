@@ -16,6 +16,8 @@ time: 15 minutes
 
 ## Two paths — pick one
 
+> **Important — read this before choosing.** Path A (Codespaces) means clicking buttons in a web browser. Path B (local install) means downloading two installers, then typing a few commands into a black terminal window. If you've never typed in a terminal before, **choose Path A**. You can always switch later.
+
 ### Path A (recommended): GitHub Codespaces — no install
 
 If you'd rather not install software on your computer, **use Codespaces**. It runs the whole development environment in your browser.
@@ -32,6 +34,8 @@ If you'd rather not install software on your computer, **use Codespaces**. It ru
 **Skip the rest of this page and go to [Fork and clone](./03-fork-and-clone.md).** Codespaces gives you Node.js and Git built in.
 
 ### Path B: Install Node.js and Git on your computer
+
+> **Heads up — terminal required.** This path requires opening a terminal (a text window where you type commands) and running a couple of installation steps. If that sounds intimidating, go back and pick Path A — Codespaces is genuinely the easier option for most volunteers.
 
 If you'd rather run everything locally, install the two tools below.
 

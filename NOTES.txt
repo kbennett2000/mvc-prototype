@@ -1,28 +1,5 @@
-trying to visit the /admin page returns 404
-server console says
-```
-When you see "Ready in ..." below, your site is running:
 
-  • Open http://localhost:3000 in your browser
-  • Press Ctrl + C in this window to stop
+allow changing church logo
+auto post to social media accts when content on site changes?
 
-Leave this window open while you're working on the site.
-
-▲ Next.js 16.2.6 (Turbopack)
-- Local:         http://localhost:3000
-- Network:       http://192.168.1.24:3000
-✓ Ready in 231ms
-
- GET /admin 404 in 372ms (next.js: 120ms, application-code: 252ms)
-⚠ Blocked cross-origin request to Next.js dev resource /_next/webpack-hmr from "192.168.1.24".
-Cross-origin access to Next.js dev resources is blocked by default for safety.
-
-To allow this host in development, add it to "allowedDevOrigins" in next.config.js and restart the dev server:
-
-// next.config.js
-module.exports = {
-  allowedDevOrigins: ['192.168.1.24'],
-}
-
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-```
+on all forms, help icon to mouse over and get description of what that field means

@@ -202,6 +202,7 @@ collections:
                   - { name: zip, label: "ZIP Code", widget: string }
               - { name: phone, label: "Phone Number", widget: string, hint: "Format: '303-491-4339'." }
               - { name: email, label: "Church Email", widget: string, hint: "The general admin inbox. e.g. 'admin@mvckiowa.com'." }
+              - { name: logo, label: "Logo Image", widget: image, required: false, default: "", hint: "Upload your church's logo (PNG, JPG, or SVG). Wide wordmark logos and square icon logos both work — the site scales to fit. Leave blank to use an auto-generated letter circle as the placeholder." }
               - name: services
                 label: "Services"
                 widget: list

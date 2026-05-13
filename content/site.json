@@ -1,15 +1,21 @@
 {
   "church": {
-    "name": "Majestic View Church",
     "shortName": "MVC",
+    "logo": "/images/uploads/mvc-transparent-1.jpg",
+    "name": "Majestic View Church",
+    "social": {
+      "facebook": "https://facebook.com/majesticviewchurch",
+      "youtube": "https://www.youtube.com/@majesticviewchurchlive407"
+    },
+    "phone": "303-491-4339",
     "tagline": "A church for the people of Kiowa and Elbert County.",
+    "officeHours": "Mon–Thu",
     "address": {
       "street": "620 Comanche St",
       "city": "Kiowa",
       "state": "CO",
       "zip": "80117"
     },
-    "phone": "303-491-4339",
     "email": "admin@mvckiowa.com",
     "services": [
       {
@@ -19,12 +25,7 @@
         "note": "Fellowship & coffee after the service",
         "primary": true
       }
-    ],
-    "officeHours": "Mon–Thu",
-    "social": {
-      "facebook": "https://facebook.com/majesticviewchurch",
-      "youtube": "https://www.youtube.com/@majesticviewchurchlive407"
-    }
+    ]
   },
   "home": {
     "hero": {

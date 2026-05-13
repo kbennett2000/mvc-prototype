@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Facebook, Youtube, MapPin, Phone, Mail } from "lucide-react";
 import { churchInfo } from "@/lib/church-info";
 
@@ -16,12 +17,24 @@ export function SiteFooter() {
       <div className="container grid gap-10 py-14 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-2.5">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground font-serif text-base">
-              {(churchInfo.shortName || churchInfo.name).charAt(0).toUpperCase()}
-            </span>
-            <span className="font-serif text-lg leading-none">
-              {churchInfo.name}
-            </span>
+            {churchInfo.logo ? (
+              <Image
+                src={churchInfo.logo}
+                alt={churchInfo.name}
+                width={240}
+                height={48}
+                className="h-10 w-auto"
+              />
+            ) : (
+              <>
+                <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground font-serif text-base">
+                  {(churchInfo.shortName || churchInfo.name).charAt(0).toUpperCase()}
+                </span>
+                <span className="font-serif text-lg leading-none">
+                  {churchInfo.name}
+                </span>
+              </>
+            )}
           </div>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
             {churchInfo.tagline}

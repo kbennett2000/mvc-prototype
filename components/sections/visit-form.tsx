@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { Check, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { HelpIcon } from "@/components/ui/help-icon";
 
 function nextSundays(count: number, from: Date = new Date()) {
   const out: Date[] = [];
@@ -79,7 +80,11 @@ export function VisitForm() {
       className="rounded-xl border border-border bg-card p-6 md:p-10"
     >
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Your name" required>
+        <Field
+          label="Your name"
+          required
+          help="Just so we know who to look for on Sunday. First and last names work best."
+        >
           <Input
             required
             value={form.name}
@@ -89,7 +94,11 @@ export function VisitForm() {
           />
         </Field>
 
-        <Field label="Email" required>
+        <Field
+          label="Email"
+          required
+          help="We'll use this to greet you before Sunday — never to add you to a mailing list."
+        >
           <Input
             required
             type="email"
@@ -100,7 +109,10 @@ export function VisitForm() {
           />
         </Field>
 
-        <Field label="How many adults?">
+        <Field
+          label="How many adults?"
+          help="How many grown-ups are coming with you, including yourself."
+        >
           <Select
             value={form.adults}
             onChange={(v) => update("adults", v)}
@@ -108,7 +120,10 @@ export function VisitForm() {
           />
         </Field>
 
-        <Field label="How many kids?">
+        <Field
+          label="How many kids?"
+          help="Helps our kids team get a name tag and a Sunday class ready for each one."
+        >
           <Select
             value={form.kids}
             onChange={(v) => update("kids", v)}
@@ -117,7 +132,11 @@ export function VisitForm() {
         </Field>
 
         {hasKids ? (
-          <Field label="Kids' ages" className="sm:col-span-2">
+          <Field
+            label="Kids' ages"
+            className="sm:col-span-2"
+            help="We use ages to route kids to the right Sunday class (nursery, preschool, elementary)."
+          >
             <Input
               value={form.kidsAges}
               onChange={(e) => update("kidsAges", e.target.value)}
@@ -126,7 +145,11 @@ export function VisitForm() {
           </Field>
         ) : null}
 
-        <Field label="Which Sunday?" className="sm:col-span-2">
+        <Field
+          label="Which Sunday?"
+          className="sm:col-span-2"
+          help="Pick the Sunday you're planning to visit. If you're not sure yet, that's fine — pick 'Not sure yet' below."
+        >
           <Select
             value={form.sunday}
             onChange={(v) => update("sunday", v)}
@@ -168,20 +191,23 @@ function Field({
   label,
   required,
   hint,
+  help,
   className,
   children,
 }: {
   label: string;
   required?: boolean;
   hint?: string;
+  help?: string;
   className?: string;
   children: React.ReactNode;
 }) {
   return (
     <label className={`flex flex-col gap-1.5 ${className ?? ""}`}>
-      <span className="text-sm font-medium text-foreground">
+      <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground">
         {label}
-        {required ? <span className="ml-0.5 text-accent">*</span> : null}
+        {required ? <span className="text-accent">*</span> : null}
+        {help ? <HelpIcon text={help} /> : null}
       </span>
       {children}
       {hint ? <span className="text-xs text-muted-foreground">{hint}</span> : null}

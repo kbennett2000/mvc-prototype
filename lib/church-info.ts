@@ -45,6 +45,7 @@ export const churchInfo = {
   phoneHref: `tel:+1${churchData.phone.replace(/\D/g, "")}`,
   email: churchData.email,
   emailHref: `mailto:${churchData.email}`,
+  logo: (churchData as { logo?: string }).logo ?? "",
   services,
   primaryService,
   officeHours: churchData.officeHours,

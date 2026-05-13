@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Check, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { HelpIcon } from "@/components/ui/help-icon";
 
 const TOPICS = [
   "Planning a visit",
@@ -55,7 +56,11 @@ export function ContactForm() {
       className="rounded-xl border border-border bg-card p-6 md:p-10"
     >
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Your name" required>
+        <Field
+          label="Your name"
+          required
+          help="How you'd like us to address you in our reply."
+        >
           <Input
             required
             value={form.name}
@@ -65,7 +70,11 @@ export function ContactForm() {
           />
         </Field>
 
-        <Field label="Email" required>
+        <Field
+          label="Email"
+          required
+          help="We'll reply here. Usually within a day or two during the work week."
+        >
           <Input
             required
             type="email"
@@ -76,7 +85,11 @@ export function ContactForm() {
           />
         </Field>
 
-        <Field label="Phone" hint="Optional.">
+        <Field
+          label="Phone"
+          hint="Optional."
+          help="Add a phone number if you'd rather we call you back than reply by email."
+        >
           <Input
             type="tel"
             value={form.phone}
@@ -86,7 +99,10 @@ export function ContactForm() {
           />
         </Field>
 
-        <Field label="What's this about?">
+        <Field
+          label="What's this about?"
+          help="Picking a topic helps us route your message to the right person on staff."
+        >
           <select
             value={form.topic}
             onChange={(e) => update("topic", e.target.value)}
@@ -108,7 +124,12 @@ export function ContactForm() {
           </select>
         </Field>
 
-        <Field label="Message" required className="sm:col-span-2">
+        <Field
+          label="Message"
+          required
+          className="sm:col-span-2"
+          help="Tell us what's on your mind — no need to keep it formal. We read every message."
+        >
           <textarea
             required
             value={form.message}
@@ -132,20 +153,23 @@ function Field({
   label,
   required,
   hint,
+  help,
   className,
   children,
 }: {
   label: string;
   required?: boolean;
   hint?: string;
+  help?: string;
   className?: string;
   children: React.ReactNode;
 }) {
   return (
     <label className={`flex flex-col gap-1.5 ${className ?? ""}`}>
-      <span className="text-sm font-medium text-foreground">
+      <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground">
         {label}
-        {required ? <span className="ml-0.5 text-accent">*</span> : null}
+        {required ? <span className="text-accent">*</span> : null}
+        {help ? <HelpIcon text={help} /> : null}
       </span>
       {children}
       {hint ? (

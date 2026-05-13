@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -33,23 +34,36 @@ export function SiteHeader() {
           className="flex items-center gap-2.5"
           aria-label={`${churchInfo.name} home`}
         >
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground font-serif text-base">
-            {(churchInfo.shortName || churchInfo.name).charAt(0).toUpperCase()}
-          </span>
-          <span className="hidden font-serif text-lg leading-none sm:inline">
-            {(() => {
-              const words = churchInfo.name.trim().split(/\s+/);
-              if (words.length < 2) return churchInfo.name;
-              const suffix = words[words.length - 1];
-              const main = words.slice(0, -1).join(" ");
-              return (
-                <>
-                  {main}
-                  <span className="text-muted-foreground"> · {suffix}</span>
-                </>
-              );
-            })()}
-          </span>
+          {churchInfo.logo ? (
+            <Image
+              src={churchInfo.logo}
+              alt={churchInfo.name}
+              width={240}
+              height={48}
+              className="h-9 w-auto md:h-10"
+              priority
+            />
+          ) : (
+            <>
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground font-serif text-base">
+                {(churchInfo.shortName || churchInfo.name).charAt(0).toUpperCase()}
+              </span>
+              <span className="hidden font-serif text-lg leading-none sm:inline">
+                {(() => {
+                  const words = churchInfo.name.trim().split(/\s+/);
+                  if (words.length < 2) return churchInfo.name;
+                  const suffix = words[words.length - 1];
+                  const main = words.slice(0, -1).join(" ");
+                  return (
+                    <>
+                      {main}
+                      <span className="text-muted-foreground"> · {suffix}</span>
+                    </>
+                  );
+                })()}
+              </span>
+            </>
+          )}
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">

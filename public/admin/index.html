@@ -12,6 +12,52 @@
     <base href="/admin/" />
     <title>Content Manager · Majestic View Church</title>
     <link rel="icon" href="/favicon.ico" />
+    <style>
+      /*
+        Admin polish — adds a help-icon prefix to every field hint and bumps
+        contrast so they read as proper help affordances rather than tiny
+        grey footnotes.
+
+        Decap's class names are Emotion-hashed ("css-..."), but they
+        consistently contain "Hint" or "hint" as a substring. The selectors
+        below shotgun across the most-likely patterns; non-matches are
+        silently ignored, so this never breaks the admin if Decap
+        restructures its DOM.
+
+        Decap doesn't expose hover tooltips for fields — hints are always
+        visible below each input. This is the framework's pattern; converting
+        to true on-hover tooltips would require a custom widget or
+        post-render DOM manipulation. Both are brittle. This styling is
+        the safest visual upgrade.
+      */
+      [class*="ield-hint"],
+      [class*="ontrol-hint"],
+      [class*="Hint__"],
+      [class*="hint__"],
+      [data-testid="hint"],
+      [role="note"] {
+        position: relative !important;
+        padding-left: 1.6em !important;
+        color: hsl(30 14% 30%) !important;
+        font-size: 0.85rem !important;
+        line-height: 1.45 !important;
+        margin-top: 0.4em !important;
+      }
+      [class*="ield-hint"]::before,
+      [class*="ontrol-hint"]::before,
+      [class*="Hint__"]::before,
+      [class*="hint__"]::before,
+      [data-testid="hint"]::before,
+      [role="note"]::before {
+        content: "ⓘ";
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-weight: 600;
+        font-style: normal;
+        color: hsl(15 55% 47%); /* MVC accent color */
+      }
+    </style>
   </head>
   <body>
     <!--

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Check, Send, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { HelpIcon } from "@/components/ui/help-icon";
 
 export function PrayerForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -50,7 +51,11 @@ export function PrayerForm() {
       className="rounded-xl border border-border bg-card p-6 md:p-10"
     >
       <div className="grid gap-5">
-        <Field label="Your name" hint="Optional — anonymous is fine.">
+        <Field
+          label="Your name"
+          hint="Optional — anonymous is fine."
+          help="Your name stays private to the pastoral team. Leave blank to submit anonymously."
+        >
           <Input
             value={form.name}
             onChange={(e) => update("name", e.target.value)}
@@ -60,7 +65,11 @@ export function PrayerForm() {
         </Field>
 
         <div className="grid gap-5 sm:grid-cols-2">
-          <Field label="Email" hint="Only if you'd like a follow-up.">
+          <Field
+            label="Email"
+            hint="Only if you'd like a follow-up."
+            help="A pastor can email you to follow up. Leave blank if you'd rather not be contacted."
+          >
             <Input
               type="email"
               value={form.email}
@@ -69,7 +78,11 @@ export function PrayerForm() {
               autoComplete="email"
             />
           </Field>
-          <Field label="Phone" hint="Required if you'd like a call.">
+          <Field
+            label="Phone"
+            hint="Required if you'd like a call."
+            help="Used only if you check the 'I'd like someone to call me' box below."
+          >
             <Input
               type="tel"
               value={form.phone}
@@ -81,7 +94,11 @@ export function PrayerForm() {
           </Field>
         </div>
 
-        <Field label="What can we pray for?" required>
+        <Field
+          label="What can we pray for?"
+          required
+          help="Share as much or as little as you'd like. Our pastoral team reviews every request weekly."
+        >
           <textarea
             required
             value={form.request}
@@ -124,18 +141,21 @@ function Field({
   label,
   required,
   hint,
+  help,
   children,
 }: {
   label: string;
   required?: boolean;
   hint?: string;
+  help?: string;
   children: React.ReactNode;
 }) {
   return (
     <label className="flex flex-col gap-1.5">
-      <span className="text-sm font-medium text-foreground">
+      <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground">
         {label}
-        {required ? <span className="ml-0.5 text-accent">*</span> : null}
+        {required ? <span className="text-accent">*</span> : null}
+        {help ? <HelpIcon text={help} /> : null}
       </span>
       {children}
       {hint ? (

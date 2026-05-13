@@ -1,5 +1,1 @@
-
-allow changing church logo
 auto post to social media accts when content on site changes?
-
-on all forms, help icon to mouse over and get description of what that field means

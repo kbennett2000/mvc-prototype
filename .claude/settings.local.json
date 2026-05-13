@@ -3,7 +3,17 @@
     "allow": [
       "Bash(npm install *)",
       "Bash(npx --yes next build)",
-      "WebFetch(domain:mvckiowa.com)"
+      "WebFetch(domain:mvckiowa.com)",
+      "Read(//c/Users/KB/Desktop/Projects/church-site-template/public/**)",
+      "Read(//c/Users/KB/Desktop/Projects/church-site-template/public/images/**)",
+      "Bash(ls \"c:/Users/KB/Desktop/Projects/church-site-template/content\" 2>&1; echo \"---src content---\"; ls \"c:/Users/KB/Desktop/Projects/mvc-revamp/content/ministries\")",
+      "Read(//c/Users/KB/Desktop/Projects/church-site-template/**)",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\KB\\\\Desktop\\\\Projects\\\\church-site-template\\\\content\\\\staff\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\KB\\\\Desktop\\\\Projects\\\\church-site-template\\\\content\\\\elders\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\KB\\\\Desktop\\\\Projects\\\\church-site-template\\\\content\\\\ministries\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\KB\\\\Desktop\\\\Projects\\\\church-site-template\\\\content\\\\sermons\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\KB\\\\Desktop\\\\Projects\\\\church-site-template\\\\content\\\\announcements\")",
+      "PowerShell($src = \"c:\\\\Users\\\\KB\\\\Desktop\\\\Projects\\\\mvc-revamp\\\\content\"; $dst = \"c:\\\\Users\\\\KB\\\\Desktop\\\\Projects\\\\church-site-template\\\\content\"; Copy-Item \"$src\\\\staff.ts\" $dst; Copy-Item \"$src\\\\elders.ts\" $dst; Copy-Item \"$src\\\\beliefs.ts\" $dst; Copy-Item \"$src\\\\events.ts\" $dst; Copy-Item \"$src\\\\announcements.ts\" $dst; Copy-Item \"$src\\\\sermons.ts\" $dst; ls $dst)"
     ]
   }
 }

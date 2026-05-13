@@ -1,0 +1,49 @@
+import fs from "node:fs";
+import path from "node:path";
+import matter from "gray-matter";
+import type { Ministry } from "@/lib/ministries";
+
+// Reads ministry markdown files from /content/ministries/ at build time.
+// Each .md has rich frontmatter (tagline, meetings, leader, gallery, etc.)
+// and an optional prose body (not currently rendered, preserved for future use).
+
+const MINISTRIES_DIR = path.join(process.cwd(), "content/ministries");
+
+// Display order for the homepage grid and the /ministries index. Slugs not
+// listed here fall to the end. Editing this requires a code change for now;
+// see docs/REFACTOR_FOR_TEMPLATE.md for the plan to surface this in the CMS.
+const SLUG_ORDER = [
+  "kids",
+  "youth",
+  "young-adults",
+  "women",
+  "men",
+  "overcomers",
+  "missions",
+];
+
+function loadAll(): Ministry[] {
+  if (!fs.existsSync(MINISTRIES_DIR)) return [];
+  return fs
+    .readdirSync(MINISTRIES_DIR)
+    .filter((f) => f.endsWith(".md"))
+    .map((file) => {
+      const raw = fs.readFileSync(path.join(MINISTRIES_DIR, file), "utf-8");
+      const { data } = matter(raw);
+      return data as Ministry;
+    })
+    .sort((a, b) => {
+      const ai = SLUG_ORDER.indexOf(a.slug);
+      const bi = SLUG_ORDER.indexOf(b.slug);
+      if (ai === -1 && bi === -1) return a.title.localeCompare(b.title);
+      if (ai === -1) return 1;
+      if (bi === -1) return -1;
+      return ai - bi;
+    });
+}
+
+export const ministries: Ministry[] = loadAll();
+
+export function getMinistry(slug: string): Ministry | undefined {
+  return ministries.find((m) => m.slug === slug);
+}

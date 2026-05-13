@@ -1,0 +1,94 @@
+{
+  "events": [
+    {
+      "id": "sunday-service",
+      "title": "Sunday Service",
+      "time": "9:00 AM",
+      "durationMinutes": 75,
+      "location": "Majestic View Church",
+      "description": "Sunday worship service, followed by fellowship, coffee bar, and snacks immediately after.",
+      "rule": { "kind": "weekly", "dayOfWeek": 0 }
+    },
+    {
+      "id": "moms-in-prayer",
+      "title": "Moms in Prayer",
+      "time": "7:30 AM",
+      "durationMinutes": 60,
+      "location": "The Smiths' residence",
+      "description": "An hour of prayer for our kids, schools, and community. (Coordinated by Debra Smith.)",
+      "rule": { "kind": "weekly", "dayOfWeek": 6 }
+    },
+    {
+      "id": "overcomers",
+      "title": "Overcomers",
+      "time": "6:30 PM",
+      "durationMinutes": 60,
+      "location": "Large Trailer",
+      "description": "Christ-centered 12-step support network for addiction and compulsive behaviors. Open to individuals, families, and loved ones affected by addictive behavior.",
+      "rule": { "kind": "weekly", "dayOfWeek": 1 }
+    },
+    {
+      "id": "young-adults",
+      "title": "Young Adults (18-25)",
+      "time": "6:30 PM",
+      "durationMinutes": 150,
+      "location": "The Study",
+      "description": "Bible study, peer accountability, and fellowship for young adults aged roughly 18-25. Currently studying the Gospel of Matthew. Refreshments provided.",
+      "rule": { "kind": "weekly", "dayOfWeek": 1 }
+    },
+    {
+      "id": "community-meals",
+      "title": "Community Meals",
+      "time": "5:00 PM",
+      "durationMinutes": 60,
+      "location": "Majestic View Church",
+      "description": "Wednesday-night community meal before midweek programs.",
+      "rule": { "kind": "weekly", "dayOfWeek": 3 }
+    },
+    {
+      "id": "awana",
+      "title": "Awana",
+      "time": "6:05 PM",
+      "durationMinutes": 105,
+      "location": "Majestic View Church",
+      "description": "Bible-rooted clubs for kids age 2 through 5th grade (Puggles, Cubbies, Sparks, TnT). Runs September through April.",
+      "rule": { "kind": "weekly", "dayOfWeek": 3 }
+    },
+    {
+      "id": "bsf-women",
+      "title": "BSF Satellite Class for Women",
+      "time": "6:00 PM",
+      "durationMinutes": 90,
+      "location": "Majestic View Church",
+      "description": "Bible Study Fellowship satellite class. (NOTE: /calendar/ lists Thursdays; /mvc-adults/ lists Tuesdays starting Sept 15, 2026. Verify before launch.)",
+      "rule": { "kind": "weekly", "dayOfWeek": 4 }
+    },
+    {
+      "id": "womens-fellowship",
+      "title": "Women's Ministry Saturday Fellowship",
+      "time": "9:00 AM",
+      "durationMinutes": 120,
+      "location": "Majestic View Church",
+      "description": "Monthly women's gathering on the second Saturday — teaching, breakfast, and fellowship.",
+      "rule": { "kind": "nth-of-month", "n": 2, "dayOfWeek": 6 }
+    },
+    {
+      "id": "men-of-valor",
+      "title": "Elbert County Men of Valor",
+      "time": "7:30 AM",
+      "durationMinutes": 90,
+      "location": "American Legion Hall, Elizabeth",
+      "description": "Monthly free breakfast and fellowship gathering for men. Contact: Pastor Brian Janes · 303-243-0167.",
+      "rule": { "kind": "nth-of-month", "n": 3, "dayOfWeek": 6 }
+    },
+    {
+      "id": "mvc-mens-breakfast",
+      "title": "MVC Men's Breakfast",
+      "time": "6:45 AM",
+      "durationMinutes": 75,
+      "location": "MVC dining room",
+      "description": "Monthly potluck breakfast for the men of MVC. (NOTE: /calendar/ says 4th Sunday 6:45 AM; /men/ says Last Sunday 7:00 AM. Verify before launch.) Contact: Colin Kelly · 720-656-5438.",
+      "rule": { "kind": "nth-of-month", "n": 4, "dayOfWeek": 0 }
+    }
+  ]
+}

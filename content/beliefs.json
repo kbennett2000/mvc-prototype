@@ -1,0 +1,32 @@
+{
+  "beliefs": [
+    {
+      "title": "The Bible",
+      "statement": "We believe that all Scripture is verbally inspired by God (2 Timothy 3:16–17)."
+    },
+    {
+      "title": "God",
+      "statement": "We believe there is one true God who exists in three persons — Father, Son, and Holy Spirit (Matthew 28:19)."
+    },
+    {
+      "title": "Jesus Christ",
+      "statement": "We believe Jesus Christ was born of a virgin (Isaiah 7:14; Matthew 1:18–25)."
+    },
+    {
+      "title": "Salvation",
+      "statement": "We believe salvation comes through Christ's death on the cross (Romans 3:25; Hebrews 9:22)."
+    },
+    {
+      "title": "The Resurrection and Ascension",
+      "statement": "We believe Jesus rose bodily from the grave and ascended to God (Matthew 28; Mark 16)."
+    },
+    {
+      "title": "Humanity",
+      "statement": "We believe humanity is sinful and in need of a Savior (Romans 3:23)."
+    },
+    {
+      "title": "Eternal Security",
+      "statement": "We believe that faith in Jesus provides eternal security to the believer (John 10:28–29)."
+    }
+  ]
+}

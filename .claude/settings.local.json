@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx --yes next build)",
+      "WebFetch(domain:mvckiowa.com)"
+    ]
+  }
+}

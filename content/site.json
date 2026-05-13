@@ -11,11 +11,15 @@
     },
     "phone": "303-491-4339",
     "email": "admin@mvckiowa.com",
-    "service": {
-      "day": "Sunday",
-      "time": "9:00 AM",
-      "after": "Fellowship & coffee after the service"
-    },
+    "services": [
+      {
+        "name": "",
+        "day": "Sunday",
+        "time": "9:00 AM",
+        "note": "Fellowship & coffee after the service",
+        "primary": true
+      }
+    ],
     "officeHours": "Mon–Thu",
     "social": {
       "facebook": "https://facebook.com/majesticviewchurch",

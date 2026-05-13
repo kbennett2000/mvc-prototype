@@ -78,9 +78,21 @@ export default function AboutPage() {
               convictions shape every part of church life.
             </p>
             <p>
-              Our Sunday service is at {churchInfo.service.time} at{" "}
-              {churchInfo.address.full}, with fellowship, coffee, and snacks
-              right after. We&apos;d love to see you.
+              We meet at {churchInfo.address.full}
+              {churchInfo.primaryService
+                ? ` — ${churchInfo.primaryService.day}s at ${churchInfo.primaryService.time}`
+                : ""}
+              .{" "}
+              {churchInfo.primaryService?.note
+                ? `${churchInfo.primaryService.note}. `
+                : ""}
+              {churchInfo.services.length > 1
+                ? `We also gather ${churchInfo.services
+                    .filter((s) => s !== churchInfo.primaryService)
+                    .map((s) => `${s.day}s at ${s.time}`)
+                    .join(" and ")}. `
+                : ""}
+              We&apos;d love to see you.
             </p>
           </div>
         </div>

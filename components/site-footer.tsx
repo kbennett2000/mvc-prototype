@@ -24,8 +24,11 @@ export function SiteFooter() {
             </span>
           </div>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-            {churchInfo.tagline} Sundays at {churchInfo.service.time} —{" "}
-            we&apos;d love to meet you.
+            {churchInfo.tagline}
+            {churchInfo.primaryService
+              ? ` ${churchInfo.primaryService.day}s at ${churchInfo.primaryService.time}`
+              : ""}{" "}
+            — we&apos;d love to meet you.
           </p>
           <div className="mt-5 flex gap-2">
             <a

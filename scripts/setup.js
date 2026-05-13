@@ -182,10 +182,19 @@ ${c.dim}You can re-run this anytime with ${c.bold}npm run setup${c.reset}${c.dim
   site.church.address.zip = await ask("ZIP code", site.church.address.zip);
   site.church.phone = await ask("Phone number", site.church.phone);
   site.church.email = await ask("General email address", site.church.email);
-  site.church.service.time = await ask(
-    "Main Sunday service time",
-    site.church.service.time
-  );
+  // Setup configures one primary service. Additional services (Wednesday
+  // evening, Spanish service, etc.) can be added later through the CMS at
+  // /admin/ under "Site Settings → Services".
+  if (!Array.isArray(site.church.services) || site.church.services.length === 0) {
+    site.church.services = [
+      { name: "", day: "Sunday", time: "9:00 AM", note: "", primary: true },
+    ];
+  }
+  const primary =
+    site.church.services.find((s) => s.primary) || site.church.services[0];
+  primary.day = await ask("Main service day", primary.day || "Sunday");
+  primary.time = await ask("Main service start time", primary.time || "9:00 AM");
+  primary.primary = true;
 
   // 4. Color palette
   header("Step 4 — Pick a color palette");

@@ -94,7 +94,10 @@ export default function VisitPage() {
             Walking into a new church can feel like a lot. Here&apos;s everything you need to know.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-background/85 animate-fade-up">
-            Sundays at {churchInfo.service.time} · {churchInfo.address.full}. We&apos;ll save you a seat.
+            {churchInfo.primaryService
+              ? `${churchInfo.primaryService.day}s at ${churchInfo.primaryService.time}`
+              : "Sundays"}{" "}
+            · {churchInfo.address.full}. We&apos;ll save you a seat.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row animate-fade-up">
             <Button asChild size="lg" variant="accent">

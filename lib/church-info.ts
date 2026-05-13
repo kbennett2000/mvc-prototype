@@ -1,11 +1,33 @@
 import { churchData } from "@/content/site";
 
 // Church identity data lives in /content/site.json (editable via Decap CMS).
-// This file adds derived fields (full address, mapsUrl, tel/mailto hrefs)
-// that are computed from the raw values, plus the nav structure (which is
-// not church-specific data — it's site IA).
+// This file adds derived fields (full address, mapsUrl, tel/mailto hrefs,
+// primaryService) computed from the raw values, plus the nav structure
+// (which is not church-specific data — it's site IA).
 
 const fullAddress = `${churchData.address.street}, ${churchData.address.city}, ${churchData.address.state} ${churchData.address.zip}`;
+
+export type Service = {
+  name: string;
+  day: string;
+  time: string;
+  note: string;
+  primary: boolean;
+};
+
+const services: Service[] = (churchData.services ?? []).map((s) => ({
+  name: s.name ?? "",
+  day: s.day ?? "",
+  time: s.time ?? "",
+  note: s.note ?? "",
+  primary: Boolean(s.primary),
+}));
+
+// Primary service used wherever a single service has to be named (hero,
+// footer, prose). Picks the entry flagged `primary: true`, or the first
+// entry as a fallback, or null if the array is empty.
+const primaryService: Service | null =
+  services.find((s) => s.primary) ?? services[0] ?? null;
 
 export const churchInfo = {
   name: churchData.name,
@@ -23,7 +45,8 @@ export const churchInfo = {
   phoneHref: `tel:+1${churchData.phone.replace(/\D/g, "")}`,
   email: churchData.email,
   emailHref: `mailto:${churchData.email}`,
-  service: churchData.service,
+  services,
+  primaryService,
   officeHours: churchData.officeHours,
   social: churchData.social,
 } as const;

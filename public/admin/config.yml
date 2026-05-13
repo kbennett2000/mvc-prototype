@@ -202,13 +202,17 @@ collections:
                   - { name: zip, label: "ZIP Code", widget: string }
               - { name: phone, label: "Phone Number", widget: string, hint: "Format: '303-491-4339'." }
               - { name: email, label: "Church Email", widget: string, hint: "The general admin inbox. e.g. 'admin@mvckiowa.com'." }
-              - name: service
-                label: "Sunday Service"
-                widget: object
+              - name: services
+                label: "Services"
+                widget: list
+                hint: "Add one entry per regular gathering — Sunday morning, Wednesday evening, Saturday vigil, Spanish service, etc. Mark exactly one as the 'primary' service (shown in the homepage hero and footer)."
+                summary: "{{day}}s at {{time}}{{#if name}} — {{name}}{{/if}}"
                 fields:
-                  - { name: day, label: "Day", widget: string, default: "Sunday" }
-                  - { name: time, label: "Service Start Time", widget: string, hint: "e.g. '9:00 AM'." }
-                  - { name: after, label: "After-Service Note", widget: string, hint: "e.g. 'Fellowship & coffee after the service.'" }
+                  - { name: name, label: "Service Name", widget: string, required: false, default: "", hint: "Optional. Use when distinguishing services. e.g. 'Traditional', 'Contemporary', 'Spanish Service'. Leave blank if you only have one service or names aren't needed." }
+                  - { name: day, label: "Day", widget: string, default: "Sunday", hint: "e.g. 'Sunday', 'Wednesday', 'Saturday'." }
+                  - { name: time, label: "Start Time", widget: string, hint: "e.g. '9:00 AM' or '6:30 PM'." }
+                  - { name: note, label: "Note", widget: string, required: false, default: "", hint: "Optional after-service or distinguishing note. e.g. 'Fellowship & coffee after' or 'Communion service'." }
+                  - { name: primary, label: "Use as main service?", widget: boolean, default: false, hint: "Pick exactly one. The primary service appears in the homepage hero and footer where only one time can be shown." }
               - { name: officeHours, label: "Office Hours", widget: string, hint: "e.g. 'Mon-Thu'." }
               - name: social
                 label: "Social Media"

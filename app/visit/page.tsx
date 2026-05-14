@@ -90,7 +90,7 @@ export default function VisitPage() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/images/placeholders/hero.svg"
+            src="/images/imported/welcome-banner.png"
             alt=""
             fill
             priority

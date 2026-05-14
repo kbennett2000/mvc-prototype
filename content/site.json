@@ -24,6 +24,13 @@
         "time": "9:00 AM",
         "note": "Fellowship & coffee after the service",
         "primary": true
+      },
+      {
+        "name": "sunday part two",
+        "day": "Sunday",
+        "note": "A LATER SERVICE FOR LAZY PEOPLE",
+        "primary": false,
+        "time": "11:00 AM"
       }
     ]
   },

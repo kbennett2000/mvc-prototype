@@ -19,18 +19,18 @@
     "email": "admin@mvckiowa.com",
     "services": [
       {
-        "name": "",
+        "name": "Sunday Worship Service",
         "day": "Sunday",
         "time": "9:00 AM",
         "note": "Fellowship & coffee after the service",
         "primary": true
       },
       {
-        "name": "sunday part two",
+        "name": "Sunday Part II",
         "day": "Sunday",
-        "note": "A LATER SERVICE FOR LAZY PEOPLE",
+        "note": "A second service",
         "primary": false,
-        "time": "11:00 AM"
+        "time": "5:00 PM"
       }
     ]
   },

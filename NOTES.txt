@@ -1,1 +1,13 @@
 auto post to social media accts when content on site changes?
+
+
+
+SYNC CHANGES
+------------
+git fetch template
+
+git log template/main --oneline -10
+
+git cherry-pick a3f9c21
+
+PUSH!

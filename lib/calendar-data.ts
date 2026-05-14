@@ -43,8 +43,10 @@ export type EventInstance = {
   isRecurring: boolean;
 };
 
-// No church-confirmed one-off events imported yet — see docs/CONTENT_AUDIT.md.
-// Featured "Coming up" UI on /calendar will simply not render until populated.
+// One-off events (e.g. "VBS week", "Easter sunrise service") that don't fit
+// the recurring-events model in /content/events.json. Empty by default — the
+// featured "Coming up" UI on /calendar simply doesn't render until populated.
+// Migrate this to /content/ once adopting churches start using it heavily.
 export const oneOffEvents: OneOffEvent[] = [];
 
 export { recurringEvents };

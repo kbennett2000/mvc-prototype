@@ -1,15 +1,6 @@
 {
   "events": [
     {
-      "id": "sunday-service",
-      "title": "Sunday Service",
-      "time": "9:00 AM",
-      "durationMinutes": 75,
-      "location": "Majestic View Church",
-      "description": "Sunday worship service, followed by fellowship, coffee bar, and snacks immediately after.",
-      "rule": { "kind": "weekly", "dayOfWeek": 0 }
-    },
-    {
       "id": "moms-in-prayer",
       "title": "Moms in Prayer",
       "time": "7:30 AM",

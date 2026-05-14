@@ -1,8 +1,7 @@
 auto post to social media accts when content on site changes?
 annoucements display on date / stop displaying date
 weekly announcements email/sms digest?
-create custom "pages", add then to navigation
-edit navigation from admin portal
+
 images for annoucements
 
 

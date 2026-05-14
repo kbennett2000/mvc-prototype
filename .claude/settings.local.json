@@ -14,7 +14,8 @@
       "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\KB\\\\Desktop\\\\Projects\\\\church-site-template\\\\content\\\\sermons\")",
       "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\KB\\\\Desktop\\\\Projects\\\\church-site-template\\\\content\\\\announcements\")",
       "PowerShell($src = \"c:\\\\Users\\\\KB\\\\Desktop\\\\Projects\\\\mvc-revamp\\\\content\"; $dst = \"c:\\\\Users\\\\KB\\\\Desktop\\\\Projects\\\\church-site-template\\\\content\"; Copy-Item \"$src\\\\staff.ts\" $dst; Copy-Item \"$src\\\\elders.ts\" $dst; Copy-Item \"$src\\\\beliefs.ts\" $dst; Copy-Item \"$src\\\\events.ts\" $dst; Copy-Item \"$src\\\\announcements.ts\" $dst; Copy-Item \"$src\\\\sermons.ts\" $dst; ls $dst)",
-      "Bash(grep -E '\\\\.\\(tsx|ts|css|js\\)$')"
+      "Bash(grep -E '\\\\.\\(tsx|ts|css|js\\)$')",
+      "Bash(npm run *)"
     ]
   }
 }

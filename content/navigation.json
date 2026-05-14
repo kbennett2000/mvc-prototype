@@ -1,0 +1,102 @@
+{
+  "items": [
+    {
+      "label": "Visit",
+      "href": "/visit"
+    },
+    {
+      "label": "Announcements",
+      "href": "/announcements"
+    },
+    {
+      "label": "Watch",
+      "href": "/watch"
+    },
+    {
+      "label": "About",
+      "href": "/about",
+      "children": [
+        {
+          "label": "Our Story",
+          "href": "/about"
+        },
+        {
+          "label": "What We Believe",
+          "href": "/beliefs"
+        },
+        {
+          "label": "Staff & Elders",
+          "href": "/about#staff"
+        }
+      ]
+    },
+    {
+      "label": "Connect",
+      "href": "/connect",
+      "children": [
+        {
+          "label": "Small Groups",
+          "href": "/connect/groups"
+        },
+        {
+          "label": "Prayer Requests",
+          "href": "/connect/prayer"
+        },
+        {
+          "label": "Serve",
+          "href": "/connect/serve"
+        },
+        {
+          "label": "Contact",
+          "href": "/connect/contact"
+        }
+      ]
+    },
+    {
+      "label": "Ministries",
+      "href": "/ministries",
+      "children": [
+        {
+          "label": "Kids",
+          "href": "/ministries/kids"
+        },
+        {
+          "label": "Youth",
+          "href": "/ministries/youth"
+        },
+        {
+          "label": "Young Adults",
+          "href": "/ministries/young-adults"
+        },
+        {
+          "label": "Women",
+          "href": "/ministries/women"
+        },
+        {
+          "label": "Men",
+          "href": "/ministries/men"
+        },
+        {
+          "label": "Overcomers",
+          "href": "/ministries/overcomers"
+        },
+        {
+          "label": "Missions",
+          "href": "/ministries/missions"
+        }
+      ]
+    },
+    {
+      "label": "SOAP",
+      "href": "/pages/s-o-a-p-journaling"
+    },
+    {
+      "label": "Calendar",
+      "href": "/calendar"
+    },
+    {
+      "label": "Give",
+      "href": "/give"
+    }
+  ]
+}

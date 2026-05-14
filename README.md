@@ -1,4 +1,4 @@
-# Church Site Template
+# Majestic View Church 
 
 > A modern, mobile-first website for small churches. Editors update content in their browser — no developer required. Free to host. Open source.
 

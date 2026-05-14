@@ -15,14 +15,14 @@ The six principles:
 
 ## Done in this pass
 
-**Decap CMS integration** — major reshape of `/content/`:
+**TinaCMS integration** (migrated from Decap CMS) — major reshape of `/content/`:
 
 - All church data moved from TypeScript constants to CMS-editable formats:
   - **JSON files** (static-imported, bundleable for client): [content/site.json](../content/site.json) (church facts + hero copy), [content/beliefs.json](../content/beliefs.json), [content/events.json](../content/events.json)
   - **Markdown folders** (parsed via gray-matter at build): [content/staff/](../content/staff), [content/elders/](../content/elders), [content/ministries/](../content/ministries), [content/sermons/](../content/sermons)
 - `/lib/*.ts` files reduced to type-only definitions (data lives in `/content/`).
 - `/lib/church-info.ts` now loads church data from `content/site.json`, keeping only the `nav` structure and derived fields (mapsUrl, phoneHref) in code.
-- Decap CMS configured at [public/admin/](../public/admin/) with collections for sermons, ministries, staff, elders, site settings, beliefs, events, and pages — all with friendly labels, hints, image upload widgets, date pickers, and editorial workflow (PR-based publishing).
+- TinaCMS configured at [tina/config.ts](../tina/config.ts) with collections for sermons, announcements, ministries, staff, elders, small groups, serve roles, pages, prayer requests, site settings, beliefs, events, navigation, and our story.
 - Editor-facing guide at [docs/CMS_GUIDE.md](CMS_GUIDE.md).
 
 **Earlier pass:**
@@ -33,7 +33,7 @@ The six principles:
 
 ## Principle 1 — Single source of truth
 
-✓ **Compliant.** Every piece of church-specific data is now in `/content/`. `lib/church-info.ts` contains only the loader (reading `content/site.json` + computing derived fields like `mapsUrl`, `phoneHref`) and the `nav` structure (site IA, not church data). All data is editable via the CMS or by editing `content/site.json` directly.
+✓ **Compliant.** Every piece of church-specific data is now in `/content/`. `lib/church-info.ts` contains only the loader (reading `content/site.json` + computing derived fields like `mapsUrl`, `phoneHref`) and the `nav` structure (site IA, not church data). All data is editable via TinaCMS (`tina/config.ts`) or by editing files in `/content/` directly.
 
 ---
 

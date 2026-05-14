@@ -48,7 +48,7 @@ For developers forking this to customize, extend, or contribute back.
 
 ![Homepage screenshot — hero with church exterior, service time, "Plan Your Visit" CTA](docs/screenshots/marketing/homepage.png)
 
-**The editor (Decap CMS):**
+**The editor (TinaCMS):**
 
 ![CMS dashboard with collections in left sidebar](docs/screenshots/marketing/cms-dashboard.png)
 
@@ -60,7 +60,7 @@ For developers forking this to customize, extend, or contribute back.
 | --- | --- |
 | `npm run setup` | First time, or when you want to change the church name, address, colors. |
 | `npm run start` | Run the site on your computer to preview changes. |
-| `npm run cms` | Optional: start the local CMS proxy so `/admin/` works without GitHub. Run in a second terminal alongside `npm run start`. |
+| `npm run cms` | Start the site **with** local CMS editing enabled. Use this instead of `npm run start` when you want to edit content locally. |
 | `npm run deploy` | Step-by-step walkthrough to put your site on the internet. |
 | `npm run doctor` | Something's broken? This tells you what. |
 

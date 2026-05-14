@@ -102,18 +102,17 @@ This is by far the most common question. See the dedicated section in [Publishin
 
 ---
 
-## "Decap says I'm not authorized" mid-session
+## "Not authorized" error mid-session
 
-### Symptom: I was working fine, then suddenly got an "unauthorized" error
+### Symptom: I was working fine, then suddenly got an authorization error
 
-**Cause:** Your GitHub login expired, or someone changed your access permissions while you were working.
+**Cause:** Your Tina Cloud session expired.
 
 **Fix:**
-1. **Click** the user-avatar dropdown at the top right of the editor.
-2. **Click** **Log out**.
-3. **Log back in** with Login with GitHub.
+1. Refresh the page or navigate back to `/admin/`.
+2. Sign in again with your Tina Cloud account.
 
-If that doesn't work, your access may have been removed by mistake. Email the tech volunteer.
+If that doesn't work, your access may have been removed from the Tina Cloud project. Email the tech volunteer.
 
 ---
 

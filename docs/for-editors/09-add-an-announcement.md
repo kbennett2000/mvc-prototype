@@ -50,29 +50,15 @@ Examples:
 - `Communion This Sunday`
 - `Pastor John on Vacation Next Week`
 
-### 4. Pick Date Posted
+### 4. Pick Date
 
-**Click** the calendar icon next to **Date Posted**.
+**Click** the calendar icon next to **Date**.
 
-**Select** today's date.
+**Select** today's date (or the date the announcement is relevant to).
 
-This is mostly for sorting and the "Posted May 13" label that appears under the message.
+This controls the "Posted May 13" label and how announcements are sorted.
 
-### 5. (Optional) Pick Auto-hide date
-
-**Click** the calendar icon next to **Auto-hide after this date**.
-
-**Pick** the last day this should appear on the site.
-
-After that date, the announcement disappears automatically — no cleanup required. Some examples:
-
-- "Wednesday Supper Tonight" → auto-hide Friday
-- "Communion This Sunday" → auto-hide Monday
-- "VBS sign-ups open" → auto-hide the day after VBS ends
-
-**Leave blank** if you want the announcement to stay until you delete it manually.
-
-### 6. (Optional) Pin to top
+### 5. (Optional) Pin to top
 
 If this is the most important announcement of the week:
 
@@ -80,7 +66,7 @@ If this is the most important announcement of the week:
 
 Pinned announcements show first with a small "Pinned" badge. Use sparingly — if everything is pinned, nothing stands out.
 
-### 7. (Optional) Add a link
+### 6. (Optional) Add a link
 
 If there's somewhere people should go for details:
 
@@ -90,7 +76,7 @@ If there's somewhere people should go for details:
 
 If there's no extra info to link to, leave both fields blank — no button appears.
 
-### 8. Write the Message
+### 7. Write the Message
 
 **Type** 1-2 sentences into the **Message** field. Keep it short — if it needs more space, write a brief teaser and use the link to point at a longer page.
 
@@ -98,19 +84,17 @@ Examples:
 - *"Family meal at 5:15 PM in the Fellowship Hall — free for everyone. Awana starts at 6:10."*
 - *"We'll take the Lord's Supper together as part of our regular 9:00 AM service."*
 
-### 9. Save and publish
+### 8. Save
 
 **Click** **Save** at the top.
 
-**Click** **Status: Draft** → **Ready for Review**.
+That's it. The announcement appears in the **Announcements** section on the homepage after the site rebuilds (1–3 minutes).
 
-**Click** **Publish** → **Publish now**.
-
-That's it. Once a tech volunteer approves, the announcement appears in the **Announcements** section on the homepage. It disappears automatically on the auto-hide date you picked.
+To remove an old announcement, open it and delete the entry, then click **Save**.
 
 ## Common Mistakes
 
-- **The announcement isn't showing up.** Check the **Auto-hide** date — it may already be in the past. Also check **Workflow** in case it's still waiting for review.
+- **The announcement isn't showing up.** The site may still be rebuilding — wait 1–3 minutes and refresh. If it's still missing, check that you actually clicked **Save**.
 - **Everything is pinned.** Pinning everything defeats the purpose. Pin at most one announcement at a time.
 - **The link goes to a 404.** Internal paths must start with `/` (e.g. `/calendar`, `/visit`, `/ministries/kids`). External URLs need `https://` at the start.
 - **The message is a paragraph long.** That's fine for a newsletter but too long here. Break it up — short version on the homepage, longer version on a linked page.

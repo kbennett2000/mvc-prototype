@@ -1,131 +1,92 @@
 ---
 type: explanation
 audience: editor
-time: 7 minutes
+time: 5 minutes
 ---
 
-# What happens when you click Publish
+# What happens when you click Save
 
 **Who this is for:** Every editor on the team. Read this once and you'll understand the whole publishing flow.
-**What you'll accomplish:** Understand exactly what the **Publish** button does, why there's a review step, and what to do when "I clicked Publish but nothing happened."
-**You'll need first:** Nothing — this is a good doc to read before you publish for the first time.
+**What you'll accomplish:** Understand exactly what the **Save** button does and what to do when "I saved but nothing happened."
+**You'll need first:** Nothing — this is a good doc to read before you edit for the first time.
 
 ## The big picture
 
-Here's the entire journey of a change, from you clicking **Publish** to it appearing on the public site:
+Here's the entire journey of a change, from you clicking **Save** to it appearing on the public site:
 
-1. **You** click **Publish** in the editor.
-2. **The editor** sends your change to GitHub as a "change ticket" (a pull request).
-3. **A tech volunteer** gets an email, looks at the change, and clicks **Merge**.
-4. **The website** rebuilds itself with your edits.
-5. **The new version** goes live for everyone to see.
+1. **You** click **Save** in the editor.
+2. **The editor** commits your change directly to the church's website files on GitHub.
+3. **The website** rebuilds itself with your edits.
+4. **The new version** goes live for everyone to see.
 
-The whole process usually takes 2-5 minutes from start to finish.
+The whole process usually takes 1–3 minutes from start to finish.
 
 ```
-You click Publish        Tech volunteer reviews        Site rebuilds        Live!
-       │                          │                          │                │
-       ▼                          ▼                          ▼                ▼
-   (instant)              (5-30 min later)              (2 min)         (immediate)
+You click Save        Site rebuilds        Live!
+       │                    │                │
+       ▼                    ▼                ▼
+   (instant)           (1–3 min)        (immediate)
 ```
 
-## Why there's a review step
+## There is no review step
 
-The website doesn't go live the second you click **Publish**. A tech volunteer at your church has to glance at the change and approve it first. Two reasons:
+Changes go live automatically after the rebuild — there is no tech volunteer approval step. This means:
 
-1. **Mistakes happen.** A typo in the service time, a broken sermon link, or a wrong date on a major event would be embarrassing — and hard to spot once it's live. Two pairs of eyes catch what one misses.
-2. **It gives one person a single dashboard** where they can see what's changing on the site. They don't need to micromanage; they just glance at the change and click Merge.
+- **Changes are fast.** A new sermon or updated service time is live within minutes, no waiting.
+- **Double-check before you save.** Since there's no safety net, it's worth scanning what you typed before clicking Save. If you make a mistake, just edit again and save the correction.
 
-The review step is not a permission check — it's a sanity check. Volunteers don't critique what you write. They check for accidental damage (deleted everything by mistake, pasted a wall of garbled text, etc.).
+If you make a mistake that's already live, the fix is simple: open the same entry, correct it, and click Save again. The correction will be live within another 1–3 minutes.
 
-## What "Publish" actually does
+## What "Save" actually does
 
-Behind the scenes, here's what happens the moment you click **Publish → Publish now**:
+Behind the scenes, here's what happens the moment you click **Save**:
 
-1. The editor saves your changes as a **commit** — a snapshot of what you changed.
-2. The editor sends that snapshot to GitHub (the church's online filing cabinet).
-3. GitHub opens a **pull request** — think of it as a "please merge this change" ticket.
-4. The tech volunteer gets an email notification.
+1. The editor packages your changes as a **commit** — a snapshot of what you changed.
+2. The commit goes to GitHub (the church's online filing cabinet).
+3. Vercel (the hosting service) detects the commit and starts rebuilding the site.
+4. The rebuilt site goes live on the CDN.
 
-> **Tip:** "Commit," "pull request," "merge" — these are all GitHub words. You don't need to know them. The editor handles all of it for you.
-
-## The four states a change can be in
-
-Look for the **Status** dropdown at the top of any edit form. A change is in exactly one of these states:
-
-- **Draft** — you're still working on it. Nobody else can see it.
-- **In Review** — you've marked it Ready for Review and clicked Publish. The tech volunteer can see it but hasn't approved it yet.
-- **Ready** — the tech volunteer reviewed and approved it; it's about to go live.
-- **Published** — the change is on the live site.
-
-You'll also see all your in-progress changes (Drafts and In Review) under the **Workflow** link at the top right of the editor.
+> **Tip:** "Commit," "CDN," "Vercel" — these are all technical words. You don't need to know them. The editor handles all of it for you. Just click Save.
 
 ## How long does it take?
 
 | Step | Typical time |
 | --- | --- |
-| You click Publish | Instant |
-| Editor creates the pull request | A few seconds |
-| Tech volunteer gets notified | A few seconds (email) |
-| Tech volunteer reviews | 5 minutes – 24 hours (depends on the volunteer's availability) |
-| Site rebuilds after merge | 1-3 minutes |
+| You click Save | Instant |
+| Editor commits to GitHub | A few seconds |
+| Vercel detects and starts rebuilding | A few seconds |
+| Site finishes rebuilding | 1–3 minutes |
 | Live on the public site | Immediately after rebuild |
 
-**If your change is urgent** (like fixing a typo in the service time before Sunday morning), **text or call the tech volunteer directly** so they prioritize the review. The email notification works for routine changes but doesn't shout "URGENT."
-
-## "I clicked Publish but nothing changed on the site"
+## "I clicked Save but nothing changed on the site"
 
 This is the most common confusion. Here are the possible reasons:
 
-### 1. The tech volunteer hasn't approved it yet
+### 1. The site is still rebuilding
 
-Most common. Wait a bit, or text them if it's urgent.
+Wait a couple of minutes, then refresh the public page. The rebuild takes 1–3 minutes.
 
-To check: **Click** **Workflow** at the top right. If your change is listed under **In Review**, it's waiting on the volunteer. If it's listed under **Ready**, it should be live within a couple minutes.
-
-### 2. The site is still rebuilding
-
-After the volunteer merges, the site takes 1-3 minutes to rebuild. Refresh the public page after a couple of minutes.
-
-### 3. Your browser is showing a cached (old) version
+### 2. Your browser is showing a cached (old) version
 
 Browsers remember old pages to load them faster. To force a fresh load:
 
 - **Windows:** Press Ctrl+Shift+R.
 - **Mac:** Press Cmd+Shift+R.
 
-### 4. You clicked Save but not Publish
+### 3. The save failed silently
 
-**Click** the **Status** dropdown at the top of the entry. If it says **Draft**, the change is sitting in your drafts. Change it to **Ready for Review** and click **Publish → Publish now**.
+Rare, but possible. Look at the entry in the CMS — if your changes aren't showing in the form, the save may not have gone through. Try saving again. If it keeps failing, contact your tech volunteer.
 
-### 5. The publish failed silently
+## "Can I undo a save?"
 
-Rare, but possible. Check the **Workflow** tab — if your change isn't listed there at all, the publish didn't go through. Try again, or contact the tech volunteer.
+Yes — by making another save with the corrected content. Open the same entry, fix it, and click Save. The corrected version will be live within 1–3 minutes.
 
-## "Can I undo a publish?"
-
-Yes. Two ways:
-
-- **If the change hasn't been merged yet:** Find it in the **Workflow** tab and either edit it again or delete it.
-- **If the change is already live:** Open the same entry, fix it, save, mark ready for review, and publish the fix. The old version is preserved in GitHub's history — nothing is ever truly lost — but for the public site, the way to "undo" is "publish a corrected version."
-
-For a true rollback (like "everything I did today was a mistake — restore yesterday's version"), ask your tech volunteer. They can revert to any previous state.
-
-## Why drafts are your friend
-
-You can save a draft at any time — even if it's half-done — and come back later. Drafts:
-
-- Are private to you.
-- Don't appear on the public site.
-- Don't trigger a review.
-- Survive logging out, closing the browser, or going on vacation.
-
-If you're working on a Sunday sermon entry at midnight and you're not sure about the description, save it as a draft. Come back tomorrow. Polish it. Then publish.
+For a true rollback (like "everything I did today was wrong — restore yesterday's version"), ask your tech volunteer. They can revert to any previous state using GitHub's history. Nothing is ever permanently lost.
 
 ## What's next?
 
-- [Add a sermon](./02-add-a-sermon.md) — practice the publish flow with the most common task.
-- [Glossary](./glossary.md) — definitions of words like "commit," "pull request," and "draft."
+- [Add a sermon](./02-add-a-sermon.md) — the most common task you'll do every week.
+- [Glossary](./glossary.md) — definitions of words like "commit," "rebuild," and "cache."
 
 ## Stuck?
 

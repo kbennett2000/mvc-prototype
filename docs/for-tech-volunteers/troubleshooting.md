@@ -150,23 +150,23 @@ If `git pull --rebase` shows conflicts, resolve them and continue with `git reba
 
 **Causes (in order of likelihood):**
 
-1. **Editor wasn't added as a collaborator.**
-   - **Fix:** Go to GitHub → Settings → Collaborators → Add them. Ask them to accept the email invitation.
+1. **Editor wasn't invited in Tina Cloud.**
+   - **Fix:** Go to [app.tina.io](https://app.tina.io) → your project → Team → Invite member. Use the email address associated with their Tina Cloud account.
 
-2. **Editor accepted invitation, but `public/admin/config.yml` still points at the template repo.**
-   - **Fix:** Edit `config.yml`, set `repo:` to your actual fork path, commit, push.
+2. **Editor accepted the invitation but it has since expired.**
+   - **Fix:** Re-send the invitation from the Tina Cloud Team page.
 
-3. **OAuth proxy is misconfigured.**
-   - **Fix:** Re-check the **Authorization callback URL** on the GitHub OAuth App matches what the proxy expects. See [Decap external OAuth docs](https://decapcms.org/docs/external-oauth-clients/).
+3. **`NEXT_PUBLIC_TINA_CLIENT_ID` is missing or incorrect.**
+   - **Fix:** Check the env var in Vercel project settings. It should match the Client ID shown in your Tina Cloud project settings. Redeploy after changing.
 
-### Editor sees the login button but clicking it opens a window that closes immediately
+### Editor sees the login button but gets an error after signing in
 
-**Cause:** Pop-up blocker, or the OAuth proxy is returning an error.
+**Cause:** The Tina Cloud project is not connected to the correct GitHub repository, or the env vars weren't set before the last deploy.
 
 **Fix:**
-1. **Have the editor** allow pop-ups for your site.
-2. **Check** the browser console (F12 → Console tab) for error messages.
-3. **Verify** the OAuth proxy is running. For Cloudflare Workers, check the Worker's logs in the Cloudflare dashboard.
+1. **Check** app.tina.io → your project → Settings to confirm the GitHub repo is connected correctly.
+2. **Verify** `NEXT_PUBLIC_TINA_CLIENT_ID` and `TINA_TOKEN` are set in Vercel and trigger a redeploy.
+3. **Check** the browser console (F12 → Console tab) for error messages.
 
 ### "Failed to fetch" errors in the CMS after a successful login
 

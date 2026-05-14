@@ -19,6 +19,7 @@ You update content (sermons, staff bios, events) using the CMS in your browser. 
 - [06 Add an event](for-editors/06-add-an-event.md) — recurring or one-off
 - [07 Upload photos](for-editors/07-upload-photos.md) — what makes a good photo
 - [08 Publishing changes](for-editors/08-publishing-changes.md) — what "publish" actually does
+- [09 Add an announcement](for-editors/09-add-an-announcement.md) — short bulletin-style notices
 - [Troubleshooting](for-editors/troubleshooting.md) — "I clicked publish but…"
 - [Editor glossary](for-editors/glossary.md) — plain-English terms
 
@@ -47,7 +48,7 @@ You're forking this to customize heavily, add features, or contribute back.
 - [Adding a CMS collection](for-developers/adding-a-cms-collection.md) — new editable type
 - [Styling and theming](for-developers/styling-and-theming.md) — tokens, palette, type
 - [Contributing](for-developers/contributing.md) — PR workflow, what's in scope
-- [Decision log](for-developers/decision-log.md) — why Next.js, Decap, Tailwind, etc.
+- [Decision log](for-developers/decision-log.md) — why Next.js, TinaCMS, Tailwind, etc.
 
 ## Across all tracks
 

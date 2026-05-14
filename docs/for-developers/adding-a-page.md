@@ -116,7 +116,7 @@ Use this when the page's content will be edited regularly — a "podcast episode
 
 We'll set up:
 - A `/content/podcasts/` folder where each episode is a Markdown file.
-- A Decap collection so editors can manage episodes through the CMS.
+- A TinaCMS collection so editors can manage episodes through the CMS.
 - A TypeScript type and loader in `lib/podcasts.ts`.
 - Routes at `/podcasts` (index) and `/podcasts/[slug]` (single episode).
 
@@ -204,35 +204,40 @@ export function getPodcast(slug: string): PodcastEpisode | undefined {
 
 > **Tip:** Look at `lib/sermons.ts` for a working pattern that's identical in structure. Copy it and rename fields.
 
-### 4. Add the Decap collection
+### 4. Add the TinaCMS collection
 
-Open `public/admin/config.yml`. After the existing collections, add:
+Open `tina/config.ts`. Inside the `collections` array, add a new entry:
 
-```yaml
-  # =====================================================================
-  # 9. PODCASTS
-  # =====================================================================
-  - name: podcasts
-    label: "Podcasts"
-    label_singular: "Episode"
-    folder: content/podcasts
-    create: true
-    delete: true
-    format: frontmatter
-    extension: md
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary: "{{date | date('YYYY-MM-DD')}} — {{title}}"
-    sortable_fields: [date, title]
-    fields:
-      - { name: title, label: "Episode Title", widget: string }
-      - { name: date, label: "Date Published", widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
-      - { name: host, label: "Host(s)", widget: string }
-      - { name: description, label: "Short Description", widget: text }
-      - { name: audioUrl, label: "Audio URL", widget: string, hint: "Direct link to the MP3." }
-      - { name: body, label: "Transcript or Show Notes", widget: markdown, required: false }
+```ts
+      // ── Podcasts ───────────────────────────────────────────────────
+      {
+        name: "podcasts",
+        label: "Podcasts",
+        path: "content/podcasts",
+        format: "md",
+        ui: {
+          filename: {
+            slugify: (values) => {
+              const date = values.date
+                ? String(values.date).slice(0, 10)
+                : "undated";
+              const title = slugify(String(values.title || "untitled"));
+              return `${date}-${title}`;
+            },
+          },
+        },
+        fields: [
+          { type: "string", name: "title", label: "Episode Title", required: true, isTitle: true },
+          { type: "datetime", name: "date", label: "Date Published", required: true },
+          { type: "string", name: "host", label: "Host(s)" },
+          { type: "string", name: "description", label: "Short Description", ui: { component: "textarea" } },
+          { type: "string", name: "audioUrl", label: "Audio URL" },
+          { type: "rich-text", name: "body", label: "Transcript or Show Notes", isBody: true },
+        ],
+      },
 ```
 
-> **Important:** YAML is whitespace-sensitive. Match the indentation of the existing collections exactly.
+See [adding-a-cms-collection.md](./adding-a-cms-collection.md) for the full field type reference and patterns.
 
 ### 5. Build the index page
 
@@ -353,7 +358,7 @@ After deploying:
 
 - **Build fails with "Cannot find module '@/lib/podcasts'".** Check the import path — Next.js's `@/` alias maps to the project root. Make sure `tsconfig.json` has it configured (it does by default).
 - **The route shows a 404 even though the page file exists.** You may have an extra `/` or typo in the file path. The file MUST be `app/podcasts/page.tsx` exactly.
-- **CMS doesn't show the new collection.** Hard-refresh the browser at `/admin/` — Decap caches `config.yml`. Or the YAML is malformed; check indentation.
+- **CMS doesn't show the new collection.** Check for TypeScript errors in `tina/config.ts` — run `npm run cms` and look at the terminal output. Hard-refresh the browser at `/admin/index.html` after fixing.
 - **`generateStaticParams` is called but pages aren't generated at build time.** Make sure the function is exported. Async exports are allowed but the return value must be an array (not a promise of array, in Next.js 16+).
 - **The CMS publishes a new file but the site doesn't show it.** Vercel only rebuilds on `main` branch pushes. Make sure the editorial workflow PR has been merged.
 
@@ -361,7 +366,7 @@ After deploying:
 
 ## What's next?
 
-- [Adding a CMS collection](./adding-a-cms-collection.md) — deeper dive on the Decap config.
+- [Adding a CMS collection](./adding-a-cms-collection.md) — deeper dive on the TinaCMS config.
 - [Styling and theming](./styling-and-theming.md) — Tailwind tokens for the new page.
 
 ## Stuck?

@@ -72,7 +72,7 @@ Open the entry you're editing (sermon, staff member, ministry, etc.).
 
 A picker window opens showing all the photos already uploaded to the site, with an **Upload** button at the top.
 
-![Decap media picker](/docs/screenshots/editor/upload-photos-picker.png)
+![TinaCMS media picker](/docs/screenshots/editor/upload-photos-picker.png)
 
 ### 3. Upload a new photo
 
@@ -90,15 +90,11 @@ You should now see the photo highlighted in the picker.
 
 The picker closes and you should now see a preview of the photo next to the field.
 
-### 5. Save and publish
+### 5. Save
 
 **Click** **Save** at the top.
 
-**Change** Status to **Ready for Review**.
-
-**Click** **Publish** → **Publish now**.
-
-Within 5 minutes (after the tech volunteer approves), the photo will appear on the site.
+The photo will appear on the site after the site rebuilds (1–3 minutes).
 
 ## Where the files go
 
@@ -109,7 +105,7 @@ Every photo you upload is stored in the website's `images/uploads/` folder. You 
 - **Photo looks blurry on the published site.** The original was too small. Re-upload using a photo at least 1200 pixels wide.
 - **Staff portrait shows mostly forehead or chin.** The photo isn't square. Crop it to a square before uploading, with the face centered.
 - **Photo upload takes forever or fails.** The file is too big (over 5 MB). Shrink it with one of the tools listed above.
-- **The same photo shows up twice in the picker.** That's fine — Decap won't overwrite a file with the same name. The newest upload appears first.
+- **The same photo shows up twice in the picker.** That's fine — TinaCMS won't overwrite a file with the same name. The newest upload appears first.
 - **The wrong photo shows up on the published page.** Open the entry, click the photo field, pick the right one from the picker, and re-publish.
 
 ## What's next?

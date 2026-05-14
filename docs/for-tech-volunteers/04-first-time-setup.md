@@ -173,15 +173,17 @@ In the terminal, press **Ctrl+C** to stop the running site.
 
 If you want to test the editing experience yourself before inviting editors:
 
-1. Open a **second terminal** in the same project folder.
-2. Run `npm run cms`. You should now see `Decap CMS Proxy Server listening on port 8081`.
-3. With both terminals running, open [http://localhost:3000/admin](http://localhost:3000/admin) in your browser.
-4. Click **Login** (no GitHub prompt). You'll land in the editor.
+1. **Stop** the dev server if it's running (Ctrl+C).
+2. Run `npm run cms` instead. This starts TinaCMS and Next.js together. You'll see output from both.
+3. Open [http://localhost:3000/admin/index.html](http://localhost:3000/admin/index.html) in your browser.
+4. You'll land directly in the editor — no login required in local mode.
 5. Edit something — a sermon, a staff bio — and refresh the public site to see the change.
 
-Edits in this mode write directly to your local `/content/` folder. They won't reach the live site until you commit and push the files (or until editors do the same from a deployed CMS).
+> **`npm run cms` vs `npm run start`:** Use `npm run start` to just preview the site. Use `npm run cms` when you want to edit content locally. Don't run both at the same time — they both try to use port 3000.
 
-This is local-development mode only. In production, the CMS uses the GitHub-backed flow described in [Grant editor access](./08-grant-editor-access.md).
+Edits in this mode write directly to your local `/content/` folder. They won't reach the live site until you commit and push the files.
+
+In production, the CMS authenticates via Tina Cloud as described in [Grant editor access](./08-grant-editor-access.md).
 
 ---
 

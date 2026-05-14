@@ -23,7 +23,7 @@ Every documentation page that references a screenshot links to a file under `doc
 | Path | What to capture |
 | --- | --- |
 | `docs/screenshots/marketing/homepage.png` | Wide shot of the live site homepage — hero with the church exterior photo, service time visible, "Plan Your Visit" CTA. Mobile-first composition but desktop crop. |
-| `docs/screenshots/marketing/cms-dashboard.png` | The Decap CMS dashboard at `/admin/` showing the collections sidebar (Sermons, Ministries, Staff, etc.) and the main content area listing entries. |
+| `docs/screenshots/marketing/cms-dashboard.png` | The TinaCMS dashboard at `/admin/index.html` showing the collections sidebar (Sermons, Announcements, Ministries, Staff, etc.) and the main content area listing entries. |
 
 ## Editor track (`docs/for-editors/*`)
 
@@ -31,20 +31,19 @@ These are the highest-stakes screenshots — a church secretary will follow this
 
 | Path | Used in | What to capture |
 | --- | --- | --- |
-| `docs/screenshots/editor/getting-started-login.png` | 01-getting-started | The Decap login page with the "Login with GitHub" button visible. |
-| `docs/screenshots/editor/getting-started-authorize.png` | 01-getting-started | GitHub's authorization page asking the user to grant Decap access. |
-| `docs/screenshots/editor/getting-started-dashboard.png` | 01-getting-started | Decap dashboard after login, full-window, collections sidebar on the left labeled. |
+| `docs/screenshots/editor/getting-started-login.png` | 01-getting-started | The TinaCMS login page with the "Sign in with Tina Cloud" button visible. |
+| `docs/screenshots/editor/getting-started-dashboard.png` | 01-getting-started | TinaCMS dashboard after login, full-window, collections sidebar on the left labeled. |
 | `docs/screenshots/editor/add-a-sermon-list.png` | 02-add-a-sermon | Sermons collection list view, with at least 3 sermons visible and the "New Sermon" button highlighted in the top right. |
 | `docs/screenshots/editor/add-a-sermon-new-form.png` | 02-add-a-sermon | Blank new-sermon form, fields visible: Title, Date Preached, Speaker, Series, Scripture, Book of the Bible. |
 | `docs/screenshots/editor/add-a-sermon-youtube-id.png` | 02-add-a-sermon | A YouTube video URL in the browser address bar with the 11-character video ID highlighted/circled. Annotate to show what to copy. |
-| `docs/screenshots/editor/add-a-sermon-saved-draft.png` | 02-add-a-sermon | Sermon form with a populated title and a "Draft" status badge visible near the top. |
+| `docs/screenshots/editor/add-a-sermon-saved.png` | 02-add-a-sermon | Sermon form with a populated title after clicking Save. |
 | `docs/screenshots/editor/edit-a-page-list.png` | 03-edit-a-page | Pages collection list showing the "Our Story" entry. |
-| `docs/screenshots/editor/edit-a-page-toolbar.png` | 03-edit-a-page | The WYSIWYG markdown toolbar in Decap with bold/italic/heading/link buttons labeled. |
+| `docs/screenshots/editor/edit-a-page-toolbar.png` | 03-edit-a-page | The rich-text toolbar in TinaCMS with bold/italic/heading/link buttons labeled. |
 | `docs/screenshots/editor/add-a-staff-member-list.png` | 04-add-a-staff-member | Staff collection list with the "New Staff Member" button visible. |
 | `docs/screenshots/editor/update-service-times-list.png` | 05-update-service-times | Site Settings list showing the "Church Info & Site Copy" entry. |
 | `docs/screenshots/editor/update-service-times-section.png` | 05-update-service-times | The Sunday Service section of the Site Settings form, with Service Start Time field highlighted. |
 | `docs/screenshots/editor/add-an-event-list.png` | 06-add-an-event | Recurring Events list showing existing events. |
-| `docs/screenshots/editor/upload-photos-picker.png` | 07-upload-photos | Decap's media picker modal — the file grid with the Upload button visible. |
+| `docs/screenshots/editor/upload-photos-picker.png` | 07-upload-photos | TinaCMS's media picker modal — the file grid with the Upload button visible. |
 
 ## Tech volunteer track (`docs/for-tech-volunteers/*`)
 

@@ -106,7 +106,7 @@ If you don't, **leave** the default `#` in the field. The audio player will be h
 
 If the pastor wrote sermon notes as a PDF:
 
-**Click** the **Choose an image** button next to **Sermon Notes (PDF)**. (Don't worry that it says "image" — Decap reuses the same picker for files.)
+**Click** the upload button next to **Notes URL**.
 
 **Click** **Upload** at the top of the picker window.
 
@@ -136,38 +136,20 @@ A thumbnail is a picture that shows up on the sermon card. If you skip this, the
 
 For example: *"Boaz steps onto the page as a picture of faithful, quiet kindness — and a glimpse of the Redeemer to come."*
 
-### 14. Save your work as a draft
+### 14. Save
 
 **Click** the **Save** button at the top of the form.
 
-You should now see a small "Draft" badge near the title. Your work is safe — you can close the browser and come back later if you need to.
+TinaCMS commits the new sermon directly to the site. The change goes live after Vercel rebuilds (1–3 minutes). You'll see the sermon appear on the Watch page after that.
 
-![Sermon saved as draft with status badge](/docs/screenshots/editor/add-a-sermon-saved-draft.png)
-
-### 15. Mark it ready for review
-
-**Click** the **Status: Draft** dropdown at the top of the form.
-
-**Choose** **Ready for Review**.
-
-This tells the tech volunteer the sermon is ready to go live.
-
-### 16. Publish
-
-**Click** the **Publish** button (top right of the form).
-
-**Choose** **Publish now**.
-
-You should now see a confirmation that your change is being submitted for review.
-
-That's it — you're done. The tech volunteer will get a notification, approve the change, and the sermon will appear on the site within 5 minutes.
+That's it — you're done.
 
 ## Common Mistakes
 
 - **The embedded video doesn't show up after publishing.** You pasted the whole URL instead of just the 11-character ID. Edit the sermon, fix the **YouTube Video ID** field, and publish the fix.
 - **The date is wrong on the published page.** You typed the date instead of using the date picker. Edit and re-pick the date using the calendar.
 - **The sermon doesn't appear under the right series.** Series names are case- and spelling-sensitive. `Walking Through Ruth` and `walking through ruth` are treated as different series. Be consistent.
-- **You can't find your draft.** **Click** **Workflow** at the top right. Drafts and changes waiting for review live there, not in the main Sermons list.
+- **The sermon isn't showing up yet.** The site takes 1–3 minutes to rebuild after you save. Refresh the Watch page after a few minutes.
 
 ## What's next?
 

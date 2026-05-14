@@ -41,33 +41,42 @@ Use **Next.js 16 with the App Router**, defaulting every page to static export.
 
 ## ADR-002: Decap CMS (over Strapi, Sanity, Contentful, others)
 
+**Status:** Superseded by ADR-009
+
+**Context:**
+Initial CMS choice — see ADR-009 for the switch to TinaCMS and the reasons.
+
+**Original decision:** Use Decap CMS (formerly Netlify CMS), git-based, with editorial workflow.
+
+**Why it was superseded:** Netlify Identity (the free OAuth proxy Decap relied on) was deprecated, making auth setup significantly harder. TinaCMS had matured to the point where Tina Cloud handles auth cleanly without a self-hosted proxy, and its TypeScript-native config is a better fit for this codebase.
+
+---
+
+## ADR-009: TinaCMS (replacing Decap CMS)
+
 **Status:** Accepted
 
 **Context:**
-We need a CMS that:
-- Is free for small churches (no per-seat fees).
-- Works for non-technical editors.
-- Doesn't require a database or running server (operational burden).
-- Doesn't lock content into a proprietary platform.
+Decap CMS was replaced in the first major overhaul of the CMS layer. The trigger was the deprecation of Netlify Identity, which had been the simplest auth option for Decap. Without it, setting up Decap's OAuth required deploying and maintaining a Cloudflare Worker or similar proxy — too much friction for a volunteer-maintained church site.
+
+At the same time, TinaCMS had matured significantly: it is also git-based (content stays in the repo as plain files), its schema is defined in TypeScript (`tina/config.ts` — no separate YAML config), and Tina Cloud provides auth without requiring a self-hosted proxy.
 
 **Decision:**
-Use **Decap CMS** (formerly Netlify CMS), git-based, with editorial workflow.
+Replace Decap CMS with **TinaCMS**, configured via `tina/config.ts`, with Tina Cloud for authentication.
 
-**Alternatives considered:**
-- **Sanity** — beautiful editor, but free tier has user limits and hosted content is locked in their cloud. Vendor lock-in.
-- **Contentful** — same vendor-lock concerns. Pricier than Sanity at scale.
-- **Strapi** — self-hosted, requires running a database and server. Operational burden for a church.
-- **TinaCMS** — git-based like Decap. Promising, but requires Tina Cloud for auth in production OR self-hosting a backend. Decap's OAuth proxy options are simpler.
-- **Hand-edit Markdown via GitHub.com web UI** — viable but unfriendly. Editors won't tolerate looking at YAML frontmatter.
-- **Forestry** — defunct (acquired by Tina).
+**Alternatives reconsidered:**
+- **Decap without Netlify Identity** — requires a self-hosted OAuth proxy (Cloudflare Worker or similar). Viable but adds setup burden we wanted to avoid.
+- **Sanity / Contentful** — hosted content, vendor lock-in. Disqualified on the same grounds as before.
+- **Hand-edit Markdown via GitHub.com** — unfriendly for non-technical editors.
 
 **Consequences:**
-- Pro: All content is plain files in the repo. Editors can see history, revert, etc. via GitHub.
-- Pro: No database to backup, no server to keep up.
-- Pro: Editorial workflow = automatic PR-based review.
-- Con: Authentication setup requires either Netlify Identity (deprecating) or a self-hosted OAuth proxy. Adds tech-volunteer setup friction.
-- Con: Decap's preview rendering can lag behind site rendering when content shapes change. Iterate carefully.
-- Con: Active maintenance has been spotty since the Netlify → Decap rename. Worth monitoring.
+- Pro: Auth is handled by Tina Cloud — tech volunteer runs `tinacms build`, sets two env vars in Vercel, and invites editors from the Tina Cloud dashboard. No self-hosted proxy.
+- Pro: CMS schema is TypeScript (`tina/config.ts`) — type-checked, co-located with the rest of the codebase, no YAML.
+- Pro: Content remains plain Markdown/JSON files in the repo. Same git-native portability as Decap.
+- Pro: `tinacms dev -c "next dev"` runs CMS + Next.js together in one command — simpler local dev.
+- Con: Editors need a Tina Cloud account (free), not just a GitHub account. Slight onboarding difference.
+- Con: Tina Cloud free tier has limits (check [tina.io/pricing](https://tina.io/pricing) — currently generous for small churches).
+- Con: TinaCMS does not have a built-in PR-based editorial review step. Saves commit directly to the configured branch. If review is required, use branch protection on GitHub and set `GITHUB_BRANCH` to a non-main branch.
 
 ---
 
@@ -137,7 +146,7 @@ Use **plain Markdown with frontmatter** (via `gray-matter`) for narrative conten
 **Alternatives considered:**
 - **MDX** — allows JSX inside Markdown (e.g., embedding a `<CalloutCard>` component in a sermon description). Powerful, but:
   - Requires editors to know JSX or expect it to render correctly.
-  - Decap doesn't have first-class MDX support in its markdown widget.
+  - Neither Decap nor TinaCMS has first-class MDX support in the editing UI.
   - Increases build complexity (MDX compiler integration).
 - **YAML for everything** — rejected because YAML's indentation rules are unforgiving for non-technical editors.
 - **JSON-only** — rejected because long-form prose in JSON strings is unreadable in diffs.
@@ -169,30 +178,32 @@ Use **`gray-matter`** — small, battle-tested, widely used.
 **Consequences:**
 - Pro: One small dep that does one thing well.
 - Pro: Returns `{ data, content }` — easy mental model.
-- Con: gray-matter parses YAML strictly. Editors who write malformed YAML get cryptic errors. Mitigated by the Decap UI shielding editors from raw YAML.
+- Con: gray-matter parses YAML strictly. Editors who write malformed YAML get cryptic errors. Mitigated by TinaCMS shielding editors from raw YAML entirely.
 
 ---
 
-## ADR-007: Editorial workflow (PR-based publishing, not auto-merge)
+## ADR-007: Editorial workflow (direct commit, not PR-based)
 
-**Status:** Accepted
+**Status:** Updated (originally PR-based with Decap; now direct-commit with TinaCMS)
 
 **Context:**
-Editors are non-technical. They may publish typos or wrong dates by accident. We want a sanity-check step before live.
+Editors are non-technical. They may publish typos or wrong dates by accident. With Decap the editorial workflow was built in: every save became a PR. TinaCMS does not have this mode — saves commit directly to the configured branch.
 
 **Decision:**
-Use Decap's **editorial workflow** mode: every editor change becomes a pull request that a tech volunteer manually reviews and merges.
+Accept TinaCMS's direct-commit model. The default branch is `main` (via `GITHUB_BRANCH` env var). Saves are live after the Vercel build completes (1–3 minutes).
+
+**If a review step is needed:**
+Set `GITHUB_BRANCH` (Vercel env var) to a non-main branch (e.g. `cms-drafts`). Configure a branch protection rule on GitHub that requires a PR to merge into `main`. Editors commit to `cms-drafts`; the tech volunteer opens and merges the PR. This is opt-in, not the default.
 
 **Alternatives considered:**
-- **Auto-merge with notifications** — faster for editors, but no failure mode for typos.
-- **Branch protection without editorial workflow** — Decap doesn't support this cleanly — editors would face Git mechanics directly.
-- **CI-only checks (no human review)** — automated checks can catch broken Markdown but not "wrong service time".
+- **Tina Cloud branching feature** — TinaCMS has an experimental branching UI. Not enabled here; adds complexity.
+- **CI-only checks** — automated checks can catch broken Markdown but not "wrong service time."
 
 **Consequences:**
-- Pro: One person (the tech volunteer) sees everything that changes. Cheap insurance against mistakes.
-- Pro: Full version history in PR comments and merge messages.
-- Con: Latency — changes wait for the volunteer (typically same-day, sometimes longer).
-- Con: Volunteer has a recurring task (approving PRs). See [for-tech-volunteers/09-maintenance.md](../for-tech-volunteers/09-maintenance.md).
+- Pro: No review latency — changes go live as soon as Vercel builds.
+- Pro: Simpler for editors — no Status dropdown, no Workflow tab, no waiting on a volunteer.
+- Con: No built-in safety net. Mitigate by instructing editors to double-check before saving, and monitoring the live site after Sunday updates.
+- Con: Tech volunteer no longer sees a consolidated view of what changed. Mitigate by watching the repo's commit feed on GitHub.
 
 ---
 
@@ -211,7 +222,7 @@ Static-site hosts compatible with Next.js:
 Use **Vercel** as the default host.
 
 **Alternatives considered:**
-- **Netlify** — strong fit since Decap was originally Netlify CMS. Free tier is solid. The Netlify Identity feature (free OAuth proxy for Decap) was a big plus, but **Netlify Identity is being deprecated** — that key advantage is going away.
+- **Netlify** — free tier is solid. Decap CMS (formerly Netlify CMS) was once a draw here, but we've since moved to TinaCMS — the Netlify hosting advantage is no longer a deciding factor.
 - **Cloudflare Pages** — slightly more limited Next.js feature support, especially around RSC and image optimization. Better as a "level up" choice for high traffic.
 - **Self-host** — too much for a church without dedicated dev time.
 
@@ -220,7 +231,7 @@ Use **Vercel** as the default host.
 - Pro: Vercel's free tier ("Hobby") is enough for any small church.
 - Pro: PR previews automatically deployed — tech volunteer can see exactly what an editor's PR looks like before merging.
 - Con: Vercel is a venture-backed company; pricing/limits could change. Mitigation: the site is plain Next.js + static export, portable to any host.
-- Con: Editors changing OAuth proxy choice (since Netlify Identity is dying) means tech volunteers have to set up their own — added friction in [grant-editor-access.md](../for-tech-volunteers/08-grant-editor-access.md).
+- Con: Vercel is a venture-backed company; pricing/limits could change. Mitigation: the site is plain Next.js + static export, portable to any host.
 
 ---
 

@@ -106,16 +106,17 @@ If someone has left their role at the church:
 
 > **Tip:** Set a recurring calendar event titled "Review church site collaborators" for the first day of each quarter.
 
-### Rotate the OAuth client secret (if used long-term)
+### Rotate the Tina Cloud content token (periodically)
 
-If you set up a Decap OAuth proxy that uses a GitHub OAuth App, regenerate the **Client Secret** every 6-12 months:
+The `TINA_TOKEN` environment variable in Vercel is a read-only content token used at build time. Rotating it occasionally limits damage if it ever leaks.
 
-1. **Open** the GitHub OAuth App you created.
-2. **Click** **Generate a new client secret**.
-3. **Update** the new secret in your OAuth proxy (Cloudflare Worker or wherever it's deployed).
-4. **Delete** the old secret from the OAuth App page.
+1. **Go to** [app.tina.io](https://app.tina.io) → your project → Tokens.
+2. **Click** **New token**, name it "Vercel build (new)", and copy the value.
+3. **Update** `TINA_TOKEN` in Vercel's environment variables with the new value.
+4. **Trigger a redeploy** on Vercel.
+5. **Delete** the old token from the Tina Cloud Tokens page.
 
-This limits damage in case the secret ever leaks.
+This limits damage in case the token ever leaks.
 
 ---
 

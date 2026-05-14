@@ -2,7 +2,7 @@
   "name": "church-site-template",
   "version": "0.1.0",
   "private": false,
-  "description": "Open-source Next.js + Decap CMS starter for small churches. Editors update content in the browser. Free hosting on Vercel.",
+  "description": "Open-source Next.js + TinaCMS starter for small churches. Editors update content in the browser. Free hosting on Vercel.",
   "keywords": [
     "church",
     "church-website",
@@ -15,8 +15,8 @@
     "tailwind",
     "tailwindcss",
     "cms",
-    "decap-cms",
-    "netlify-cms",
+    "tinacms",
+    "tina-cms",
     "nonprofit",
     "ministry",
     "static-site"

@@ -17,7 +17,7 @@ time: 5 minutes
 This is a complete website starter for small churches. It includes:
 
 - A modern, fast website (powered by Next.js).
-- A built-in editor (Decap CMS) so the church secretary, pastor's spouse, or other non-technical people can update sermons, staff, service times, and so on — all in their browser, no code.
+- A built-in editor (TinaCMS) so the church secretary, pastor's spouse, or other non-technical people can update sermons, staff, service times, and so on — all in their browser, no code.
 - A free hosting setup (Vercel) that costs nothing for most small-church traffic.
 
 You'll set it up once. After that, the church editors do everything themselves through the browser editor. You'll only get involved monthly to approve their changes and apply software updates.
@@ -48,7 +48,7 @@ Here's what you'll do, in roughly this order. Total time: **30-60 minutes** the 
 When you're done, you'll have:
 
 - **A live website** at a `*.vercel.app` URL (free) — and at your own domain like `yourchurch.org` if you set that up.
-- **A CMS editor** at `https://yourchurch.org/admin/` where editors log in with GitHub.
+- **A CMS editor** at `https://yourchurch.org/admin/` where editors log in with their Tina Cloud account.
 - **A GitHub repository** that stores all the website's content. Every change is tracked in history.
 - **Automatic rebuilds** — every time an editor publishes a change (and you approve it), the site rebuilds and goes live within a couple of minutes.
 
@@ -72,7 +72,7 @@ If you're the kind of person who wants to understand before you start clicking �
 
 **Connect your domain** — Point `yourchurch.org` at Vercel by adding two DNS records at your domain registrar (the place you bought the domain).
 
-**Grant editor access** — Invite the editors to the GitHub repository as collaborators, and set up the Decap authentication so they can log in with their GitHub account.
+**Grant editor access** — Set up Tina Cloud authentication and invite editors so they can log in with their Tina Cloud account.
 
 **Maintenance** — Every month or so, you'll review pending changes from editors, accept routine dependency updates, and check that nothing's broken.
 

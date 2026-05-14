@@ -6,7 +6,7 @@ time: 25 minutes
 
 # Adding a CMS collection
 
-**Who this is for:** Developers adding a new editable content type (e.g. "Blog posts") that editors will manage through Decap CMS.
+**Who this is for:** Developers adding a new editable content type (e.g. "Blog posts") that editors will manage through TinaCMS.
 **What you'll accomplish:** A new collection in the CMS sidebar, backed by Markdown files in `/content/`, with a TypeScript loader that pages can consume.
 **You'll need first:**
 - Project running locally.
@@ -23,7 +23,7 @@ For every new collection:
 1. **Decide the schema** — what fields does each entry have?
 2. **Create** the content folder + a seed file.
 3. **Define** the TypeScript type in `lib/<type>.ts` and the loader in `content/<type>.ts`.
-4. **Add** the collection to `public/admin/config.yml`.
+4. **Add** the collection to `tina/config.ts`.
 
 Then test in the CMS and consume on a page.
 
@@ -40,11 +40,11 @@ Write down the fields and which are required. For a blog post:
 | Field | Type | Required | Notes |
 | --- | --- | --- | --- |
 | title | string | Yes | Headline |
-| date | date | Yes | Publish date |
+| date | datetime | Yes | Publish date |
 | author | string | Yes | Author's name |
-| excerpt | text | Yes | Short summary for the index page |
+| excerpt | string (textarea) | Yes | Short summary for the index page |
 | cover | image | No | Optional hero image |
-| body | markdown | Yes | The post body |
+| body | rich-text | Yes | The post body (Markdown) |
 
 ### 2. Create the content folder
 
@@ -57,7 +57,7 @@ Add a seed file `content/blog/2026-01-20-welcome-to-our-blog.md`:
 ```markdown
 ---
 title: "Welcome to our blog"
-date: "2026-01-20"
+date: "2026-01-20T00:00:00.000Z"
 author: "Pastor John Smith"
 excerpt: "A new way to share what's happening in the life of the church."
 cover: "/images/uploads/blog-welcome.jpg"
@@ -68,6 +68,8 @@ Welcome to our brand new blog! We'll use this space to share...
 
 > **Tip:** A seed file matters. Without one, the loader returns an empty array and the page may render confusingly during development.
 
+> **Date format:** TinaCMS writes `datetime` fields as ISO 8601 strings (`2026-01-20T00:00:00.000Z`). Your TypeScript type should treat the field as `string` and slice the first 10 characters (`date.slice(0, 10)`) when you need just the date.
+
 ### 3. Create the TypeScript type and loader
 
 Type in `lib/blog.ts`:
@@ -76,7 +78,7 @@ Type in `lib/blog.ts`:
 export type BlogPost = {
   slug: string;
   title: string;
-  date: string;
+  date: string;      // ISO 8601 from TinaCMS; slice(0,10) for display
   author: string;
   excerpt: string;
   cover?: string;
@@ -90,9 +92,6 @@ Loader in `content/blog.ts`:
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-
-export interface BlogPost {
-  slug: string;
 import type { BlogPost } from "@/lib/blog";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
@@ -129,111 +128,114 @@ export function getBlogPost(slug: string): BlogPost | undefined {
 
 > **Tip:** This is the same template as `content/sermons.ts`, `content/ministries.ts`, etc. Copy from whichever existing loader most resembles the new content shape, then rename fields. Always export functions (not top-level `const`) so CMS edits hot-reload in dev.
 
-### 4. Add the Decap collection
+### 4. Add the collection to tina/config.ts
 
-Open `public/admin/config.yml`.
+Open `tina/config.ts`. Inside the `defineConfig({ schema: { collections: [...] } })` array, add the new collection at the end:
 
-Scroll to the end of the `collections:` array. Add the new collection at the bottom:
-
-```yaml
-  # =====================================================================
-  # 9. BLOG POSTS
-  # =====================================================================
-  - name: blog
-    label: "Blog Posts"
-    label_singular: "Post"
-    folder: content/blog
-    create: true
-    delete: true
-    format: frontmatter
-    extension: md
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary: "{{date | date('YYYY-MM-DD')}} — {{title}}"
-    sortable_fields: [date, title, author]
-    view_filters:
-      - label: This year
-        field: date
-        pattern: "2026"
-    fields:
-      - name: title
-        label: "Post Title"
-        widget: string
-        hint: "Shown at the top of the post and on the blog index."
-      - name: date
-        label: "Date Published"
-        widget: datetime
-        date_format: "YYYY-MM-DD"
-        time_format: false
-        picker_utc: false
-      - name: author
-        label: "Author"
-        widget: string
-        hint: "Usually a pastor or staff member's name."
-      - name: excerpt
-        label: "Short Excerpt"
-        widget: text
-        hint: "1-2 sentences shown on the blog index card."
-      - name: cover
-        label: "Cover Image"
-        widget: image
-        required: false
-        hint: "Wide hero image at the top of the post. 16:9 ratio works best."
-      - name: body
-        label: "Post Body"
-        widget: markdown
-        hint: "Write the post using the formatting toolbar."
+```ts
+      // ── Blog Posts ─────────────────────────────────────────────────
+      {
+        name: "blog",
+        label: "Blog Posts",
+        path: "content/blog",
+        format: "md",
+        ui: {
+          filename: {
+            slugify: (values) => {
+              const date = values.date
+                ? String(values.date).slice(0, 10)
+                : "undated";
+              const title = slugify(String(values.title || "untitled"));
+              return `${date}-${title}`;
+            },
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Post Title",
+            required: true,
+            isTitle: true,
+          },
+          {
+            type: "datetime",
+            name: "date",
+            label: "Date Published",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "author",
+            label: "Author",
+          },
+          {
+            type: "string",
+            name: "excerpt",
+            label: "Short Excerpt",
+            ui: { component: "textarea" },
+          },
+          {
+            type: "image",
+            name: "cover",
+            label: "Cover Image",
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Post Body",
+            isBody: true,
+          },
+        ],
+      },
 ```
 
-**Save** the file.
+**Save** the file. The top-level `slugify` helper is already defined in `tina/config.ts` — use it as shown.
 
-> **Important:** Indentation matters in YAML. Each level is exactly 2 spaces. Use a YAML linter (most code editors have one) to catch syntax errors before committing.
+> **Important:** TypeScript will type-check the config. If you mistype a field `type`, the build will fail with a clear error.
 
-### 5. Pick the right widget for each field
+### 5. Field type reference
 
-Reference of Decap widgets used in this project:
-
-| Widget | When to use | Example |
+| TinaCMS type | When to use | Notes |
 | --- | --- | --- |
-| `string` | Single-line text | Title, author |
-| `text` | Multi-line plain text | Excerpt, bio |
-| `markdown` | Rich text with formatting | Post body |
-| `datetime` | Dates | Publish date |
-| `number` | Numeric input | Display order |
-| `boolean` | Yes/no toggle | Featured flag |
-| `select` | Dropdown of fixed options | Recurrence type |
-| `image` | Image picker (uploads or selects) | Cover, photo |
-| `file` | Any file (PDF, etc.) | Sermon notes |
-| `list` | Array of nested fields | Meetings, gallery |
-| `object` | Grouped fields | Address, leader |
-| `relation` | Reference to another collection's entry | Author from staff |
+| `string` | Single-line text | Add `ui: { component: "textarea" }` for multi-line |
+| `datetime` | Dates | Stored as ISO 8601 string |
+| `number` | Numeric input | Integer or float |
+| `boolean` | Yes/no toggle | Stored as `true`/`false` |
+| `image` | Image upload | Returns a path string |
+| `rich-text` | Markdown body | Use `isBody: true` to map to the file's Markdown body |
+| `object` | Grouped fields | Add `list: true` to make it a repeatable list |
+| `string` with `options` | Dropdown / select | `options: ["weekly", "monthly"]` |
 
-Full reference: [decapcms.org/docs/widgets](https://decapcms.org/docs/widgets/).
+Full reference: [tina.io/docs/reference/types](https://tina.io/docs/reference/types/).
 
-### 6. Configure the slug pattern
+### 6. Configure the filename pattern
 
-The `slug:` line controls what the filename looks like:
+The `ui.filename.slugify` function controls what the filename looks like. The project uses a shared `slugify` helper defined at the top of `tina/config.ts`. Common patterns:
 
 | Pattern | Result |
 | --- | --- |
-| `{{slug}}` | The slugified title only (`welcome-to-our-blog.md`) |
-| `{{year}}-{{month}}-{{day}}-{{slug}}` | Date-prefixed (`2026-01-20-welcome-to-our-blog.md`) |
-| `{{year}}/{{month}}/{{slug}}` | Year/month folders (rarely needed) |
+| `slugify(values.title)` | Title-only slug (`welcome-to-our-blog.md`) |
+| `${date}-${title}` | Date-prefixed (`2026-01-20-welcome-to-our-blog.md`) |
+| `slugify(values.name)` | Name-based (for people entries like staff, elders) |
 
-For dated content (sermons, blog posts, events), prefer the date-prefixed pattern — files sort chronologically on disk.
+For dated content (sermons, blog posts, announcements), prefer the date-prefixed pattern — files sort chronologically on disk.
 
-### 7. Use editorial workflow (already configured)
+### 7. Restart and test locally
 
-The project's `config.yml` has `publish_mode: editorial_workflow` set at the top. This means every change becomes a PR rather than a direct commit. You don't need to configure this per-collection.
+Stop any running dev server and restart with:
 
-If you want a collection to bypass review (rare — typically only for the doctrine page or similar), you can override at the collection level — but think twice before doing it. The PR workflow is a safety feature.
+```
+npm run cms
+```
 
-### 8. Restart the dev server and test
+This starts both TinaCMS and Next.js together. Open [http://localhost:3000/admin/index.html](http://localhost:3000/admin/index.html) — the new **Blog Posts** collection should appear in the left sidebar.
 
-Restart `npm run start` to pick up the config changes. Decap's preview at `/admin/` should show the new collection in the left sidebar.
+Click **New Blog Post**, fill in the fields, click **Save**. The file should appear in `content/blog/`. No login required in local mode.
 
-> **Tip:** Decap loads `config.yml` from the deployed site, not from your local dev server. To test locally, you can run Decap with a local backend — see [decapcms.org/docs/working-with-a-local-git-repository](https://decapcms.org/docs/working-with-a-local-git-repository/).
+> **Local vs production:** In local dev, TinaCMS writes directly to your filesystem with no authentication. In production (deployed to Vercel), it authenticates via Tina Cloud. See [08-grant-editor-access.md](../for-tech-volunteers/08-grant-editor-access.md).
 
-### 9. Render on a page
+### 8. Render on a page
 
 Now that the data exists, build a page to render it. See [Adding a page](./adding-a-page.md) for the route side — Flavor B walks through the index + single-entry pattern that fits a blog perfectly.
 
@@ -242,7 +244,7 @@ Quick example for the index:
 ```tsx
 // app/blog/page.tsx
 import Link from "next/link";
-import { getBlogPosts } from "@/lib/blog";
+import { getBlogPosts } from "@/content/blog";
 
 export default function BlogIndex() {
   const posts = getBlogPosts();
@@ -256,7 +258,7 @@ export default function BlogIndex() {
               <h2 className="font-serif text-2xl">{post.title}</h2>
             </Link>
             <p className="mt-1 text-sm text-muted-foreground">
-              {post.date} • {post.author}
+              {post.date.slice(0, 10)} • {post.author}
             </p>
             <p className="mt-3 text-foreground">{post.excerpt}</p>
           </li>
@@ -267,13 +269,13 @@ export default function BlogIndex() {
 }
 ```
 
-### 10. Build to validate
+### 9. Build to validate
 
 ```
 npm run build
 ```
 
-The build output should include the new routes and show no TypeScript errors. If TypeScript complains about a missing field, you forgot to handle an optional field in the loader.
+The build runs `tinacms build` (regenerates `tina/__generated__/`) then `next build`. If TypeScript complains about a missing field, you forgot to handle an optional field in the loader or type.
 
 ---
 
@@ -281,22 +283,23 @@ The build output should include the new routes and show no TypeScript errors. If
 
 | Pattern | Used by | Notes |
 | --- | --- | --- |
-| Singleton file (one entry) | `settings`, `beliefs`, `events`, `pages` | Use `files:` instead of `folder:` |
-| Per-entry Markdown files | `sermons`, `ministries`, `staff`, `elders` | Most common |
-| List widget with summary | `ministries.meetings`, `events.events` | Use `summary:` for readable list items |
-| Conditional fields | (not currently used) | See Decap's `condition` option |
-| Date-prefixed slugs | `sermons` | Files sort chronologically |
-| Custom view filters | `sermons` | Add `view_filters:` for the collection sidebar |
+| Single document (`match: { include: "..." }`) | `story`, `site`, `beliefs`, `events` | One file, no create/delete |
+| Per-entry Markdown files | `sermons`, `ministries`, `staff`, `elders`, `announcements` | Most common |
+| Date-prefixed slugs | `sermons`, `announcements` | Files sort chronologically |
+| `object` with `list: true` | `ministries.meetings`, `events.events` | Repeatable nested objects |
+| `string` with `options` | `events.rule.kind` | Dropdown of fixed choices |
+| `isTitle: true` | Every collection | Marks the field TinaCMS uses as the entry title in the list |
+| `isBody: true` | `rich-text` body field | Maps to the Markdown body below the frontmatter |
 
 ---
 
-## Common Mistakes
+## Common mistakes
 
-- **Collection doesn't appear in the CMS.** Most likely YAML syntax error. Validate at [yamllint.com](https://yamllint.com/). Look at the browser console for parse errors when Decap loads.
-- **Editor publishes but the file doesn't appear.** Check the `folder:` path matches a real folder. Decap may write to a path that doesn't exist if you mistyped.
-- **TypeScript build fails after adding a collection.** You added the field in `config.yml` but didn't update the loader/type in `lib/`. Update both sides.
-- **Markdown body shows up as a raw string with `---` frontmatter.** You used `format: yaml` instead of `format: frontmatter`. The latter splits the file into frontmatter + body; the former treats the whole thing as YAML.
-- **Slug collisions when editors create posts with the same title on the same day.** Add a randomization element to the slug pattern (`{{year}}-{{month}}-{{day}}-{{slug}}-{{fields.author | lower}}`) or accept the rare conflict.
+- **Collection doesn't appear in the CMS.** Most likely a TypeScript error in `tina/config.ts`. Run `npm run cms` and look at the terminal output for a compile error.
+- **Editor saves but the file doesn't appear.** Check the `path:` value matches a real folder relative to the project root.
+- **TypeScript build fails after adding a collection.** You added the field in `tina/config.ts` but didn't update the loader/type. Update both sides.
+- **`isBody: true` is missing on the `rich-text` field.** Without it, TinaCMS writes the body as a frontmatter field (`body: "..."`) instead of the Markdown body below the `---`. The loader (using `gray-matter`) expects the body in `content`, not `data`.
+- **Dates display as ISO strings.** TinaCMS stores `datetime` as `2026-01-20T00:00:00.000Z`. Slice the first 10 characters for display: `date.slice(0, 10)`.
 
 ---
 
@@ -307,7 +310,7 @@ The build output should include the new routes and show no TypeScript errors. If
 
 ## Stuck?
 
-- [Decap CMS docs](https://decapcms.org/docs/intro/) — canonical reference.
+- [TinaCMS docs](https://tina.io/docs/) — canonical reference.
 - Open an issue: [GitHub Issues](https://github.com/your-org/your-repo/issues)
 
 ---

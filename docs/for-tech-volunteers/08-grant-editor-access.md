@@ -1,204 +1,163 @@
 ---
 type: how-to
 audience: tech-volunteer
-time: 25 minutes
+time: 20 minutes
 ---
 
 # Grant editor access
 
 **Who this is for:** Tech volunteers ready to invite the church's editors (secretary, pastor's spouse, etc.) so they can update the site through `/admin/`.
-**What you'll accomplish:** Editors can sign in to the CMS with their GitHub account, draft changes, and submit them for your approval.
+**What you'll accomplish:** Editors can sign in to TinaCMS with their Tina Cloud account, make changes, and see them go live automatically.
 **You'll need first:**
 - Site deployed to Vercel. See [Deploy to Vercel](./06-deploy-to-vercel.md).
 - Domain working (or the `*.vercel.app` URL ready to use). See [Connect a domain](./07-connect-domain.md).
-- The GitHub usernames of every editor you want to invite.
-- About 30 minutes — most of which is the Decap OAuth setup.
+- The email addresses of every editor you want to invite.
+- About 20 minutes.
 
 ---
 
-## What "editor access" actually involves
+## How TinaCMS authentication works
 
-Two things have to happen for an editor to log in:
+TinaCMS uses **Tina Cloud** for authentication. Editors log in with a Tina Cloud account (email or GitHub) rather than directly via GitHub. You manage who has access from the Tina Cloud dashboard.
 
-1. **They need to be a collaborator on the GitHub repository.** This gives them permission to read and write the church's content files.
-2. **The CMS at `/admin/` needs an OAuth (authentication) proxy** so that Decap can talk to GitHub on their behalf without exposing your church's credentials.
+The site itself needs two environment variables set in Vercel so the CMS can connect to your GitHub repository:
 
-You'll do both in this guide.
+- `NEXT_PUBLIC_TINA_CLIENT_ID` — identifies your project to Tina Cloud.
+- `TINA_TOKEN` — a read-only content token (used at build time to fetch content).
 
 ---
 
 ## Steps
 
-### 1. Update the CMS config with your real GitHub repo path
+### 1. Create a Tina Cloud account
 
-Open `public/admin/config.yml` in your code editor.
+**Go to** [app.tina.io](https://app.tina.io) in your browser.
 
-Find the lines near the top that look like:
+**Click** **Sign up** (free).
 
-```yaml
-backend:
-  name: github
-  repo: your-org/your-repo
-  branch: main
-```
+Sign up with your GitHub account or an email address. Either works.
 
-Change `your-org/your-repo` to the actual path of your fork. For example:
+### 2. Create a new Tina Cloud project
 
-```yaml
-backend:
-  name: github
-  repo: kbennett-org/church-site
-  branch: main
-```
+Once you're logged in:
 
-> **Tip:** Find your repo path by looking at the URL of your GitHub repository: `https://github.com/kbennett-org/church-site` → the path is `kbennett-org/church-site`.
+**Click** **New project**.
 
-**Save** the file.
+**Connect** it to the church's GitHub repository when prompted. You'll need to authorize Tina Cloud to access the repo.
 
-**Commit and push** to GitHub:
+> **Tip:** Tina Cloud needs read and write access to the repo so it can commit content changes when editors save.
 
-```
-git add public/admin/config.yml
-git commit -m "Point CMS at our GitHub repo"
-git push
-```
+**Give** the project a name — something like "MVC Website" or your church's name.
 
-Vercel will rebuild the site automatically.
+### 3. Copy the Client ID
 
-### 2. Run the doctor script to verify
+After creating the project, you'll see a **Project Settings** page with a **Client ID** (a long string like `a1b2c3d4-...`).
 
-In your terminal:
+**Copy** the Client ID. You'll need it in step 5.
 
-```
-npm run doctor
-```
+### 4. Generate a read-only content token
 
-Look for the line **CMS connected to a real GitHub repo**. It should now show a green checkmark. If it still shows red, the config.yml change didn't save correctly — re-open and re-check.
+In the same Project Settings page:
 
-### 3. Invite editors as GitHub collaborators
+**Click** **Tokens**.
 
-**Open** your GitHub repository in a browser: `https://github.com/your-username/church-site`.
+**Click** **New token**.
 
-**Click** **Settings** (top right of the repo page).
+**Name** it something like "Vercel build" and set the scope to **Read only**.
 
-**Click** **Collaborators** in the left sidebar (under Access).
+**Copy** the token value. **Save it somewhere safe** — you won't be able to see it again.
 
-You may be asked to confirm your GitHub password.
+### 5. Add the env vars to Vercel
 
-![GitHub collaborators page](/docs/screenshots/tech-volunteer/grant-editor-access-collaborators.png)
+**Open** your Vercel project dashboard.
 
-**Click** **Add people**.
+**Click** **Settings** → **Environment Variables**.
 
-**Type** the editor's GitHub username, email, or full name.
+Add both variables:
 
-**Click** the matching result in the dropdown.
+| Name | Value |
+| --- | --- |
+| `NEXT_PUBLIC_TINA_CLIENT_ID` | The Client ID from step 3 |
+| `TINA_TOKEN` | The token from step 4 |
 
-**Click** **Add `<username>` to this repository**.
+Set both to apply to **Production**, **Preview**, and **Development** environments.
 
-GitHub sends them an invitation email. They have to click **Accept invitation** in that email before they can log in to the CMS.
+**Click** **Save** for each one.
+
+### 6. Redeploy the site
+
+Vercel needs to rebuild with the new env vars.
+
+**Click** **Deployments** in your Vercel project.
+
+**Click** the three-dot menu on the most recent deployment → **Redeploy**.
+
+Wait 1–3 minutes for the build to complete.
+
+### 7. Verify the CMS loads
+
+**Open** `https://yourchurch.org/admin/` (or your `*.vercel.app` URL).
+
+You should see a TinaCMS login screen.
+
+**Click** **Sign in with Tina Cloud**.
+
+Log in with the same account you used in step 1. You should arrive at the CMS dashboard showing your collections (Sermons, Announcements, Staff, etc.).
+
+If you see an error, see [troubleshooting](./troubleshooting.md).
+
+### 8. Invite your editors
+
+Back in the **Tina Cloud** dashboard ([app.tina.io](https://app.tina.io)):
+
+**Click** your project → **Team**.
+
+**Click** **Invite member**.
+
+**Enter** the editor's email address.
+
+**Select** the role **Editor** (not Owner — editors don't need to manage project settings).
+
+**Click** **Send invite**.
+
+The editor will receive an email from Tina Cloud. They need to create a free Tina Cloud account (or log in if they have one) and accept the invitation.
 
 **Repeat** for each editor.
 
-> **Tip:** Tell editors to watch for the GitHub invitation email — it sometimes lands in spam.
+### 9. Walk an editor through their first login
 
-### 4. Set up Decap OAuth (the authentication proxy)
+Once they've accepted:
 
-The CMS uses GitHub for login. But Decap can't talk to GitHub directly from a static site — it needs a small middleman service called an **OAuth proxy**.
+1. **Go to** `https://yourchurch.org/admin/`.
+2. **Click** **Sign in with Tina Cloud** and log in.
+3. **Tour** the sidebar — what each collection is.
+4. **Add a test sermon** together to demonstrate the save flow.
 
-There are several options, ranked by ease:
+Point them at the [editor track docs](../for-editors/01-getting-started.md).
 
-| Option | Effort | Cost | Notes |
-| --- | --- | --- | --- |
-| Netlify Identity (no longer recommended) | — | — | Being deprecated. Skip. |
-| Cloudflare Workers | Low | Free | Recommended. About 10 minutes. |
-| Vercel-hosted serverless function | Low | Free | Use if you're avoiding Cloudflare. |
-| Self-hosted OAuth server | High | Varies | Only for unusual setups. |
+### 10. What happens when an editor saves
 
-The full setup steps differ for each option and Decap maintains the canonical instructions, so:
+When an editor clicks **Save** in the CMS:
 
-**Open** [Decap CMS: External OAuth Clients](https://decapcms.org/docs/external-oauth-clients/) in your browser.
+1. TinaCMS commits the changed file directly to the `main` branch of your GitHub repository.
+2. GitHub fires a webhook to Vercel.
+3. Vercel rebuilds the site (1–3 minutes).
+4. The change is live.
 
-**Pick** an option from the list (Cloudflare Workers is the most popular for small churches).
-
-**Follow** the steps in their docs.
-
-The short version of what you'll do:
-
-1. **Register** a new **GitHub OAuth App** at [github.com/settings/applications/new](https://github.com/settings/applications/new).
-   - **Application name:** something like "ChurchName Site CMS"
-   - **Homepage URL:** your site URL (e.g. `https://yourchurch.org`)
-   - **Authorization callback URL:** the URL of the OAuth proxy you'll deploy.
-2. **Note down** the **Client ID** and generate a **Client Secret** — both are shown only on the GitHub OAuth App page. Save them somewhere safe (a password manager works).
-3. **Deploy** the OAuth proxy (Cloudflare Worker or whatever you picked) and configure it with your Client ID and Secret.
-4. **Update** `public/admin/config.yml` with the OAuth proxy URL if Decap's instructions require it.
-
-Decap's docs are authoritative; we don't copy them here because they change.
-
-### 5. Test the editor login
-
-**Open** `https://yourchurch.org/admin/` (or the `*.vercel.app` URL).
-
-**Click** **Login with GitHub**.
-
-**Authorize** the CMS to access your account.
-
-You should now see the CMS dashboard.
-
-If you see "Not Authorized" or a stuck-loading screen, see [troubleshooting](./troubleshooting.md).
-
-### 6. Walk an editor through their first login
-
-Once you've confirmed your own login works, schedule 15-20 minutes with each editor.
-
-Walk them through:
-
-1. **Opening** `https://yourchurch.org/admin/`.
-2. **Clicking** **Login with GitHub** and authorizing.
-3. **The dashboard** — what each collection is.
-4. **Adding a test sermon** (which they'll publish, and you'll approve to demonstrate the flow).
-
-Point them at the [editor track docs](../for-editors/01-getting-started.md) and tell them which collection is theirs to maintain.
-
-### 7. Set up your own notifications
-
-So you know when an editor publishes a change to review:
-
-**Open** your GitHub repository.
-
-**Click** **Watch** at the top right of the repo page (next to Star).
-
-**Click** **Custom**.
-
-**Check** **Pull requests**.
-
-**Click** **Apply**.
-
-You'll now get an email every time an editor submits a change for your review.
-
-### 8. Practice the approval flow
-
-To approve a pull request from an editor:
-
-1. **Click** the email notification link, or **go to** your repo's **Pull requests** tab.
-2. **Click** the open pull request.
-3. **Click** **Files changed** to see exactly what changed.
-4. If it looks good, **click** **Merge pull request** at the bottom → **Confirm merge**.
-5. Vercel automatically rebuilds the site within 1-3 minutes.
-
-That's the whole maintenance loop — and it's the bulk of your job from here on.
+There is no PR review step — saves go live after the Vercel build. If your church needs a review step before changes go live, see the note in [ADR-007](../for-developers/decision-log.md#adr-007-editorial-workflow-direct-commit-not-pr-based).
 
 ---
 
 ## What's running where (mental model)
 
 ```
-Editor's browser ── login ──► /admin/ (Decap CMS)
+Editor's browser ── login ──► /admin/ (TinaCMS)
                                   │
-                                  │  (uses your OAuth proxy)
+                                  │  (authenticated via Tina Cloud)
                                   ▼
-                              GitHub repo
+                              GitHub repo (direct commit to main)
                                   │
-                                  │  (you approve PR)
+                                  │  (Vercel webhook)
                                   ▼
                               Vercel builds
                                   │
@@ -208,13 +167,12 @@ Editor's browser ── login ──► /admin/ (Decap CMS)
 
 ---
 
-## Common Mistakes
+## Common mistakes
 
-- **Editor sees "Not Authorized" after clicking Login with GitHub.** They were added to the repo but haven't accepted the invitation email. Tell them to find the GitHub invitation in their inbox and click **Accept invitation**.
-- **Editor sees a stuck loading spinner after authorizing.** The OAuth proxy is misconfigured. Re-check your OAuth App's callback URL matches what your proxy expects. See the Decap docs.
-- **Login window opens but immediately closes with no message.** Pop-up blocker. Tell the editor to allow pop-ups for the church's site.
-- **Login works but they see no collections.** You forgot to update `public/admin/config.yml` to point at your real repository. Fix it, commit, push.
-- **You used a private repository, and the OAuth flow asks editors to upgrade to GitHub Pro.** Private GitHub repos require everyone to have a GitHub account in good standing — for free accounts that's fine. The Pro nag may be misread; double-check the exact error.
+- **"Not authorized" after logging in.** The editor's Tina Cloud account hasn't been added to the project. Go to app.tina.io → your project → Team and invite them.
+- **CMS login screen never appears at `/admin/`.** The env vars aren't set, or the last Vercel deployment was before you added them. Redeploy (step 6).
+- **Editor sees the CMS but can't save.** The Tina Cloud project may not have write access to the GitHub repo. Go to app.tina.io → project settings and re-authorize the GitHub connection.
+- **Build fails after adding env vars.** Check that `NEXT_PUBLIC_TINA_CLIENT_ID` and `TINA_TOKEN` are spelled exactly right (case-sensitive).
 
 ---
 
@@ -225,7 +183,7 @@ Editor's browser ── login ──► /admin/ (Decap CMS)
 ## Stuck?
 
 - [Troubleshooting](./troubleshooting.md) — common problems and fixes.
-- [Decap CMS GitHub backend docs](https://decapcms.org/docs/github-backend/) — the canonical reference.
+- [TinaCMS self-hosted auth docs](https://tina.io/docs/self-hosted/overview/) — if you need to run auth without Tina Cloud.
 - Open an issue: [GitHub Issues](https://github.com/your-org/your-repo/issues)
 
 ---

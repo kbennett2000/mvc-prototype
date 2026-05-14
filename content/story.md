@@ -1,5 +1,3 @@
-# Our Story
-
 Majestic View Church is unified in Jesus Christ and committed to obeying God through Scripture with the help of the Holy Spirit. We are a congregation that wants its building, its gatherings, and its people to feel like home — a place where visitors find friendship and love and are welcomed without performance.
 
 In recent years we renamed our facility "Elevation Community Center at Majestic View Church" to reflect that hospitality. The center is open for quiet reflection, gatherings, and children's activities, and community members can reserve space.

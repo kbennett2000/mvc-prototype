@@ -24,13 +24,6 @@
         "time": "9:00 AM",
         "note": "Fellowship & coffee after the service",
         "primary": true
-      },
-      {
-        "name": "Sunday Part II",
-        "day": "Sunday",
-        "note": "A second service",
-        "primary": false,
-        "time": "5:00 PM"
       }
     ]
   },

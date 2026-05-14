@@ -2,8 +2,6 @@ auto post to social media accts when content on site changes?
 annoucements display on date / stop displaying date
 weekly announcements email/sms digest?
 
-images for annoucements
-
 
 
 SYNC CHANGES

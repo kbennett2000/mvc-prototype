@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import fs from "node:fs";
+import path from "node:path";
+import { marked } from "marked";
+import matter from "gray-matter";
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, BookOpen, ArrowRight } from "lucide-react";
@@ -15,9 +19,15 @@ export const metadata: Metadata = {
     "Our story, what we believe, and the people who lead Majestic View Church in Kiowa, Colorado.",
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
   const staff = getStaff();
   const elders = getElders();
+  const storyRaw = fs.readFileSync(
+    path.join(process.cwd(), "content/story.md"),
+    "utf-8"
+  );
+  const { content: storyBody } = matter(storyRaw);
+  const storyHtml = await marked.parse(storyBody.trim());
   return (
     <>
       <section className="relative overflow-hidden">
@@ -55,28 +65,10 @@ export default function AboutPage() {
           </div>
 
           <div className="space-y-5 text-foreground/85 lg:col-span-8">
-            <p>
-              Majestic View Church is unified in Jesus Christ and committed
-              to obeying God through Scripture with the help of the Holy
-              Spirit. We are a congregation that wants its building, its
-              gatherings, and its people to feel like home — a place where
-              visitors find friendship and love and are welcomed without
-              performance.
-            </p>
-            <p>
-              In recent years we renamed our facility{" "}
-              <em>Elevation Community Center at Majestic View Church</em> to
-              reflect that hospitality. The center is open for quiet
-              reflection, gatherings, and children&apos;s activities, and
-              community members can reserve space.
-            </p>
-            <p>
-              Our theological foundation rests on the inspiration, authority,
-              and inerrancy of Scripture — we believe the Bible represents
-              God&apos;s actual words, serves as the final authority for
-              Christian faith and practice, and contains no errors. Those
-              convictions shape every part of church life.
-            </p>
+            <div
+              className="prose prose-stone max-w-none"
+              dangerouslySetInnerHTML={{ __html: storyHtml }}
+            />
             <p>
               We meet at {churchInfo.address.full}
               {churchInfo.primaryService

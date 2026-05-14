@@ -351,6 +351,70 @@ collections:
       - { name: body, label: "Page Content", widget: markdown, hint: "Use the toolbar to format text, add headings, lists, links, and images. The page lives at /pages/[slug] once published." }
 
   # =====================================================================
+  # SMALL GROUPS — Groups shown on /connect/groups.
+  # =====================================================================
+  - name: small-groups
+    label: "Small Groups"
+    label_singular: "Small Group"
+    folder: content/groups
+    create: true
+    delete: true
+    format: frontmatter
+    extension: md
+    slug: "{{slug}}"
+    summary: "{{name}} — {{day}}s at {{time}}"
+    fields:
+      - { name: name, label: "Group Name", widget: string }
+      - { name: day, label: "Day", widget: select, options: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] }
+      - { name: time, label: "Time", widget: string, hint: "e.g. '6:30 PM'" }
+      - { name: neighborhood, label: "Neighborhood / Location", widget: string }
+      - { name: lifeStage, label: "Life Stage", widget: select, options: ["Young Adults", "Couples", "Men", "Women", "Moms", "Mixed", "Empty Nesters"] }
+      - { name: leader, label: "Leader Name", widget: string }
+      - { name: leaderPhoto, label: "Leader Photo", widget: image, required: false, default: "" }
+      - { name: description, label: "Description", widget: text, hint: "1-2 sentences shown on the group card." }
+
+  # =====================================================================
+  # SERVE ROLES — Volunteer roles shown on /connect/serve.
+  # =====================================================================
+  - name: serve-roles
+    label: "Serve Roles"
+    label_singular: "Serve Role"
+    folder: content/serve-roles
+    create: true
+    delete: true
+    format: frontmatter
+    extension: md
+    slug: "{{slug}}"
+    summary: "{{title}} — {{team}}"
+    fields:
+      - { name: title, label: "Role Title", widget: string }
+      - { name: team, label: "Team", widget: string }
+      - { name: commitment, label: "Time Commitment", widget: string }
+      - { name: training, label: "Training", widget: string }
+      - { name: description, label: "Description", widget: text }
+      - { name: icon, label: "Icon", widget: select, options: ["HandHeart", "Baby", "BookOpenCheck", "Music", "Coffee", "Sliders", "UtensilsCrossed", "HandHelping"] }
+      - { name: order, label: "Display Order", widget: number, value_type: int, min: 1 }
+
+  # =====================================================================
+  # PRAYER REQUESTS — Anonymized requests shown on /connect/pray.
+  # =====================================================================
+  - name: prayer-requests
+    label: "Prayer Requests"
+    label_singular: "Prayer Request"
+    folder: content/prayer-requests
+    create: true
+    delete: true
+    format: frontmatter
+    extension: md
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{initials}} — {{date | date('YYYY-MM-DD')}}"
+    sortable_fields: [date, initials]
+    fields:
+      - { name: initials, label: "Initials", widget: string, hint: "e.g. 'K. M.' or 'Anonymous'." }
+      - { name: date, label: "Date Posted", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: false }
+      - { name: body, label: "Prayer Request", widget: text, hint: "Anonymized text shown on the prayer wall." }
+
+  # =====================================================================
   # 11. NAVIGATION — Site-wide header/footer nav, editable by editors.
   # =====================================================================
   - name: navigation

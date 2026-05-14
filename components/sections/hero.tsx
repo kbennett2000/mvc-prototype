@@ -23,7 +23,7 @@ export function Hero() {
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/placeholders/hero.svg"
+          src="/images/imported/church-exterior.jpg"
           alt=""
           fill
           priority

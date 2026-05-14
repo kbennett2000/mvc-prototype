@@ -6,10 +6,28 @@ import { Button } from "@/components/ui/button";
 
 export function ServeInterestButton({ roleId, roleTitle }: { roleId: string; roleTitle: string }) {
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function onClick() {
-    console.log("[Serve interest]", { roleId, roleTitle });
-    setDone(true);
+  async function onClick() {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/submit/serve", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ roleId, roleTitle }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({})) as { error?: string };
+        throw new Error(data.error ?? "Something went wrong. Please try again.");
+      }
+      setDone(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (done) {
@@ -22,9 +40,14 @@ export function ServeInterestButton({ roleId, roleTitle }: { roleId: string; rol
   }
 
   return (
-    <Button onClick={onClick} variant="accent" className="w-full">
-      I&apos;m interested
-      <ArrowRight className="h-4 w-4" />
-    </Button>
+    <div className="flex flex-col gap-2">
+      <Button onClick={onClick} variant="accent" className="w-full" disabled={loading}>
+        {loading ? "Sending…" : "I'm interested"}
+        {!loading && <ArrowRight className="h-4 w-4" />}
+      </Button>
+      {error ? (
+        <p className="text-xs text-destructive">{error}</p>
+      ) : null}
+    </div>
   );
 }

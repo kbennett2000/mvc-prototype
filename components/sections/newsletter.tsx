@@ -8,12 +8,30 @@ import { Input } from "@/components/ui/input";
 export function Newsletter() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("[Newsletter signup]", { email });
-    setSubmitted(true);
-    setEmail("");
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/submit/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({})) as { error?: string };
+        throw new Error(data.error ?? "Something went wrong. Please try again.");
+      }
+      setSubmitted(true);
+      setEmail("");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -54,11 +72,15 @@ export function Newsletter() {
                 onChange={(e) => setEmail(e.target.value)}
                 aria-label="Email address"
               />
-              <Button type="submit" variant="accent">
-                Subscribe
+              <Button type="submit" variant="accent" disabled={loading}>
+                {loading ? "Sending…" : "Subscribe"}
               </Button>
             </form>
           )}
+
+          {error ? (
+            <p className="mt-3 text-sm text-destructive">{error}</p>
+          ) : null}
         </div>
       </div>
     </section>

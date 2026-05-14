@@ -34,17 +34,18 @@
   "scripts": {
     "setup": "node scripts/setup.js",
     "start": "node scripts/dev.js",
-    "cms": "npx -y decap-server",
+    "cms": "tinacms dev -c \"next dev\"",
     "deploy": "node scripts/deploy-setup.js",
     "doctor": "node scripts/doctor.js",
     "dev": "next dev",
-    "build": "next build",
+    "build": "tinacms build && next build",
     "server": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
     "@tailwindcss/typography": "^0.5.19",
+    "@tinacms/cli": "^1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
@@ -53,8 +54,10 @@
     "next": "^16.2.6",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
+    "resend": "^4",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "tinacms": "^2"
   },
   "devDependencies": {
     "@types/node": "^22.7.5",

@@ -70,6 +70,8 @@ function nextServiceOptions(
 export function VisitForm() {
   const serviceOptions = useMemo(() => nextServiceOptions(churchInfo.services, 8), []);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -86,10 +88,26 @@ export function VisitForm() {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("[Visit form]", form);
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/submit/visit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({})) as { error?: string };
+        throw new Error(data.error ?? "Something went wrong. Please try again.");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -216,9 +234,19 @@ export function VisitForm() {
         </Field>
       </div>
 
-      <Button type="submit" variant="accent" size="lg" className="mt-7 w-full sm:w-auto">
+      {error ? (
+        <p className="mt-4 text-sm text-destructive">{error}</p>
+      ) : null}
+
+      <Button
+        type="submit"
+        variant="accent"
+        size="lg"
+        className="mt-7 w-full sm:w-auto"
+        disabled={loading}
+      >
         <Send className="h-4 w-4" />
-        Let us know you&apos;re coming
+        {loading ? "Sending…" : "Let us know you're coming"}
       </Button>
       <p className="mt-3 text-xs text-muted-foreground">
         We&apos;ll only use this to say hi before Sunday — never to add you to a list.

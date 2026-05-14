@@ -8,3 +8,5 @@ next-env.d.ts
 .env
 dist
 .cache
+public/admin/
+.tina/__generated__/

@@ -1,0 +1,193 @@
+fragment SermonsParts on Sermons {
+  __typename
+  title
+  date
+  speaker
+  series
+  scripture
+  book
+  youtubeId
+  audioUrl
+  notesUrl
+  thumbnail
+  body
+}
+
+fragment AnnouncementsParts on Announcements {
+  __typename
+  title
+  date
+  pinned
+  link
+  linkLabel
+  body
+}
+
+fragment EldersParts on Elders {
+  __typename
+  name
+  occupation
+  photo
+  order
+  body
+}
+
+fragment StaffParts on Staff {
+  __typename
+  name
+  role
+  email
+  photo
+  order
+  body
+}
+
+fragment MinistriesParts on Ministries {
+  __typename
+  slug
+  title
+  tagline
+  description
+  image
+  whoFor
+  meetings {
+    __typename
+    day
+    time
+    location
+    note
+  }
+  body
+}
+
+fragment GroupsParts on Groups {
+  __typename
+  name
+  day
+  time
+  neighborhood
+  lifeStage
+  leader
+  leaderPhoto
+  description
+}
+
+fragment ServeRolesParts on ServeRoles {
+  __typename
+  title
+  team
+  commitment
+  training
+  description
+  icon
+  order
+}
+
+fragment PagesParts on Pages {
+  __typename
+  title
+  description
+  body
+}
+
+fragment PrayerRequestsParts on PrayerRequests {
+  __typename
+  initials
+  date
+  body
+}
+
+fragment StoryParts on Story {
+  __typename
+  body
+}
+
+fragment SiteParts on Site {
+  __typename
+  church {
+    __typename
+    name
+    shortName
+    tagline
+    logo
+    phone
+    email
+    officeHours
+    address {
+      __typename
+      street
+      city
+      state
+      zip
+    }
+    social {
+      __typename
+      facebook
+      youtube
+    }
+    services {
+      __typename
+      name
+      day
+      time
+      note
+      primary
+    }
+  }
+  home {
+    __typename
+    hero {
+      __typename
+      headline
+    }
+  }
+  about {
+    __typename
+    hero {
+      __typename
+      headline
+    }
+  }
+}
+
+fragment BeliefsDocParts on BeliefsDoc {
+  __typename
+  beliefs {
+    __typename
+    title
+    statement
+  }
+}
+
+fragment EventsDocParts on EventsDoc {
+  __typename
+  events {
+    __typename
+    id
+    title
+    time
+    durationMinutes
+    location
+    description
+    rule {
+      __typename
+      kind
+      dayOfWeek
+      n
+    }
+  }
+}
+
+fragment NavigationParts on Navigation {
+  __typename
+  items {
+    __typename
+    label
+    href
+    children {
+      __typename
+      label
+      href
+    }
+  }
+}

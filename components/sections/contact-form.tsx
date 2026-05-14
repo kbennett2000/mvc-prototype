@@ -18,6 +18,8 @@ const TOPICS = [
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -30,10 +32,26 @@ export function ContactForm() {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("[Contact]", form);
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/submit/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({})) as { error?: string };
+        throw new Error(data.error ?? "Something went wrong. Please try again.");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -141,9 +159,19 @@ export function ContactForm() {
         </Field>
       </div>
 
-      <Button type="submit" variant="accent" size="lg" className="mt-7 w-full sm:w-auto">
+      {error ? (
+        <p className="mt-4 text-sm text-destructive">{error}</p>
+      ) : null}
+
+      <Button
+        type="submit"
+        variant="accent"
+        size="lg"
+        className="mt-7 w-full sm:w-auto"
+        disabled={loading}
+      >
         <Send className="h-4 w-4" />
-        Send message
+        {loading ? "Sending…" : "Send message"}
       </Button>
     </form>
   );

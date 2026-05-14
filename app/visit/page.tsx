@@ -18,18 +18,32 @@ import {
 import { Button } from "@/components/ui/button";
 import { churchInfo } from "@/lib/church-info";
 import { VisitForm } from "@/components/sections/visit-form";
+import type { Service } from "@/lib/church-info";
+
+function formatServiceTimes(services: readonly Service[]): string {
+  const map = new Map<string, string[]>();
+  for (const s of services) {
+    if (!s.day || !s.time) continue;
+    const existing = map.get(s.day);
+    if (existing) existing.push(s.time);
+    else map.set(s.day, [s.time]);
+  }
+  if (map.size === 0) return "Sundays";
+  return Array.from(map.entries())
+    .map(([day, times]) => `${day}s at ${times.join(" & ")}`)
+    .join(", ");
+}
 
 export const metadata: Metadata = {
   title: "Plan a Visit",
-  description:
-    "Here's what to expect on a Sunday at Majestic View Church — where to park, what to wear, and where the kids go.",
+  description: `Here's what to expect on a Sunday at ${churchInfo.name} — where to park, what to wear, and where the kids go.`,
 };
 
 const timeline = [
   {
     time: "8:45 AM",
     title: "Doors open",
-    body: "Pull in off Comanche Street, park anywhere, and head for the main entrance. Someone will be at the door to point you to coffee and the auditorium.",
+    body: "Pull into the lot, park anywhere, and head for the main entrance. Someone will be at the door to point you to coffee and the auditorium.",
     icon: Coffee,
   },
   {
@@ -56,7 +70,7 @@ const basics = [
   {
     icon: Car,
     title: "Where to park",
-    body: "Plenty of room in the lot off Comanche Street. If it's your first time, pull into one of the marked Guest spots near the main entrance.",
+    body: "Plenty of room in our parking lot. If it's your first time, pull into one of the marked Guest spots near the main entrance.",
   },
   {
     icon: Shirt,
@@ -76,7 +90,7 @@ export default function VisitPage() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <Image
-            src="https://images.unsplash.com/photo-1519077748-9b3a93dab2bf?auto=format&fit=crop&w=2000&q=80"
+            src="/images/placeholders/hero.svg"
             alt=""
             fill
             priority
@@ -94,10 +108,7 @@ export default function VisitPage() {
             Walking into a new church can feel like a lot. Here&apos;s everything you need to know.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-background/85 animate-fade-up">
-            {churchInfo.primaryService
-              ? `${churchInfo.primaryService.day}s at ${churchInfo.primaryService.time}`
-              : "Sundays"}{" "}
-            · {churchInfo.address.full}. We&apos;ll save you a seat.
+            {formatServiceTimes(churchInfo.services)} · {churchInfo.address.full}. We&apos;ll save you a seat.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row animate-fade-up">
             <Button asChild size="lg" variant="accent">
@@ -198,7 +209,7 @@ export default function VisitPage() {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
             <Image
-              src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1200&q=80"
+              src="/images/placeholders/plan-a-visit.svg"
               alt="Kids enjoying activities"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
@@ -214,8 +225,8 @@ export default function VisitPage() {
               We treat them like the most important guests in the room.
             </h2>
             <p className="mt-5 text-muted-foreground">
-              MVC Kids runs during the 9 AM service for ages{" "}
-              <span className="font-medium text-foreground">6 weeks through 6th grade</span>.
+              Our Kids Ministry runs during the Sunday service for ages{" "}
+              <span className="font-medium text-foreground">6 weeks through 5th grade</span>.
               Every child gets a Bible-rooted lesson at their level, plus games, songs, and a snack.
             </p>
 
@@ -239,7 +250,7 @@ export default function VisitPage() {
 
             <Button asChild variant="outline" className="mt-8">
               <Link href="/ministries/kids">
-                More about MVC Kids
+                More about Kids Ministry
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
@@ -254,7 +265,7 @@ export default function VisitPage() {
               Finding us
             </p>
             <h2 className="mt-3 font-serif text-3xl md:text-4xl">
-              We&apos;re right off Comanche Street.
+              Come visit us.
             </h2>
 
             <dl className="mt-7 space-y-5 text-sm">
@@ -281,9 +292,12 @@ export default function VisitPage() {
               <div className="flex items-start gap-3">
                 <Clock className="mt-0.5 h-5 w-5 text-accent" />
                 <div>
-                  <dt className="font-medium text-foreground">Service time</dt>
+                  <dt className="font-medium text-foreground">Service times</dt>
                   <dd className="text-muted-foreground">
-                    Sundays at 9:00 AM. Coffee and fellowship after.
+                    {formatServiceTimes(churchInfo.services)}.
+                    {churchInfo.primaryService?.note
+                      ? ` ${churchInfo.primaryService.note}.`
+                      : ""}
                   </dd>
                 </div>
               </div>
@@ -315,8 +329,8 @@ export default function VisitPage() {
 
           <div className="overflow-hidden rounded-xl border border-border bg-card lg:col-span-3">
             <iframe
-              title="Map to Majestic View Church"
-              src="https://maps.google.com/maps?q=620+Comanche+St,+Kiowa,+CO+80117&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              title={`Map to ${churchInfo.name}`}
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(churchInfo.address.full)}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
               className="block h-[420px] w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

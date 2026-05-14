@@ -4,8 +4,7 @@ weekly announcements email/sms digest?
 create custom "pages", add then to navigation
 edit navigation from admin portal
 images for annoucements
-if an annoucement has a link, open it in a new tab/window
-recognize new lines/line breaks in annoucment text
+
 
 
 SYNC CHANGES

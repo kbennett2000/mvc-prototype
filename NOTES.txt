@@ -11,3 +11,22 @@ git log template/main --oneline -10
 git cherry-pick a3f9c21
 
 PUSH!
+
+
+
+
+
+
+
+# Same for site.json — keep MVC's version
+git checkout --ours content/site.json
+git add content/site.json
+
+
+
+# For hero.tsx — take the template's version
+git checkout --theirs components/sections/hero.tsx
+git add components/sections/hero.tsx
+
+
+git cherry-pick --continue

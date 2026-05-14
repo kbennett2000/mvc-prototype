@@ -1,14 +1,13 @@
 ---
-title: "The Weight of a Quiet Faithfulness"
-series: "Lessons from Ruth"
-speaker: "Pastor John Smith"
+title: A Story About Grace & Truth
 date: 2026-05-10
-scripture: "Ruth 2:1-23"
-book: "Ruth"
-youtubeId: "dQw4w9WgXcQ"
-thumbnail: "/images/imported/plan-visit-interior.jpg"
+speaker: Pastor John Smith
+series: Victorious in 2026
+scripture: 1 Samuel 25
+book: 1 Samuel
+youtubeId: 5NP8sCVkq6M
 audioUrl: "#"
 notesUrl: "#"
+thumbnail: /images/uploads/cx91d.jpg
 ---
-
-How God uses ordinary obedience — gleaning in a field, a kind word from a stranger — to write extraordinary stories.
+A Story About Grace & Truth - David & Abigail 

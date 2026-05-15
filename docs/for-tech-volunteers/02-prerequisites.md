@@ -25,13 +25,15 @@ If you'd rather not install software on your computer, **use Codespaces**. It ru
 **Pros:**
 - Zero install. Works from any computer with a browser.
 - The same setup every time (no "works on my machine" issues).
-- Free for 60 hours/month — more than enough for setup and maintenance.
+- Free for 60 hours per month.
 
 **Cons:**
 - Requires an internet connection.
 - Slightly slower than running locally.
 
-**Skip the rest of this page and go to [Fork and clone](./03-fork-and-clone.md).** Codespaces gives you Node.js and Git built in.
+> **About the 60-hour quota:** Codespaces counts time only while a codespace is actively running (terminal open, editor in foreground). Casual content updates use **less than 5 hours per month** — you won't hit the limit unless you're doing serious development. If you do approach it, stopping the codespace when you're done (rather than just closing the browser tab) and deleting old codespaces clears most of it.
+
+**Skip the rest of this page and go to [Use this template](./03-use-this-template.md).** Codespaces gives you Node.js and Git built in.
 
 ### Path B: Install Node.js and Git on your computer
 
@@ -178,12 +180,12 @@ Install with the defaults.
 
 ## What's next?
 
-- [Fork and clone](./03-fork-and-clone.md) — copy the template to your GitHub account.
+- [Use this template](./03-use-this-template.md) — make your church's own copy of the template.
 
 ## Stuck?
 
 - [Troubleshooting](./troubleshooting.md) — common install problems.
-- Open an issue: [GitHub Issues](https://github.com/your-org/your-repo/issues)
+- Open an issue: [GitHub Issues](https://github.com/kbennett2000/church-site-template/issues)
 
 ---
-*Was this helpful? [Tell us how to improve this doc](https://github.com/your-org/your-repo/issues/new?template=docs-feedback.md&title=Feedback:%20Prerequisites).*
+*Was this helpful? [Tell us how to improve this doc](https://github.com/kbennett2000/church-site-template/issues/new?template=docs-feedback.md&title=Feedback:%20Prerequisites).*

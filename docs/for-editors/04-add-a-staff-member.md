@@ -35,7 +35,7 @@ You should now see a blank staff form.
 
 **Type** the person's name as they want it shown publicly.
 
-Include "Pastor" or other titles if applicable. For example: `Pastor John Smith` or `Mary Whittaker`.
+Include "Pastor" or other titles if applicable. For example: `Pastor Alex Morgan` or `Jamie Rivera`.
 
 ### 4. Fill in Role / Title
 
@@ -84,9 +84,7 @@ The **Display Order** number controls who appears first on the staff page.
 
 > **Warning:** If you give two people the same number, the order between them is unpredictable. Check the staff list before you publish to make sure each person has a unique number.
 
-> **Tip:** If you need to insert a new person between existing entries (say, between #2 and #3), you can:
-> - **Option A (easy):** Give the new person `2.5` — fractional numbers work fine.
-> - **Option B (tidy):** Renumber the people below them to make room (open each entry, change the number, save).
+> **Tip:** If you need to insert a new person between existing entries (say, between #2 and #3), give the new person `2.5`. Fractional numbers work fine — you don't have to renumber anyone else. The site sorts by the number, so `2.5` lands between `2` and `3` exactly where you'd expect.
 
 ### 8. Fill in Bio
 
@@ -96,25 +94,11 @@ What would a first-time visitor want to know if they shook this person's hand on
 
 Example: *"John has served as Senior Pastor since 2018. He and his wife Sarah have three kids and a beagle named Wendell. Before pastoring, John taught high school history for twelve years."*
 
-### 9. Save as a draft
+### 9. Save
 
 **Click** the **Save** button at the top.
 
-You should now see the "Draft" badge near the title.
-
-### 10. Mark Ready for Review
-
-**Click** **Status: Draft**.
-
-**Choose** **Ready for Review**.
-
-### 11. Publish
-
-**Click** the **Publish** button.
-
-**Choose** **Publish now**.
-
-Within 5 minutes (after the tech volunteer approves), the new staff member will appear on the About page and the Contact page in the order you set.
+TinaCMS commits (saves a snapshot of) your change directly to the site. Within 2-3 minutes, the new staff member will appear on the About page and the Contact page in the order you set.
 
 ## How to remove a staff member
 
@@ -126,7 +110,7 @@ If someone leaves the staff:
 
 **Confirm** the deletion.
 
-This creates a change ticket that the tech volunteer will review and approve, same as adding someone.
+The deletion commits directly to the site and takes effect within 2-3 minutes. If you delete by mistake, ask your tech volunteer — they can restore the entry from GitHub history.
 
 ## How to update an existing staff member
 
@@ -136,7 +120,7 @@ To change a photo, bio, or role:
 
 **Edit** the fields you want to change.
 
-**Click** **Save** → **Status: Ready for Review** → **Publish**.
+**Click** **Save**. The change goes live in 2-3 minutes.
 
 ## Common Mistakes
 
@@ -153,7 +137,7 @@ To change a photo, bio, or role:
 
 - [Troubleshooting](./troubleshooting.md) — common problems and fixes.
 - **Ask your church's tech volunteer.** They can sit next to you, share screens, or look over the problem with you. This is your fastest path to help.
-- If you'd rather report something in writing: [open a GitHub issue](https://github.com/your-org/your-repo/issues) (this is the tech-volunteer route — your tech volunteer can help you do it if needed).
+- If you'd rather report something in writing: [open a GitHub issue](https://github.com/kbennett2000/church-site-template/issues) (this is the tech-volunteer route — your tech volunteer can help you do it if needed).
 
 ---
-*Was this helpful? [Tell us how to improve this doc](https://github.com/your-org/your-repo/issues/new?template=docs-feedback.md&title=Feedback:%20Add%20a%20Staff%20Member).*
+*Was this helpful? [Tell us how to improve this doc](https://github.com/kbennett2000/church-site-template/issues/new?template=docs-feedback.md&title=Feedback:%20Add%20a%20Staff%20Member).*

@@ -48,7 +48,7 @@ This is the headline visitors see on the sermon card and on the "latest sermon" 
 
 ### 5. Fill in Speaker
 
-**Type** the speaker's full name. For example: `Pastor John Smith`.
+**Type** the speaker's full name. For example: `Pastor Alex Morgan`.
 
 For guest speakers, use whatever name they'd want printed.
 
@@ -106,7 +106,7 @@ If you don't, **leave** the default `#` in the field. The audio player will be h
 
 If the pastor wrote sermon notes as a PDF:
 
-**Click** the upload button next to **Notes URL**.
+**Click** the **Choose an image** button next to **Sermon Notes (PDF)**. (Don't worry that it says "image" — the CMS reuses the same picker for files.)
 
 **Click** **Upload** at the top of the picker window.
 
@@ -140,16 +140,18 @@ For example: *"Boaz steps onto the page as a picture of faithful, quiet kindness
 
 **Click** the **Save** button at the top of the form.
 
-TinaCMS commits the new sermon directly to the site. The change goes live after Vercel rebuilds (1–3 minutes). You'll see the sermon appear on the Watch page after that.
+You should now see a confirmation that the change was saved. TinaCMS commits (saves a snapshot of) the change directly to the website — no tech volunteer approval needed.
 
-That's it — you're done.
+Wait about 2-3 minutes, then open the public site. The sermon will appear on the watch page and update the "latest sermon" section on the homepage.
+
+> **Tip:** If it doesn't appear after 3 minutes, try a hard refresh (Ctrl+Shift+R on Windows, Cmd+Shift+R on Mac) in case your browser is showing a cached version.
 
 ## Common Mistakes
 
 - **The embedded video doesn't show up after publishing.** You pasted the whole URL instead of just the 11-character ID. Edit the sermon, fix the **YouTube Video ID** field, and publish the fix.
 - **The date is wrong on the published page.** You typed the date instead of using the date picker. Edit and re-pick the date using the calendar.
 - **The sermon doesn't appear under the right series.** Series names are case- and spelling-sensitive. `Walking Through Ruth` and `walking through ruth` are treated as different series. Be consistent.
-- **The sermon isn't showing up yet.** The site takes 1–3 minutes to rebuild after you save. Refresh the Watch page after a few minutes.
+- **The sermon doesn't appear after saving.** The site takes 2-3 minutes to rebuild. If it still isn't showing after 5 minutes, try a hard refresh (Ctrl+Shift+R / Cmd+Shift+R).
 
 ## What's next?
 
@@ -160,7 +162,7 @@ That's it — you're done.
 
 - [Troubleshooting](./troubleshooting.md) — common problems and fixes.
 - **Ask your church's tech volunteer.** They can sit next to you, share screens, or look over the problem with you. This is your fastest path to help.
-- If you'd rather report something in writing: [open a GitHub issue](https://github.com/your-org/your-repo/issues) (this is the tech-volunteer route — your tech volunteer can help you do it if needed).
+- If you'd rather report something in writing: [open a GitHub issue](https://github.com/kbennett2000/church-site-template/issues) (this is the tech-volunteer route — your tech volunteer can help you do it if needed).
 
 ---
-*Was this helpful? [Tell us how to improve this doc](https://github.com/your-org/your-repo/issues/new?template=docs-feedback.md&title=Feedback:%20Add%20a%20Sermon).*
+*Was this helpful? [Tell us how to improve this doc](https://github.com/kbennett2000/church-site-template/issues/new?template=docs-feedback.md&title=Feedback:%20Add%20a%20Sermon).*

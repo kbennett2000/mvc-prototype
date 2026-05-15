@@ -62,31 +62,17 @@ If the after-service activity changed, **edit** the **After-Service Note**. Exam
 
 Same pattern for any field on the form:
 
-- **Phone Number** — use the format `303-491-4339` (hyphens, no parentheses).
+- **Phone Number** — use the format `555-123-4567` (hyphens, no parentheses).
 - **Church Email** — the general office inbox.
 - **Office Hours** — for example `Mon-Thu` or `Tue-Fri, 9 AM - 3 PM`.
 - **Address** — street, city, state (two letters), ZIP code.
 - **Social Media** — paste the full URL (for example, `https://facebook.com/yourchurch`).
 
-### 6. Save as a draft
+### 6. Save
 
 **Click** the **Save** button at the top.
 
-You should now see the "Draft" badge.
-
-### 7. Mark Ready for Review
-
-**Click** **Status: Draft**.
-
-**Choose** **Ready for Review**.
-
-### 8. Publish
-
-**Click** the **Publish** button.
-
-**Choose** **Publish now**.
-
-Within 5 minutes (after the tech volunteer approves), every page that shows that information will update.
+TinaCMS commits (saves a snapshot of) the change directly to the site. Within 2-3 minutes, every page that shows that information will update automatically.
 
 ## What about the homepage headline?
 
@@ -97,8 +83,8 @@ The **About Page Copy** section has a separate headline for the About page.
 ## Common Mistakes
 
 - **Service time looks weird on the published page (`9:00am` instead of `9:00 AM`).** Use the format `9:00 AM` — include the space before AM/PM, and capitalize the letters.
-- **Phone number doesn't work as a click-to-call link on phones.** Use straight hyphens (`303-491-4339`), not parentheses or periods.
-- **You changed the time but the homepage still says the old time.** Either the change hasn't been reviewed yet (check **Workflow**), or your browser cached the old version. Refresh the page with Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac).
+- **Phone number doesn't work as a click-to-call link on phones.** Use straight hyphens (`555-123-4567`), not parentheses or periods.
+- **You changed the time but the homepage still says the old time.** The site may still be rebuilding — wait 2-3 minutes. Or your browser cached the old version. Refresh with Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac).
 
 ## What's next?
 
@@ -109,7 +95,7 @@ The **About Page Copy** section has a separate headline for the About page.
 
 - [Troubleshooting](./troubleshooting.md) — common problems and fixes.
 - **Ask your church's tech volunteer.** They can sit next to you, share screens, or look over the problem with you. This is your fastest path to help.
-- If you'd rather report something in writing: [open a GitHub issue](https://github.com/your-org/your-repo/issues) (this is the tech-volunteer route — your tech volunteer can help you do it if needed).
+- If you'd rather report something in writing: [open a GitHub issue](https://github.com/kbennett2000/church-site-template/issues) (this is the tech-volunteer route — your tech volunteer can help you do it if needed).
 
 ---
-*Was this helpful? [Tell us how to improve this doc](https://github.com/your-org/your-repo/issues/new?template=docs-feedback.md&title=Feedback:%20Update%20Service%20Times).*
+*Was this helpful? [Tell us how to improve this doc](https://github.com/kbennett2000/church-site-template/issues/new?template=docs-feedback.md&title=Feedback:%20Update%20Service%20Times).*

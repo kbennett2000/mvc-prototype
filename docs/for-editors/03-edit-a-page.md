@@ -82,25 +82,13 @@ Beneath the editor, there's a **Toggle Preview** button. **Click** it to see a p
 
 There's also a small text-mode toggle for editors who want to write in Markdown (a simple text-with-symbols format). Don't worry about this — the toolbar handles everything for you.
 
-### 8. Save as a draft
+### 8. Save
 
 **Click** the **Save** button at the top.
 
-You should now see a "Draft" badge near the title.
+TinaCMS commits (saves a snapshot of) your change directly to the site. Within 2-3 minutes, Vercel rebuilds and the updated About page appears on the public site.
 
-### 9. Mark Ready for Review
-
-**Click** the **Status: Draft** dropdown.
-
-**Choose** **Ready for Review**.
-
-### 10. Publish
-
-**Click** the **Publish** button.
-
-**Choose** **Publish now**.
-
-You should now see a confirmation. A tech volunteer will review and approve, then the new About page will appear on the site within 5 minutes.
+> **Tip:** If it doesn't appear after 3 minutes, press Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac) to force a fresh load.
 
 ## Common Mistakes
 
@@ -117,7 +105,7 @@ You should now see a confirmation. A tech volunteer will review and approve, the
 
 - [Troubleshooting](./troubleshooting.md) — common problems and fixes.
 - **Ask your church's tech volunteer.** They can sit next to you, share screens, or look over the problem with you. This is your fastest path to help.
-- If you'd rather report something in writing: [open a GitHub issue](https://github.com/your-org/your-repo/issues) (this is the tech-volunteer route — your tech volunteer can help you do it if needed).
+- If you'd rather report something in writing: [open a GitHub issue](https://github.com/kbennett2000/church-site-template/issues) (this is the tech-volunteer route — your tech volunteer can help you do it if needed).
 
 ---
-*Was this helpful? [Tell us how to improve this doc](https://github.com/your-org/your-repo/issues/new?template=docs-feedback.md&title=Feedback:%20Edit%20a%20Page).*
+*Was this helpful? [Tell us how to improve this doc](https://github.com/kbennett2000/church-site-template/issues/new?template=docs-feedback.md&title=Feedback:%20Edit%20a%20Page).*

@@ -226,3 +226,21 @@ Before enabling devotionals or digest in production, do ONE of:
       and update both settings files.
   (c) Clear logoUrl in both settings files so emails fall back to the
       church name rendered as text.
+
+
+
+
+
+
+      [ ] Before launching the new site, upload the church logo to 
+    /public/images/mvc-logo.png and update logoUrl in both 
+    digest-settings.json and devotional-email-settings.json to 
+    point at the deployed Vercel URL (https://mvckiowa.com/images/
+    mvc-logo.png once the domain is migrated). Don't rely on the 
+    Jetpack/wp.com CDN long-term.
+
+
+
+
+
+    

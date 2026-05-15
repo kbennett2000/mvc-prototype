@@ -923,7 +923,7 @@ var config_default = defineConfig({
             name: "senderEmail",
             label: "Sender Email Address",
             ui: {
-              description: "Must be an address on a domain you have verified in your Resend account. Example: devotionals@yourchurch.org. See docs/for-tech-volunteers/ for domain verification steps."
+              description: "Must be an address on a domain you have verified in your Resend account. Example: devotionals@yourchurch.org. NOTE: If the RESEND_FROM_EMAIL environment variable is set (recommended for production), it overrides this field. Set the env var in Vercel \u2192 Settings \u2192 Environment Variables."
             }
           },
           {

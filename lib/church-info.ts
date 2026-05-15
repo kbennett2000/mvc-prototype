@@ -59,6 +59,34 @@ export const churchInfo = {
   social: churchData.social,
 } as const;
 
-export const nav: NavItem[] = (navData.items as NavItem[]).filter(
+// Inject the Weekly Digest link under "Connect" when features.digest is on.
+// Editors can still reposition or relabel it by editing navigation.json
+// directly; the injection is a no-op when the entry is already present.
+function withDigestLink(items: NavItem[]): NavItem[] {
+  if (!features?.digest) return items;
+  const ALREADY = items.some(
+    (i) => i.href.startsWith("/digest") ||
+      (i.children ?? []).some((c) => c.href.startsWith("/digest"))
+  );
+  if (ALREADY) return items;
+
+  const connectIdx = items.findIndex((i) => i.href === "/connect");
+  if (connectIdx === -1) {
+    return [...items, { label: "Weekly Digest", href: "/digest" }];
+  }
+  const connect = items[connectIdx];
+  const updated: NavItem = {
+    ...connect,
+    children: [
+      ...(connect.children ?? []),
+      { label: "Weekly Digest", href: "/digest" },
+    ],
+  };
+  return [...items.slice(0, connectIdx), updated, ...items.slice(connectIdx + 1)];
+}
+
+const filteredNav = (navData.items as NavItem[]).filter(
   (item) => item.href !== "/devotionals" || features?.devotionals
 );
+
+export const nav: NavItem[] = withDigestLink(filteredNav);

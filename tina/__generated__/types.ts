@@ -1424,6 +1424,7 @@ export type GroupsMutation = {
   leader?: InputMaybe<Scalars['String']['input']>;
   leaderPhoto?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  contactEmail?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ServeRolesMutation = {
@@ -1555,146 +1556,7 @@ export type SermonsPartsFragment = { __typename: 'Sermons', title: string, date:
 
 export type AnnouncementsPartsFragment = { __typename: 'Announcements', title: string, date: string, pinned?: boolean | null, link?: string | null, linkLabel?: string | null, body?: any | null };
 
-<<<<<<< HEAD
 export type EldersPartsFragment = { __typename: 'Elders', name: string, occupation?: string | null, photo?: string | null, order?: number | null, body?: any | null };
-=======
-export type BeliefsMutation = {
-  beliefs?: InputMaybe<Array<InputMaybe<BeliefsBeliefsMutation>>>;
-};
-
-export type EventsEventsRuleMutation = {
-  kind?: InputMaybe<Scalars['String']['input']>;
-  dayOfWeek?: InputMaybe<Scalars['Float']['input']>;
-  nth?: InputMaybe<Scalars['Float']['input']>;
-};
-
-export type EventsEventsMutation = {
-  id?: InputMaybe<Scalars['String']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  time?: InputMaybe<Scalars['String']['input']>;
-  durationMinutes?: InputMaybe<Scalars['Float']['input']>;
-  location?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  rule?: InputMaybe<EventsEventsRuleMutation>;
-};
-
-export type EventsMutation = {
-  events?: InputMaybe<Array<InputMaybe<EventsEventsMutation>>>;
-};
-
-export type PagesMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type StaffMutation = {
-  name?: InputMaybe<Scalars['String']['input']>;
-  role?: InputMaybe<Scalars['String']['input']>;
-  email?: InputMaybe<Scalars['String']['input']>;
-  photo?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Scalars['Float']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type EldersMutation = {
-  name?: InputMaybe<Scalars['String']['input']>;
-  photo?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Scalars['Float']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type MinistriesMeetingsMutation = {
-  day?: InputMaybe<Scalars['String']['input']>;
-  time?: InputMaybe<Scalars['String']['input']>;
-  location?: InputMaybe<Scalars['String']['input']>;
-  note?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type MinistriesLeaderMutation = {
-  name?: InputMaybe<Scalars['String']['input']>;
-  role?: InputMaybe<Scalars['String']['input']>;
-  email?: InputMaybe<Scalars['String']['input']>;
-  photo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type MinistriesMutation = {
-  slug?: InputMaybe<Scalars['String']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  tagline?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  image?: InputMaybe<Scalars['String']['input']>;
-  whoFor?: InputMaybe<Scalars['String']['input']>;
-  meetings?: InputMaybe<Array<InputMaybe<MinistriesMeetingsMutation>>>;
-  whatToExpect?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  leader?: InputMaybe<MinistriesLeaderMutation>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type SermonsMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  series?: InputMaybe<Scalars['String']['input']>;
-  speaker?: InputMaybe<Scalars['String']['input']>;
-  date?: InputMaybe<Scalars['String']['input']>;
-  scripture?: InputMaybe<Scalars['String']['input']>;
-  book?: InputMaybe<Scalars['String']['input']>;
-  youtubeId?: InputMaybe<Scalars['String']['input']>;
-  thumbnail?: InputMaybe<Scalars['String']['input']>;
-  audioUrl?: InputMaybe<Scalars['String']['input']>;
-  notesUrl?: InputMaybe<Scalars['String']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type AnnouncementsMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  date?: InputMaybe<Scalars['String']['input']>;
-  expires?: InputMaybe<Scalars['String']['input']>;
-  pinned?: InputMaybe<Scalars['Boolean']['input']>;
-  link?: InputMaybe<Scalars['String']['input']>;
-  linkLabel?: InputMaybe<Scalars['String']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type GroupsMutation = {
-  name?: InputMaybe<Scalars['String']['input']>;
-  day?: InputMaybe<Scalars['String']['input']>;
-  time?: InputMaybe<Scalars['String']['input']>;
-  neighborhood?: InputMaybe<Scalars['String']['input']>;
-  lifeStage?: InputMaybe<Scalars['String']['input']>;
-  leader?: InputMaybe<Scalars['String']['input']>;
-  leaderPhoto?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  contactEmail?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type Serve_RolesMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  team?: InputMaybe<Scalars['String']['input']>;
-  commitment?: InputMaybe<Scalars['String']['input']>;
-  training?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  icon?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Scalars['Float']['input']>;
-};
-
-export type Prayer_RequestsMutation = {
-  initials?: InputMaybe<Scalars['String']['input']>;
-  date?: InputMaybe<Scalars['String']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type SitePartsFragment = { __typename: 'Site', church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null };
-
-export type NavigationPartsFragment = { __typename: 'Navigation', items?: Array<{ __typename: 'NavigationItems', label?: string | null, href?: string | null, children?: Array<{ __typename: 'NavigationItemsChildren', label?: string | null, href?: string | null } | null> | null } | null> | null };
-
-export type StoryPartsFragment = { __typename: 'Story', body?: any | null };
-
-export type BeliefsPartsFragment = { __typename: 'Beliefs', beliefs?: Array<{ __typename: 'BeliefsBeliefs', title?: string | null, statement?: string | null } | null> | null };
-
-export type EventsPartsFragment = { __typename: 'Events', events?: Array<{ __typename: 'EventsEvents', id?: string | null, title?: string | null, time?: string | null, durationMinutes?: number | null, location?: string | null, description?: string | null, rule?: { __typename: 'EventsEventsRule', kind?: string | null, dayOfWeek?: number | null, nth?: number | null } | null } | null> | null };
-
-export type PagesPartsFragment = { __typename: 'Pages', title: string, description?: string | null, body?: any | null };
->>>>>>> 059863b (Added email alerts to small groups)
 
 export type StaffPartsFragment = { __typename: 'Staff', name: string, role?: string | null, email?: string | null, photo?: string | null, order?: number | null, body?: any | null };
 

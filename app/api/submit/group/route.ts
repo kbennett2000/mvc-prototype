@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
-import { getResend, FROM_EMAIL, CHURCH_EMAIL } from "@/lib/resend";
+import { getResend } from "@/lib/resend";
+
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? "noreply@example.com";
+const CHURCH_EMAIL = process.env.CHURCH_EMAIL ?? "";
 import { getGroup } from "@/content/groups";
 
 export async function POST(request: Request) {

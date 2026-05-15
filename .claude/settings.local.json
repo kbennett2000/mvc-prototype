@@ -60,7 +60,8 @@
       "Bash(ADMIN_PASSWORD=testpass NEXT_PUBLIC_SITE_URL=https://grace.example.com npx next dev -p 3457 > /tmp/next-dev2.log 2>&1 & *)",
       "Bash(cp /home/kb/Desktop/Projects/church-site-template/content/digest-settings.json /tmp/digest-bak.json)",
       "Bash(python3 -c ' *)",
-      "Bash(pkill -f \"next dev -p 3457\")"
+      "Bash(pkill -f \"next dev -p 3457\")",
+      "Bash(curl -sI \"https://mvckiowa.com/images/uploads/mvc-transparent-1.jpg\" --max-time 10)"
     ],
     "deny": [
       "Bash(sudo*)",

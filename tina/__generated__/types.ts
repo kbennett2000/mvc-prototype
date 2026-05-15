@@ -82,36 +82,36 @@ export type Query = {
   collections: Array<Collection>;
   node: Node;
   document: DocumentNode;
-  site: Site;
-  siteConnection: SiteConnection;
-  navigation: Navigation;
-  navigationConnection: NavigationConnection;
-  story: Story;
-  storyConnection: StoryConnection;
-  beliefs: Beliefs;
-  beliefsConnection: BeliefsConnection;
-  events: Events;
-  eventsConnection: EventsConnection;
-  pages: Pages;
-  pagesConnection: PagesConnection;
-  staff: Staff;
-  staffConnection: StaffConnection;
-  elders: Elders;
-  eldersConnection: EldersConnection;
-  ministries: Ministries;
-  ministriesConnection: MinistriesConnection;
   sermons: Sermons;
   sermonsConnection: SermonsConnection;
   announcements: Announcements;
   announcementsConnection: AnnouncementsConnection;
+  elders: Elders;
+  eldersConnection: EldersConnection;
+  staff: Staff;
+  staffConnection: StaffConnection;
+  ministries: Ministries;
+  ministriesConnection: MinistriesConnection;
   groups: Groups;
   groupsConnection: GroupsConnection;
-  serve_roles: Serve_Roles;
-  serve_rolesConnection: Serve_RolesConnection;
+  serveRoles: ServeRoles;
+  serveRolesConnection: ServeRolesConnection;
+  pages: Pages;
+  pagesConnection: PagesConnection;
+  prayerRequests: PrayerRequests;
+  prayerRequestsConnection: PrayerRequestsConnection;
+  story: Story;
+  storyConnection: StoryConnection;
+  site: Site;
+  siteConnection: SiteConnection;
+  beliefsDoc: BeliefsDoc;
+  beliefsDocConnection: BeliefsDocConnection;
+  eventsDoc: EventsDoc;
+  eventsDocConnection: EventsDocConnection;
+  navigation: Navigation;
+  navigationConnection: NavigationConnection;
   giving: Giving;
   givingConnection: GivingConnection;
-  prayer_requests: Prayer_Requests;
-  prayer_requestsConnection: Prayer_RequestsConnection;
   readingPlans: ReadingPlans;
   readingPlansConnection: ReadingPlansConnection;
   devotionalEmailSettings: DevotionalEmailSettings;
@@ -141,141 +141,6 @@ export type QueryNodeArgs = {
 export type QueryDocumentArgs = {
   collection?: InputMaybe<Scalars['String']['input']>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QuerySiteArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QuerySiteConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<SiteFilter>;
-};
-
-
-export type QueryNavigationArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryNavigationConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<NavigationFilter>;
-};
-
-
-export type QueryStoryArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryStoryConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<StoryFilter>;
-};
-
-
-export type QueryBeliefsArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryBeliefsConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<BeliefsFilter>;
-};
-
-
-export type QueryEventsArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryEventsConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<EventsFilter>;
-};
-
-
-export type QueryPagesArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryPagesConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<PagesFilter>;
-};
-
-
-export type QueryStaffArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryStaffConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<StaffFilter>;
-};
-
-
-export type QueryEldersArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryEldersConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<EldersFilter>;
-};
-
-
-export type QueryMinistriesArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryMinistriesConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<MinistriesFilter>;
 };
 
 
@@ -309,6 +174,51 @@ export type QueryAnnouncementsConnectionArgs = {
 };
 
 
+export type QueryEldersArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryEldersConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<EldersFilter>;
+};
+
+
+export type QueryStaffArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryStaffConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<StaffFilter>;
+};
+
+
+export type QueryMinistriesArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryMinistriesConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<MinistriesFilter>;
+};
+
+
 export type QueryGroupsArgs = {
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
@@ -324,18 +234,123 @@ export type QueryGroupsConnectionArgs = {
 };
 
 
-export type QueryServe_RolesArgs = {
+export type QueryServeRolesArgs = {
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type QueryServe_RolesConnectionArgs = {
+export type QueryServeRolesConnectionArgs = {
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<Serve_RolesFilter>;
+  filter?: InputMaybe<ServeRolesFilter>;
+};
+
+
+export type QueryPagesArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryPagesConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<PagesFilter>;
+};
+
+
+export type QueryPrayerRequestsArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryPrayerRequestsConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<PrayerRequestsFilter>;
+};
+
+
+export type QueryStoryArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryStoryConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<StoryFilter>;
+};
+
+
+export type QuerySiteArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QuerySiteConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<SiteFilter>;
+};
+
+
+export type QueryBeliefsDocArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryBeliefsDocConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<BeliefsDocFilter>;
+};
+
+
+export type QueryEventsDocArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryEventsDocConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<EventsDocFilter>;
+};
+
+
+export type QueryNavigationArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryNavigationConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<NavigationFilter>;
 };
 
 
@@ -351,21 +366,6 @@ export type QueryGivingConnectionArgs = {
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
   filter?: InputMaybe<GivingFilter>;
-};
-
-
-export type QueryPrayer_RequestsArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryPrayer_RequestsConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<Prayer_RequestsFilter>;
 };
 
 
@@ -429,21 +429,21 @@ export type QueryDigestNotesConnectionArgs = {
 };
 
 export type DocumentFilter = {
-  site?: InputMaybe<SiteFilter>;
-  navigation?: InputMaybe<NavigationFilter>;
-  story?: InputMaybe<StoryFilter>;
-  beliefs?: InputMaybe<BeliefsFilter>;
-  events?: InputMaybe<EventsFilter>;
-  pages?: InputMaybe<PagesFilter>;
-  staff?: InputMaybe<StaffFilter>;
-  elders?: InputMaybe<EldersFilter>;
-  ministries?: InputMaybe<MinistriesFilter>;
   sermons?: InputMaybe<SermonsFilter>;
   announcements?: InputMaybe<AnnouncementsFilter>;
+  elders?: InputMaybe<EldersFilter>;
+  staff?: InputMaybe<StaffFilter>;
+  ministries?: InputMaybe<MinistriesFilter>;
   groups?: InputMaybe<GroupsFilter>;
-  serve_roles?: InputMaybe<Serve_RolesFilter>;
+  serveRoles?: InputMaybe<ServeRolesFilter>;
+  pages?: InputMaybe<PagesFilter>;
+  prayerRequests?: InputMaybe<PrayerRequestsFilter>;
+  story?: InputMaybe<StoryFilter>;
+  site?: InputMaybe<SiteFilter>;
+  beliefsDoc?: InputMaybe<BeliefsDocFilter>;
+  eventsDoc?: InputMaybe<EventsDocFilter>;
+  navigation?: InputMaybe<NavigationFilter>;
   giving?: InputMaybe<GivingFilter>;
-  prayer_requests?: InputMaybe<Prayer_RequestsFilter>;
   readingPlans?: InputMaybe<ReadingPlansFilter>;
   devotionalEmailSettings?: InputMaybe<DevotionalEmailSettingsFilter>;
   digestSettings?: InputMaybe<DigestSettingsFilter>;
@@ -487,77 +487,21 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Site | Navigation | Story | Beliefs | Events | Pages | Staff | Elders | Ministries | Sermons | Announcements | Groups | Serve_Roles | Giving | Prayer_Requests | ReadingPlans | DevotionalEmailSettings | DigestSettings | DigestNotes | Folder;
+export type DocumentNode = Sermons | Announcements | Elders | Staff | Ministries | Groups | ServeRoles | Pages | PrayerRequests | Story | Site | BeliefsDoc | EventsDoc | Navigation | Giving | ReadingPlans | DevotionalEmailSettings | DigestSettings | DigestNotes | Folder;
 
-export type SiteChurchAddress = {
-  __typename?: 'SiteChurchAddress';
-  street?: Maybe<Scalars['String']['output']>;
-  city?: Maybe<Scalars['String']['output']>;
-  state?: Maybe<Scalars['String']['output']>;
-  zip?: Maybe<Scalars['String']['output']>;
-};
-
-export type SiteChurchServices = {
-  __typename?: 'SiteChurchServices';
-  name?: Maybe<Scalars['String']['output']>;
-  day?: Maybe<Scalars['String']['output']>;
-  time?: Maybe<Scalars['String']['output']>;
-  note?: Maybe<Scalars['String']['output']>;
-  primary?: Maybe<Scalars['Boolean']['output']>;
-};
-
-export type SiteChurchSocial = {
-  __typename?: 'SiteChurchSocial';
-  facebook?: Maybe<Scalars['String']['output']>;
-  youtube?: Maybe<Scalars['String']['output']>;
-};
-
-export type SiteChurch = {
-  __typename?: 'SiteChurch';
-  name?: Maybe<Scalars['String']['output']>;
-  shortName?: Maybe<Scalars['String']['output']>;
-  tagline?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-  phone?: Maybe<Scalars['String']['output']>;
-  email?: Maybe<Scalars['String']['output']>;
-  officeHours?: Maybe<Scalars['String']['output']>;
-  address?: Maybe<SiteChurchAddress>;
-  services?: Maybe<Array<Maybe<SiteChurchServices>>>;
-  social?: Maybe<SiteChurchSocial>;
-};
-
-export type SiteHomeHero = {
-  __typename?: 'SiteHomeHero';
-  headline?: Maybe<Scalars['String']['output']>;
-};
-
-export type SiteHome = {
-  __typename?: 'SiteHome';
-  hero?: Maybe<SiteHomeHero>;
-};
-
-export type SiteAboutHero = {
-  __typename?: 'SiteAboutHero';
-  headline?: Maybe<Scalars['String']['output']>;
-};
-
-export type SiteAbout = {
-  __typename?: 'SiteAbout';
-  hero?: Maybe<SiteAboutHero>;
-};
-
-export type SiteFeatures = {
-  __typename?: 'SiteFeatures';
-  devotionals?: Maybe<Scalars['Boolean']['output']>;
-  digest?: Maybe<Scalars['Boolean']['output']>;
-};
-
-export type Site = Node & Document & {
-  __typename?: 'Site';
-  church?: Maybe<SiteChurch>;
-  home?: Maybe<SiteHome>;
-  about?: Maybe<SiteAbout>;
-  features?: Maybe<SiteFeatures>;
+export type Sermons = Node & Document & {
+  __typename?: 'Sermons';
+  title: Scalars['String']['output'];
+  date: Scalars['String']['output'];
+  speaker?: Maybe<Scalars['String']['output']>;
+  series?: Maybe<Scalars['String']['output']>;
+  scripture?: Maybe<Scalars['String']['output']>;
+  book?: Maybe<Scalars['String']['output']>;
+  youtubeId?: Maybe<Scalars['String']['output']>;
+  audioUrl?: Maybe<Scalars['String']['output']>;
+  notesUrl?: Maybe<Scalars['String']['output']>;
+  thumbnail?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -570,147 +514,19 @@ export type StringFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type ImageFilter = {
-  startsWith?: InputMaybe<Scalars['String']['input']>;
+export type DatetimeFilter = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
   eq?: InputMaybe<Scalars['String']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type SiteChurchAddressFilter = {
-  street?: InputMaybe<StringFilter>;
-  city?: InputMaybe<StringFilter>;
-  state?: InputMaybe<StringFilter>;
-  zip?: InputMaybe<StringFilter>;
-};
-
-export type BooleanFilter = {
-  eq?: InputMaybe<Scalars['Boolean']['input']>;
+export type ImageFilter = {
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-export type SiteChurchServicesFilter = {
-  name?: InputMaybe<StringFilter>;
-  day?: InputMaybe<StringFilter>;
-  time?: InputMaybe<StringFilter>;
-  note?: InputMaybe<StringFilter>;
-  primary?: InputMaybe<BooleanFilter>;
-};
-
-export type SiteChurchSocialFilter = {
-  facebook?: InputMaybe<StringFilter>;
-  youtube?: InputMaybe<StringFilter>;
-};
-
-export type SiteChurchFilter = {
-  name?: InputMaybe<StringFilter>;
-  shortName?: InputMaybe<StringFilter>;
-  tagline?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-  phone?: InputMaybe<StringFilter>;
-  email?: InputMaybe<StringFilter>;
-  officeHours?: InputMaybe<StringFilter>;
-  address?: InputMaybe<SiteChurchAddressFilter>;
-  services?: InputMaybe<SiteChurchServicesFilter>;
-  social?: InputMaybe<SiteChurchSocialFilter>;
-};
-
-export type SiteHomeHeroFilter = {
-  headline?: InputMaybe<StringFilter>;
-};
-
-export type SiteHomeFilter = {
-  hero?: InputMaybe<SiteHomeHeroFilter>;
-};
-
-export type SiteAboutHeroFilter = {
-  headline?: InputMaybe<StringFilter>;
-};
-
-export type SiteAboutFilter = {
-  hero?: InputMaybe<SiteAboutHeroFilter>;
-};
-
-export type SiteFeaturesFilter = {
-  devotionals?: InputMaybe<BooleanFilter>;
-  digest?: InputMaybe<BooleanFilter>;
-};
-
-export type SiteFilter = {
-  church?: InputMaybe<SiteChurchFilter>;
-  home?: InputMaybe<SiteHomeFilter>;
-  about?: InputMaybe<SiteAboutFilter>;
-  features?: InputMaybe<SiteFeaturesFilter>;
-};
-
-export type SiteConnectionEdges = {
-  __typename?: 'SiteConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Site>;
-};
-
-export type SiteConnection = Connection & {
-  __typename?: 'SiteConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<SiteConnectionEdges>>>;
-};
-
-export type NavigationItemsChildren = {
-  __typename?: 'NavigationItemsChildren';
-  label?: Maybe<Scalars['String']['output']>;
-  href?: Maybe<Scalars['String']['output']>;
-};
-
-export type NavigationItems = {
-  __typename?: 'NavigationItems';
-  label?: Maybe<Scalars['String']['output']>;
-  href?: Maybe<Scalars['String']['output']>;
-  children?: Maybe<Array<Maybe<NavigationItemsChildren>>>;
-};
-
-export type Navigation = Node & Document & {
-  __typename?: 'Navigation';
-  items?: Maybe<Array<Maybe<NavigationItems>>>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
-};
-
-export type NavigationItemsChildrenFilter = {
-  label?: InputMaybe<StringFilter>;
-  href?: InputMaybe<StringFilter>;
-};
-
-export type NavigationItemsFilter = {
-  label?: InputMaybe<StringFilter>;
-  href?: InputMaybe<StringFilter>;
-  children?: InputMaybe<NavigationItemsChildrenFilter>;
-};
-
-export type NavigationFilter = {
-  items?: InputMaybe<NavigationItemsFilter>;
-};
-
-export type NavigationConnectionEdges = {
-  __typename?: 'NavigationConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Navigation>;
-};
-
-export type NavigationConnection = Connection & {
-  __typename?: 'NavigationConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<NavigationConnectionEdges>>>;
-};
-
-export type Story = Node & Document & {
-  __typename?: 'Story';
-  body?: Maybe<Scalars['JSON']['output']>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type RichTextFilter = {
@@ -719,80 +535,80 @@ export type RichTextFilter = {
   exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type StoryFilter = {
+export type SermonsFilter = {
+  title?: InputMaybe<StringFilter>;
+  date?: InputMaybe<DatetimeFilter>;
+  speaker?: InputMaybe<StringFilter>;
+  series?: InputMaybe<StringFilter>;
+  scripture?: InputMaybe<StringFilter>;
+  book?: InputMaybe<StringFilter>;
+  youtubeId?: InputMaybe<StringFilter>;
+  audioUrl?: InputMaybe<StringFilter>;
+  notesUrl?: InputMaybe<StringFilter>;
+  thumbnail?: InputMaybe<ImageFilter>;
   body?: InputMaybe<RichTextFilter>;
 };
 
-export type StoryConnectionEdges = {
-  __typename?: 'StoryConnectionEdges';
+export type SermonsConnectionEdges = {
+  __typename?: 'SermonsConnectionEdges';
   cursor: Scalars['String']['output'];
-  node?: Maybe<Story>;
+  node?: Maybe<Sermons>;
 };
 
-export type StoryConnection = Connection & {
-  __typename?: 'StoryConnection';
+export type SermonsConnection = Connection & {
+  __typename?: 'SermonsConnection';
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<StoryConnectionEdges>>>;
+  edges?: Maybe<Array<Maybe<SermonsConnectionEdges>>>;
 };
 
-export type BeliefsBeliefs = {
-  __typename?: 'BeliefsBeliefs';
-  title?: Maybe<Scalars['String']['output']>;
-  statement?: Maybe<Scalars['String']['output']>;
-};
-
-export type Beliefs = Node & Document & {
-  __typename?: 'Beliefs';
-  beliefs?: Maybe<Array<Maybe<BeliefsBeliefs>>>;
+export type Announcements = Node & Document & {
+  __typename?: 'Announcements';
+  title: Scalars['String']['output'];
+  date: Scalars['String']['output'];
+  pinned?: Maybe<Scalars['Boolean']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+  linkLabel?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
 };
 
-export type BeliefsBeliefsFilter = {
+export type BooleanFilter = {
+  eq?: InputMaybe<Scalars['Boolean']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type AnnouncementsFilter = {
   title?: InputMaybe<StringFilter>;
-  statement?: InputMaybe<StringFilter>;
+  date?: InputMaybe<DatetimeFilter>;
+  pinned?: InputMaybe<BooleanFilter>;
+  link?: InputMaybe<StringFilter>;
+  linkLabel?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
 };
 
-export type BeliefsFilter = {
-  beliefs?: InputMaybe<BeliefsBeliefsFilter>;
-};
-
-export type BeliefsConnectionEdges = {
-  __typename?: 'BeliefsConnectionEdges';
+export type AnnouncementsConnectionEdges = {
+  __typename?: 'AnnouncementsConnectionEdges';
   cursor: Scalars['String']['output'];
-  node?: Maybe<Beliefs>;
+  node?: Maybe<Announcements>;
 };
 
-export type BeliefsConnection = Connection & {
-  __typename?: 'BeliefsConnection';
+export type AnnouncementsConnection = Connection & {
+  __typename?: 'AnnouncementsConnection';
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<BeliefsConnectionEdges>>>;
+  edges?: Maybe<Array<Maybe<AnnouncementsConnectionEdges>>>;
 };
 
-export type EventsEventsRule = {
-  __typename?: 'EventsEventsRule';
-  kind?: Maybe<Scalars['String']['output']>;
-  dayOfWeek?: Maybe<Scalars['Float']['output']>;
-  nth?: Maybe<Scalars['Float']['output']>;
-};
-
-export type EventsEvents = {
-  __typename?: 'EventsEvents';
-  id?: Maybe<Scalars['String']['output']>;
-  title?: Maybe<Scalars['String']['output']>;
-  time?: Maybe<Scalars['String']['output']>;
-  durationMinutes?: Maybe<Scalars['Float']['output']>;
-  location?: Maybe<Scalars['String']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
-  rule?: Maybe<EventsEventsRule>;
-};
-
-export type Events = Node & Document & {
-  __typename?: 'Events';
-  events?: Maybe<Array<Maybe<EventsEvents>>>;
+export type Elders = Node & Document & {
+  __typename?: 'Elders';
+  name: Scalars['String']['output'];
+  occupation?: Maybe<Scalars['String']['output']>;
+  photo?: Maybe<Scalars['String']['output']>;
+  order?: Maybe<Scalars['Float']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -808,66 +624,25 @@ export type NumberFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
 };
 
-export type EventsEventsRuleFilter = {
-  kind?: InputMaybe<StringFilter>;
-  dayOfWeek?: InputMaybe<NumberFilter>;
-  nth?: InputMaybe<NumberFilter>;
-};
-
-export type EventsEventsFilter = {
-  id?: InputMaybe<StringFilter>;
-  title?: InputMaybe<StringFilter>;
-  time?: InputMaybe<StringFilter>;
-  durationMinutes?: InputMaybe<NumberFilter>;
-  location?: InputMaybe<StringFilter>;
-  description?: InputMaybe<StringFilter>;
-  rule?: InputMaybe<EventsEventsRuleFilter>;
-};
-
-export type EventsFilter = {
-  events?: InputMaybe<EventsEventsFilter>;
-};
-
-export type EventsConnectionEdges = {
-  __typename?: 'EventsConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Events>;
-};
-
-export type EventsConnection = Connection & {
-  __typename?: 'EventsConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<EventsConnectionEdges>>>;
-};
-
-export type Pages = Node & Document & {
-  __typename?: 'Pages';
-  title: Scalars['String']['output'];
-  description?: Maybe<Scalars['String']['output']>;
-  body?: Maybe<Scalars['JSON']['output']>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
-};
-
-export type PagesFilter = {
-  title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<StringFilter>;
+export type EldersFilter = {
+  name?: InputMaybe<StringFilter>;
+  occupation?: InputMaybe<StringFilter>;
+  photo?: InputMaybe<ImageFilter>;
+  order?: InputMaybe<NumberFilter>;
   body?: InputMaybe<RichTextFilter>;
 };
 
-export type PagesConnectionEdges = {
-  __typename?: 'PagesConnectionEdges';
+export type EldersConnectionEdges = {
+  __typename?: 'EldersConnectionEdges';
   cursor: Scalars['String']['output'];
-  node?: Maybe<Pages>;
+  node?: Maybe<Elders>;
 };
 
-export type PagesConnection = Connection & {
-  __typename?: 'PagesConnection';
+export type EldersConnection = Connection & {
+  __typename?: 'EldersConnection';
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<PagesConnectionEdges>>>;
+  edges?: Maybe<Array<Maybe<EldersConnectionEdges>>>;
 };
 
 export type Staff = Node & Document & {
@@ -905,51 +680,12 @@ export type StaffConnection = Connection & {
   edges?: Maybe<Array<Maybe<StaffConnectionEdges>>>;
 };
 
-export type Elders = Node & Document & {
-  __typename?: 'Elders';
-  name: Scalars['String']['output'];
-  photo?: Maybe<Scalars['String']['output']>;
-  order?: Maybe<Scalars['Float']['output']>;
-  body?: Maybe<Scalars['JSON']['output']>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
-};
-
-export type EldersFilter = {
-  name?: InputMaybe<StringFilter>;
-  photo?: InputMaybe<ImageFilter>;
-  order?: InputMaybe<NumberFilter>;
-  body?: InputMaybe<RichTextFilter>;
-};
-
-export type EldersConnectionEdges = {
-  __typename?: 'EldersConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Elders>;
-};
-
-export type EldersConnection = Connection & {
-  __typename?: 'EldersConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<EldersConnectionEdges>>>;
-};
-
 export type MinistriesMeetings = {
   __typename?: 'MinistriesMeetings';
   day?: Maybe<Scalars['String']['output']>;
   time?: Maybe<Scalars['String']['output']>;
   location?: Maybe<Scalars['String']['output']>;
   note?: Maybe<Scalars['String']['output']>;
-};
-
-export type MinistriesLeader = {
-  __typename?: 'MinistriesLeader';
-  name?: Maybe<Scalars['String']['output']>;
-  role?: Maybe<Scalars['String']['output']>;
-  email?: Maybe<Scalars['String']['output']>;
-  photo?: Maybe<Scalars['String']['output']>;
 };
 
 export type Ministries = Node & Document & {
@@ -961,8 +697,6 @@ export type Ministries = Node & Document & {
   image?: Maybe<Scalars['String']['output']>;
   whoFor?: Maybe<Scalars['String']['output']>;
   meetings?: Maybe<Array<Maybe<MinistriesMeetings>>>;
-  whatToExpect?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  leader?: Maybe<MinistriesLeader>;
   body?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
@@ -976,13 +710,6 @@ export type MinistriesMeetingsFilter = {
   note?: InputMaybe<StringFilter>;
 };
 
-export type MinistriesLeaderFilter = {
-  name?: InputMaybe<StringFilter>;
-  role?: InputMaybe<StringFilter>;
-  email?: InputMaybe<StringFilter>;
-  photo?: InputMaybe<ImageFilter>;
-};
-
 export type MinistriesFilter = {
   slug?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
@@ -991,8 +718,6 @@ export type MinistriesFilter = {
   image?: InputMaybe<ImageFilter>;
   whoFor?: InputMaybe<StringFilter>;
   meetings?: InputMaybe<MinistriesMeetingsFilter>;
-  whatToExpect?: InputMaybe<StringFilter>;
-  leader?: InputMaybe<MinistriesLeaderFilter>;
   body?: InputMaybe<RichTextFilter>;
 };
 
@@ -1007,96 +732,6 @@ export type MinistriesConnection = Connection & {
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
   edges?: Maybe<Array<Maybe<MinistriesConnectionEdges>>>;
-};
-
-export type Sermons = Node & Document & {
-  __typename?: 'Sermons';
-  title: Scalars['String']['output'];
-  series?: Maybe<Scalars['String']['output']>;
-  speaker?: Maybe<Scalars['String']['output']>;
-  date?: Maybe<Scalars['String']['output']>;
-  scripture?: Maybe<Scalars['String']['output']>;
-  book?: Maybe<Scalars['String']['output']>;
-  youtubeId?: Maybe<Scalars['String']['output']>;
-  thumbnail?: Maybe<Scalars['String']['output']>;
-  audioUrl?: Maybe<Scalars['String']['output']>;
-  notesUrl?: Maybe<Scalars['String']['output']>;
-  body?: Maybe<Scalars['JSON']['output']>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
-};
-
-export type DatetimeFilter = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type SermonsFilter = {
-  title?: InputMaybe<StringFilter>;
-  series?: InputMaybe<StringFilter>;
-  speaker?: InputMaybe<StringFilter>;
-  date?: InputMaybe<DatetimeFilter>;
-  scripture?: InputMaybe<StringFilter>;
-  book?: InputMaybe<StringFilter>;
-  youtubeId?: InputMaybe<StringFilter>;
-  thumbnail?: InputMaybe<ImageFilter>;
-  audioUrl?: InputMaybe<StringFilter>;
-  notesUrl?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
-};
-
-export type SermonsConnectionEdges = {
-  __typename?: 'SermonsConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Sermons>;
-};
-
-export type SermonsConnection = Connection & {
-  __typename?: 'SermonsConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<SermonsConnectionEdges>>>;
-};
-
-export type Announcements = Node & Document & {
-  __typename?: 'Announcements';
-  title: Scalars['String']['output'];
-  date?: Maybe<Scalars['String']['output']>;
-  expires?: Maybe<Scalars['String']['output']>;
-  pinned?: Maybe<Scalars['Boolean']['output']>;
-  link?: Maybe<Scalars['String']['output']>;
-  linkLabel?: Maybe<Scalars['String']['output']>;
-  body?: Maybe<Scalars['JSON']['output']>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
-};
-
-export type AnnouncementsFilter = {
-  title?: InputMaybe<StringFilter>;
-  date?: InputMaybe<DatetimeFilter>;
-  expires?: InputMaybe<DatetimeFilter>;
-  pinned?: InputMaybe<BooleanFilter>;
-  link?: InputMaybe<StringFilter>;
-  linkLabel?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
-};
-
-export type AnnouncementsConnectionEdges = {
-  __typename?: 'AnnouncementsConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Announcements>;
-};
-
-export type AnnouncementsConnection = Connection & {
-  __typename?: 'AnnouncementsConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<AnnouncementsConnectionEdges>>>;
 };
 
 export type Groups = Node & Document & {
@@ -1140,8 +775,8 @@ export type GroupsConnection = Connection & {
   edges?: Maybe<Array<Maybe<GroupsConnectionEdges>>>;
 };
 
-export type Serve_Roles = Node & Document & {
-  __typename?: 'Serve_roles';
+export type ServeRoles = Node & Document & {
+  __typename?: 'ServeRoles';
   title: Scalars['String']['output'];
   team?: Maybe<Scalars['String']['output']>;
   commitment?: Maybe<Scalars['String']['output']>;
@@ -1154,7 +789,7 @@ export type Serve_Roles = Node & Document & {
   _values: Scalars['JSON']['output'];
 };
 
-export type Serve_RolesFilter = {
+export type ServeRolesFilter = {
   title?: InputMaybe<StringFilter>;
   team?: InputMaybe<StringFilter>;
   commitment?: InputMaybe<StringFilter>;
@@ -1164,17 +799,392 @@ export type Serve_RolesFilter = {
   order?: InputMaybe<NumberFilter>;
 };
 
-export type Serve_RolesConnectionEdges = {
-  __typename?: 'Serve_rolesConnectionEdges';
+export type ServeRolesConnectionEdges = {
+  __typename?: 'ServeRolesConnectionEdges';
   cursor: Scalars['String']['output'];
-  node?: Maybe<Serve_Roles>;
+  node?: Maybe<ServeRoles>;
 };
 
-export type Serve_RolesConnection = Connection & {
-  __typename?: 'Serve_rolesConnection';
+export type ServeRolesConnection = Connection & {
+  __typename?: 'ServeRolesConnection';
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<Serve_RolesConnectionEdges>>>;
+  edges?: Maybe<Array<Maybe<ServeRolesConnectionEdges>>>;
+};
+
+export type Pages = Node & Document & {
+  __typename?: 'Pages';
+  title: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type PagesFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type PagesConnectionEdges = {
+  __typename?: 'PagesConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Pages>;
+};
+
+export type PagesConnection = Connection & {
+  __typename?: 'PagesConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<PagesConnectionEdges>>>;
+};
+
+export type PrayerRequests = Node & Document & {
+  __typename?: 'PrayerRequests';
+  initials: Scalars['String']['output'];
+  date?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type PrayerRequestsFilter = {
+  initials?: InputMaybe<StringFilter>;
+  date?: InputMaybe<DatetimeFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type PrayerRequestsConnectionEdges = {
+  __typename?: 'PrayerRequestsConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<PrayerRequests>;
+};
+
+export type PrayerRequestsConnection = Connection & {
+  __typename?: 'PrayerRequestsConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<PrayerRequestsConnectionEdges>>>;
+};
+
+export type Story = Node & Document & {
+  __typename?: 'Story';
+  body?: Maybe<Scalars['JSON']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type StoryFilter = {
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type StoryConnectionEdges = {
+  __typename?: 'StoryConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Story>;
+};
+
+export type StoryConnection = Connection & {
+  __typename?: 'StoryConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<StoryConnectionEdges>>>;
+};
+
+export type SiteChurchAddress = {
+  __typename?: 'SiteChurchAddress';
+  street?: Maybe<Scalars['String']['output']>;
+  city?: Maybe<Scalars['String']['output']>;
+  state?: Maybe<Scalars['String']['output']>;
+  zip?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteChurchSocial = {
+  __typename?: 'SiteChurchSocial';
+  facebook?: Maybe<Scalars['String']['output']>;
+  youtube?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteChurchServices = {
+  __typename?: 'SiteChurchServices';
+  name?: Maybe<Scalars['String']['output']>;
+  day?: Maybe<Scalars['String']['output']>;
+  time?: Maybe<Scalars['String']['output']>;
+  note?: Maybe<Scalars['String']['output']>;
+  primary?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type SiteChurch = {
+  __typename?: 'SiteChurch';
+  name?: Maybe<Scalars['String']['output']>;
+  shortName?: Maybe<Scalars['String']['output']>;
+  tagline?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  officeHours?: Maybe<Scalars['String']['output']>;
+  address?: Maybe<SiteChurchAddress>;
+  social?: Maybe<SiteChurchSocial>;
+  services?: Maybe<Array<Maybe<SiteChurchServices>>>;
+};
+
+export type SiteHomeHero = {
+  __typename?: 'SiteHomeHero';
+  headline?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteHome = {
+  __typename?: 'SiteHome';
+  hero?: Maybe<SiteHomeHero>;
+};
+
+export type SiteAboutHero = {
+  __typename?: 'SiteAboutHero';
+  headline?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteAbout = {
+  __typename?: 'SiteAbout';
+  hero?: Maybe<SiteAboutHero>;
+};
+
+export type SiteFeatures = {
+  __typename?: 'SiteFeatures';
+  devotionals?: Maybe<Scalars['Boolean']['output']>;
+  digest?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type Site = Node & Document & {
+  __typename?: 'Site';
+  church?: Maybe<SiteChurch>;
+  home?: Maybe<SiteHome>;
+  about?: Maybe<SiteAbout>;
+  features?: Maybe<SiteFeatures>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type SiteChurchAddressFilter = {
+  street?: InputMaybe<StringFilter>;
+  city?: InputMaybe<StringFilter>;
+  state?: InputMaybe<StringFilter>;
+  zip?: InputMaybe<StringFilter>;
+};
+
+export type SiteChurchSocialFilter = {
+  facebook?: InputMaybe<StringFilter>;
+  youtube?: InputMaybe<StringFilter>;
+};
+
+export type SiteChurchServicesFilter = {
+  name?: InputMaybe<StringFilter>;
+  day?: InputMaybe<StringFilter>;
+  time?: InputMaybe<StringFilter>;
+  note?: InputMaybe<StringFilter>;
+  primary?: InputMaybe<BooleanFilter>;
+};
+
+export type SiteChurchFilter = {
+  name?: InputMaybe<StringFilter>;
+  shortName?: InputMaybe<StringFilter>;
+  tagline?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+  phone?: InputMaybe<StringFilter>;
+  email?: InputMaybe<StringFilter>;
+  officeHours?: InputMaybe<StringFilter>;
+  address?: InputMaybe<SiteChurchAddressFilter>;
+  social?: InputMaybe<SiteChurchSocialFilter>;
+  services?: InputMaybe<SiteChurchServicesFilter>;
+};
+
+export type SiteHomeHeroFilter = {
+  headline?: InputMaybe<StringFilter>;
+};
+
+export type SiteHomeFilter = {
+  hero?: InputMaybe<SiteHomeHeroFilter>;
+};
+
+export type SiteAboutHeroFilter = {
+  headline?: InputMaybe<StringFilter>;
+};
+
+export type SiteAboutFilter = {
+  hero?: InputMaybe<SiteAboutHeroFilter>;
+};
+
+export type SiteFeaturesFilter = {
+  devotionals?: InputMaybe<BooleanFilter>;
+  digest?: InputMaybe<BooleanFilter>;
+};
+
+export type SiteFilter = {
+  church?: InputMaybe<SiteChurchFilter>;
+  home?: InputMaybe<SiteHomeFilter>;
+  about?: InputMaybe<SiteAboutFilter>;
+  features?: InputMaybe<SiteFeaturesFilter>;
+};
+
+export type SiteConnectionEdges = {
+  __typename?: 'SiteConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Site>;
+};
+
+export type SiteConnection = Connection & {
+  __typename?: 'SiteConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<SiteConnectionEdges>>>;
+};
+
+export type BeliefsDocBeliefs = {
+  __typename?: 'BeliefsDocBeliefs';
+  title: Scalars['String']['output'];
+  statement?: Maybe<Scalars['String']['output']>;
+};
+
+export type BeliefsDoc = Node & Document & {
+  __typename?: 'BeliefsDoc';
+  beliefs?: Maybe<Array<Maybe<BeliefsDocBeliefs>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type BeliefsDocBeliefsFilter = {
+  title?: InputMaybe<StringFilter>;
+  statement?: InputMaybe<StringFilter>;
+};
+
+export type BeliefsDocFilter = {
+  beliefs?: InputMaybe<BeliefsDocBeliefsFilter>;
+};
+
+export type BeliefsDocConnectionEdges = {
+  __typename?: 'BeliefsDocConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<BeliefsDoc>;
+};
+
+export type BeliefsDocConnection = Connection & {
+  __typename?: 'BeliefsDocConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<BeliefsDocConnectionEdges>>>;
+};
+
+export type EventsDocEventsRule = {
+  __typename?: 'EventsDocEventsRule';
+  kind?: Maybe<Scalars['String']['output']>;
+  dayOfWeek?: Maybe<Scalars['Float']['output']>;
+  n?: Maybe<Scalars['Float']['output']>;
+};
+
+export type EventsDocEvents = {
+  __typename?: 'EventsDocEvents';
+  id?: Maybe<Scalars['String']['output']>;
+  title: Scalars['String']['output'];
+  time?: Maybe<Scalars['String']['output']>;
+  durationMinutes?: Maybe<Scalars['Float']['output']>;
+  location?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  rule?: Maybe<EventsDocEventsRule>;
+};
+
+export type EventsDoc = Node & Document & {
+  __typename?: 'EventsDoc';
+  events?: Maybe<Array<Maybe<EventsDocEvents>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type EventsDocEventsRuleFilter = {
+  kind?: InputMaybe<StringFilter>;
+  dayOfWeek?: InputMaybe<NumberFilter>;
+  n?: InputMaybe<NumberFilter>;
+};
+
+export type EventsDocEventsFilter = {
+  id?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  time?: InputMaybe<StringFilter>;
+  durationMinutes?: InputMaybe<NumberFilter>;
+  location?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  rule?: InputMaybe<EventsDocEventsRuleFilter>;
+};
+
+export type EventsDocFilter = {
+  events?: InputMaybe<EventsDocEventsFilter>;
+};
+
+export type EventsDocConnectionEdges = {
+  __typename?: 'EventsDocConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<EventsDoc>;
+};
+
+export type EventsDocConnection = Connection & {
+  __typename?: 'EventsDocConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<EventsDocConnectionEdges>>>;
+};
+
+export type NavigationItemsChildren = {
+  __typename?: 'NavigationItemsChildren';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+};
+
+export type NavigationItems = {
+  __typename?: 'NavigationItems';
+  label: Scalars['String']['output'];
+  href?: Maybe<Scalars['String']['output']>;
+  children?: Maybe<Array<Maybe<NavigationItemsChildren>>>;
+};
+
+export type Navigation = Node & Document & {
+  __typename?: 'Navigation';
+  items?: Maybe<Array<Maybe<NavigationItems>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type NavigationItemsChildrenFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+};
+
+export type NavigationItemsFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+  children?: InputMaybe<NavigationItemsChildrenFilter>;
+};
+
+export type NavigationFilter = {
+  items?: InputMaybe<NavigationItemsFilter>;
+};
+
+export type NavigationConnectionEdges = {
+  __typename?: 'NavigationConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Navigation>;
+};
+
+export type NavigationConnection = Connection & {
+  __typename?: 'NavigationConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<NavigationConnectionEdges>>>;
 };
 
 export type GivingPlanningCenter = {
@@ -1319,35 +1329,6 @@ export type GivingConnection = Connection & {
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
   edges?: Maybe<Array<Maybe<GivingConnectionEdges>>>;
-};
-
-export type Prayer_Requests = Node & Document & {
-  __typename?: 'Prayer_requests';
-  initials?: Maybe<Scalars['String']['output']>;
-  date?: Maybe<Scalars['String']['output']>;
-  body?: Maybe<Scalars['JSON']['output']>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
-};
-
-export type Prayer_RequestsFilter = {
-  initials?: InputMaybe<StringFilter>;
-  date?: InputMaybe<DatetimeFilter>;
-  body?: InputMaybe<RichTextFilter>;
-};
-
-export type Prayer_RequestsConnectionEdges = {
-  __typename?: 'Prayer_requestsConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Prayer_Requests>;
-};
-
-export type Prayer_RequestsConnection = Connection & {
-  __typename?: 'Prayer_requestsConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<Prayer_RequestsConnectionEdges>>>;
 };
 
 export type ReadingPlansEntries = {
@@ -1573,36 +1554,36 @@ export type Mutation = {
   deleteDocument: DocumentNode;
   createDocument: DocumentNode;
   createFolder: DocumentNode;
-  updateSite: Site;
-  createSite: Site;
-  updateNavigation: Navigation;
-  createNavigation: Navigation;
-  updateStory: Story;
-  createStory: Story;
-  updateBeliefs: Beliefs;
-  createBeliefs: Beliefs;
-  updateEvents: Events;
-  createEvents: Events;
-  updatePages: Pages;
-  createPages: Pages;
-  updateStaff: Staff;
-  createStaff: Staff;
-  updateElders: Elders;
-  createElders: Elders;
-  updateMinistries: Ministries;
-  createMinistries: Ministries;
   updateSermons: Sermons;
   createSermons: Sermons;
   updateAnnouncements: Announcements;
   createAnnouncements: Announcements;
+  updateElders: Elders;
+  createElders: Elders;
+  updateStaff: Staff;
+  createStaff: Staff;
+  updateMinistries: Ministries;
+  createMinistries: Ministries;
   updateGroups: Groups;
   createGroups: Groups;
-  updateServe_roles: Serve_Roles;
-  createServe_roles: Serve_Roles;
+  updateServeRoles: ServeRoles;
+  createServeRoles: ServeRoles;
+  updatePages: Pages;
+  createPages: Pages;
+  updatePrayerRequests: PrayerRequests;
+  createPrayerRequests: PrayerRequests;
+  updateStory: Story;
+  createStory: Story;
+  updateSite: Site;
+  createSite: Site;
+  updateBeliefsDoc: BeliefsDoc;
+  createBeliefsDoc: BeliefsDoc;
+  updateEventsDoc: EventsDoc;
+  createEventsDoc: EventsDoc;
+  updateNavigation: Navigation;
+  createNavigation: Navigation;
   updateGiving: Giving;
   createGiving: Giving;
-  updatePrayer_requests: Prayer_Requests;
-  createPrayer_requests: Prayer_Requests;
   updateReadingPlans: ReadingPlans;
   createReadingPlans: ReadingPlans;
   updateDevotionalEmailSettings: DevotionalEmailSettings;
@@ -1647,114 +1628,6 @@ export type MutationCreateFolderArgs = {
 };
 
 
-export type MutationUpdateSiteArgs = {
-  relativePath: Scalars['String']['input'];
-  params: SiteMutation;
-};
-
-
-export type MutationCreateSiteArgs = {
-  relativePath: Scalars['String']['input'];
-  params: SiteMutation;
-};
-
-
-export type MutationUpdateNavigationArgs = {
-  relativePath: Scalars['String']['input'];
-  params: NavigationMutation;
-};
-
-
-export type MutationCreateNavigationArgs = {
-  relativePath: Scalars['String']['input'];
-  params: NavigationMutation;
-};
-
-
-export type MutationUpdateStoryArgs = {
-  relativePath: Scalars['String']['input'];
-  params: StoryMutation;
-};
-
-
-export type MutationCreateStoryArgs = {
-  relativePath: Scalars['String']['input'];
-  params: StoryMutation;
-};
-
-
-export type MutationUpdateBeliefsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: BeliefsMutation;
-};
-
-
-export type MutationCreateBeliefsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: BeliefsMutation;
-};
-
-
-export type MutationUpdateEventsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: EventsMutation;
-};
-
-
-export type MutationCreateEventsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: EventsMutation;
-};
-
-
-export type MutationUpdatePagesArgs = {
-  relativePath: Scalars['String']['input'];
-  params: PagesMutation;
-};
-
-
-export type MutationCreatePagesArgs = {
-  relativePath: Scalars['String']['input'];
-  params: PagesMutation;
-};
-
-
-export type MutationUpdateStaffArgs = {
-  relativePath: Scalars['String']['input'];
-  params: StaffMutation;
-};
-
-
-export type MutationCreateStaffArgs = {
-  relativePath: Scalars['String']['input'];
-  params: StaffMutation;
-};
-
-
-export type MutationUpdateEldersArgs = {
-  relativePath: Scalars['String']['input'];
-  params: EldersMutation;
-};
-
-
-export type MutationCreateEldersArgs = {
-  relativePath: Scalars['String']['input'];
-  params: EldersMutation;
-};
-
-
-export type MutationUpdateMinistriesArgs = {
-  relativePath: Scalars['String']['input'];
-  params: MinistriesMutation;
-};
-
-
-export type MutationCreateMinistriesArgs = {
-  relativePath: Scalars['String']['input'];
-  params: MinistriesMutation;
-};
-
-
 export type MutationUpdateSermonsArgs = {
   relativePath: Scalars['String']['input'];
   params: SermonsMutation;
@@ -1779,6 +1652,42 @@ export type MutationCreateAnnouncementsArgs = {
 };
 
 
+export type MutationUpdateEldersArgs = {
+  relativePath: Scalars['String']['input'];
+  params: EldersMutation;
+};
+
+
+export type MutationCreateEldersArgs = {
+  relativePath: Scalars['String']['input'];
+  params: EldersMutation;
+};
+
+
+export type MutationUpdateStaffArgs = {
+  relativePath: Scalars['String']['input'];
+  params: StaffMutation;
+};
+
+
+export type MutationCreateStaffArgs = {
+  relativePath: Scalars['String']['input'];
+  params: StaffMutation;
+};
+
+
+export type MutationUpdateMinistriesArgs = {
+  relativePath: Scalars['String']['input'];
+  params: MinistriesMutation;
+};
+
+
+export type MutationCreateMinistriesArgs = {
+  relativePath: Scalars['String']['input'];
+  params: MinistriesMutation;
+};
+
+
 export type MutationUpdateGroupsArgs = {
   relativePath: Scalars['String']['input'];
   params: GroupsMutation;
@@ -1791,15 +1700,99 @@ export type MutationCreateGroupsArgs = {
 };
 
 
-export type MutationUpdateServe_RolesArgs = {
+export type MutationUpdateServeRolesArgs = {
   relativePath: Scalars['String']['input'];
-  params: Serve_RolesMutation;
+  params: ServeRolesMutation;
 };
 
 
-export type MutationCreateServe_RolesArgs = {
+export type MutationCreateServeRolesArgs = {
   relativePath: Scalars['String']['input'];
-  params: Serve_RolesMutation;
+  params: ServeRolesMutation;
+};
+
+
+export type MutationUpdatePagesArgs = {
+  relativePath: Scalars['String']['input'];
+  params: PagesMutation;
+};
+
+
+export type MutationCreatePagesArgs = {
+  relativePath: Scalars['String']['input'];
+  params: PagesMutation;
+};
+
+
+export type MutationUpdatePrayerRequestsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: PrayerRequestsMutation;
+};
+
+
+export type MutationCreatePrayerRequestsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: PrayerRequestsMutation;
+};
+
+
+export type MutationUpdateStoryArgs = {
+  relativePath: Scalars['String']['input'];
+  params: StoryMutation;
+};
+
+
+export type MutationCreateStoryArgs = {
+  relativePath: Scalars['String']['input'];
+  params: StoryMutation;
+};
+
+
+export type MutationUpdateSiteArgs = {
+  relativePath: Scalars['String']['input'];
+  params: SiteMutation;
+};
+
+
+export type MutationCreateSiteArgs = {
+  relativePath: Scalars['String']['input'];
+  params: SiteMutation;
+};
+
+
+export type MutationUpdateBeliefsDocArgs = {
+  relativePath: Scalars['String']['input'];
+  params: BeliefsDocMutation;
+};
+
+
+export type MutationCreateBeliefsDocArgs = {
+  relativePath: Scalars['String']['input'];
+  params: BeliefsDocMutation;
+};
+
+
+export type MutationUpdateEventsDocArgs = {
+  relativePath: Scalars['String']['input'];
+  params: EventsDocMutation;
+};
+
+
+export type MutationCreateEventsDocArgs = {
+  relativePath: Scalars['String']['input'];
+  params: EventsDocMutation;
+};
+
+
+export type MutationUpdateNavigationArgs = {
+  relativePath: Scalars['String']['input'];
+  params: NavigationMutation;
+};
+
+
+export type MutationCreateNavigationArgs = {
+  relativePath: Scalars['String']['input'];
+  params: NavigationMutation;
 };
 
 
@@ -1812,18 +1805,6 @@ export type MutationUpdateGivingArgs = {
 export type MutationCreateGivingArgs = {
   relativePath: Scalars['String']['input'];
   params: GivingMutation;
-};
-
-
-export type MutationUpdatePrayer_RequestsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: Prayer_RequestsMutation;
-};
-
-
-export type MutationCreatePrayer_RequestsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: Prayer_RequestsMutation;
 };
 
 
@@ -1875,21 +1856,21 @@ export type MutationCreateDigestNotesArgs = {
 };
 
 export type DocumentUpdateMutation = {
-  site?: InputMaybe<SiteMutation>;
-  navigation?: InputMaybe<NavigationMutation>;
-  story?: InputMaybe<StoryMutation>;
-  beliefs?: InputMaybe<BeliefsMutation>;
-  events?: InputMaybe<EventsMutation>;
-  pages?: InputMaybe<PagesMutation>;
-  staff?: InputMaybe<StaffMutation>;
-  elders?: InputMaybe<EldersMutation>;
-  ministries?: InputMaybe<MinistriesMutation>;
   sermons?: InputMaybe<SermonsMutation>;
   announcements?: InputMaybe<AnnouncementsMutation>;
+  elders?: InputMaybe<EldersMutation>;
+  staff?: InputMaybe<StaffMutation>;
+  ministries?: InputMaybe<MinistriesMutation>;
   groups?: InputMaybe<GroupsMutation>;
-  serve_roles?: InputMaybe<Serve_RolesMutation>;
+  serveRoles?: InputMaybe<ServeRolesMutation>;
+  pages?: InputMaybe<PagesMutation>;
+  prayerRequests?: InputMaybe<PrayerRequestsMutation>;
+  story?: InputMaybe<StoryMutation>;
+  site?: InputMaybe<SiteMutation>;
+  beliefsDoc?: InputMaybe<BeliefsDocMutation>;
+  eventsDoc?: InputMaybe<EventsDocMutation>;
+  navigation?: InputMaybe<NavigationMutation>;
   giving?: InputMaybe<GivingMutation>;
-  prayer_requests?: InputMaybe<Prayer_RequestsMutation>;
   readingPlans?: InputMaybe<ReadingPlansMutation>;
   devotionalEmailSettings?: InputMaybe<DevotionalEmailSettingsMutation>;
   digestSettings?: InputMaybe<DigestSettingsMutation>;
@@ -1898,25 +1879,121 @@ export type DocumentUpdateMutation = {
 };
 
 export type DocumentMutation = {
-  site?: InputMaybe<SiteMutation>;
-  navigation?: InputMaybe<NavigationMutation>;
-  story?: InputMaybe<StoryMutation>;
-  beliefs?: InputMaybe<BeliefsMutation>;
-  events?: InputMaybe<EventsMutation>;
-  pages?: InputMaybe<PagesMutation>;
-  staff?: InputMaybe<StaffMutation>;
-  elders?: InputMaybe<EldersMutation>;
-  ministries?: InputMaybe<MinistriesMutation>;
   sermons?: InputMaybe<SermonsMutation>;
   announcements?: InputMaybe<AnnouncementsMutation>;
+  elders?: InputMaybe<EldersMutation>;
+  staff?: InputMaybe<StaffMutation>;
+  ministries?: InputMaybe<MinistriesMutation>;
   groups?: InputMaybe<GroupsMutation>;
-  serve_roles?: InputMaybe<Serve_RolesMutation>;
+  serveRoles?: InputMaybe<ServeRolesMutation>;
+  pages?: InputMaybe<PagesMutation>;
+  prayerRequests?: InputMaybe<PrayerRequestsMutation>;
+  story?: InputMaybe<StoryMutation>;
+  site?: InputMaybe<SiteMutation>;
+  beliefsDoc?: InputMaybe<BeliefsDocMutation>;
+  eventsDoc?: InputMaybe<EventsDocMutation>;
+  navigation?: InputMaybe<NavigationMutation>;
   giving?: InputMaybe<GivingMutation>;
-  prayer_requests?: InputMaybe<Prayer_RequestsMutation>;
   readingPlans?: InputMaybe<ReadingPlansMutation>;
   devotionalEmailSettings?: InputMaybe<DevotionalEmailSettingsMutation>;
   digestSettings?: InputMaybe<DigestSettingsMutation>;
   digestNotes?: InputMaybe<DigestNotesMutation>;
+};
+
+export type SermonsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  date?: InputMaybe<Scalars['String']['input']>;
+  speaker?: InputMaybe<Scalars['String']['input']>;
+  series?: InputMaybe<Scalars['String']['input']>;
+  scripture?: InputMaybe<Scalars['String']['input']>;
+  book?: InputMaybe<Scalars['String']['input']>;
+  youtubeId?: InputMaybe<Scalars['String']['input']>;
+  audioUrl?: InputMaybe<Scalars['String']['input']>;
+  notesUrl?: InputMaybe<Scalars['String']['input']>;
+  thumbnail?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type AnnouncementsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  date?: InputMaybe<Scalars['String']['input']>;
+  pinned?: InputMaybe<Scalars['Boolean']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+  linkLabel?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type EldersMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  occupation?: InputMaybe<Scalars['String']['input']>;
+  photo?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type StaffMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  photo?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type MinistriesMeetingsMutation = {
+  day?: InputMaybe<Scalars['String']['input']>;
+  time?: InputMaybe<Scalars['String']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type MinistriesMutation = {
+  slug?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  tagline?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  whoFor?: InputMaybe<Scalars['String']['input']>;
+  meetings?: InputMaybe<Array<InputMaybe<MinistriesMeetingsMutation>>>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type GroupsMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  day?: InputMaybe<Scalars['String']['input']>;
+  time?: InputMaybe<Scalars['String']['input']>;
+  neighborhood?: InputMaybe<Scalars['String']['input']>;
+  lifeStage?: InputMaybe<Scalars['String']['input']>;
+  leader?: InputMaybe<Scalars['String']['input']>;
+  leaderPhoto?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  contactEmail?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ServeRolesMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  team?: InputMaybe<Scalars['String']['input']>;
+  commitment?: InputMaybe<Scalars['String']['input']>;
+  training?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PagesMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type PrayerRequestsMutation = {
+  initials?: InputMaybe<Scalars['String']['input']>;
+  date?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type StoryMutation = {
+  body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
 export type SiteChurchAddressMutation = {
@@ -1926,17 +2003,17 @@ export type SiteChurchAddressMutation = {
   zip?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type SiteChurchSocialMutation = {
+  facebook?: InputMaybe<Scalars['String']['input']>;
+  youtube?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type SiteChurchServicesMutation = {
   name?: InputMaybe<Scalars['String']['input']>;
   day?: InputMaybe<Scalars['String']['input']>;
   time?: InputMaybe<Scalars['String']['input']>;
   note?: InputMaybe<Scalars['String']['input']>;
   primary?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-export type SiteChurchSocialMutation = {
-  facebook?: InputMaybe<Scalars['String']['input']>;
-  youtube?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SiteChurchMutation = {
@@ -1948,8 +2025,8 @@ export type SiteChurchMutation = {
   email?: InputMaybe<Scalars['String']['input']>;
   officeHours?: InputMaybe<Scalars['String']['input']>;
   address?: InputMaybe<SiteChurchAddressMutation>;
-  services?: InputMaybe<Array<InputMaybe<SiteChurchServicesMutation>>>;
   social?: InputMaybe<SiteChurchSocialMutation>;
+  services?: InputMaybe<Array<InputMaybe<SiteChurchServicesMutation>>>;
 };
 
 export type SiteHomeHeroMutation = {
@@ -1980,6 +2057,35 @@ export type SiteMutation = {
   features?: InputMaybe<SiteFeaturesMutation>;
 };
 
+export type BeliefsDocBeliefsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  statement?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type BeliefsDocMutation = {
+  beliefs?: InputMaybe<Array<InputMaybe<BeliefsDocBeliefsMutation>>>;
+};
+
+export type EventsDocEventsRuleMutation = {
+  kind?: InputMaybe<Scalars['String']['input']>;
+  dayOfWeek?: InputMaybe<Scalars['Float']['input']>;
+  n?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type EventsDocEventsMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  time?: InputMaybe<Scalars['String']['input']>;
+  durationMinutes?: InputMaybe<Scalars['Float']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  rule?: InputMaybe<EventsDocEventsRuleMutation>;
+};
+
+export type EventsDocMutation = {
+  events?: InputMaybe<Array<InputMaybe<EventsDocEventsMutation>>>;
+};
+
 export type NavigationItemsChildrenMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
@@ -1993,134 +2099,6 @@ export type NavigationItemsMutation = {
 
 export type NavigationMutation = {
   items?: InputMaybe<Array<InputMaybe<NavigationItemsMutation>>>;
-};
-
-export type StoryMutation = {
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type BeliefsBeliefsMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  statement?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type BeliefsMutation = {
-  beliefs?: InputMaybe<Array<InputMaybe<BeliefsBeliefsMutation>>>;
-};
-
-export type EventsEventsRuleMutation = {
-  kind?: InputMaybe<Scalars['String']['input']>;
-  dayOfWeek?: InputMaybe<Scalars['Float']['input']>;
-  nth?: InputMaybe<Scalars['Float']['input']>;
-};
-
-export type EventsEventsMutation = {
-  id?: InputMaybe<Scalars['String']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  time?: InputMaybe<Scalars['String']['input']>;
-  durationMinutes?: InputMaybe<Scalars['Float']['input']>;
-  location?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  rule?: InputMaybe<EventsEventsRuleMutation>;
-};
-
-export type EventsMutation = {
-  events?: InputMaybe<Array<InputMaybe<EventsEventsMutation>>>;
-};
-
-export type PagesMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type StaffMutation = {
-  name?: InputMaybe<Scalars['String']['input']>;
-  role?: InputMaybe<Scalars['String']['input']>;
-  email?: InputMaybe<Scalars['String']['input']>;
-  photo?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Scalars['Float']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type EldersMutation = {
-  name?: InputMaybe<Scalars['String']['input']>;
-  photo?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Scalars['Float']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type MinistriesMeetingsMutation = {
-  day?: InputMaybe<Scalars['String']['input']>;
-  time?: InputMaybe<Scalars['String']['input']>;
-  location?: InputMaybe<Scalars['String']['input']>;
-  note?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type MinistriesLeaderMutation = {
-  name?: InputMaybe<Scalars['String']['input']>;
-  role?: InputMaybe<Scalars['String']['input']>;
-  email?: InputMaybe<Scalars['String']['input']>;
-  photo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type MinistriesMutation = {
-  slug?: InputMaybe<Scalars['String']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  tagline?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  image?: InputMaybe<Scalars['String']['input']>;
-  whoFor?: InputMaybe<Scalars['String']['input']>;
-  meetings?: InputMaybe<Array<InputMaybe<MinistriesMeetingsMutation>>>;
-  whatToExpect?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  leader?: InputMaybe<MinistriesLeaderMutation>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type SermonsMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  series?: InputMaybe<Scalars['String']['input']>;
-  speaker?: InputMaybe<Scalars['String']['input']>;
-  date?: InputMaybe<Scalars['String']['input']>;
-  scripture?: InputMaybe<Scalars['String']['input']>;
-  book?: InputMaybe<Scalars['String']['input']>;
-  youtubeId?: InputMaybe<Scalars['String']['input']>;
-  thumbnail?: InputMaybe<Scalars['String']['input']>;
-  audioUrl?: InputMaybe<Scalars['String']['input']>;
-  notesUrl?: InputMaybe<Scalars['String']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type AnnouncementsMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  date?: InputMaybe<Scalars['String']['input']>;
-  expires?: InputMaybe<Scalars['String']['input']>;
-  pinned?: InputMaybe<Scalars['Boolean']['input']>;
-  link?: InputMaybe<Scalars['String']['input']>;
-  linkLabel?: InputMaybe<Scalars['String']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type GroupsMutation = {
-  name?: InputMaybe<Scalars['String']['input']>;
-  day?: InputMaybe<Scalars['String']['input']>;
-  time?: InputMaybe<Scalars['String']['input']>;
-  neighborhood?: InputMaybe<Scalars['String']['input']>;
-  lifeStage?: InputMaybe<Scalars['String']['input']>;
-  leader?: InputMaybe<Scalars['String']['input']>;
-  leaderPhoto?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  contactEmail?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type Serve_RolesMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  team?: InputMaybe<Scalars['String']['input']>;
-  commitment?: InputMaybe<Scalars['String']['input']>;
-  training?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  icon?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type GivingPlanningCenterMutation = {
@@ -2180,12 +2158,6 @@ export type GivingMutation = {
   customUrl?: InputMaybe<GivingCustomUrlMutation>;
   offlineGiving?: InputMaybe<GivingOfflineGivingMutation>;
   faq?: InputMaybe<Array<InputMaybe<GivingFaqMutation>>>;
-};
-
-export type Prayer_RequestsMutation = {
-  initials?: InputMaybe<Scalars['String']['input']>;
-  date?: InputMaybe<Scalars['String']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
 export type ReadingPlansEntriesMutation = {
@@ -2260,35 +2232,35 @@ export type DigestNotesMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
-export type SitePartsFragment = { __typename: 'Site', church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null };
+export type SermonsPartsFragment = { __typename: 'Sermons', title: string, date: string, speaker?: string | null, series?: string | null, scripture?: string | null, book?: string | null, youtubeId?: string | null, audioUrl?: string | null, notesUrl?: string | null, thumbnail?: string | null, body?: any | null };
 
-export type NavigationPartsFragment = { __typename: 'Navigation', items?: Array<{ __typename: 'NavigationItems', label?: string | null, href?: string | null, children?: Array<{ __typename: 'NavigationItemsChildren', label?: string | null, href?: string | null } | null> | null } | null> | null };
+export type AnnouncementsPartsFragment = { __typename: 'Announcements', title: string, date: string, pinned?: boolean | null, link?: string | null, linkLabel?: string | null, body?: any | null };
 
-export type StoryPartsFragment = { __typename: 'Story', body?: any | null };
-
-export type BeliefsPartsFragment = { __typename: 'Beliefs', beliefs?: Array<{ __typename: 'BeliefsBeliefs', title?: string | null, statement?: string | null } | null> | null };
-
-export type EventsPartsFragment = { __typename: 'Events', events?: Array<{ __typename: 'EventsEvents', id?: string | null, title?: string | null, time?: string | null, durationMinutes?: number | null, location?: string | null, description?: string | null, rule?: { __typename: 'EventsEventsRule', kind?: string | null, dayOfWeek?: number | null, nth?: number | null } | null } | null> | null };
-
-export type PagesPartsFragment = { __typename: 'Pages', title: string, description?: string | null, body?: any | null };
+export type EldersPartsFragment = { __typename: 'Elders', name: string, occupation?: string | null, photo?: string | null, order?: number | null, body?: any | null };
 
 export type StaffPartsFragment = { __typename: 'Staff', name: string, role?: string | null, email?: string | null, photo?: string | null, order?: number | null, body?: any | null };
 
-export type EldersPartsFragment = { __typename: 'Elders', name: string, photo?: string | null, order?: number | null, body?: any | null };
-
-export type MinistriesPartsFragment = { __typename: 'Ministries', slug?: string | null, title: string, tagline?: string | null, description?: string | null, image?: string | null, whoFor?: string | null, whatToExpect?: Array<string | null> | null, body?: any | null, meetings?: Array<{ __typename: 'MinistriesMeetings', day?: string | null, time?: string | null, location?: string | null, note?: string | null } | null> | null, leader?: { __typename: 'MinistriesLeader', name?: string | null, role?: string | null, email?: string | null, photo?: string | null } | null };
-
-export type SermonsPartsFragment = { __typename: 'Sermons', title: string, series?: string | null, speaker?: string | null, date?: string | null, scripture?: string | null, book?: string | null, youtubeId?: string | null, thumbnail?: string | null, audioUrl?: string | null, notesUrl?: string | null, body?: any | null };
-
-export type AnnouncementsPartsFragment = { __typename: 'Announcements', title: string, date?: string | null, expires?: string | null, pinned?: boolean | null, link?: string | null, linkLabel?: string | null, body?: any | null };
+export type MinistriesPartsFragment = { __typename: 'Ministries', slug?: string | null, title: string, tagline?: string | null, description?: string | null, image?: string | null, whoFor?: string | null, body?: any | null, meetings?: Array<{ __typename: 'MinistriesMeetings', day?: string | null, time?: string | null, location?: string | null, note?: string | null } | null> | null };
 
 export type GroupsPartsFragment = { __typename: 'Groups', name: string, day?: string | null, time?: string | null, neighborhood?: string | null, lifeStage?: string | null, leader?: string | null, leaderPhoto?: string | null, description?: string | null, contactEmail?: string | null };
 
-export type Serve_RolesPartsFragment = { __typename: 'Serve_roles', title: string, team?: string | null, commitment?: string | null, training?: string | null, description?: string | null, icon?: string | null, order?: number | null };
+export type ServeRolesPartsFragment = { __typename: 'ServeRoles', title: string, team?: string | null, commitment?: string | null, training?: string | null, description?: string | null, icon?: string | null, order?: number | null };
+
+export type PagesPartsFragment = { __typename: 'Pages', title: string, description?: string | null, body?: any | null };
+
+export type PrayerRequestsPartsFragment = { __typename: 'PrayerRequests', initials: string, date?: string | null, body?: any | null };
+
+export type StoryPartsFragment = { __typename: 'Story', body?: any | null };
+
+export type SitePartsFragment = { __typename: 'Site', church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null };
+
+export type BeliefsDocPartsFragment = { __typename: 'BeliefsDoc', beliefs?: Array<{ __typename: 'BeliefsDocBeliefs', title: string, statement?: string | null } | null> | null };
+
+export type EventsDocPartsFragment = { __typename: 'EventsDoc', events?: Array<{ __typename: 'EventsDocEvents', id?: string | null, title: string, time?: string | null, durationMinutes?: number | null, location?: string | null, description?: string | null, rule?: { __typename: 'EventsDocEventsRule', kind?: string | null, dayOfWeek?: number | null, n?: number | null } | null } | null> | null };
+
+export type NavigationPartsFragment = { __typename: 'Navigation', items?: Array<{ __typename: 'NavigationItems', label: string, href?: string | null, children?: Array<{ __typename: 'NavigationItemsChildren', label?: string | null, href?: string | null } | null> | null } | null> | null };
 
 export type GivingPartsFragment = { __typename: 'Giving', provider?: string | null, displayMode?: string | null, callToAction?: string | null, supportingMessage?: string | null, planningCenter?: { __typename: 'GivingPlanningCenter', subdomain?: string | null } | null, tithely?: { __typename: 'GivingTithely', organizationId?: string | null, formUrl?: string | null } | null, pushpay?: { __typename: 'GivingPushpay', merchantHandle?: string | null } | null, subsplash?: { __typename: 'GivingSubsplash', embedCode?: string | null } | null, stripe?: { __typename: 'GivingStripe', paymentLinkUrl?: string | null } | null, customUrl?: { __typename: 'GivingCustomUrl', url?: string | null, linkText?: string | null } | null, offlineGiving?: { __typename: 'GivingOfflineGiving', enabled?: boolean | null, mailingAddress?: string | null, inPersonInstructions?: string | null, textToGive?: { __typename: 'GivingOfflineGivingTextToGive', enabled?: boolean | null, number?: string | null, keyword?: string | null } | null } | null, faq?: Array<{ __typename: 'GivingFaq', question: string, answer?: string | null } | null> | null };
-
-export type Prayer_RequestsPartsFragment = { __typename: 'Prayer_requests', initials?: string | null, date?: string | null, body?: any | null };
 
 export type ReadingPlansPartsFragment = { __typename: 'ReadingPlans', title: string, slug: string, style?: string | null, defaultTranslation?: string | null, startDate?: string | null, endDate?: string | null, isActive?: boolean | null, body?: any | null, entries?: Array<{ __typename: 'ReadingPlansEntries', date?: string | null, scriptureReference: string, title?: string | null, leaderNotes?: string | null } | null> | null };
 
@@ -2298,119 +2270,62 @@ export type DigestSettingsPartsFragment = { __typename: 'DigestSettings', isEnab
 
 export type DigestNotesPartsFragment = { __typename: 'DigestNotes', weekOf: string, title?: string | null, signedBy?: string | null, status: string, body?: any | null };
 
-export type SiteQueryVariables = Exact<{
+export type SermonsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type SiteQuery = { __typename?: 'Query', site: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null } };
+export type SermonsQuery = { __typename?: 'Query', sermons: { __typename: 'Sermons', id: string, title: string, date: string, speaker?: string | null, series?: string | null, scripture?: string | null, book?: string | null, youtubeId?: string | null, audioUrl?: string | null, notesUrl?: string | null, thumbnail?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
-export type SiteConnectionQueryVariables = Exact<{
+export type SermonsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<SiteFilter>;
+  filter?: InputMaybe<SermonsFilter>;
 }>;
 
 
-export type SiteConnectionQuery = { __typename?: 'Query', siteConnection: { __typename?: 'SiteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteConnectionEdges', cursor: string, node?: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null } | null } | null> | null } };
+export type SermonsConnectionQuery = { __typename?: 'Query', sermonsConnection: { __typename?: 'SermonsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SermonsConnectionEdges', cursor: string, node?: { __typename: 'Sermons', id: string, title: string, date: string, speaker?: string | null, series?: string | null, scripture?: string | null, book?: string | null, youtubeId?: string | null, audioUrl?: string | null, notesUrl?: string | null, thumbnail?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
-export type NavigationQueryVariables = Exact<{
+export type AnnouncementsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type NavigationQuery = { __typename?: 'Query', navigation: { __typename: 'Navigation', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items?: Array<{ __typename: 'NavigationItems', label?: string | null, href?: string | null, children?: Array<{ __typename: 'NavigationItemsChildren', label?: string | null, href?: string | null } | null> | null } | null> | null } };
+export type AnnouncementsQuery = { __typename?: 'Query', announcements: { __typename: 'Announcements', id: string, title: string, date: string, pinned?: boolean | null, link?: string | null, linkLabel?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
-export type NavigationConnectionQueryVariables = Exact<{
+export type AnnouncementsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<NavigationFilter>;
+  filter?: InputMaybe<AnnouncementsFilter>;
 }>;
 
 
-export type NavigationConnectionQuery = { __typename?: 'Query', navigationConnection: { __typename?: 'NavigationConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'NavigationConnectionEdges', cursor: string, node?: { __typename: 'Navigation', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items?: Array<{ __typename: 'NavigationItems', label?: string | null, href?: string | null, children?: Array<{ __typename: 'NavigationItemsChildren', label?: string | null, href?: string | null } | null> | null } | null> | null } | null } | null> | null } };
+export type AnnouncementsConnectionQuery = { __typename?: 'Query', announcementsConnection: { __typename?: 'AnnouncementsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'AnnouncementsConnectionEdges', cursor: string, node?: { __typename: 'Announcements', id: string, title: string, date: string, pinned?: boolean | null, link?: string | null, linkLabel?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
-export type StoryQueryVariables = Exact<{
+export type EldersQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type StoryQuery = { __typename?: 'Query', story: { __typename: 'Story', id: string, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type EldersQuery = { __typename?: 'Query', elders: { __typename: 'Elders', id: string, name: string, occupation?: string | null, photo?: string | null, order?: number | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
-export type StoryConnectionQueryVariables = Exact<{
+export type EldersConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<StoryFilter>;
+  filter?: InputMaybe<EldersFilter>;
 }>;
 
 
-export type StoryConnectionQuery = { __typename?: 'Query', storyConnection: { __typename?: 'StoryConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'StoryConnectionEdges', cursor: string, node?: { __typename: 'Story', id: string, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
-
-export type BeliefsQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type BeliefsQuery = { __typename?: 'Query', beliefs: { __typename: 'Beliefs', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, beliefs?: Array<{ __typename: 'BeliefsBeliefs', title?: string | null, statement?: string | null } | null> | null } };
-
-export type BeliefsConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<BeliefsFilter>;
-}>;
-
-
-export type BeliefsConnectionQuery = { __typename?: 'Query', beliefsConnection: { __typename?: 'BeliefsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'BeliefsConnectionEdges', cursor: string, node?: { __typename: 'Beliefs', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, beliefs?: Array<{ __typename: 'BeliefsBeliefs', title?: string | null, statement?: string | null } | null> | null } | null } | null> | null } };
-
-export type EventsQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type EventsQuery = { __typename?: 'Query', events: { __typename: 'Events', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, events?: Array<{ __typename: 'EventsEvents', id?: string | null, title?: string | null, time?: string | null, durationMinutes?: number | null, location?: string | null, description?: string | null, rule?: { __typename: 'EventsEventsRule', kind?: string | null, dayOfWeek?: number | null, nth?: number | null } | null } | null> | null } };
-
-export type EventsConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<EventsFilter>;
-}>;
-
-
-export type EventsConnectionQuery = { __typename?: 'Query', eventsConnection: { __typename?: 'EventsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'EventsConnectionEdges', cursor: string, node?: { __typename: 'Events', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, events?: Array<{ __typename: 'EventsEvents', id?: string | null, title?: string | null, time?: string | null, durationMinutes?: number | null, location?: string | null, description?: string | null, rule?: { __typename: 'EventsEventsRule', kind?: string | null, dayOfWeek?: number | null, nth?: number | null } | null } | null> | null } | null } | null> | null } };
-
-export type PagesQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type PagesQuery = { __typename?: 'Query', pages: { __typename: 'Pages', id: string, title: string, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
-
-export type PagesConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<PagesFilter>;
-}>;
-
-
-export type PagesConnectionQuery = { __typename?: 'Query', pagesConnection: { __typename?: 'PagesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PagesConnectionEdges', cursor: string, node?: { __typename: 'Pages', id: string, title: string, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type EldersConnectionQuery = { __typename?: 'Query', eldersConnection: { __typename?: 'EldersConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'EldersConnectionEdges', cursor: string, node?: { __typename: 'Elders', id: string, name: string, occupation?: string | null, photo?: string | null, order?: number | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type StaffQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -2431,31 +2346,12 @@ export type StaffConnectionQueryVariables = Exact<{
 
 export type StaffConnectionQuery = { __typename?: 'Query', staffConnection: { __typename?: 'StaffConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'StaffConnectionEdges', cursor: string, node?: { __typename: 'Staff', id: string, name: string, role?: string | null, email?: string | null, photo?: string | null, order?: number | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
-export type EldersQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type EldersQuery = { __typename?: 'Query', elders: { __typename: 'Elders', id: string, name: string, photo?: string | null, order?: number | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
-
-export type EldersConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<EldersFilter>;
-}>;
-
-
-export type EldersConnectionQuery = { __typename?: 'Query', eldersConnection: { __typename?: 'EldersConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'EldersConnectionEdges', cursor: string, node?: { __typename: 'Elders', id: string, name: string, photo?: string | null, order?: number | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
-
 export type MinistriesQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type MinistriesQuery = { __typename?: 'Query', ministries: { __typename: 'Ministries', id: string, slug?: string | null, title: string, tagline?: string | null, description?: string | null, image?: string | null, whoFor?: string | null, whatToExpect?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, meetings?: Array<{ __typename: 'MinistriesMeetings', day?: string | null, time?: string | null, location?: string | null, note?: string | null } | null> | null, leader?: { __typename: 'MinistriesLeader', name?: string | null, role?: string | null, email?: string | null, photo?: string | null } | null } };
+export type MinistriesQuery = { __typename?: 'Query', ministries: { __typename: 'Ministries', id: string, slug?: string | null, title: string, tagline?: string | null, description?: string | null, image?: string | null, whoFor?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, meetings?: Array<{ __typename: 'MinistriesMeetings', day?: string | null, time?: string | null, location?: string | null, note?: string | null } | null> | null } };
 
 export type MinistriesConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -2467,45 +2363,7 @@ export type MinistriesConnectionQueryVariables = Exact<{
 }>;
 
 
-export type MinistriesConnectionQuery = { __typename?: 'Query', ministriesConnection: { __typename?: 'MinistriesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'MinistriesConnectionEdges', cursor: string, node?: { __typename: 'Ministries', id: string, slug?: string | null, title: string, tagline?: string | null, description?: string | null, image?: string | null, whoFor?: string | null, whatToExpect?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, meetings?: Array<{ __typename: 'MinistriesMeetings', day?: string | null, time?: string | null, location?: string | null, note?: string | null } | null> | null, leader?: { __typename: 'MinistriesLeader', name?: string | null, role?: string | null, email?: string | null, photo?: string | null } | null } | null } | null> | null } };
-
-export type SermonsQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type SermonsQuery = { __typename?: 'Query', sermons: { __typename: 'Sermons', id: string, title: string, series?: string | null, speaker?: string | null, date?: string | null, scripture?: string | null, book?: string | null, youtubeId?: string | null, thumbnail?: string | null, audioUrl?: string | null, notesUrl?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
-
-export type SermonsConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<SermonsFilter>;
-}>;
-
-
-export type SermonsConnectionQuery = { __typename?: 'Query', sermonsConnection: { __typename?: 'SermonsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SermonsConnectionEdges', cursor: string, node?: { __typename: 'Sermons', id: string, title: string, series?: string | null, speaker?: string | null, date?: string | null, scripture?: string | null, book?: string | null, youtubeId?: string | null, thumbnail?: string | null, audioUrl?: string | null, notesUrl?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
-
-export type AnnouncementsQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type AnnouncementsQuery = { __typename?: 'Query', announcements: { __typename: 'Announcements', id: string, title: string, date?: string | null, expires?: string | null, pinned?: boolean | null, link?: string | null, linkLabel?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
-
-export type AnnouncementsConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<AnnouncementsFilter>;
-}>;
-
-
-export type AnnouncementsConnectionQuery = { __typename?: 'Query', announcementsConnection: { __typename?: 'AnnouncementsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'AnnouncementsConnectionEdges', cursor: string, node?: { __typename: 'Announcements', id: string, title: string, date?: string | null, expires?: string | null, pinned?: boolean | null, link?: string | null, linkLabel?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type MinistriesConnectionQuery = { __typename?: 'Query', ministriesConnection: { __typename?: 'MinistriesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'MinistriesConnectionEdges', cursor: string, node?: { __typename: 'Ministries', id: string, slug?: string | null, title: string, tagline?: string | null, description?: string | null, image?: string | null, whoFor?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, meetings?: Array<{ __typename: 'MinistriesMeetings', day?: string | null, time?: string | null, location?: string | null, note?: string | null } | null> | null } | null } | null> | null } };
 
 export type GroupsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -2526,24 +2384,157 @@ export type GroupsConnectionQueryVariables = Exact<{
 
 export type GroupsConnectionQuery = { __typename?: 'Query', groupsConnection: { __typename?: 'GroupsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'GroupsConnectionEdges', cursor: string, node?: { __typename: 'Groups', id: string, name: string, day?: string | null, time?: string | null, neighborhood?: string | null, lifeStage?: string | null, leader?: string | null, leaderPhoto?: string | null, description?: string | null, contactEmail?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
-export type Serve_RolesQueryVariables = Exact<{
+export type ServeRolesQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type Serve_RolesQuery = { __typename?: 'Query', serve_roles: { __typename: 'Serve_roles', id: string, title: string, team?: string | null, commitment?: string | null, training?: string | null, description?: string | null, icon?: string | null, order?: number | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type ServeRolesQuery = { __typename?: 'Query', serveRoles: { __typename: 'ServeRoles', id: string, title: string, team?: string | null, commitment?: string | null, training?: string | null, description?: string | null, icon?: string | null, order?: number | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
-export type Serve_RolesConnectionQueryVariables = Exact<{
+export type ServeRolesConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<Serve_RolesFilter>;
+  filter?: InputMaybe<ServeRolesFilter>;
 }>;
 
 
-export type Serve_RolesConnectionQuery = { __typename?: 'Query', serve_rolesConnection: { __typename?: 'Serve_rolesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'Serve_rolesConnectionEdges', cursor: string, node?: { __typename: 'Serve_roles', id: string, title: string, team?: string | null, commitment?: string | null, training?: string | null, description?: string | null, icon?: string | null, order?: number | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type ServeRolesConnectionQuery = { __typename?: 'Query', serveRolesConnection: { __typename?: 'ServeRolesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ServeRolesConnectionEdges', cursor: string, node?: { __typename: 'ServeRoles', id: string, title: string, team?: string | null, commitment?: string | null, training?: string | null, description?: string | null, icon?: string | null, order?: number | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
+export type PagesQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type PagesQuery = { __typename?: 'Query', pages: { __typename: 'Pages', id: string, title: string, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type PagesConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<PagesFilter>;
+}>;
+
+
+export type PagesConnectionQuery = { __typename?: 'Query', pagesConnection: { __typename?: 'PagesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PagesConnectionEdges', cursor: string, node?: { __typename: 'Pages', id: string, title: string, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
+export type PrayerRequestsQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type PrayerRequestsQuery = { __typename?: 'Query', prayerRequests: { __typename: 'PrayerRequests', id: string, initials: string, date?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type PrayerRequestsConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<PrayerRequestsFilter>;
+}>;
+
+
+export type PrayerRequestsConnectionQuery = { __typename?: 'Query', prayerRequestsConnection: { __typename?: 'PrayerRequestsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PrayerRequestsConnectionEdges', cursor: string, node?: { __typename: 'PrayerRequests', id: string, initials: string, date?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
+export type StoryQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type StoryQuery = { __typename?: 'Query', story: { __typename: 'Story', id: string, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type StoryConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<StoryFilter>;
+}>;
+
+
+export type StoryConnectionQuery = { __typename?: 'Query', storyConnection: { __typename?: 'StoryConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'StoryConnectionEdges', cursor: string, node?: { __typename: 'Story', id: string, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
+export type SiteQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type SiteQuery = { __typename?: 'Query', site: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null } };
+
+export type SiteConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<SiteFilter>;
+}>;
+
+
+export type SiteConnectionQuery = { __typename?: 'Query', siteConnection: { __typename?: 'SiteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteConnectionEdges', cursor: string, node?: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null } | null } | null> | null } };
+
+export type BeliefsDocQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type BeliefsDocQuery = { __typename?: 'Query', beliefsDoc: { __typename: 'BeliefsDoc', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, beliefs?: Array<{ __typename: 'BeliefsDocBeliefs', title: string, statement?: string | null } | null> | null } };
+
+export type BeliefsDocConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<BeliefsDocFilter>;
+}>;
+
+
+export type BeliefsDocConnectionQuery = { __typename?: 'Query', beliefsDocConnection: { __typename?: 'BeliefsDocConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'BeliefsDocConnectionEdges', cursor: string, node?: { __typename: 'BeliefsDoc', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, beliefs?: Array<{ __typename: 'BeliefsDocBeliefs', title: string, statement?: string | null } | null> | null } | null } | null> | null } };
+
+export type EventsDocQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type EventsDocQuery = { __typename?: 'Query', eventsDoc: { __typename: 'EventsDoc', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, events?: Array<{ __typename: 'EventsDocEvents', id?: string | null, title: string, time?: string | null, durationMinutes?: number | null, location?: string | null, description?: string | null, rule?: { __typename: 'EventsDocEventsRule', kind?: string | null, dayOfWeek?: number | null, n?: number | null } | null } | null> | null } };
+
+export type EventsDocConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<EventsDocFilter>;
+}>;
+
+
+export type EventsDocConnectionQuery = { __typename?: 'Query', eventsDocConnection: { __typename?: 'EventsDocConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'EventsDocConnectionEdges', cursor: string, node?: { __typename: 'EventsDoc', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, events?: Array<{ __typename: 'EventsDocEvents', id?: string | null, title: string, time?: string | null, durationMinutes?: number | null, location?: string | null, description?: string | null, rule?: { __typename: 'EventsDocEventsRule', kind?: string | null, dayOfWeek?: number | null, n?: number | null } | null } | null> | null } | null } | null> | null } };
+
+export type NavigationQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type NavigationQuery = { __typename?: 'Query', navigation: { __typename: 'Navigation', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items?: Array<{ __typename: 'NavigationItems', label: string, href?: string | null, children?: Array<{ __typename: 'NavigationItemsChildren', label?: string | null, href?: string | null } | null> | null } | null> | null } };
+
+export type NavigationConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<NavigationFilter>;
+}>;
+
+
+export type NavigationConnectionQuery = { __typename?: 'Query', navigationConnection: { __typename?: 'NavigationConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'NavigationConnectionEdges', cursor: string, node?: { __typename: 'Navigation', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items?: Array<{ __typename: 'NavigationItems', label: string, href?: string | null, children?: Array<{ __typename: 'NavigationItemsChildren', label?: string | null, href?: string | null } | null> | null } | null> | null } | null } | null> | null } };
 
 export type GivingQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -2563,25 +2554,6 @@ export type GivingConnectionQueryVariables = Exact<{
 
 
 export type GivingConnectionQuery = { __typename?: 'Query', givingConnection: { __typename?: 'GivingConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'GivingConnectionEdges', cursor: string, node?: { __typename: 'Giving', id: string, provider?: string | null, displayMode?: string | null, callToAction?: string | null, supportingMessage?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, planningCenter?: { __typename: 'GivingPlanningCenter', subdomain?: string | null } | null, tithely?: { __typename: 'GivingTithely', organizationId?: string | null, formUrl?: string | null } | null, pushpay?: { __typename: 'GivingPushpay', merchantHandle?: string | null } | null, subsplash?: { __typename: 'GivingSubsplash', embedCode?: string | null } | null, stripe?: { __typename: 'GivingStripe', paymentLinkUrl?: string | null } | null, customUrl?: { __typename: 'GivingCustomUrl', url?: string | null, linkText?: string | null } | null, offlineGiving?: { __typename: 'GivingOfflineGiving', enabled?: boolean | null, mailingAddress?: string | null, inPersonInstructions?: string | null, textToGive?: { __typename: 'GivingOfflineGivingTextToGive', enabled?: boolean | null, number?: string | null, keyword?: string | null } | null } | null, faq?: Array<{ __typename: 'GivingFaq', question: string, answer?: string | null } | null> | null } | null } | null> | null } };
-
-export type Prayer_RequestsQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type Prayer_RequestsQuery = { __typename?: 'Query', prayer_requests: { __typename: 'Prayer_requests', id: string, initials?: string | null, date?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
-
-export type Prayer_RequestsConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<Prayer_RequestsFilter>;
-}>;
-
-
-export type Prayer_RequestsConnectionQuery = { __typename?: 'Query', prayer_requestsConnection: { __typename?: 'Prayer_requestsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'Prayer_requestsConnectionEdges', cursor: string, node?: { __typename: 'Prayer_requests', id: string, initials?: string | null, date?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type ReadingPlansQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -2659,6 +2631,121 @@ export type DigestNotesConnectionQueryVariables = Exact<{
 
 export type DigestNotesConnectionQuery = { __typename?: 'Query', digestNotesConnection: { __typename?: 'DigestNotesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DigestNotesConnectionEdges', cursor: string, node?: { __typename: 'DigestNotes', id: string, weekOf: string, title?: string | null, signedBy?: string | null, status: string, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
+export const SermonsPartsFragmentDoc = gql`
+    fragment SermonsParts on Sermons {
+  __typename
+  title
+  date
+  speaker
+  series
+  scripture
+  book
+  youtubeId
+  audioUrl
+  notesUrl
+  thumbnail
+  body
+}
+    `;
+export const AnnouncementsPartsFragmentDoc = gql`
+    fragment AnnouncementsParts on Announcements {
+  __typename
+  title
+  date
+  pinned
+  link
+  linkLabel
+  body
+}
+    `;
+export const EldersPartsFragmentDoc = gql`
+    fragment EldersParts on Elders {
+  __typename
+  name
+  occupation
+  photo
+  order
+  body
+}
+    `;
+export const StaffPartsFragmentDoc = gql`
+    fragment StaffParts on Staff {
+  __typename
+  name
+  role
+  email
+  photo
+  order
+  body
+}
+    `;
+export const MinistriesPartsFragmentDoc = gql`
+    fragment MinistriesParts on Ministries {
+  __typename
+  slug
+  title
+  tagline
+  description
+  image
+  whoFor
+  meetings {
+    __typename
+    day
+    time
+    location
+    note
+  }
+  body
+}
+    `;
+export const GroupsPartsFragmentDoc = gql`
+    fragment GroupsParts on Groups {
+  __typename
+  name
+  day
+  time
+  neighborhood
+  lifeStage
+  leader
+  leaderPhoto
+  description
+  contactEmail
+}
+    `;
+export const ServeRolesPartsFragmentDoc = gql`
+    fragment ServeRolesParts on ServeRoles {
+  __typename
+  title
+  team
+  commitment
+  training
+  description
+  icon
+  order
+}
+    `;
+export const PagesPartsFragmentDoc = gql`
+    fragment PagesParts on Pages {
+  __typename
+  title
+  description
+  body
+}
+    `;
+export const PrayerRequestsPartsFragmentDoc = gql`
+    fragment PrayerRequestsParts on PrayerRequests {
+  __typename
+  initials
+  date
+  body
+}
+    `;
+export const StoryPartsFragmentDoc = gql`
+    fragment StoryParts on Story {
+  __typename
+  body
+}
+    `;
 export const SitePartsFragmentDoc = gql`
     fragment SiteParts on Site {
   __typename
@@ -2678,6 +2765,11 @@ export const SitePartsFragmentDoc = gql`
       state
       zip
     }
+    social {
+      __typename
+      facebook
+      youtube
+    }
     services {
       __typename
       name
@@ -2685,11 +2777,6 @@ export const SitePartsFragmentDoc = gql`
       time
       note
       primary
-    }
-    social {
-      __typename
-      facebook
-      youtube
     }
   }
   home {
@@ -2713,29 +2800,8 @@ export const SitePartsFragmentDoc = gql`
   }
 }
     `;
-export const NavigationPartsFragmentDoc = gql`
-    fragment NavigationParts on Navigation {
-  __typename
-  items {
-    __typename
-    label
-    href
-    children {
-      __typename
-      label
-      href
-    }
-  }
-}
-    `;
-export const StoryPartsFragmentDoc = gql`
-    fragment StoryParts on Story {
-  __typename
-  body
-}
-    `;
-export const BeliefsPartsFragmentDoc = gql`
-    fragment BeliefsParts on Beliefs {
+export const BeliefsDocPartsFragmentDoc = gql`
+    fragment BeliefsDocParts on BeliefsDoc {
   __typename
   beliefs {
     __typename
@@ -2744,8 +2810,8 @@ export const BeliefsPartsFragmentDoc = gql`
   }
 }
     `;
-export const EventsPartsFragmentDoc = gql`
-    fragment EventsParts on Events {
+export const EventsDocPartsFragmentDoc = gql`
+    fragment EventsDocParts on EventsDoc {
   __typename
   events {
     __typename
@@ -2759,118 +2825,24 @@ export const EventsPartsFragmentDoc = gql`
       __typename
       kind
       dayOfWeek
-      nth
+      n
     }
   }
 }
     `;
-export const PagesPartsFragmentDoc = gql`
-    fragment PagesParts on Pages {
+export const NavigationPartsFragmentDoc = gql`
+    fragment NavigationParts on Navigation {
   __typename
-  title
-  description
-  body
-}
-    `;
-export const StaffPartsFragmentDoc = gql`
-    fragment StaffParts on Staff {
-  __typename
-  name
-  role
-  email
-  photo
-  order
-  body
-}
-    `;
-export const EldersPartsFragmentDoc = gql`
-    fragment EldersParts on Elders {
-  __typename
-  name
-  photo
-  order
-  body
-}
-    `;
-export const MinistriesPartsFragmentDoc = gql`
-    fragment MinistriesParts on Ministries {
-  __typename
-  slug
-  title
-  tagline
-  description
-  image
-  whoFor
-  meetings {
+  items {
     __typename
-    day
-    time
-    location
-    note
+    label
+    href
+    children {
+      __typename
+      label
+      href
+    }
   }
-  whatToExpect
-  leader {
-    __typename
-    name
-    role
-    email
-    photo
-  }
-  body
-}
-    `;
-export const SermonsPartsFragmentDoc = gql`
-    fragment SermonsParts on Sermons {
-  __typename
-  title
-  series
-  speaker
-  date
-  scripture
-  book
-  youtubeId
-  thumbnail
-  audioUrl
-  notesUrl
-  body
-}
-    `;
-export const AnnouncementsPartsFragmentDoc = gql`
-    fragment AnnouncementsParts on Announcements {
-  __typename
-  title
-  date
-  expires
-  pinned
-  link
-  linkLabel
-  body
-}
-    `;
-export const GroupsPartsFragmentDoc = gql`
-    fragment GroupsParts on Groups {
-  __typename
-  name
-  day
-  time
-  neighborhood
-  lifeStage
-  leader
-  leaderPhoto
-  description
-  contactEmail
-}
-    `;
-export const Serve_RolesPartsFragmentDoc = gql`
-    fragment Serve_rolesParts on Serve_roles {
-  __typename
-  title
-  team
-  commitment
-  training
-  description
-  icon
-  order
 }
     `;
 export const GivingPartsFragmentDoc = gql`
@@ -2923,14 +2895,6 @@ export const GivingPartsFragmentDoc = gql`
     question
     answer
   }
-}
-    `;
-export const Prayer_RequestsPartsFragmentDoc = gql`
-    fragment Prayer_requestsParts on Prayer_requests {
-  __typename
-  initials
-  date
-  body
 }
     `;
 export const ReadingPlansPartsFragmentDoc = gql`
@@ -3009,519 +2973,6 @@ export const DigestNotesPartsFragmentDoc = gql`
   body
 }
     `;
-export const SiteDocument = gql`
-    query site($relativePath: String!) {
-  site(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...SiteParts
-  }
-}
-    ${SitePartsFragmentDoc}`;
-export const SiteConnectionDocument = gql`
-    query siteConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: SiteFilter) {
-  siteConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...SiteParts
-      }
-    }
-  }
-}
-    ${SitePartsFragmentDoc}`;
-export const NavigationDocument = gql`
-    query navigation($relativePath: String!) {
-  navigation(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...NavigationParts
-  }
-}
-    ${NavigationPartsFragmentDoc}`;
-export const NavigationConnectionDocument = gql`
-    query navigationConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: NavigationFilter) {
-  navigationConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...NavigationParts
-      }
-    }
-  }
-}
-    ${NavigationPartsFragmentDoc}`;
-export const StoryDocument = gql`
-    query story($relativePath: String!) {
-  story(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...StoryParts
-  }
-}
-    ${StoryPartsFragmentDoc}`;
-export const StoryConnectionDocument = gql`
-    query storyConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: StoryFilter) {
-  storyConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...StoryParts
-      }
-    }
-  }
-}
-    ${StoryPartsFragmentDoc}`;
-export const BeliefsDocument = gql`
-    query beliefs($relativePath: String!) {
-  beliefs(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...BeliefsParts
-  }
-}
-    ${BeliefsPartsFragmentDoc}`;
-export const BeliefsConnectionDocument = gql`
-    query beliefsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: BeliefsFilter) {
-  beliefsConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...BeliefsParts
-      }
-    }
-  }
-}
-    ${BeliefsPartsFragmentDoc}`;
-export const EventsDocument = gql`
-    query events($relativePath: String!) {
-  events(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...EventsParts
-  }
-}
-    ${EventsPartsFragmentDoc}`;
-export const EventsConnectionDocument = gql`
-    query eventsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: EventsFilter) {
-  eventsConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...EventsParts
-      }
-    }
-  }
-}
-    ${EventsPartsFragmentDoc}`;
-export const PagesDocument = gql`
-    query pages($relativePath: String!) {
-  pages(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...PagesParts
-  }
-}
-    ${PagesPartsFragmentDoc}`;
-export const PagesConnectionDocument = gql`
-    query pagesConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PagesFilter) {
-  pagesConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...PagesParts
-      }
-    }
-  }
-}
-    ${PagesPartsFragmentDoc}`;
-export const StaffDocument = gql`
-    query staff($relativePath: String!) {
-  staff(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...StaffParts
-  }
-}
-    ${StaffPartsFragmentDoc}`;
-export const StaffConnectionDocument = gql`
-    query staffConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: StaffFilter) {
-  staffConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...StaffParts
-      }
-    }
-  }
-}
-    ${StaffPartsFragmentDoc}`;
-export const EldersDocument = gql`
-    query elders($relativePath: String!) {
-  elders(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...EldersParts
-  }
-}
-    ${EldersPartsFragmentDoc}`;
-export const EldersConnectionDocument = gql`
-    query eldersConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: EldersFilter) {
-  eldersConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...EldersParts
-      }
-    }
-  }
-}
-    ${EldersPartsFragmentDoc}`;
-export const MinistriesDocument = gql`
-    query ministries($relativePath: String!) {
-  ministries(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...MinistriesParts
-  }
-}
-    ${MinistriesPartsFragmentDoc}`;
-export const MinistriesConnectionDocument = gql`
-    query ministriesConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: MinistriesFilter) {
-  ministriesConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...MinistriesParts
-      }
-    }
-  }
-}
-    ${MinistriesPartsFragmentDoc}`;
 export const SermonsDocument = gql`
     query sermons($relativePath: String!) {
   sermons(relativePath: $relativePath) {
@@ -3636,6 +3087,177 @@ export const AnnouncementsConnectionDocument = gql`
   }
 }
     ${AnnouncementsPartsFragmentDoc}`;
+export const EldersDocument = gql`
+    query elders($relativePath: String!) {
+  elders(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...EldersParts
+  }
+}
+    ${EldersPartsFragmentDoc}`;
+export const EldersConnectionDocument = gql`
+    query eldersConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: EldersFilter) {
+  eldersConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...EldersParts
+      }
+    }
+  }
+}
+    ${EldersPartsFragmentDoc}`;
+export const StaffDocument = gql`
+    query staff($relativePath: String!) {
+  staff(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...StaffParts
+  }
+}
+    ${StaffPartsFragmentDoc}`;
+export const StaffConnectionDocument = gql`
+    query staffConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: StaffFilter) {
+  staffConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...StaffParts
+      }
+    }
+  }
+}
+    ${StaffPartsFragmentDoc}`;
+export const MinistriesDocument = gql`
+    query ministries($relativePath: String!) {
+  ministries(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...MinistriesParts
+  }
+}
+    ${MinistriesPartsFragmentDoc}`;
+export const MinistriesConnectionDocument = gql`
+    query ministriesConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: MinistriesFilter) {
+  ministriesConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...MinistriesParts
+      }
+    }
+  }
+}
+    ${MinistriesPartsFragmentDoc}`;
 export const GroupsDocument = gql`
     query groups($relativePath: String!) {
   groups(relativePath: $relativePath) {
@@ -3693,9 +3315,9 @@ export const GroupsConnectionDocument = gql`
   }
 }
     ${GroupsPartsFragmentDoc}`;
-export const Serve_RolesDocument = gql`
-    query serve_roles($relativePath: String!) {
-  serve_roles(relativePath: $relativePath) {
+export const ServeRolesDocument = gql`
+    query serveRoles($relativePath: String!) {
+  serveRoles(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -3708,13 +3330,13 @@ export const Serve_RolesDocument = gql`
       }
       id
     }
-    ...Serve_rolesParts
+    ...ServeRolesParts
   }
 }
-    ${Serve_RolesPartsFragmentDoc}`;
-export const Serve_RolesConnectionDocument = gql`
-    query serve_rolesConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: Serve_rolesFilter) {
-  serve_rolesConnection(
+    ${ServeRolesPartsFragmentDoc}`;
+export const ServeRolesConnectionDocument = gql`
+    query serveRolesConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ServeRolesFilter) {
+  serveRolesConnection(
     before: $before
     after: $after
     first: $first
@@ -3744,12 +3366,411 @@ export const Serve_RolesConnectionDocument = gql`
           }
           id
         }
-        ...Serve_rolesParts
+        ...ServeRolesParts
       }
     }
   }
 }
-    ${Serve_RolesPartsFragmentDoc}`;
+    ${ServeRolesPartsFragmentDoc}`;
+export const PagesDocument = gql`
+    query pages($relativePath: String!) {
+  pages(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...PagesParts
+  }
+}
+    ${PagesPartsFragmentDoc}`;
+export const PagesConnectionDocument = gql`
+    query pagesConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PagesFilter) {
+  pagesConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...PagesParts
+      }
+    }
+  }
+}
+    ${PagesPartsFragmentDoc}`;
+export const PrayerRequestsDocument = gql`
+    query prayerRequests($relativePath: String!) {
+  prayerRequests(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...PrayerRequestsParts
+  }
+}
+    ${PrayerRequestsPartsFragmentDoc}`;
+export const PrayerRequestsConnectionDocument = gql`
+    query prayerRequestsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PrayerRequestsFilter) {
+  prayerRequestsConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...PrayerRequestsParts
+      }
+    }
+  }
+}
+    ${PrayerRequestsPartsFragmentDoc}`;
+export const StoryDocument = gql`
+    query story($relativePath: String!) {
+  story(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...StoryParts
+  }
+}
+    ${StoryPartsFragmentDoc}`;
+export const StoryConnectionDocument = gql`
+    query storyConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: StoryFilter) {
+  storyConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...StoryParts
+      }
+    }
+  }
+}
+    ${StoryPartsFragmentDoc}`;
+export const SiteDocument = gql`
+    query site($relativePath: String!) {
+  site(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...SiteParts
+  }
+}
+    ${SitePartsFragmentDoc}`;
+export const SiteConnectionDocument = gql`
+    query siteConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: SiteFilter) {
+  siteConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...SiteParts
+      }
+    }
+  }
+}
+    ${SitePartsFragmentDoc}`;
+export const BeliefsDocDocument = gql`
+    query beliefsDoc($relativePath: String!) {
+  beliefsDoc(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...BeliefsDocParts
+  }
+}
+    ${BeliefsDocPartsFragmentDoc}`;
+export const BeliefsDocConnectionDocument = gql`
+    query beliefsDocConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: BeliefsDocFilter) {
+  beliefsDocConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...BeliefsDocParts
+      }
+    }
+  }
+}
+    ${BeliefsDocPartsFragmentDoc}`;
+export const EventsDocDocument = gql`
+    query eventsDoc($relativePath: String!) {
+  eventsDoc(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...EventsDocParts
+  }
+}
+    ${EventsDocPartsFragmentDoc}`;
+export const EventsDocConnectionDocument = gql`
+    query eventsDocConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: EventsDocFilter) {
+  eventsDocConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...EventsDocParts
+      }
+    }
+  }
+}
+    ${EventsDocPartsFragmentDoc}`;
+export const NavigationDocument = gql`
+    query navigation($relativePath: String!) {
+  navigation(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...NavigationParts
+  }
+}
+    ${NavigationPartsFragmentDoc}`;
+export const NavigationConnectionDocument = gql`
+    query navigationConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: NavigationFilter) {
+  navigationConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...NavigationParts
+      }
+    }
+  }
+}
+    ${NavigationPartsFragmentDoc}`;
 export const GivingDocument = gql`
     query giving($relativePath: String!) {
   giving(relativePath: $relativePath) {
@@ -3807,63 +3828,6 @@ export const GivingConnectionDocument = gql`
   }
 }
     ${GivingPartsFragmentDoc}`;
-export const Prayer_RequestsDocument = gql`
-    query prayer_requests($relativePath: String!) {
-  prayer_requests(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...Prayer_requestsParts
-  }
-}
-    ${Prayer_RequestsPartsFragmentDoc}`;
-export const Prayer_RequestsConnectionDocument = gql`
-    query prayer_requestsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: Prayer_requestsFilter) {
-  prayer_requestsConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...Prayer_requestsParts
-      }
-    }
-  }
-}
-    ${Prayer_RequestsPartsFragmentDoc}`;
 export const ReadingPlansDocument = gql`
     query readingPlans($relativePath: String!) {
   readingPlans(relativePath: $relativePath) {
@@ -4095,61 +4059,7 @@ export const DigestNotesConnectionDocument = gql`
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
-      site(variables: SiteQueryVariables, options?: C): Promise<{data: SiteQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteQueryVariables, query: string}> {
-        return requester<{data: SiteQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteQueryVariables, query: string}, SiteQueryVariables>(SiteDocument, variables, options);
-      },
-    siteConnection(variables?: SiteConnectionQueryVariables, options?: C): Promise<{data: SiteConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteConnectionQueryVariables, query: string}> {
-        return requester<{data: SiteConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteConnectionQueryVariables, query: string}, SiteConnectionQueryVariables>(SiteConnectionDocument, variables, options);
-      },
-    navigation(variables: NavigationQueryVariables, options?: C): Promise<{data: NavigationQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: NavigationQueryVariables, query: string}> {
-        return requester<{data: NavigationQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: NavigationQueryVariables, query: string}, NavigationQueryVariables>(NavigationDocument, variables, options);
-      },
-    navigationConnection(variables?: NavigationConnectionQueryVariables, options?: C): Promise<{data: NavigationConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: NavigationConnectionQueryVariables, query: string}> {
-        return requester<{data: NavigationConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: NavigationConnectionQueryVariables, query: string}, NavigationConnectionQueryVariables>(NavigationConnectionDocument, variables, options);
-      },
-    story(variables: StoryQueryVariables, options?: C): Promise<{data: StoryQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StoryQueryVariables, query: string}> {
-        return requester<{data: StoryQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StoryQueryVariables, query: string}, StoryQueryVariables>(StoryDocument, variables, options);
-      },
-    storyConnection(variables?: StoryConnectionQueryVariables, options?: C): Promise<{data: StoryConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StoryConnectionQueryVariables, query: string}> {
-        return requester<{data: StoryConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StoryConnectionQueryVariables, query: string}, StoryConnectionQueryVariables>(StoryConnectionDocument, variables, options);
-      },
-    beliefs(variables: BeliefsQueryVariables, options?: C): Promise<{data: BeliefsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BeliefsQueryVariables, query: string}> {
-        return requester<{data: BeliefsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BeliefsQueryVariables, query: string}, BeliefsQueryVariables>(BeliefsDocument, variables, options);
-      },
-    beliefsConnection(variables?: BeliefsConnectionQueryVariables, options?: C): Promise<{data: BeliefsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BeliefsConnectionQueryVariables, query: string}> {
-        return requester<{data: BeliefsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BeliefsConnectionQueryVariables, query: string}, BeliefsConnectionQueryVariables>(BeliefsConnectionDocument, variables, options);
-      },
-    events(variables: EventsQueryVariables, options?: C): Promise<{data: EventsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EventsQueryVariables, query: string}> {
-        return requester<{data: EventsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EventsQueryVariables, query: string}, EventsQueryVariables>(EventsDocument, variables, options);
-      },
-    eventsConnection(variables?: EventsConnectionQueryVariables, options?: C): Promise<{data: EventsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EventsConnectionQueryVariables, query: string}> {
-        return requester<{data: EventsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EventsConnectionQueryVariables, query: string}, EventsConnectionQueryVariables>(EventsConnectionDocument, variables, options);
-      },
-    pages(variables: PagesQueryVariables, options?: C): Promise<{data: PagesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PagesQueryVariables, query: string}> {
-        return requester<{data: PagesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PagesQueryVariables, query: string}, PagesQueryVariables>(PagesDocument, variables, options);
-      },
-    pagesConnection(variables?: PagesConnectionQueryVariables, options?: C): Promise<{data: PagesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PagesConnectionQueryVariables, query: string}> {
-        return requester<{data: PagesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PagesConnectionQueryVariables, query: string}, PagesConnectionQueryVariables>(PagesConnectionDocument, variables, options);
-      },
-    staff(variables: StaffQueryVariables, options?: C): Promise<{data: StaffQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StaffQueryVariables, query: string}> {
-        return requester<{data: StaffQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StaffQueryVariables, query: string}, StaffQueryVariables>(StaffDocument, variables, options);
-      },
-    staffConnection(variables?: StaffConnectionQueryVariables, options?: C): Promise<{data: StaffConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StaffConnectionQueryVariables, query: string}> {
-        return requester<{data: StaffConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StaffConnectionQueryVariables, query: string}, StaffConnectionQueryVariables>(StaffConnectionDocument, variables, options);
-      },
-    elders(variables: EldersQueryVariables, options?: C): Promise<{data: EldersQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EldersQueryVariables, query: string}> {
-        return requester<{data: EldersQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EldersQueryVariables, query: string}, EldersQueryVariables>(EldersDocument, variables, options);
-      },
-    eldersConnection(variables?: EldersConnectionQueryVariables, options?: C): Promise<{data: EldersConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EldersConnectionQueryVariables, query: string}> {
-        return requester<{data: EldersConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EldersConnectionQueryVariables, query: string}, EldersConnectionQueryVariables>(EldersConnectionDocument, variables, options);
-      },
-    ministries(variables: MinistriesQueryVariables, options?: C): Promise<{data: MinistriesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MinistriesQueryVariables, query: string}> {
-        return requester<{data: MinistriesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MinistriesQueryVariables, query: string}, MinistriesQueryVariables>(MinistriesDocument, variables, options);
-      },
-    ministriesConnection(variables?: MinistriesConnectionQueryVariables, options?: C): Promise<{data: MinistriesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MinistriesConnectionQueryVariables, query: string}> {
-        return requester<{data: MinistriesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MinistriesConnectionQueryVariables, query: string}, MinistriesConnectionQueryVariables>(MinistriesConnectionDocument, variables, options);
-      },
-    sermons(variables: SermonsQueryVariables, options?: C): Promise<{data: SermonsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SermonsQueryVariables, query: string}> {
+      sermons(variables: SermonsQueryVariables, options?: C): Promise<{data: SermonsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SermonsQueryVariables, query: string}> {
         return requester<{data: SermonsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SermonsQueryVariables, query: string}, SermonsQueryVariables>(SermonsDocument, variables, options);
       },
     sermonsConnection(variables?: SermonsConnectionQueryVariables, options?: C): Promise<{data: SermonsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SermonsConnectionQueryVariables, query: string}> {
@@ -4161,29 +4071,83 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
     announcementsConnection(variables?: AnnouncementsConnectionQueryVariables, options?: C): Promise<{data: AnnouncementsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AnnouncementsConnectionQueryVariables, query: string}> {
         return requester<{data: AnnouncementsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AnnouncementsConnectionQueryVariables, query: string}, AnnouncementsConnectionQueryVariables>(AnnouncementsConnectionDocument, variables, options);
       },
+    elders(variables: EldersQueryVariables, options?: C): Promise<{data: EldersQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EldersQueryVariables, query: string}> {
+        return requester<{data: EldersQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EldersQueryVariables, query: string}, EldersQueryVariables>(EldersDocument, variables, options);
+      },
+    eldersConnection(variables?: EldersConnectionQueryVariables, options?: C): Promise<{data: EldersConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EldersConnectionQueryVariables, query: string}> {
+        return requester<{data: EldersConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EldersConnectionQueryVariables, query: string}, EldersConnectionQueryVariables>(EldersConnectionDocument, variables, options);
+      },
+    staff(variables: StaffQueryVariables, options?: C): Promise<{data: StaffQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StaffQueryVariables, query: string}> {
+        return requester<{data: StaffQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StaffQueryVariables, query: string}, StaffQueryVariables>(StaffDocument, variables, options);
+      },
+    staffConnection(variables?: StaffConnectionQueryVariables, options?: C): Promise<{data: StaffConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StaffConnectionQueryVariables, query: string}> {
+        return requester<{data: StaffConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StaffConnectionQueryVariables, query: string}, StaffConnectionQueryVariables>(StaffConnectionDocument, variables, options);
+      },
+    ministries(variables: MinistriesQueryVariables, options?: C): Promise<{data: MinistriesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MinistriesQueryVariables, query: string}> {
+        return requester<{data: MinistriesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MinistriesQueryVariables, query: string}, MinistriesQueryVariables>(MinistriesDocument, variables, options);
+      },
+    ministriesConnection(variables?: MinistriesConnectionQueryVariables, options?: C): Promise<{data: MinistriesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MinistriesConnectionQueryVariables, query: string}> {
+        return requester<{data: MinistriesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MinistriesConnectionQueryVariables, query: string}, MinistriesConnectionQueryVariables>(MinistriesConnectionDocument, variables, options);
+      },
     groups(variables: GroupsQueryVariables, options?: C): Promise<{data: GroupsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GroupsQueryVariables, query: string}> {
         return requester<{data: GroupsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GroupsQueryVariables, query: string}, GroupsQueryVariables>(GroupsDocument, variables, options);
       },
     groupsConnection(variables?: GroupsConnectionQueryVariables, options?: C): Promise<{data: GroupsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GroupsConnectionQueryVariables, query: string}> {
         return requester<{data: GroupsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GroupsConnectionQueryVariables, query: string}, GroupsConnectionQueryVariables>(GroupsConnectionDocument, variables, options);
       },
-    serve_roles(variables: Serve_RolesQueryVariables, options?: C): Promise<{data: Serve_RolesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Serve_RolesQueryVariables, query: string}> {
-        return requester<{data: Serve_RolesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Serve_RolesQueryVariables, query: string}, Serve_RolesQueryVariables>(Serve_RolesDocument, variables, options);
+    serveRoles(variables: ServeRolesQueryVariables, options?: C): Promise<{data: ServeRolesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ServeRolesQueryVariables, query: string}> {
+        return requester<{data: ServeRolesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ServeRolesQueryVariables, query: string}, ServeRolesQueryVariables>(ServeRolesDocument, variables, options);
       },
-    serve_rolesConnection(variables?: Serve_RolesConnectionQueryVariables, options?: C): Promise<{data: Serve_RolesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Serve_RolesConnectionQueryVariables, query: string}> {
-        return requester<{data: Serve_RolesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Serve_RolesConnectionQueryVariables, query: string}, Serve_RolesConnectionQueryVariables>(Serve_RolesConnectionDocument, variables, options);
+    serveRolesConnection(variables?: ServeRolesConnectionQueryVariables, options?: C): Promise<{data: ServeRolesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ServeRolesConnectionQueryVariables, query: string}> {
+        return requester<{data: ServeRolesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ServeRolesConnectionQueryVariables, query: string}, ServeRolesConnectionQueryVariables>(ServeRolesConnectionDocument, variables, options);
+      },
+    pages(variables: PagesQueryVariables, options?: C): Promise<{data: PagesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PagesQueryVariables, query: string}> {
+        return requester<{data: PagesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PagesQueryVariables, query: string}, PagesQueryVariables>(PagesDocument, variables, options);
+      },
+    pagesConnection(variables?: PagesConnectionQueryVariables, options?: C): Promise<{data: PagesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PagesConnectionQueryVariables, query: string}> {
+        return requester<{data: PagesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PagesConnectionQueryVariables, query: string}, PagesConnectionQueryVariables>(PagesConnectionDocument, variables, options);
+      },
+    prayerRequests(variables: PrayerRequestsQueryVariables, options?: C): Promise<{data: PrayerRequestsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PrayerRequestsQueryVariables, query: string}> {
+        return requester<{data: PrayerRequestsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PrayerRequestsQueryVariables, query: string}, PrayerRequestsQueryVariables>(PrayerRequestsDocument, variables, options);
+      },
+    prayerRequestsConnection(variables?: PrayerRequestsConnectionQueryVariables, options?: C): Promise<{data: PrayerRequestsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PrayerRequestsConnectionQueryVariables, query: string}> {
+        return requester<{data: PrayerRequestsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PrayerRequestsConnectionQueryVariables, query: string}, PrayerRequestsConnectionQueryVariables>(PrayerRequestsConnectionDocument, variables, options);
+      },
+    story(variables: StoryQueryVariables, options?: C): Promise<{data: StoryQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StoryQueryVariables, query: string}> {
+        return requester<{data: StoryQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StoryQueryVariables, query: string}, StoryQueryVariables>(StoryDocument, variables, options);
+      },
+    storyConnection(variables?: StoryConnectionQueryVariables, options?: C): Promise<{data: StoryConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StoryConnectionQueryVariables, query: string}> {
+        return requester<{data: StoryConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StoryConnectionQueryVariables, query: string}, StoryConnectionQueryVariables>(StoryConnectionDocument, variables, options);
+      },
+    site(variables: SiteQueryVariables, options?: C): Promise<{data: SiteQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteQueryVariables, query: string}> {
+        return requester<{data: SiteQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteQueryVariables, query: string}, SiteQueryVariables>(SiteDocument, variables, options);
+      },
+    siteConnection(variables?: SiteConnectionQueryVariables, options?: C): Promise<{data: SiteConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteConnectionQueryVariables, query: string}> {
+        return requester<{data: SiteConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteConnectionQueryVariables, query: string}, SiteConnectionQueryVariables>(SiteConnectionDocument, variables, options);
+      },
+    beliefsDoc(variables: BeliefsDocQueryVariables, options?: C): Promise<{data: BeliefsDocQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BeliefsDocQueryVariables, query: string}> {
+        return requester<{data: BeliefsDocQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BeliefsDocQueryVariables, query: string}, BeliefsDocQueryVariables>(BeliefsDocDocument, variables, options);
+      },
+    beliefsDocConnection(variables?: BeliefsDocConnectionQueryVariables, options?: C): Promise<{data: BeliefsDocConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BeliefsDocConnectionQueryVariables, query: string}> {
+        return requester<{data: BeliefsDocConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BeliefsDocConnectionQueryVariables, query: string}, BeliefsDocConnectionQueryVariables>(BeliefsDocConnectionDocument, variables, options);
+      },
+    eventsDoc(variables: EventsDocQueryVariables, options?: C): Promise<{data: EventsDocQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EventsDocQueryVariables, query: string}> {
+        return requester<{data: EventsDocQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EventsDocQueryVariables, query: string}, EventsDocQueryVariables>(EventsDocDocument, variables, options);
+      },
+    eventsDocConnection(variables?: EventsDocConnectionQueryVariables, options?: C): Promise<{data: EventsDocConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EventsDocConnectionQueryVariables, query: string}> {
+        return requester<{data: EventsDocConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: EventsDocConnectionQueryVariables, query: string}, EventsDocConnectionQueryVariables>(EventsDocConnectionDocument, variables, options);
+      },
+    navigation(variables: NavigationQueryVariables, options?: C): Promise<{data: NavigationQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: NavigationQueryVariables, query: string}> {
+        return requester<{data: NavigationQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: NavigationQueryVariables, query: string}, NavigationQueryVariables>(NavigationDocument, variables, options);
+      },
+    navigationConnection(variables?: NavigationConnectionQueryVariables, options?: C): Promise<{data: NavigationConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: NavigationConnectionQueryVariables, query: string}> {
+        return requester<{data: NavigationConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: NavigationConnectionQueryVariables, query: string}, NavigationConnectionQueryVariables>(NavigationConnectionDocument, variables, options);
       },
     giving(variables: GivingQueryVariables, options?: C): Promise<{data: GivingQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GivingQueryVariables, query: string}> {
         return requester<{data: GivingQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GivingQueryVariables, query: string}, GivingQueryVariables>(GivingDocument, variables, options);
       },
     givingConnection(variables?: GivingConnectionQueryVariables, options?: C): Promise<{data: GivingConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GivingConnectionQueryVariables, query: string}> {
         return requester<{data: GivingConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GivingConnectionQueryVariables, query: string}, GivingConnectionQueryVariables>(GivingConnectionDocument, variables, options);
-      },
-    prayer_requests(variables: Prayer_RequestsQueryVariables, options?: C): Promise<{data: Prayer_RequestsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Prayer_RequestsQueryVariables, query: string}> {
-        return requester<{data: Prayer_RequestsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Prayer_RequestsQueryVariables, query: string}, Prayer_RequestsQueryVariables>(Prayer_RequestsDocument, variables, options);
-      },
-    prayer_requestsConnection(variables?: Prayer_RequestsConnectionQueryVariables, options?: C): Promise<{data: Prayer_RequestsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Prayer_RequestsConnectionQueryVariables, query: string}> {
-        return requester<{data: Prayer_RequestsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Prayer_RequestsConnectionQueryVariables, query: string}, Prayer_RequestsConnectionQueryVariables>(Prayer_RequestsConnectionDocument, variables, options);
       },
     readingPlans(variables: ReadingPlansQueryVariables, options?: C): Promise<{data: ReadingPlansQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ReadingPlansQueryVariables, query: string}> {
         return requester<{data: ReadingPlansQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ReadingPlansQueryVariables, query: string}, ReadingPlansQueryVariables>(ReadingPlansDocument, variables, options);

@@ -95,6 +95,9 @@ Content decisions (need church confirmation):
     — verify this is the correct address and number for CAN-SPAM.)
 
 Technical setup (required before activation):
+[X] Email logo URL configured in content/devotional-email-settings.json
+    (logoUrl matches digest-settings.json for visual consistency).
+    See LOGO URL TODO below — URL is set but not currently reachable.
 [ ] Provision Vercel Postgres (or chosen alternative) and set
     DATABASE_URL in Vercel project Settings → Environment Variables.
 [ ] Run database migrations: npm run db:migrate (or npx drizzle-kit push)
@@ -161,6 +164,9 @@ Content decisions:
     "digest" tag yet.)
 
 Technical setup:
+[X] Email logo URL configured in content/digest-settings.json (matches
+    devotional-email-settings.json). See LOGO URL TODO below — URL is
+    set but not currently reachable.
 [X] Migrations applied (0001 + 0002). Verified subscriber data preserved
     — kbennett2000@gmail.com, status active, tags=["devotionals"]. The
     drizzle.__drizzle_migrations table was bootstrapped to stamp 0000 as
@@ -192,3 +198,29 @@ Soft launch:
     unsubscribe flow (clicking unsubscribe should remove ONLY the
     "digest" tag, not the "devotionals" tag).
 [ ] Then announce to congregation.
+
+
+LOGO URL TODO (added 2026-05-15 — BLOCKS DEVOTIONAL + DIGEST LAUNCH)
+---------------------------------------------------------------------
+Both content/devotional-email-settings.json and content/digest-settings.json
+have logoUrl set to:
+  https://mvckiowa.com/images/uploads/mvc-transparent-1.jpg
+
+As of 2026-05-15 this URL returns HTTP 404 (Apache server, current
+WordPress site). Emails sent today will render as broken-image icons
+in inboxes. The cherry-picked template fix (commit 23b8cb4, originally
+f38438d) normalizes relative paths against NEXT_PUBLIC_SITE_URL but
+does NOT fetch-verify the URL — only an empty logoUrl falls back to
+plain church-name text.
+
+Before enabling devotionals or digest in production, do ONE of:
+  (a) Upload mvc-transparent-1.jpg to the deployed Vercel site under
+      public/images/uploads/ and set logoUrl to either the same
+      absolute https://mvckiowa.com/... path (once DNS points at
+      Vercel) or to a site-relative /images/uploads/mvc-transparent-1.jpg
+      path (relies on NEXT_PUBLIC_SITE_URL being set in Vercel env).
+  (b) Restore the old WordPress logo URL — find a working
+      https://mvckiowa.com/... image path that actually returns 200
+      and update both settings files.
+  (c) Clear logoUrl in both settings files so emails fall back to the
+      church name rendered as text.

@@ -38,6 +38,7 @@
     }
   },
   "features": {
-    "devotionals": true
+    "devotionals": true,
+    "digest": false
   }
 }

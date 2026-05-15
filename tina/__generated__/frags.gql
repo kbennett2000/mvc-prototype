@@ -70,6 +70,7 @@ fragment GroupsParts on Groups {
   leader
   leaderPhoto
   description
+  contactEmail
 }
 
 fragment ServeRolesParts on ServeRoles {

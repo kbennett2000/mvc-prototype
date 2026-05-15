@@ -204,6 +204,7 @@ export function GroupsFinder({ groups }: { groups: Group[] }) {
                   className="mt-5"
                   onClick={() => openModal(g)}
                 >
+<<<<<<< HEAD
                   <a
                     href={`mailto:admin@mvckiowa.com?subject=Interested in ${encodeURIComponent(
                       g.name
@@ -211,6 +212,9 @@ export function GroupsFinder({ groups }: { groups: Group[] }) {
                   >
                     I&apos;m interested
                   </a>
+=======
+                  I&apos;m interested
+>>>>>>> 059863b (Added email alerts to small groups)
                 </Button>
               </div>
             </li>

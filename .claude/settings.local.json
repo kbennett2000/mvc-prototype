@@ -48,7 +48,19 @@
       "Bash(kill 420674)",
       "Bash(ps -p 420874 -o pid,ppid,cmd)",
       "Bash(pstree -p 420874)",
-      "Bash(kill 420874)"
+      "Bash(kill 420874)",
+      "Bash(cp /tmp/test-resolve.ts /home/kb/Desktop/Projects/church-site-template/test-resolve.tmp.ts)",
+      "Bash(npx tsx *)",
+      "Bash(NEXT_PUBLIC_SITE_URL=https://grace.example.com PORT=3456 npx next dev -p 3456)",
+      "Bash(echo \"pid=$!\")",
+      "Bash(curl -sS -o /dev/null -w \"%{http_code}\" http://localhost:3456)",
+      "Bash(bash /tmp/admin-htpasswd-bypass.sh)",
+      "Bash(pkill -f \"next dev -p 3456\")",
+      "Bash(ADMIN_PASSWORD=testpass NEXT_PUBLIC_SITE_URL=https://grace.example.com npx next dev -p 3456)",
+      "Bash(ADMIN_PASSWORD=testpass NEXT_PUBLIC_SITE_URL=https://grace.example.com npx next dev -p 3457 > /tmp/next-dev2.log 2>&1 & *)",
+      "Bash(cp /home/kb/Desktop/Projects/church-site-template/content/digest-settings.json /tmp/digest-bak.json)",
+      "Bash(python3 -c ' *)",
+      "Bash(pkill -f \"next dev -p 3457\")"
     ],
     "deny": [
       "Bash(sudo*)",

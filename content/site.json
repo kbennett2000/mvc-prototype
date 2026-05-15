@@ -36,5 +36,8 @@
     "hero": {
       "headline": "Unified in Jesus Christ. Open to our community."
     }
+  },
+  "features": {
+    "devotionals": false
   }
 }

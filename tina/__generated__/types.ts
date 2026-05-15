@@ -112,6 +112,10 @@ export type Query = {
   navigationConnection: NavigationConnection;
   giving: Giving;
   givingConnection: GivingConnection;
+  readingPlans: ReadingPlans;
+  readingPlansConnection: ReadingPlansConnection;
+  devotionalEmailSettings: DevotionalEmailSettings;
+  devotionalEmailSettingsConnection: DevotionalEmailSettingsConnection;
 };
 
 
@@ -360,6 +364,36 @@ export type QueryGivingConnectionArgs = {
   filter?: InputMaybe<GivingFilter>;
 };
 
+
+export type QueryReadingPlansArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryReadingPlansConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<ReadingPlansFilter>;
+};
+
+
+export type QueryDevotionalEmailSettingsArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryDevotionalEmailSettingsConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<DevotionalEmailSettingsFilter>;
+};
+
 export type DocumentFilter = {
   sermons?: InputMaybe<SermonsFilter>;
   announcements?: InputMaybe<AnnouncementsFilter>;
@@ -376,6 +410,8 @@ export type DocumentFilter = {
   eventsDoc?: InputMaybe<EventsDocFilter>;
   navigation?: InputMaybe<NavigationFilter>;
   giving?: InputMaybe<GivingFilter>;
+  readingPlans?: InputMaybe<ReadingPlansFilter>;
+  devotionalEmailSettings?: InputMaybe<DevotionalEmailSettingsFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -415,7 +451,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Sermons | Announcements | Elders | Staff | Ministries | Groups | ServeRoles | Pages | PrayerRequests | Story | Site | BeliefsDoc | EventsDoc | Navigation | Giving | Folder;
+export type DocumentNode = Sermons | Announcements | Elders | Staff | Ministries | Groups | ServeRoles | Pages | PrayerRequests | Story | Site | BeliefsDoc | EventsDoc | Navigation | Giving | ReadingPlans | DevotionalEmailSettings | Folder;
 
 export type Sermons = Node & Document & {
   __typename?: 'Sermons';
@@ -880,11 +916,17 @@ export type SiteAbout = {
   hero?: Maybe<SiteAboutHero>;
 };
 
+export type SiteFeatures = {
+  __typename?: 'SiteFeatures';
+  devotionals?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type Site = Node & Document & {
   __typename?: 'Site';
   church?: Maybe<SiteChurch>;
   home?: Maybe<SiteHome>;
   about?: Maybe<SiteAbout>;
+  features?: Maybe<SiteFeatures>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -939,10 +981,15 @@ export type SiteAboutFilter = {
   hero?: InputMaybe<SiteAboutHeroFilter>;
 };
 
+export type SiteFeaturesFilter = {
+  devotionals?: InputMaybe<BooleanFilter>;
+};
+
 export type SiteFilter = {
   church?: InputMaybe<SiteChurchFilter>;
   home?: InputMaybe<SiteHomeFilter>;
   about?: InputMaybe<SiteAboutFilter>;
+  features?: InputMaybe<SiteFeaturesFilter>;
 };
 
 export type SiteConnectionEdges = {
@@ -1246,6 +1293,140 @@ export type GivingConnection = Connection & {
   edges?: Maybe<Array<Maybe<GivingConnectionEdges>>>;
 };
 
+export type ReadingPlansEntries = {
+  __typename?: 'ReadingPlansEntries';
+  date?: Maybe<Scalars['String']['output']>;
+  scriptureReference: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+  leaderNotes?: Maybe<Scalars['String']['output']>;
+};
+
+export type ReadingPlans = Node & Document & {
+  __typename?: 'ReadingPlans';
+  title: Scalars['String']['output'];
+  slug: Scalars['String']['output'];
+  style?: Maybe<Scalars['String']['output']>;
+  defaultTranslation?: Maybe<Scalars['String']['output']>;
+  startDate?: Maybe<Scalars['String']['output']>;
+  endDate?: Maybe<Scalars['String']['output']>;
+  isActive?: Maybe<Scalars['Boolean']['output']>;
+  entries?: Maybe<Array<Maybe<ReadingPlansEntries>>>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type ReadingPlansEntriesFilter = {
+  date?: InputMaybe<DatetimeFilter>;
+  scriptureReference?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  leaderNotes?: InputMaybe<StringFilter>;
+};
+
+export type ReadingPlansFilter = {
+  title?: InputMaybe<StringFilter>;
+  slug?: InputMaybe<StringFilter>;
+  style?: InputMaybe<StringFilter>;
+  defaultTranslation?: InputMaybe<StringFilter>;
+  startDate?: InputMaybe<DatetimeFilter>;
+  endDate?: InputMaybe<DatetimeFilter>;
+  isActive?: InputMaybe<BooleanFilter>;
+  entries?: InputMaybe<ReadingPlansEntriesFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type ReadingPlansConnectionEdges = {
+  __typename?: 'ReadingPlansConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<ReadingPlans>;
+};
+
+export type ReadingPlansConnection = Connection & {
+  __typename?: 'ReadingPlansConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<ReadingPlansConnectionEdges>>>;
+};
+
+export type DevotionalEmailSettingsSoapOverride = {
+  __typename?: 'DevotionalEmailSettingsSoapOverride';
+  intro?: Maybe<Scalars['String']['output']>;
+  outro?: Maybe<Scalars['String']['output']>;
+};
+
+export type DevotionalEmailSettingsSimpleOverride = {
+  __typename?: 'DevotionalEmailSettingsSimpleOverride';
+  intro?: Maybe<Scalars['String']['output']>;
+  outro?: Maybe<Scalars['String']['output']>;
+};
+
+export type DevotionalEmailSettingsLectioOverride = {
+  __typename?: 'DevotionalEmailSettingsLectioOverride';
+  intro?: Maybe<Scalars['String']['output']>;
+  outro?: Maybe<Scalars['String']['output']>;
+};
+
+export type DevotionalEmailSettings = Node & Document & {
+  __typename?: 'DevotionalEmailSettings';
+  senderName?: Maybe<Scalars['String']['output']>;
+  senderEmail?: Maybe<Scalars['String']['output']>;
+  subjectTemplate?: Maybe<Scalars['String']['output']>;
+  intro?: Maybe<Scalars['String']['output']>;
+  outro?: Maybe<Scalars['String']['output']>;
+  brandColor?: Maybe<Scalars['String']['output']>;
+  logoUrl?: Maybe<Scalars['String']['output']>;
+  footerText?: Maybe<Scalars['String']['output']>;
+  soapOverride?: Maybe<DevotionalEmailSettingsSoapOverride>;
+  simpleOverride?: Maybe<DevotionalEmailSettingsSimpleOverride>;
+  lectioOverride?: Maybe<DevotionalEmailSettingsLectioOverride>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type DevotionalEmailSettingsSoapOverrideFilter = {
+  intro?: InputMaybe<StringFilter>;
+  outro?: InputMaybe<StringFilter>;
+};
+
+export type DevotionalEmailSettingsSimpleOverrideFilter = {
+  intro?: InputMaybe<StringFilter>;
+  outro?: InputMaybe<StringFilter>;
+};
+
+export type DevotionalEmailSettingsLectioOverrideFilter = {
+  intro?: InputMaybe<StringFilter>;
+  outro?: InputMaybe<StringFilter>;
+};
+
+export type DevotionalEmailSettingsFilter = {
+  senderName?: InputMaybe<StringFilter>;
+  senderEmail?: InputMaybe<StringFilter>;
+  subjectTemplate?: InputMaybe<StringFilter>;
+  intro?: InputMaybe<StringFilter>;
+  outro?: InputMaybe<StringFilter>;
+  brandColor?: InputMaybe<StringFilter>;
+  logoUrl?: InputMaybe<ImageFilter>;
+  footerText?: InputMaybe<StringFilter>;
+  soapOverride?: InputMaybe<DevotionalEmailSettingsSoapOverrideFilter>;
+  simpleOverride?: InputMaybe<DevotionalEmailSettingsSimpleOverrideFilter>;
+  lectioOverride?: InputMaybe<DevotionalEmailSettingsLectioOverrideFilter>;
+};
+
+export type DevotionalEmailSettingsConnectionEdges = {
+  __typename?: 'DevotionalEmailSettingsConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<DevotionalEmailSettings>;
+};
+
+export type DevotionalEmailSettingsConnection = Connection & {
+  __typename?: 'DevotionalEmailSettingsConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<DevotionalEmailSettingsConnectionEdges>>>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument: DocumentNode;
@@ -1283,6 +1464,10 @@ export type Mutation = {
   createNavigation: Navigation;
   updateGiving: Giving;
   createGiving: Giving;
+  updateReadingPlans: ReadingPlans;
+  createReadingPlans: ReadingPlans;
+  updateDevotionalEmailSettings: DevotionalEmailSettings;
+  createDevotionalEmailSettings: DevotionalEmailSettings;
 };
 
 
@@ -1498,6 +1683,30 @@ export type MutationCreateGivingArgs = {
   params: GivingMutation;
 };
 
+
+export type MutationUpdateReadingPlansArgs = {
+  relativePath: Scalars['String']['input'];
+  params: ReadingPlansMutation;
+};
+
+
+export type MutationCreateReadingPlansArgs = {
+  relativePath: Scalars['String']['input'];
+  params: ReadingPlansMutation;
+};
+
+
+export type MutationUpdateDevotionalEmailSettingsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: DevotionalEmailSettingsMutation;
+};
+
+
+export type MutationCreateDevotionalEmailSettingsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: DevotionalEmailSettingsMutation;
+};
+
 export type DocumentUpdateMutation = {
   sermons?: InputMaybe<SermonsMutation>;
   announcements?: InputMaybe<AnnouncementsMutation>;
@@ -1514,6 +1723,8 @@ export type DocumentUpdateMutation = {
   eventsDoc?: InputMaybe<EventsDocMutation>;
   navigation?: InputMaybe<NavigationMutation>;
   giving?: InputMaybe<GivingMutation>;
+  readingPlans?: InputMaybe<ReadingPlansMutation>;
+  devotionalEmailSettings?: InputMaybe<DevotionalEmailSettingsMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -1533,6 +1744,8 @@ export type DocumentMutation = {
   eventsDoc?: InputMaybe<EventsDocMutation>;
   navigation?: InputMaybe<NavigationMutation>;
   giving?: InputMaybe<GivingMutation>;
+  readingPlans?: InputMaybe<ReadingPlansMutation>;
+  devotionalEmailSettings?: InputMaybe<DevotionalEmailSettingsMutation>;
 };
 
 export type SermonsMutation = {
@@ -1680,10 +1893,15 @@ export type SiteAboutMutation = {
   hero?: InputMaybe<SiteAboutHeroMutation>;
 };
 
+export type SiteFeaturesMutation = {
+  devotionals?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type SiteMutation = {
   church?: InputMaybe<SiteChurchMutation>;
   home?: InputMaybe<SiteHomeMutation>;
   about?: InputMaybe<SiteAboutMutation>;
+  features?: InputMaybe<SiteFeaturesMutation>;
 };
 
 export type BeliefsDocBeliefsMutation = {
@@ -1789,6 +2007,54 @@ export type GivingMutation = {
   faq?: InputMaybe<Array<InputMaybe<GivingFaqMutation>>>;
 };
 
+export type ReadingPlansEntriesMutation = {
+  date?: InputMaybe<Scalars['String']['input']>;
+  scriptureReference?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  leaderNotes?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ReadingPlansMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  style?: InputMaybe<Scalars['String']['input']>;
+  defaultTranslation?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['String']['input']>;
+  endDate?: InputMaybe<Scalars['String']['input']>;
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  entries?: InputMaybe<Array<InputMaybe<ReadingPlansEntriesMutation>>>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type DevotionalEmailSettingsSoapOverrideMutation = {
+  intro?: InputMaybe<Scalars['String']['input']>;
+  outro?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DevotionalEmailSettingsSimpleOverrideMutation = {
+  intro?: InputMaybe<Scalars['String']['input']>;
+  outro?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DevotionalEmailSettingsLectioOverrideMutation = {
+  intro?: InputMaybe<Scalars['String']['input']>;
+  outro?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DevotionalEmailSettingsMutation = {
+  senderName?: InputMaybe<Scalars['String']['input']>;
+  senderEmail?: InputMaybe<Scalars['String']['input']>;
+  subjectTemplate?: InputMaybe<Scalars['String']['input']>;
+  intro?: InputMaybe<Scalars['String']['input']>;
+  outro?: InputMaybe<Scalars['String']['input']>;
+  brandColor?: InputMaybe<Scalars['String']['input']>;
+  logoUrl?: InputMaybe<Scalars['String']['input']>;
+  footerText?: InputMaybe<Scalars['String']['input']>;
+  soapOverride?: InputMaybe<DevotionalEmailSettingsSoapOverrideMutation>;
+  simpleOverride?: InputMaybe<DevotionalEmailSettingsSimpleOverrideMutation>;
+  lectioOverride?: InputMaybe<DevotionalEmailSettingsLectioOverrideMutation>;
+};
+
 export type SermonsPartsFragment = { __typename: 'Sermons', title: string, date: string, speaker?: string | null, series?: string | null, scripture?: string | null, book?: string | null, youtubeId?: string | null, audioUrl?: string | null, notesUrl?: string | null, thumbnail?: string | null, body?: any | null };
 
 export type AnnouncementsPartsFragment = { __typename: 'Announcements', title: string, date: string, pinned?: boolean | null, link?: string | null, linkLabel?: string | null, body?: any | null };
@@ -1809,7 +2075,7 @@ export type PrayerRequestsPartsFragment = { __typename: 'PrayerRequests', initia
 
 export type StoryPartsFragment = { __typename: 'Story', body?: any | null };
 
-export type SitePartsFragment = { __typename: 'Site', church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null };
+export type SitePartsFragment = { __typename: 'Site', church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null } | null };
 
 export type BeliefsDocPartsFragment = { __typename: 'BeliefsDoc', beliefs?: Array<{ __typename: 'BeliefsDocBeliefs', title: string, statement?: string | null } | null> | null };
 
@@ -1818,6 +2084,10 @@ export type EventsDocPartsFragment = { __typename: 'EventsDoc', events?: Array<{
 export type NavigationPartsFragment = { __typename: 'Navigation', items?: Array<{ __typename: 'NavigationItems', label: string, href?: string | null, children?: Array<{ __typename: 'NavigationItemsChildren', label?: string | null, href?: string | null } | null> | null } | null> | null };
 
 export type GivingPartsFragment = { __typename: 'Giving', provider?: string | null, displayMode?: string | null, callToAction?: string | null, supportingMessage?: string | null, planningCenter?: { __typename: 'GivingPlanningCenter', subdomain?: string | null } | null, tithely?: { __typename: 'GivingTithely', organizationId?: string | null, formUrl?: string | null } | null, pushpay?: { __typename: 'GivingPushpay', merchantHandle?: string | null } | null, subsplash?: { __typename: 'GivingSubsplash', embedCode?: string | null } | null, stripe?: { __typename: 'GivingStripe', paymentLinkUrl?: string | null } | null, customUrl?: { __typename: 'GivingCustomUrl', url?: string | null, linkText?: string | null } | null, offlineGiving?: { __typename: 'GivingOfflineGiving', enabled?: boolean | null, mailingAddress?: string | null, inPersonInstructions?: string | null, textToGive?: { __typename: 'GivingOfflineGivingTextToGive', enabled?: boolean | null, number?: string | null, keyword?: string | null } | null } | null, faq?: Array<{ __typename: 'GivingFaq', question: string, answer?: string | null } | null> | null };
+
+export type ReadingPlansPartsFragment = { __typename: 'ReadingPlans', title: string, slug: string, style?: string | null, defaultTranslation?: string | null, startDate?: string | null, endDate?: string | null, isActive?: boolean | null, body?: any | null, entries?: Array<{ __typename: 'ReadingPlansEntries', date?: string | null, scriptureReference: string, title?: string | null, leaderNotes?: string | null } | null> | null };
+
+export type DevotionalEmailSettingsPartsFragment = { __typename: 'DevotionalEmailSettings', senderName?: string | null, senderEmail?: string | null, subjectTemplate?: string | null, intro?: string | null, outro?: string | null, brandColor?: string | null, logoUrl?: string | null, footerText?: string | null, soapOverride?: { __typename: 'DevotionalEmailSettingsSoapOverride', intro?: string | null, outro?: string | null } | null, simpleOverride?: { __typename: 'DevotionalEmailSettingsSimpleOverride', intro?: string | null, outro?: string | null } | null, lectioOverride?: { __typename: 'DevotionalEmailSettingsLectioOverride', intro?: string | null, outro?: string | null } | null };
 
 export type SermonsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -2014,7 +2284,7 @@ export type SiteQueryVariables = Exact<{
 }>;
 
 
-export type SiteQuery = { __typename?: 'Query', site: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null } };
+export type SiteQuery = { __typename?: 'Query', site: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null } | null } };
 
 export type SiteConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -2026,7 +2296,7 @@ export type SiteConnectionQueryVariables = Exact<{
 }>;
 
 
-export type SiteConnectionQuery = { __typename?: 'Query', siteConnection: { __typename?: 'SiteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteConnectionEdges', cursor: string, node?: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null } | null } | null> | null } };
+export type SiteConnectionQuery = { __typename?: 'Query', siteConnection: { __typename?: 'SiteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteConnectionEdges', cursor: string, node?: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null } | null } | null } | null> | null } };
 
 export type BeliefsDocQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -2103,6 +2373,44 @@ export type GivingConnectionQueryVariables = Exact<{
 
 
 export type GivingConnectionQuery = { __typename?: 'Query', givingConnection: { __typename?: 'GivingConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'GivingConnectionEdges', cursor: string, node?: { __typename: 'Giving', id: string, provider?: string | null, displayMode?: string | null, callToAction?: string | null, supportingMessage?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, planningCenter?: { __typename: 'GivingPlanningCenter', subdomain?: string | null } | null, tithely?: { __typename: 'GivingTithely', organizationId?: string | null, formUrl?: string | null } | null, pushpay?: { __typename: 'GivingPushpay', merchantHandle?: string | null } | null, subsplash?: { __typename: 'GivingSubsplash', embedCode?: string | null } | null, stripe?: { __typename: 'GivingStripe', paymentLinkUrl?: string | null } | null, customUrl?: { __typename: 'GivingCustomUrl', url?: string | null, linkText?: string | null } | null, offlineGiving?: { __typename: 'GivingOfflineGiving', enabled?: boolean | null, mailingAddress?: string | null, inPersonInstructions?: string | null, textToGive?: { __typename: 'GivingOfflineGivingTextToGive', enabled?: boolean | null, number?: string | null, keyword?: string | null } | null } | null, faq?: Array<{ __typename: 'GivingFaq', question: string, answer?: string | null } | null> | null } | null } | null> | null } };
+
+export type ReadingPlansQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type ReadingPlansQuery = { __typename?: 'Query', readingPlans: { __typename: 'ReadingPlans', id: string, title: string, slug: string, style?: string | null, defaultTranslation?: string | null, startDate?: string | null, endDate?: string | null, isActive?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, entries?: Array<{ __typename: 'ReadingPlansEntries', date?: string | null, scriptureReference: string, title?: string | null, leaderNotes?: string | null } | null> | null } };
+
+export type ReadingPlansConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<ReadingPlansFilter>;
+}>;
+
+
+export type ReadingPlansConnectionQuery = { __typename?: 'Query', readingPlansConnection: { __typename?: 'ReadingPlansConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ReadingPlansConnectionEdges', cursor: string, node?: { __typename: 'ReadingPlans', id: string, title: string, slug: string, style?: string | null, defaultTranslation?: string | null, startDate?: string | null, endDate?: string | null, isActive?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, entries?: Array<{ __typename: 'ReadingPlansEntries', date?: string | null, scriptureReference: string, title?: string | null, leaderNotes?: string | null } | null> | null } | null } | null> | null } };
+
+export type DevotionalEmailSettingsQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type DevotionalEmailSettingsQuery = { __typename?: 'Query', devotionalEmailSettings: { __typename: 'DevotionalEmailSettings', id: string, senderName?: string | null, senderEmail?: string | null, subjectTemplate?: string | null, intro?: string | null, outro?: string | null, brandColor?: string | null, logoUrl?: string | null, footerText?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, soapOverride?: { __typename: 'DevotionalEmailSettingsSoapOverride', intro?: string | null, outro?: string | null } | null, simpleOverride?: { __typename: 'DevotionalEmailSettingsSimpleOverride', intro?: string | null, outro?: string | null } | null, lectioOverride?: { __typename: 'DevotionalEmailSettingsLectioOverride', intro?: string | null, outro?: string | null } | null } };
+
+export type DevotionalEmailSettingsConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<DevotionalEmailSettingsFilter>;
+}>;
+
+
+export type DevotionalEmailSettingsConnectionQuery = { __typename?: 'Query', devotionalEmailSettingsConnection: { __typename?: 'DevotionalEmailSettingsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DevotionalEmailSettingsConnectionEdges', cursor: string, node?: { __typename: 'DevotionalEmailSettings', id: string, senderName?: string | null, senderEmail?: string | null, subjectTemplate?: string | null, intro?: string | null, outro?: string | null, brandColor?: string | null, logoUrl?: string | null, footerText?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, soapOverride?: { __typename: 'DevotionalEmailSettingsSoapOverride', intro?: string | null, outro?: string | null } | null, simpleOverride?: { __typename: 'DevotionalEmailSettingsSimpleOverride', intro?: string | null, outro?: string | null } | null, lectioOverride?: { __typename: 'DevotionalEmailSettingsLectioOverride', intro?: string | null, outro?: string | null } | null } | null } | null> | null } };
 
 export const SermonsPartsFragmentDoc = gql`
     fragment SermonsParts on Sermons {
@@ -2266,6 +2574,10 @@ export const SitePartsFragmentDoc = gql`
       headline
     }
   }
+  features {
+    __typename
+    devotionals
+  }
 }
     `;
 export const BeliefsDocPartsFragmentDoc = gql`
@@ -2362,6 +2674,54 @@ export const GivingPartsFragmentDoc = gql`
     __typename
     question
     answer
+  }
+}
+    `;
+export const ReadingPlansPartsFragmentDoc = gql`
+    fragment ReadingPlansParts on ReadingPlans {
+  __typename
+  title
+  slug
+  style
+  defaultTranslation
+  startDate
+  endDate
+  isActive
+  entries {
+    __typename
+    date
+    scriptureReference
+    title
+    leaderNotes
+  }
+  body
+}
+    `;
+export const DevotionalEmailSettingsPartsFragmentDoc = gql`
+    fragment DevotionalEmailSettingsParts on DevotionalEmailSettings {
+  __typename
+  senderName
+  senderEmail
+  subjectTemplate
+  intro
+  outro
+  brandColor
+  logoUrl
+  footerText
+  soapOverride {
+    __typename
+    intro
+    outro
+  }
+  simpleOverride {
+    __typename
+    intro
+    outro
+  }
+  lectioOverride {
+    __typename
+    intro
+    outro
   }
 }
     `;
@@ -3220,6 +3580,120 @@ export const GivingConnectionDocument = gql`
   }
 }
     ${GivingPartsFragmentDoc}`;
+export const ReadingPlansDocument = gql`
+    query readingPlans($relativePath: String!) {
+  readingPlans(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...ReadingPlansParts
+  }
+}
+    ${ReadingPlansPartsFragmentDoc}`;
+export const ReadingPlansConnectionDocument = gql`
+    query readingPlansConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ReadingPlansFilter) {
+  readingPlansConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...ReadingPlansParts
+      }
+    }
+  }
+}
+    ${ReadingPlansPartsFragmentDoc}`;
+export const DevotionalEmailSettingsDocument = gql`
+    query devotionalEmailSettings($relativePath: String!) {
+  devotionalEmailSettings(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...DevotionalEmailSettingsParts
+  }
+}
+    ${DevotionalEmailSettingsPartsFragmentDoc}`;
+export const DevotionalEmailSettingsConnectionDocument = gql`
+    query devotionalEmailSettingsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: DevotionalEmailSettingsFilter) {
+  devotionalEmailSettingsConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...DevotionalEmailSettingsParts
+      }
+    }
+  }
+}
+    ${DevotionalEmailSettingsPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -3312,6 +3786,18 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     givingConnection(variables?: GivingConnectionQueryVariables, options?: C): Promise<{data: GivingConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GivingConnectionQueryVariables, query: string}> {
         return requester<{data: GivingConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GivingConnectionQueryVariables, query: string}, GivingConnectionQueryVariables>(GivingConnectionDocument, variables, options);
+      },
+    readingPlans(variables: ReadingPlansQueryVariables, options?: C): Promise<{data: ReadingPlansQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ReadingPlansQueryVariables, query: string}> {
+        return requester<{data: ReadingPlansQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ReadingPlansQueryVariables, query: string}, ReadingPlansQueryVariables>(ReadingPlansDocument, variables, options);
+      },
+    readingPlansConnection(variables?: ReadingPlansConnectionQueryVariables, options?: C): Promise<{data: ReadingPlansConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ReadingPlansConnectionQueryVariables, query: string}> {
+        return requester<{data: ReadingPlansConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ReadingPlansConnectionQueryVariables, query: string}, ReadingPlansConnectionQueryVariables>(ReadingPlansConnectionDocument, variables, options);
+      },
+    devotionalEmailSettings(variables: DevotionalEmailSettingsQueryVariables, options?: C): Promise<{data: DevotionalEmailSettingsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DevotionalEmailSettingsQueryVariables, query: string}> {
+        return requester<{data: DevotionalEmailSettingsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DevotionalEmailSettingsQueryVariables, query: string}, DevotionalEmailSettingsQueryVariables>(DevotionalEmailSettingsDocument, variables, options);
+      },
+    devotionalEmailSettingsConnection(variables?: DevotionalEmailSettingsConnectionQueryVariables, options?: C): Promise<{data: DevotionalEmailSettingsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DevotionalEmailSettingsConnectionQueryVariables, query: string}> {
+        return requester<{data: DevotionalEmailSettingsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DevotionalEmailSettingsConnectionQueryVariables, query: string}, DevotionalEmailSettingsConnectionQueryVariables>(DevotionalEmailSettingsConnectionDocument, variables, options);
       }
     };
   }

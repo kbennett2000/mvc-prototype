@@ -1,4 +1,11 @@
 {
-  "_note": "List of Google accounts permitted to sign in to the custom admin pages (/admin/devotionals, /admin/digest) when Site Settings → Admin Authentication is set to 'Google sign-in'. This file is committed to your repo so you have a git history of who had access and when. Edit via the CMS (Admin Access collection) or by hand. Email must EXACTLY match the address on the Google account. The ADMIN_ALLOWLIST environment variable can also add emails — useful for the initial bootstrap when this list is still empty.",
-  "admins": []
+  "_note": "Add Google account emails for everyone who should have admin access. The ADMIN_ALLOWLIST env var also works as a fallback during initial setup. To add a new admin: they sign in with Google once (will see access-denied), then someone with existing access adds them here. They must sign out and back in for their access to take effect.",
+  "admins": [
+    {
+      "email": "kbennett2000@gmail.com",
+      "role": "admin",
+      "addedAt": "2026-05-15T00:00:00.000Z",
+      "note": "Site owner / Kris"
+    }
+  ]
 }

@@ -232,15 +232,67 @@ Before enabling devotionals or digest in production, do ONE of:
 
 
 
-      [ ] Before launching the new site, upload the church logo to 
-    /public/images/mvc-logo.png and update logoUrl in both 
-    digest-settings.json and devotional-email-settings.json to 
+      [ ] Before launching the new site, upload the church logo to
+    /public/images/mvc-logo.png and update logoUrl in both
+    digest-settings.json and devotional-email-settings.json to
     point at the deployed Vercel URL (https://mvckiowa.com/images/
-    mvc-logo.png once the domain is migrated). Don't rely on the 
+    mvc-logo.png once the domain is migrated). Don't rely on the
     Jetpack/wp.com CDN long-term.
 
 
 
+GOOGLE OAUTH SETUP CHECKLIST (added 2026-05-15)
+
+The Google Auth cherry-pick brought NEW admin authentication
+capability to MVC. Currently configured for "basic" mode to
+preserve existing behavior (HTTP basic auth with ADMIN_PASSWORD
+env var). To upgrade to Google OAuth for production:
+
+[ ] Create a Google Cloud project for MVC at
+    console.cloud.google.com (separate from any other project —
+    dedicated to MVC's production deployment)
+[ ] Configure OAuth consent screen:
+    - App name: "Majestic View Church Admin"
+    - User type: External
+    - Test users: emails of pastoral staff who need admin access
+    - Add support and developer contact emails
+[ ] Create OAuth credentials (Web application) with these
+    redirect URIs:
+    - http://localhost:3000/api/auth/callback/google (dev)
+    - https://mvckiowa.com/api/auth/callback/google (production
+      once domain is migrated to Vercel)
+    - Any Vercel preview URL if testing on previews first
+[ ] Save the Client ID and Client Secret somewhere safe
+    (password manager, NOT the repo)
+[ ] Add these env vars to Vercel project settings (Production
+    and Preview scopes):
+    - AUTH_SECRET (generate fresh with openssl rand -base64 32 —
+      DIFFERENT value than dev)
+    - AUTH_URL (the production URL once it's live)
+    - GOOGLE_CLIENT_ID
+    - GOOGLE_CLIENT_SECRET
+    - ADMIN_ALLOWLIST (optional bootstrap fallback — set this on
+      initial deploy so you can sign in and add CMS admins, then
+      remove)
+[ ] Update content/admin-access.json with all pastoral staff
+    emails who need admin access
+[ ] Flip content/site.json adminAuth.provider from "basic" to
+    "google"
+[ ] Deploy or test locally: sign-in flow should redirect to
+    Google, allowlisted emails should access admin, others should
+    see the friendly denied page
+
+KNOWN BOOTSTRAP GOTCHA — document this when training admin
+users: if someone signs in BEFORE being added to the allowlist,
+their JWT gets stamped with isAdmin=false. They'll keep seeing
+the access-denied page even after being added until they
+explicitly sign out and back in. Worth a one-line note on the
+"adding a new admin" doc.
+
+Until this checklist is complete, MVC's custom admin pages
+(/admin/devotionals and /admin/digest) use HTTP Basic Auth via
+ADMIN_PASSWORD env var. Functional but limited (single shared
+credential, browser-native dialog).
 
 
     

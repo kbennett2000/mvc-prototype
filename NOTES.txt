@@ -48,3 +48,81 @@ Needs church confirmation before launch:
   these are the actual available funds in Planning Center
 - Offline mailing address: "620 Commanche St, Kiowa, CO 80117" — verify
   this is the correct mailing address for checks
+
+
+DEVOTIONAL EMAIL — IMPORTANT DISTINCTION
+-----------------------------------------
+features.devotionals = true (already set) enables the PUBLIC UI:
+  - /devotionals page and plan pages
+  - Admin collections in TinaCMS (reading plans, email settings)
+  - Subscribe form on the devotionals page
+
+The ACTUAL EMAIL SENDING requires separate operational setup before
+it will work (see Launch Checklist below). Do NOT announce the email
+subscription feature to the congregation until ALL items in the
+technical setup section below are complete.
+
+Sender email NOTE: devotionals@mvckiowa.com is configured as the
+sender address. This domain must be authenticated in Resend (SPF,
+DKIM, DMARC DNS records) before any emails will deliver. Until then,
+emails will either fail or land in spam.
+
+
+DEVOTIONAL EMAIL LAUNCH CHECKLIST (do NOT activate until all confirmed)
+------------------------------------------------------------------------
+
+Content decisions (need church confirmation):
+[ ] Confirm MVC's preferred Bible translation (KJV is current default —
+    free public domain, no API key needed. ESV/NIV/NLT require API keys
+    and licensing — register at api.esv.org or biblia.com and set
+    BIBLE_API_KEY in Vercel environment variables.)
+[ ] Get the ACTUAL May 2026 SOAP reading plan from pastoral leadership.
+    IMPORTANT: The current entries (Psalms 121–150, May 1–30) are
+    INFERRED from a 3-day sample (Psalm 124 on May 4, 125 on May 5,
+    126 on May 6). The actual plan may differ — do NOT activate
+    isActive: true until leadership confirms the entry list.
+[ ] Confirm whether May 31 needs an additional passage or the plan
+    ends May 30. (The Psalter ends at Psalm 150 on May 30; May 31
+    has no assigned reading in the current draft.)
+[ ] Confirm the SOAP framework wording the church wants in emails.
+    (Current soapOverride.intro is a plain placeholder — pastoral
+    team may want specific language or journaling prompts here.)
+[ ] Get leadership approval on email design — send a test render via
+    the /admin/devotionals/preview/soap route before go-live.
+[ ] Confirm sender email address (devotionals@mvckiowa.com vs another).
+[ ] Confirm CAN-SPAM footer text and mailing address are accurate.
+    (Current: "620 Commanche St, Kiowa, CO 80117" and "303-491-4339"
+    — verify this is the correct address and number for CAN-SPAM.)
+
+Technical setup (required before activation):
+[ ] Provision Vercel Postgres (or chosen alternative) and set
+    DATABASE_URL in Vercel project Settings → Environment Variables.
+[ ] Run database migrations: npm run db:migrate (or npx drizzle-kit push)
+    after DATABASE_URL is configured.
+[ ] Authenticate sending domain in Resend: add SPF, DKIM, and DMARC
+    DNS records for mvckiowa.com. See Resend dashboard → Domains.
+[ ] Verify devotionals@mvckiowa.com in Resend dashboard.
+[ ] Generate a CRON_SECRET (random string) and set it in Vercel
+    project Settings → Environment Variables. This secures the
+    /api/cron/devotionals endpoint from unauthorized triggers.
+[ ] Set RESEND_API_KEY in Vercel environment variables (may already
+    be set from the contact form — confirm it's present).
+[ ] If using a paid translation: register and set BIBLE_API_KEY.
+[ ] Test the cron endpoint manually:
+    curl -X POST https://mvckiowa.com/api/cron/devotionals \
+      -H "Authorization: Bearer YOUR_CRON_SECRET"
+[ ] Verify vercel.json cron schedule is active in Vercel dashboard
+    (Deployments → Settings → Cron Jobs).
+[ ] Add DATABASE_URL to .env.local for local development once the
+    database is provisioned.
+
+Soft launch (before announcing to congregation):
+[ ] Subscribe self and pastoral staff to the May plan (set isActive: true
+    in the CMS for testing only — do NOT announce publicly yet).
+[ ] Wait for next day's send; verify delivery (and check spam folder).
+[ ] Review email rendering across Gmail, Outlook, Apple Mail.
+[ ] Test unsubscribe and preferences flow end-to-end.
+[ ] Confirm that the reading plan entry list matches what pastoral
+    leadership approved.
+[ ] Set isActive: true on the plan in TinaCMS only after ALL of the
+    above are confirmed and leadership has approved the final content.

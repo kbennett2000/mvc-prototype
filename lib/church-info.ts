@@ -1,4 +1,4 @@
-import { churchData } from "@/content/site";
+import { churchData, features } from "@/content/site";
 import navData from "@/content/navigation.json";
 
 // Church identity data lives in /content/site.json (editable via Decap CMS).
@@ -59,4 +59,6 @@ export const churchInfo = {
   social: churchData.social,
 } as const;
 
-export const nav: NavItem[] = navData.items;
+export const nav: NavItem[] = (navData.items as NavItem[]).filter(
+  (item) => item.href !== "/devotionals" || features?.devotionals
+);

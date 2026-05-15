@@ -38,6 +38,6 @@
     }
   },
   "features": {
-    "devotionals": false
+    "devotionals": true
   }
 }

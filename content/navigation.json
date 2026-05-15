@@ -53,6 +53,10 @@
         {
           "label": "Contact",
           "href": "/connect/contact"
+        },
+        {
+          "label": "Weekly Digest",
+          "href": "/digest"
         }
       ]
     },

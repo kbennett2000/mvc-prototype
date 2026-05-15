@@ -39,6 +39,6 @@
   },
   "features": {
     "devotionals": true,
-    "digest": false
+    "digest": true
   }
 }

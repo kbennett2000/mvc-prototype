@@ -126,3 +126,69 @@ Soft launch (before announcing to congregation):
     leadership approved.
 [ ] Set isActive: true on the plan in TinaCMS only after ALL of the
     above are confirmed and leadership has approved the final content.
+
+
+WEEKLY DIGEST LAUNCH CHECKLIST (added 2026-05-15)
+--------------------------------------------------
+features.digest = true (already set) enables the PUBLIC UI:
+  - /digest landing page and /digest/subscribe
+  - /digest/archive (past digests)
+  - Admin pages at /admin/digest and /admin/digest/preview
+  - "Weekly Digest" appears under "Connect" in the nav
+  - Digest Email Settings + Pastor's Notes (Digest) collections in TinaCMS
+
+The ACTUAL EMAIL SENDING is gated by digest-settings.json → isEnabled.
+Currently isEnabled: false — the hourly cron will run but skip sending.
+Leadership flips isEnabled to true when they're happy with content.
+
+Initial seed: content/digest-notes/2026-05-11.md is a DRAFT placeholder
+welcome message. Replace the body before launch and flip status to
+"ready" so the send job picks it up.
+
+Content decisions:
+[ ] Get sample pastor's note (content/digest-notes/2026-05-11.md)
+    approved by leadership and flip status: draft → status: ready.
+[ ] Confirm digest send day/time (currently Wed 2pm MT / America/Denver).
+[ ] Decide who has access to the admin preview page
+    (/admin/digest/preview). Middleware-gated — confirm ADMIN_EMAILS or
+    similar env-var allowlist is set in Vercel.
+[ ] Decide how digest interacts with existing subscribers — do we want
+    to add the "digest" tag to all current devotional subscribers
+    automatically, or only opt-in going forward?
+    RECOMMEND: opt-in only. Don't sign people up for new emails without
+    asking. (Current state: existing subscribers were backfilled with
+    only the "devotionals" tag during migration 0001. Nobody has the
+    "digest" tag yet.)
+
+Technical setup:
+[X] Migrations applied (0001 + 0002). Verified subscriber data preserved
+    — kbennett2000@gmail.com, status active, tags=["devotionals"]. The
+    drizzle.__drizzle_migrations table was bootstrapped to stamp 0000 as
+    already applied (the schema was previously set up via drizzle-kit
+    push, which doesn't track migrations). Future migrations will be
+    applied normally via npm run db:migrate.
+[X] vercel.json includes both /api/cron/devotionals and /api/cron/digest
+    (both hourly; digest cron gates on sendDay/sendHour/isEnabled).
+[ ] Confirm CRON_SECRET is set in Vercel (same secret protects both
+    devotional and digest cron endpoints).
+[ ] Confirm RESEND_FROM_EMAIL env var in Vercel — overrides senderEmail
+    in digest-settings.json. Must be on a Resend-verified domain
+    (mvckiowa.com once DNS auth is complete).
+[ ] Test send via /api/admin/digest/send-now with force=true to admin
+    email only (uses CRON_SECRET in Authorization header).
+[ ] Verify preview page at /admin/digest/preview renders correctly with
+    real CMS content (announcements, events lookahead 10 days, most
+    recent sermon, pastor's note in "ready" state).
+
+Soft launch:
+[ ] Flip digest-settings.json → isEnabled: true (via CMS) once content
+    and infrastructure checks above are done.
+[ ] Subscribe self and staff to the "digest" tag — either via
+    /preferences (add digest tag to existing subscription) or via
+    /digest/subscribe with a different email address.
+[ ] Let the cron fire naturally next Wednesday at 2pm MT (or trigger
+    manually first via the admin send-now endpoint).
+[ ] Verify delivery, rendering across Gmail/Outlook/Apple Mail, and the
+    unsubscribe flow (clicking unsubscribe should remove ONLY the
+    "digest" tag, not the "devotionals" tag).
+[ ] Then announce to congregation.

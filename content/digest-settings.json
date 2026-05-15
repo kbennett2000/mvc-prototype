@@ -1,15 +1,15 @@
 {
   "isEnabled": false,
-  "senderName": "Grace Community Church",
-  "senderEmail": "digest@example.church",
-  "subjectTemplate": "{{churchName}} — Week of {{weekStart}}",
+  "senderName": "Majestic View Church",
+  "senderEmail": "",
+  "subjectTemplate": "Majestic View Church — Week of {{weekStart}}",
   "sendDay": "Wednesday",
   "sendHour": 14,
-  "sendTimezone": "America/New_York",
+  "sendTimezone": "America/Denver",
   "eventsLookaheadDays": 10,
   "sermonsLookbackCount": 1,
-  "brandColor": "#1a3c5e",
-  "logoUrl": "",
-  "footerText": "[Replace with your church name and mailing address for CAN-SPAM compliance. Unsubscribe links are included automatically in every email.]",
+  "brandColor": "#465d46",
+  "logoUrl": "https://mvckiowa.com/images/uploads/mvc-transparent-1.jpg",
+  "footerText": "Majestic View Church\n620 Commanche St, Kiowa, CO 80117\n303-491-4339\nYou're receiving this because you subscribed at mvckiowa.com.\nUpdate preferences or unsubscribe using the links below.",
   "introHtml": ""
 }

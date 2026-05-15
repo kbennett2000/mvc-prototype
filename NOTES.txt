@@ -295,4 +295,21 @@ ADMIN_PASSWORD env var. Functional but limited (single shared
 credential, browser-native dialog).
 
 
+    DEPLOYMENT BLOCKERS (resolve before going to production)
+
+[ ] TinaCloud 403 — `tinacms build` fails with "not authorized to 
+    access branch" during the build step. Vercel will fail to deploy 
+    until this is resolved. Options:
+    a) Set up MVC's own TinaCloud project (recommended if using 
+       TinaCloud's hosted CMS auth)
+    b) Switch build script to bypass TinaCloud: 
+       "tinacms build --local --skip-cloud-checks && next build"
+       (simpler, but disables TinaCloud features)
+    c) Investigate why current token has wrong permissions
+[ ] Google OAuth setup checklist (see section above) — only if 
+    flipping from basic to google auth
+[ ] Logo URL — currently points at WordPress (wp.com CDN). Migrate 
+    to a Vercel-hosted copy before WordPress goes away.
+
+
     

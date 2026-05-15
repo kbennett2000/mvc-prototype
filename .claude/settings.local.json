@@ -61,7 +61,22 @@
       "Bash(cp /home/kb/Desktop/Projects/church-site-template/content/digest-settings.json /tmp/digest-bak.json)",
       "Bash(python3 -c ' *)",
       "Bash(pkill -f \"next dev -p 3457\")",
-      "Bash(curl -sI \"https://mvckiowa.com/images/uploads/mvc-transparent-1.jpg\" --max-time 10)"
+      "Bash(curl -sI \"https://mvckiowa.com/images/uploads/mvc-transparent-1.jpg\" --max-time 10)",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype add content/site.json)",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype status)",
+      "Bash(GIT_EDITOR=true git -C /home/kb/Desktop/Projects/mvc-prototype cherry-pick --continue)",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype stash list)",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype stash pop stash@{1})",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype stash show -p stash@{1})",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype checkout HEAD -- tina/__generated__/)",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype add content/admin-access.json NOTES.txt)",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype commit -m ' *)",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype log --oneline -5)",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype stash show -p stash@{0})",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype stash drop stash@{0})",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype diff --stat origin/main..HEAD -- 'content/staff/*' 'content/ministries/*' 'content/sermons/*' 'content/events/*' 'content/announcements/*' 'content/digest-notes/*' 'content/reading-plans/*' 'content/elders/*' 'content/groups/*' 'content/pages/*' 'content/prayer-requests/*' 'content/serve-roles/*' 'content/story/*')",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype diff --name-only origin/main..HEAD -- content/)",
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype log --oneline origin/main..HEAD)"
     ],
     "deny": [
       "Bash(sudo*)",

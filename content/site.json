@@ -40,5 +40,8 @@
   "features": {
     "devotionals": true,
     "digest": true
+  },
+  "adminAuth": {
+    "provider": "basic"
   }
 }

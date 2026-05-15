@@ -32,3 +32,19 @@ git add components/sections/hero.tsx
 
 
 git cherry-pick --continue
+
+
+
+GIVING SYSTEM (added 2026-05-15)
+---------------------------------
+Giving system: Planning Center modal integration live. Test with a real
+(then refunded) donation before going public. Confirm 501(c)(3) status
+language and fund list with MVC leadership.
+
+Needs church confirmation before launch:
+- 501(c)(3) language in giving.json FAQ ("Majestic View Church is a
+  501(c)(3) nonprofit organization") — confirm this is accurate
+- Fund list: giving.json FAQ says "Missions or Building" — confirm
+  these are the actual available funds in Planning Center
+- Offline mailing address: "620 Commanche St, Kiowa, CO 80117" — verify
+  this is the correct mailing address for checks

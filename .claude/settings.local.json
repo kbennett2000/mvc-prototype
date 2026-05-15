@@ -28,7 +28,9 @@
       "Bash(curl -s http://localhost:3000)",
       "Bash(git commit -m ' *)",
       "Bash(git stash *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(python3 -m json.tool)",
+      "Bash(python3 -c \"import json; json.load\\(open\\('package.json'\\)\\); print\\('JSON valid'\\)\")"
     ]
   }
 }

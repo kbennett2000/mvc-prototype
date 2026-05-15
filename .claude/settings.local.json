@@ -30,7 +30,10 @@
       "Bash(git stash *)",
       "Bash(git commit *)",
       "Bash(python3 -m json.tool)",
-      "Bash(python3 -c \"import json; json.load\\(open\\('package.json'\\)\\); print\\('JSON valid'\\)\")"
+      "Bash(python3 -c \"import json; json.load\\(open\\('package.json'\\)\\); print\\('JSON valid'\\)\")",
+      "Bash(GIT_EDITOR=true git cherry-pick --continue)",
+      "Bash(cat /home/kb/Desktop/Projects/church-site-template/.env.local.example && echo \"---\" && cat /home/kb/Desktop/Projects/mvc-prototype/.env.local.example)",
+      "Read(//home/kb/Desktop/Projects/church-site-template/**)"
     ]
   }
 }

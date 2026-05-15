@@ -5,7 +5,7 @@ style: soap
 defaultTranslation: ASV
 startDate: 2026-05-01T00:00:00.000Z
 endDate: 2026-05-30T00:00:00.000Z
-isActive: false
+isActive: true
 entries:
   - date: 2026-05-01T00:00:00.000Z
     scriptureReference: Psalm 121

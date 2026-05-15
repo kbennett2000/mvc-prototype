@@ -10,3 +10,4 @@ dist
 .cache
 public/admin/
 .tina/__generated__/
+.vercel

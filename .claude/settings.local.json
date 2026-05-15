@@ -41,7 +41,32 @@
       "Bash(curl -s -X POST http://localhost:3000/api/devotionals/subscribe -H 'Content-Type: application/json' -d '{\"email\":\"kbennett2000@gmail.com\",\"name\":\"Kris\",\"planSlugs\":[\"may-2026-psalms-soap\"],\"timezone\":\"America/New_York\",\"sendHour\":6}' -w '\\\\nHTTP STATUS: %{http_code}\\\\n')",
       "Bash(grep -nE *)",
       "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(24\\).toString\\('base64url'\\)\\)\")",
-      "Bash(git check-ignore *)"
+      "Bash(git check-ignore *)",
+      "Bash(node --check /home/kb/Desktop/Projects/church-site-template/scripts/doctor.js)",
+      "Bash(mkdir -p /home/kb/Desktop/Projects/church-site-template/components/digest)",
+      "Bash(ps -p 420674 -o pid,ppid,cmd)",
+      "Bash(kill 420674)",
+      "Bash(ps -p 420874 -o pid,ppid,cmd)",
+      "Bash(pstree -p 420874)",
+      "Bash(kill 420874)"
+    ],
+    "deny": [
+      "Bash(sudo*)",
+      "Bash(curl * | sh)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Read(**/*secret*)",
+      "Read(**/.ssh/**)"
+    ],
+    "ask": [
+      "Bash(git push*)",
+      "Bash(git reset*)",
+      "Bash(git rebase*)",
+      "Bash(rm*)"
+    ],
+    "additionalDirectories": [
+      "/home/kb/Desktop/Projects/church-site-template/components",
+      "/tmp"
     ]
   }
 }

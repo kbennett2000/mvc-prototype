@@ -1,108 +1,3 @@
-fragment SermonsParts on Sermons {
-  __typename
-  title
-  date
-  speaker
-  series
-  scripture
-  book
-  youtubeId
-  audioUrl
-  notesUrl
-  thumbnail
-  body
-}
-
-fragment AnnouncementsParts on Announcements {
-  __typename
-  title
-  date
-  pinned
-  link
-  linkLabel
-  body
-}
-
-fragment EldersParts on Elders {
-  __typename
-  name
-  occupation
-  photo
-  order
-  body
-}
-
-fragment StaffParts on Staff {
-  __typename
-  name
-  role
-  email
-  photo
-  order
-  body
-}
-
-fragment MinistriesParts on Ministries {
-  __typename
-  slug
-  title
-  tagline
-  description
-  image
-  whoFor
-  meetings {
-    __typename
-    day
-    time
-    location
-    note
-  }
-  body
-}
-
-fragment GroupsParts on Groups {
-  __typename
-  name
-  day
-  time
-  neighborhood
-  lifeStage
-  leader
-  leaderPhoto
-  description
-  contactEmail
-}
-
-fragment ServeRolesParts on ServeRoles {
-  __typename
-  title
-  team
-  commitment
-  training
-  description
-  icon
-  order
-}
-
-fragment PagesParts on Pages {
-  __typename
-  title
-  description
-  body
-}
-
-fragment PrayerRequestsParts on PrayerRequests {
-  __typename
-  initials
-  date
-  body
-}
-
-fragment StoryParts on Story {
-  __typename
-  body
-}
-
 fragment SiteParts on Site {
   __typename
   church {
@@ -121,11 +16,6 @@ fragment SiteParts on Site {
       state
       zip
     }
-    social {
-      __typename
-      facebook
-      youtube
-    }
     services {
       __typename
       name
@@ -133,6 +23,11 @@ fragment SiteParts on Site {
       time
       note
       primary
+    }
+    social {
+      __typename
+      facebook
+      youtube
     }
   }
   home {
@@ -156,7 +51,26 @@ fragment SiteParts on Site {
   }
 }
 
-fragment BeliefsDocParts on BeliefsDoc {
+fragment NavigationParts on Navigation {
+  __typename
+  items {
+    __typename
+    label
+    href
+    children {
+      __typename
+      label
+      href
+    }
+  }
+}
+
+fragment StoryParts on Story {
+  __typename
+  body
+}
+
+fragment BeliefsParts on Beliefs {
   __typename
   beliefs {
     __typename
@@ -165,7 +79,7 @@ fragment BeliefsDocParts on BeliefsDoc {
   }
 }
 
-fragment EventsDocParts on EventsDoc {
+fragment EventsParts on Events {
   __typename
   events {
     __typename
@@ -179,23 +93,110 @@ fragment EventsDocParts on EventsDoc {
       __typename
       kind
       dayOfWeek
-      n
+      nth
     }
   }
 }
 
-fragment NavigationParts on Navigation {
+fragment PagesParts on Pages {
   __typename
-  items {
+  title
+  description
+  body
+}
+
+fragment StaffParts on Staff {
+  __typename
+  name
+  role
+  email
+  photo
+  order
+  body
+}
+
+fragment EldersParts on Elders {
+  __typename
+  name
+  photo
+  order
+  body
+}
+
+fragment MinistriesParts on Ministries {
+  __typename
+  slug
+  title
+  tagline
+  description
+  image
+  whoFor
+  meetings {
     __typename
-    label
-    href
-    children {
-      __typename
-      label
-      href
-    }
+    day
+    time
+    location
+    note
   }
+  whatToExpect
+  leader {
+    __typename
+    name
+    role
+    email
+    photo
+  }
+  body
+}
+
+fragment SermonsParts on Sermons {
+  __typename
+  title
+  series
+  speaker
+  date
+  scripture
+  book
+  youtubeId
+  thumbnail
+  audioUrl
+  notesUrl
+  body
+}
+
+fragment AnnouncementsParts on Announcements {
+  __typename
+  title
+  date
+  expires
+  pinned
+  link
+  linkLabel
+  body
+}
+
+fragment GroupsParts on Groups {
+  __typename
+  name
+  day
+  time
+  neighborhood
+  lifeStage
+  leader
+  leaderPhoto
+  description
+  contactEmail
+}
+
+fragment Serve_rolesParts on Serve_roles {
+  __typename
+  title
+  team
+  commitment
+  training
+  description
+  icon
+  order
 }
 
 fragment GivingParts on Giving {
@@ -247,6 +248,13 @@ fragment GivingParts on Giving {
     question
     answer
   }
+}
+
+fragment Prayer_requestsParts on Prayer_requests {
+  __typename
+  initials
+  date
+  body
 }
 
 fragment ReadingPlansParts on ReadingPlans {

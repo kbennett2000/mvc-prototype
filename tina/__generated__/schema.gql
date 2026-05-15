@@ -54,36 +54,36 @@ type Query {
   collections: [Collection!]!
   node(id: String): Node!
   document(collection: String, relativePath: String): DocumentNode!
+  site(relativePath: String): Site!
+  siteConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: SiteFilter): SiteConnection!
+  navigation(relativePath: String): Navigation!
+  navigationConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: NavigationFilter): NavigationConnection!
+  story(relativePath: String): Story!
+  storyConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: StoryFilter): StoryConnection!
+  beliefs(relativePath: String): Beliefs!
+  beliefsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: BeliefsFilter): BeliefsConnection!
+  events(relativePath: String): Events!
+  eventsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: EventsFilter): EventsConnection!
+  pages(relativePath: String): Pages!
+  pagesConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PagesFilter): PagesConnection!
+  staff(relativePath: String): Staff!
+  staffConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: StaffFilter): StaffConnection!
+  elders(relativePath: String): Elders!
+  eldersConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: EldersFilter): EldersConnection!
+  ministries(relativePath: String): Ministries!
+  ministriesConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: MinistriesFilter): MinistriesConnection!
   sermons(relativePath: String): Sermons!
   sermonsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: SermonsFilter): SermonsConnection!
   announcements(relativePath: String): Announcements!
   announcementsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: AnnouncementsFilter): AnnouncementsConnection!
-  elders(relativePath: String): Elders!
-  eldersConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: EldersFilter): EldersConnection!
-  staff(relativePath: String): Staff!
-  staffConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: StaffFilter): StaffConnection!
-  ministries(relativePath: String): Ministries!
-  ministriesConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: MinistriesFilter): MinistriesConnection!
   groups(relativePath: String): Groups!
   groupsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: GroupsFilter): GroupsConnection!
-  serveRoles(relativePath: String): ServeRoles!
-  serveRolesConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ServeRolesFilter): ServeRolesConnection!
-  pages(relativePath: String): Pages!
-  pagesConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PagesFilter): PagesConnection!
-  prayerRequests(relativePath: String): PrayerRequests!
-  prayerRequestsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PrayerRequestsFilter): PrayerRequestsConnection!
-  story(relativePath: String): Story!
-  storyConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: StoryFilter): StoryConnection!
-  site(relativePath: String): Site!
-  siteConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: SiteFilter): SiteConnection!
-  beliefsDoc(relativePath: String): BeliefsDoc!
-  beliefsDocConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: BeliefsDocFilter): BeliefsDocConnection!
-  eventsDoc(relativePath: String): EventsDoc!
-  eventsDocConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: EventsDocFilter): EventsDocConnection!
-  navigation(relativePath: String): Navigation!
-  navigationConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: NavigationFilter): NavigationConnection!
+  serve_roles(relativePath: String): Serve_roles!
+  serve_rolesConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: Serve_rolesFilter): Serve_rolesConnection!
   giving(relativePath: String): Giving!
   givingConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: GivingFilter): GivingConnection!
+  prayer_requests(relativePath: String): Prayer_requests!
+  prayer_requestsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: Prayer_requestsFilter): Prayer_requestsConnection!
   readingPlans(relativePath: String): ReadingPlans!
   readingPlansConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ReadingPlansFilter): ReadingPlansConnection!
   devotionalEmailSettings(relativePath: String): DevotionalEmailSettings!
@@ -95,21 +95,21 @@ type Query {
 }
 
 input DocumentFilter {
+  site: SiteFilter
+  navigation: NavigationFilter
+  story: StoryFilter
+  beliefs: BeliefsFilter
+  events: EventsFilter
+  pages: PagesFilter
+  staff: StaffFilter
+  elders: EldersFilter
+  ministries: MinistriesFilter
   sermons: SermonsFilter
   announcements: AnnouncementsFilter
-  elders: EldersFilter
-  staff: StaffFilter
-  ministries: MinistriesFilter
   groups: GroupsFilter
-  serveRoles: ServeRolesFilter
-  pages: PagesFilter
-  prayerRequests: PrayerRequestsFilter
-  story: StoryFilter
-  site: SiteFilter
-  beliefsDoc: BeliefsDocFilter
-  eventsDoc: EventsDocFilter
-  navigation: NavigationFilter
+  serve_roles: Serve_rolesFilter
   giving: GivingFilter
+  prayer_requests: Prayer_requestsFilter
   readingPlans: ReadingPlansFilter
   devotionalEmailSettings: DevotionalEmailSettingsFilter
   digestSettings: DigestSettingsFilter
@@ -139,382 +139,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Sermons | Announcements | Elders | Staff | Ministries | Groups | ServeRoles | Pages | PrayerRequests | Story | Site | BeliefsDoc | EventsDoc | Navigation | Giving | ReadingPlans | DevotionalEmailSettings | DigestSettings | DigestNotes | Folder
-
-type Sermons implements Node & Document {
-  title: String!
-  date: String!
-  speaker: String
-  series: String
-  scripture: String
-  book: String
-  youtubeId: String
-  audioUrl: String
-  notesUrl: String
-  thumbnail: String
-  body: JSON
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input StringFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
-input DatetimeFilter {
-  after: String
-  before: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
-input ImageFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
-input RichTextFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-}
-
-input SermonsFilter {
-  title: StringFilter
-  date: DatetimeFilter
-  speaker: StringFilter
-  series: StringFilter
-  scripture: StringFilter
-  book: StringFilter
-  youtubeId: StringFilter
-  audioUrl: StringFilter
-  notesUrl: StringFilter
-  thumbnail: ImageFilter
-  body: RichTextFilter
-}
-
-type SermonsConnectionEdges {
-  cursor: String!
-  node: Sermons
-}
-
-type SermonsConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [SermonsConnectionEdges]
-}
-
-type Announcements implements Node & Document {
-  title: String!
-  date: String!
-  pinned: Boolean
-  link: String
-  linkLabel: String
-  body: JSON
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input BooleanFilter {
-  eq: Boolean
-  exists: Boolean
-}
-
-input AnnouncementsFilter {
-  title: StringFilter
-  date: DatetimeFilter
-  pinned: BooleanFilter
-  link: StringFilter
-  linkLabel: StringFilter
-  body: RichTextFilter
-}
-
-type AnnouncementsConnectionEdges {
-  cursor: String!
-  node: Announcements
-}
-
-type AnnouncementsConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [AnnouncementsConnectionEdges]
-}
-
-type Elders implements Node & Document {
-  name: String!
-  occupation: String
-  photo: String
-  order: Float
-  body: JSON
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input NumberFilter {
-  lt: Float
-  lte: Float
-  gte: Float
-  gt: Float
-  eq: Float
-  exists: Boolean
-  in: [Float]
-}
-
-input EldersFilter {
-  name: StringFilter
-  occupation: StringFilter
-  photo: ImageFilter
-  order: NumberFilter
-  body: RichTextFilter
-}
-
-type EldersConnectionEdges {
-  cursor: String!
-  node: Elders
-}
-
-type EldersConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [EldersConnectionEdges]
-}
-
-type Staff implements Node & Document {
-  name: String!
-  role: String
-  email: String
-  photo: String
-  order: Float
-  body: JSON
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input StaffFilter {
-  name: StringFilter
-  role: StringFilter
-  email: StringFilter
-  photo: ImageFilter
-  order: NumberFilter
-  body: RichTextFilter
-}
-
-type StaffConnectionEdges {
-  cursor: String!
-  node: Staff
-}
-
-type StaffConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [StaffConnectionEdges]
-}
-
-type MinistriesMeetings {
-  day: String
-  time: String
-  location: String
-  note: String
-}
-
-type Ministries implements Node & Document {
-  slug: String
-  title: String!
-  tagline: String
-  description: String
-  image: String
-  whoFor: String
-  meetings: [MinistriesMeetings]
-  body: JSON
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input MinistriesMeetingsFilter {
-  day: StringFilter
-  time: StringFilter
-  location: StringFilter
-  note: StringFilter
-}
-
-input MinistriesFilter {
-  slug: StringFilter
-  title: StringFilter
-  tagline: StringFilter
-  description: StringFilter
-  image: ImageFilter
-  whoFor: StringFilter
-  meetings: MinistriesMeetingsFilter
-  body: RichTextFilter
-}
-
-type MinistriesConnectionEdges {
-  cursor: String!
-  node: Ministries
-}
-
-type MinistriesConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [MinistriesConnectionEdges]
-}
-
-type Groups implements Node & Document {
-  name: String!
-  day: String
-  time: String
-  neighborhood: String
-  lifeStage: String
-  leader: String
-  leaderPhoto: String
-  description: String
-  contactEmail: String
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input GroupsFilter {
-  name: StringFilter
-  day: StringFilter
-  time: StringFilter
-  neighborhood: StringFilter
-  lifeStage: StringFilter
-  leader: StringFilter
-  leaderPhoto: ImageFilter
-  description: StringFilter
-  contactEmail: StringFilter
-}
-
-type GroupsConnectionEdges {
-  cursor: String!
-  node: Groups
-}
-
-type GroupsConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [GroupsConnectionEdges]
-}
-
-type ServeRoles implements Node & Document {
-  title: String!
-  team: String
-  commitment: String
-  training: String
-  description: String
-  icon: String
-  order: Float
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input ServeRolesFilter {
-  title: StringFilter
-  team: StringFilter
-  commitment: StringFilter
-  training: StringFilter
-  description: StringFilter
-  icon: StringFilter
-  order: NumberFilter
-}
-
-type ServeRolesConnectionEdges {
-  cursor: String!
-  node: ServeRoles
-}
-
-type ServeRolesConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [ServeRolesConnectionEdges]
-}
-
-type Pages implements Node & Document {
-  title: String!
-  description: String
-  body: JSON
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input PagesFilter {
-  title: StringFilter
-  description: StringFilter
-  body: RichTextFilter
-}
-
-type PagesConnectionEdges {
-  cursor: String!
-  node: Pages
-}
-
-type PagesConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [PagesConnectionEdges]
-}
-
-type PrayerRequests implements Node & Document {
-  initials: String!
-  date: String
-  body: JSON
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input PrayerRequestsFilter {
-  initials: StringFilter
-  date: DatetimeFilter
-  body: RichTextFilter
-}
-
-type PrayerRequestsConnectionEdges {
-  cursor: String!
-  node: PrayerRequests
-}
-
-type PrayerRequestsConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [PrayerRequestsConnectionEdges]
-}
-
-type Story implements Node & Document {
-  body: JSON
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input StoryFilter {
-  body: RichTextFilter
-}
-
-type StoryConnectionEdges {
-  cursor: String!
-  node: Story
-}
-
-type StoryConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [StoryConnectionEdges]
-}
+union DocumentNode = Site | Navigation | Story | Beliefs | Events | Pages | Staff | Elders | Ministries | Sermons | Announcements | Groups | Serve_roles | Giving | Prayer_requests | ReadingPlans | DevotionalEmailSettings | DigestSettings | DigestNotes | Folder
 
 type SiteChurchAddress {
   street: String
@@ -523,17 +148,17 @@ type SiteChurchAddress {
   zip: String
 }
 
-type SiteChurchSocial {
-  facebook: String
-  youtube: String
-}
-
 type SiteChurchServices {
   name: String
   day: String
   time: String
   note: String
   primary: Boolean
+}
+
+type SiteChurchSocial {
+  facebook: String
+  youtube: String
 }
 
 type SiteChurch {
@@ -545,8 +170,8 @@ type SiteChurch {
   email: String
   officeHours: String
   address: SiteChurchAddress
-  social: SiteChurchSocial
   services: [SiteChurchServices]
+  social: SiteChurchSocial
 }
 
 type SiteHomeHero {
@@ -580,6 +205,20 @@ type Site implements Node & Document {
   _values: JSON!
 }
 
+input StringFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input ImageFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
 input SiteChurchAddressFilter {
   street: StringFilter
   city: StringFilter
@@ -587,9 +226,9 @@ input SiteChurchAddressFilter {
   zip: StringFilter
 }
 
-input SiteChurchSocialFilter {
-  facebook: StringFilter
-  youtube: StringFilter
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
 }
 
 input SiteChurchServicesFilter {
@@ -598,6 +237,11 @@ input SiteChurchServicesFilter {
   time: StringFilter
   note: StringFilter
   primary: BooleanFilter
+}
+
+input SiteChurchSocialFilter {
+  facebook: StringFilter
+  youtube: StringFilter
 }
 
 input SiteChurchFilter {
@@ -609,8 +253,8 @@ input SiteChurchFilter {
   email: StringFilter
   officeHours: StringFilter
   address: SiteChurchAddressFilter
-  social: SiteChurchSocialFilter
   services: SiteChurchServicesFilter
+  social: SiteChurchSocialFilter
 }
 
 input SiteHomeHeroFilter {
@@ -652,99 +296,13 @@ type SiteConnection implements Connection {
   edges: [SiteConnectionEdges]
 }
 
-type BeliefsDocBeliefs {
-  title: String!
-  statement: String
-}
-
-type BeliefsDoc implements Node & Document {
-  beliefs: [BeliefsDocBeliefs]
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input BeliefsDocBeliefsFilter {
-  title: StringFilter
-  statement: StringFilter
-}
-
-input BeliefsDocFilter {
-  beliefs: BeliefsDocBeliefsFilter
-}
-
-type BeliefsDocConnectionEdges {
-  cursor: String!
-  node: BeliefsDoc
-}
-
-type BeliefsDocConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [BeliefsDocConnectionEdges]
-}
-
-type EventsDocEventsRule {
-  kind: String
-  dayOfWeek: Float
-  n: Float
-}
-
-type EventsDocEvents {
-  id: String
-  title: String!
-  time: String
-  durationMinutes: Float
-  location: String
-  description: String
-  rule: EventsDocEventsRule
-}
-
-type EventsDoc implements Node & Document {
-  events: [EventsDocEvents]
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input EventsDocEventsRuleFilter {
-  kind: StringFilter
-  dayOfWeek: NumberFilter
-  n: NumberFilter
-}
-
-input EventsDocEventsFilter {
-  id: StringFilter
-  title: StringFilter
-  time: StringFilter
-  durationMinutes: NumberFilter
-  location: StringFilter
-  description: StringFilter
-  rule: EventsDocEventsRuleFilter
-}
-
-input EventsDocFilter {
-  events: EventsDocEventsFilter
-}
-
-type EventsDocConnectionEdges {
-  cursor: String!
-  node: EventsDoc
-}
-
-type EventsDocConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [EventsDocConnectionEdges]
-}
-
 type NavigationItemsChildren {
   label: String
   href: String
 }
 
 type NavigationItems {
-  label: String!
+  label: String
   href: String
   children: [NavigationItemsChildren]
 }
@@ -780,6 +338,440 @@ type NavigationConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
   edges: [NavigationConnectionEdges]
+}
+
+type Story implements Node & Document {
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input RichTextFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+}
+
+input StoryFilter {
+  body: RichTextFilter
+}
+
+type StoryConnectionEdges {
+  cursor: String!
+  node: Story
+}
+
+type StoryConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [StoryConnectionEdges]
+}
+
+type BeliefsBeliefs {
+  title: String
+  statement: String
+}
+
+type Beliefs implements Node & Document {
+  beliefs: [BeliefsBeliefs]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input BeliefsBeliefsFilter {
+  title: StringFilter
+  statement: StringFilter
+}
+
+input BeliefsFilter {
+  beliefs: BeliefsBeliefsFilter
+}
+
+type BeliefsConnectionEdges {
+  cursor: String!
+  node: Beliefs
+}
+
+type BeliefsConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [BeliefsConnectionEdges]
+}
+
+type EventsEventsRule {
+  kind: String
+  dayOfWeek: Float
+  nth: Float
+}
+
+type EventsEvents {
+  id: String
+  title: String
+  time: String
+  durationMinutes: Float
+  location: String
+  description: String
+  rule: EventsEventsRule
+}
+
+type Events implements Node & Document {
+  events: [EventsEvents]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input NumberFilter {
+  lt: Float
+  lte: Float
+  gte: Float
+  gt: Float
+  eq: Float
+  exists: Boolean
+  in: [Float]
+}
+
+input EventsEventsRuleFilter {
+  kind: StringFilter
+  dayOfWeek: NumberFilter
+  nth: NumberFilter
+}
+
+input EventsEventsFilter {
+  id: StringFilter
+  title: StringFilter
+  time: StringFilter
+  durationMinutes: NumberFilter
+  location: StringFilter
+  description: StringFilter
+  rule: EventsEventsRuleFilter
+}
+
+input EventsFilter {
+  events: EventsEventsFilter
+}
+
+type EventsConnectionEdges {
+  cursor: String!
+  node: Events
+}
+
+type EventsConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [EventsConnectionEdges]
+}
+
+type Pages implements Node & Document {
+  title: String!
+  description: String
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input PagesFilter {
+  title: StringFilter
+  description: StringFilter
+  body: RichTextFilter
+}
+
+type PagesConnectionEdges {
+  cursor: String!
+  node: Pages
+}
+
+type PagesConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [PagesConnectionEdges]
+}
+
+type Staff implements Node & Document {
+  name: String!
+  role: String
+  email: String
+  photo: String
+  order: Float
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input StaffFilter {
+  name: StringFilter
+  role: StringFilter
+  email: StringFilter
+  photo: ImageFilter
+  order: NumberFilter
+  body: RichTextFilter
+}
+
+type StaffConnectionEdges {
+  cursor: String!
+  node: Staff
+}
+
+type StaffConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [StaffConnectionEdges]
+}
+
+type Elders implements Node & Document {
+  name: String!
+  photo: String
+  order: Float
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input EldersFilter {
+  name: StringFilter
+  photo: ImageFilter
+  order: NumberFilter
+  body: RichTextFilter
+}
+
+type EldersConnectionEdges {
+  cursor: String!
+  node: Elders
+}
+
+type EldersConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [EldersConnectionEdges]
+}
+
+type MinistriesMeetings {
+  day: String
+  time: String
+  location: String
+  note: String
+}
+
+type MinistriesLeader {
+  name: String
+  role: String
+  email: String
+  photo: String
+}
+
+type Ministries implements Node & Document {
+  slug: String
+  title: String!
+  tagline: String
+  description: String
+  image: String
+  whoFor: String
+  meetings: [MinistriesMeetings]
+  whatToExpect: [String]
+  leader: MinistriesLeader
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input MinistriesMeetingsFilter {
+  day: StringFilter
+  time: StringFilter
+  location: StringFilter
+  note: StringFilter
+}
+
+input MinistriesLeaderFilter {
+  name: StringFilter
+  role: StringFilter
+  email: StringFilter
+  photo: ImageFilter
+}
+
+input MinistriesFilter {
+  slug: StringFilter
+  title: StringFilter
+  tagline: StringFilter
+  description: StringFilter
+  image: ImageFilter
+  whoFor: StringFilter
+  meetings: MinistriesMeetingsFilter
+  whatToExpect: StringFilter
+  leader: MinistriesLeaderFilter
+  body: RichTextFilter
+}
+
+type MinistriesConnectionEdges {
+  cursor: String!
+  node: Ministries
+}
+
+type MinistriesConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [MinistriesConnectionEdges]
+}
+
+type Sermons implements Node & Document {
+  title: String!
+  series: String
+  speaker: String
+  date: String
+  scripture: String
+  book: String
+  youtubeId: String
+  thumbnail: String
+  audioUrl: String
+  notesUrl: String
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input DatetimeFilter {
+  after: String
+  before: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input SermonsFilter {
+  title: StringFilter
+  series: StringFilter
+  speaker: StringFilter
+  date: DatetimeFilter
+  scripture: StringFilter
+  book: StringFilter
+  youtubeId: StringFilter
+  thumbnail: ImageFilter
+  audioUrl: StringFilter
+  notesUrl: StringFilter
+  body: RichTextFilter
+}
+
+type SermonsConnectionEdges {
+  cursor: String!
+  node: Sermons
+}
+
+type SermonsConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [SermonsConnectionEdges]
+}
+
+type Announcements implements Node & Document {
+  title: String!
+  date: String
+  expires: String
+  pinned: Boolean
+  link: String
+  linkLabel: String
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input AnnouncementsFilter {
+  title: StringFilter
+  date: DatetimeFilter
+  expires: DatetimeFilter
+  pinned: BooleanFilter
+  link: StringFilter
+  linkLabel: StringFilter
+  body: RichTextFilter
+}
+
+type AnnouncementsConnectionEdges {
+  cursor: String!
+  node: Announcements
+}
+
+type AnnouncementsConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [AnnouncementsConnectionEdges]
+}
+
+type Groups implements Node & Document {
+  name: String!
+  day: String
+  time: String
+  neighborhood: String
+  lifeStage: String
+  leader: String
+  leaderPhoto: String
+  description: String
+  contactEmail: String
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input GroupsFilter {
+  name: StringFilter
+  day: StringFilter
+  time: StringFilter
+  neighborhood: StringFilter
+  lifeStage: StringFilter
+  leader: StringFilter
+  leaderPhoto: ImageFilter
+  description: StringFilter
+  contactEmail: StringFilter
+}
+
+type GroupsConnectionEdges {
+  cursor: String!
+  node: Groups
+}
+
+type GroupsConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [GroupsConnectionEdges]
+}
+
+type Serve_roles implements Node & Document {
+  title: String!
+  team: String
+  commitment: String
+  training: String
+  description: String
+  icon: String
+  order: Float
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input Serve_rolesFilter {
+  title: StringFilter
+  team: StringFilter
+  commitment: StringFilter
+  training: StringFilter
+  description: StringFilter
+  icon: StringFilter
+  order: NumberFilter
+}
+
+type Serve_rolesConnectionEdges {
+  cursor: String!
+  node: Serve_roles
+}
+
+type Serve_rolesConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [Serve_rolesConnectionEdges]
 }
 
 type GivingPlanningCenter {
@@ -912,6 +904,32 @@ type GivingConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
   edges: [GivingConnectionEdges]
+}
+
+type Prayer_requests implements Node & Document {
+  initials: String
+  date: String
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input Prayer_requestsFilter {
+  initials: StringFilter
+  date: DatetimeFilter
+  body: RichTextFilter
+}
+
+type Prayer_requestsConnectionEdges {
+  cursor: String!
+  node: Prayer_requests
+}
+
+type Prayer_requestsConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [Prayer_requestsConnectionEdges]
 }
 
 type ReadingPlansEntries {
@@ -1120,36 +1138,36 @@ type Mutation {
   deleteDocument(collection: String, relativePath: String!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   createFolder(collection: String, relativePath: String!): DocumentNode!
+  updateSite(relativePath: String!, params: SiteMutation!): Site!
+  createSite(relativePath: String!, params: SiteMutation!): Site!
+  updateNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
+  createNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
+  updateStory(relativePath: String!, params: StoryMutation!): Story!
+  createStory(relativePath: String!, params: StoryMutation!): Story!
+  updateBeliefs(relativePath: String!, params: BeliefsMutation!): Beliefs!
+  createBeliefs(relativePath: String!, params: BeliefsMutation!): Beliefs!
+  updateEvents(relativePath: String!, params: EventsMutation!): Events!
+  createEvents(relativePath: String!, params: EventsMutation!): Events!
+  updatePages(relativePath: String!, params: PagesMutation!): Pages!
+  createPages(relativePath: String!, params: PagesMutation!): Pages!
+  updateStaff(relativePath: String!, params: StaffMutation!): Staff!
+  createStaff(relativePath: String!, params: StaffMutation!): Staff!
+  updateElders(relativePath: String!, params: EldersMutation!): Elders!
+  createElders(relativePath: String!, params: EldersMutation!): Elders!
+  updateMinistries(relativePath: String!, params: MinistriesMutation!): Ministries!
+  createMinistries(relativePath: String!, params: MinistriesMutation!): Ministries!
   updateSermons(relativePath: String!, params: SermonsMutation!): Sermons!
   createSermons(relativePath: String!, params: SermonsMutation!): Sermons!
   updateAnnouncements(relativePath: String!, params: AnnouncementsMutation!): Announcements!
   createAnnouncements(relativePath: String!, params: AnnouncementsMutation!): Announcements!
-  updateElders(relativePath: String!, params: EldersMutation!): Elders!
-  createElders(relativePath: String!, params: EldersMutation!): Elders!
-  updateStaff(relativePath: String!, params: StaffMutation!): Staff!
-  createStaff(relativePath: String!, params: StaffMutation!): Staff!
-  updateMinistries(relativePath: String!, params: MinistriesMutation!): Ministries!
-  createMinistries(relativePath: String!, params: MinistriesMutation!): Ministries!
   updateGroups(relativePath: String!, params: GroupsMutation!): Groups!
   createGroups(relativePath: String!, params: GroupsMutation!): Groups!
-  updateServeRoles(relativePath: String!, params: ServeRolesMutation!): ServeRoles!
-  createServeRoles(relativePath: String!, params: ServeRolesMutation!): ServeRoles!
-  updatePages(relativePath: String!, params: PagesMutation!): Pages!
-  createPages(relativePath: String!, params: PagesMutation!): Pages!
-  updatePrayerRequests(relativePath: String!, params: PrayerRequestsMutation!): PrayerRequests!
-  createPrayerRequests(relativePath: String!, params: PrayerRequestsMutation!): PrayerRequests!
-  updateStory(relativePath: String!, params: StoryMutation!): Story!
-  createStory(relativePath: String!, params: StoryMutation!): Story!
-  updateSite(relativePath: String!, params: SiteMutation!): Site!
-  createSite(relativePath: String!, params: SiteMutation!): Site!
-  updateBeliefsDoc(relativePath: String!, params: BeliefsDocMutation!): BeliefsDoc!
-  createBeliefsDoc(relativePath: String!, params: BeliefsDocMutation!): BeliefsDoc!
-  updateEventsDoc(relativePath: String!, params: EventsDocMutation!): EventsDoc!
-  createEventsDoc(relativePath: String!, params: EventsDocMutation!): EventsDoc!
-  updateNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
-  createNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
+  updateServe_roles(relativePath: String!, params: Serve_rolesMutation!): Serve_roles!
+  createServe_roles(relativePath: String!, params: Serve_rolesMutation!): Serve_roles!
   updateGiving(relativePath: String!, params: GivingMutation!): Giving!
   createGiving(relativePath: String!, params: GivingMutation!): Giving!
+  updatePrayer_requests(relativePath: String!, params: Prayer_requestsMutation!): Prayer_requests!
+  createPrayer_requests(relativePath: String!, params: Prayer_requestsMutation!): Prayer_requests!
   updateReadingPlans(relativePath: String!, params: ReadingPlansMutation!): ReadingPlans!
   createReadingPlans(relativePath: String!, params: ReadingPlansMutation!): ReadingPlans!
   updateDevotionalEmailSettings(relativePath: String!, params: DevotionalEmailSettingsMutation!): DevotionalEmailSettings!
@@ -1161,21 +1179,21 @@ type Mutation {
 }
 
 input DocumentUpdateMutation {
+  site: SiteMutation
+  navigation: NavigationMutation
+  story: StoryMutation
+  beliefs: BeliefsMutation
+  events: EventsMutation
+  pages: PagesMutation
+  staff: StaffMutation
+  elders: EldersMutation
+  ministries: MinistriesMutation
   sermons: SermonsMutation
   announcements: AnnouncementsMutation
-  elders: EldersMutation
-  staff: StaffMutation
-  ministries: MinistriesMutation
   groups: GroupsMutation
-  serveRoles: ServeRolesMutation
-  pages: PagesMutation
-  prayerRequests: PrayerRequestsMutation
-  story: StoryMutation
-  site: SiteMutation
-  beliefsDoc: BeliefsDocMutation
-  eventsDoc: EventsDocMutation
-  navigation: NavigationMutation
+  serve_roles: Serve_rolesMutation
   giving: GivingMutation
+  prayer_requests: Prayer_requestsMutation
   readingPlans: ReadingPlansMutation
   devotionalEmailSettings: DevotionalEmailSettingsMutation
   digestSettings: DigestSettingsMutation
@@ -1184,121 +1202,25 @@ input DocumentUpdateMutation {
 }
 
 input DocumentMutation {
+  site: SiteMutation
+  navigation: NavigationMutation
+  story: StoryMutation
+  beliefs: BeliefsMutation
+  events: EventsMutation
+  pages: PagesMutation
+  staff: StaffMutation
+  elders: EldersMutation
+  ministries: MinistriesMutation
   sermons: SermonsMutation
   announcements: AnnouncementsMutation
-  elders: EldersMutation
-  staff: StaffMutation
-  ministries: MinistriesMutation
   groups: GroupsMutation
-  serveRoles: ServeRolesMutation
-  pages: PagesMutation
-  prayerRequests: PrayerRequestsMutation
-  story: StoryMutation
-  site: SiteMutation
-  beliefsDoc: BeliefsDocMutation
-  eventsDoc: EventsDocMutation
-  navigation: NavigationMutation
+  serve_roles: Serve_rolesMutation
   giving: GivingMutation
+  prayer_requests: Prayer_requestsMutation
   readingPlans: ReadingPlansMutation
   devotionalEmailSettings: DevotionalEmailSettingsMutation
   digestSettings: DigestSettingsMutation
   digestNotes: DigestNotesMutation
-}
-
-input SermonsMutation {
-  title: String
-  date: String
-  speaker: String
-  series: String
-  scripture: String
-  book: String
-  youtubeId: String
-  audioUrl: String
-  notesUrl: String
-  thumbnail: String
-  body: JSON
-}
-
-input AnnouncementsMutation {
-  title: String
-  date: String
-  pinned: Boolean
-  link: String
-  linkLabel: String
-  body: JSON
-}
-
-input EldersMutation {
-  name: String
-  occupation: String
-  photo: String
-  order: Float
-  body: JSON
-}
-
-input StaffMutation {
-  name: String
-  role: String
-  email: String
-  photo: String
-  order: Float
-  body: JSON
-}
-
-input MinistriesMeetingsMutation {
-  day: String
-  time: String
-  location: String
-  note: String
-}
-
-input MinistriesMutation {
-  slug: String
-  title: String
-  tagline: String
-  description: String
-  image: String
-  whoFor: String
-  meetings: [MinistriesMeetingsMutation]
-  body: JSON
-}
-
-input GroupsMutation {
-  name: String
-  day: String
-  time: String
-  neighborhood: String
-  lifeStage: String
-  leader: String
-  leaderPhoto: String
-  description: String
-  contactEmail: String
-}
-
-input ServeRolesMutation {
-  title: String
-  team: String
-  commitment: String
-  training: String
-  description: String
-  icon: String
-  order: Float
-}
-
-input PagesMutation {
-  title: String
-  description: String
-  body: JSON
-}
-
-input PrayerRequestsMutation {
-  initials: String
-  date: String
-  body: JSON
-}
-
-input StoryMutation {
-  body: JSON
 }
 
 input SiteChurchAddressMutation {
@@ -1308,17 +1230,17 @@ input SiteChurchAddressMutation {
   zip: String
 }
 
-input SiteChurchSocialMutation {
-  facebook: String
-  youtube: String
-}
-
 input SiteChurchServicesMutation {
   name: String
   day: String
   time: String
   note: String
   primary: Boolean
+}
+
+input SiteChurchSocialMutation {
+  facebook: String
+  youtube: String
 }
 
 input SiteChurchMutation {
@@ -1330,8 +1252,8 @@ input SiteChurchMutation {
   email: String
   officeHours: String
   address: SiteChurchAddressMutation
-  social: SiteChurchSocialMutation
   services: [SiteChurchServicesMutation]
+  social: SiteChurchSocialMutation
 }
 
 input SiteHomeHeroMutation {
@@ -1362,35 +1284,6 @@ input SiteMutation {
   features: SiteFeaturesMutation
 }
 
-input BeliefsDocBeliefsMutation {
-  title: String
-  statement: String
-}
-
-input BeliefsDocMutation {
-  beliefs: [BeliefsDocBeliefsMutation]
-}
-
-input EventsDocEventsRuleMutation {
-  kind: String
-  dayOfWeek: Float
-  n: Float
-}
-
-input EventsDocEventsMutation {
-  id: String
-  title: String
-  time: String
-  durationMinutes: Float
-  location: String
-  description: String
-  rule: EventsDocEventsRuleMutation
-}
-
-input EventsDocMutation {
-  events: [EventsDocEventsMutation]
-}
-
 input NavigationItemsChildrenMutation {
   label: String
   href: String
@@ -1404,6 +1297,134 @@ input NavigationItemsMutation {
 
 input NavigationMutation {
   items: [NavigationItemsMutation]
+}
+
+input StoryMutation {
+  body: JSON
+}
+
+input BeliefsBeliefsMutation {
+  title: String
+  statement: String
+}
+
+input BeliefsMutation {
+  beliefs: [BeliefsBeliefsMutation]
+}
+
+input EventsEventsRuleMutation {
+  kind: String
+  dayOfWeek: Float
+  nth: Float
+}
+
+input EventsEventsMutation {
+  id: String
+  title: String
+  time: String
+  durationMinutes: Float
+  location: String
+  description: String
+  rule: EventsEventsRuleMutation
+}
+
+input EventsMutation {
+  events: [EventsEventsMutation]
+}
+
+input PagesMutation {
+  title: String
+  description: String
+  body: JSON
+}
+
+input StaffMutation {
+  name: String
+  role: String
+  email: String
+  photo: String
+  order: Float
+  body: JSON
+}
+
+input EldersMutation {
+  name: String
+  photo: String
+  order: Float
+  body: JSON
+}
+
+input MinistriesMeetingsMutation {
+  day: String
+  time: String
+  location: String
+  note: String
+}
+
+input MinistriesLeaderMutation {
+  name: String
+  role: String
+  email: String
+  photo: String
+}
+
+input MinistriesMutation {
+  slug: String
+  title: String
+  tagline: String
+  description: String
+  image: String
+  whoFor: String
+  meetings: [MinistriesMeetingsMutation]
+  whatToExpect: [String]
+  leader: MinistriesLeaderMutation
+  body: JSON
+}
+
+input SermonsMutation {
+  title: String
+  series: String
+  speaker: String
+  date: String
+  scripture: String
+  book: String
+  youtubeId: String
+  thumbnail: String
+  audioUrl: String
+  notesUrl: String
+  body: JSON
+}
+
+input AnnouncementsMutation {
+  title: String
+  date: String
+  expires: String
+  pinned: Boolean
+  link: String
+  linkLabel: String
+  body: JSON
+}
+
+input GroupsMutation {
+  name: String
+  day: String
+  time: String
+  neighborhood: String
+  lifeStage: String
+  leader: String
+  leaderPhoto: String
+  description: String
+  contactEmail: String
+}
+
+input Serve_rolesMutation {
+  title: String
+  team: String
+  commitment: String
+  training: String
+  description: String
+  icon: String
+  order: Float
 }
 
 input GivingPlanningCenterMutation {
@@ -1463,6 +1484,12 @@ input GivingMutation {
   customUrl: GivingCustomUrlMutation
   offlineGiving: GivingOfflineGivingMutation
   faq: [GivingFaqMutation]
+}
+
+input Prayer_requestsMutation {
+  initials: String
+  date: String
+  body: JSON
 }
 
 input ReadingPlansEntriesMutation {

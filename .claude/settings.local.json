@@ -76,7 +76,8 @@
       "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype stash drop stash@{0})",
       "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype diff --stat origin/main..HEAD -- 'content/staff/*' 'content/ministries/*' 'content/sermons/*' 'content/events/*' 'content/announcements/*' 'content/digest-notes/*' 'content/reading-plans/*' 'content/elders/*' 'content/groups/*' 'content/pages/*' 'content/prayer-requests/*' 'content/serve-roles/*' 'content/story/*')",
       "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype diff --name-only origin/main..HEAD -- content/)",
-      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype log --oneline origin/main..HEAD)"
+      "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype log --oneline origin/main..HEAD)",
+      "Bash(node -e \"const p = require\\('./package.json'\\); console.log\\(JSON.stringify\\(p.scripts, null, 2\\)\\);\")"
     ],
     "deny": [
       "Bash(sudo*)",

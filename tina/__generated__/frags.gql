@@ -8,8 +8,8 @@ fragment SermonsParts on Sermons {
   book
   youtubeId
   audioUrl
-  notesUrl
   thumbnail
+  notes
   body
 }
 

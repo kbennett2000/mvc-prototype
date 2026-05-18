@@ -153,8 +153,8 @@ type Sermons implements Node & Document {
   book: String
   youtubeId: String
   audioUrl: String
-  notesUrl: String
   thumbnail: String
+  notes: JSON
   body: JSON
   id: ID!
   _sys: SystemInfo!
@@ -198,8 +198,8 @@ input SermonsFilter {
   book: StringFilter
   youtubeId: StringFilter
   audioUrl: StringFilter
-  notesUrl: StringFilter
   thumbnail: ImageFilter
+  notes: RichTextFilter
   body: RichTextFilter
 }
 
@@ -1267,8 +1267,8 @@ input SermonsMutation {
   book: String
   youtubeId: String
   audioUrl: String
-  notesUrl: String
   thumbnail: String
+  notes: JSON
   body: JSON
 }
 

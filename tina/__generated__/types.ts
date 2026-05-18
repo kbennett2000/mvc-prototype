@@ -517,8 +517,8 @@ export type Sermons = Node & Document & {
   book?: Maybe<Scalars['String']['output']>;
   youtubeId?: Maybe<Scalars['String']['output']>;
   audioUrl?: Maybe<Scalars['String']['output']>;
-  notesUrl?: Maybe<Scalars['String']['output']>;
   thumbnail?: Maybe<Scalars['String']['output']>;
+  notes?: Maybe<Scalars['JSON']['output']>;
   body?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
@@ -562,8 +562,8 @@ export type SermonsFilter = {
   book?: InputMaybe<StringFilter>;
   youtubeId?: InputMaybe<StringFilter>;
   audioUrl?: InputMaybe<StringFilter>;
-  notesUrl?: InputMaybe<StringFilter>;
   thumbnail?: InputMaybe<ImageFilter>;
+  notes?: InputMaybe<RichTextFilter>;
   body?: InputMaybe<RichTextFilter>;
 };
 
@@ -1994,8 +1994,8 @@ export type SermonsMutation = {
   book?: InputMaybe<Scalars['String']['input']>;
   youtubeId?: InputMaybe<Scalars['String']['input']>;
   audioUrl?: InputMaybe<Scalars['String']['input']>;
-  notesUrl?: InputMaybe<Scalars['String']['input']>;
   thumbnail?: InputMaybe<Scalars['String']['input']>;
+  notes?: InputMaybe<Scalars['JSON']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
@@ -2333,7 +2333,7 @@ export type DigestNotesMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
-export type SermonsPartsFragment = { __typename: 'Sermons', title: string, date: string, speaker?: string | null, series?: string | null, scripture?: string | null, book?: string | null, youtubeId?: string | null, audioUrl?: string | null, notesUrl?: string | null, thumbnail?: string | null, body?: any | null };
+export type SermonsPartsFragment = { __typename: 'Sermons', title: string, date: string, speaker?: string | null, series?: string | null, scripture?: string | null, book?: string | null, youtubeId?: string | null, audioUrl?: string | null, thumbnail?: string | null, notes?: any | null, body?: any | null };
 
 export type AnnouncementsPartsFragment = { __typename: 'Announcements', title: string, date: string, pinned?: boolean | null, link?: string | null, linkLabel?: string | null, body?: any | null };
 
@@ -2378,7 +2378,7 @@ export type SermonsQueryVariables = Exact<{
 }>;
 
 
-export type SermonsQuery = { __typename?: 'Query', sermons: { __typename: 'Sermons', id: string, title: string, date: string, speaker?: string | null, series?: string | null, scripture?: string | null, book?: string | null, youtubeId?: string | null, audioUrl?: string | null, notesUrl?: string | null, thumbnail?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type SermonsQuery = { __typename?: 'Query', sermons: { __typename: 'Sermons', id: string, title: string, date: string, speaker?: string | null, series?: string | null, scripture?: string | null, book?: string | null, youtubeId?: string | null, audioUrl?: string | null, thumbnail?: string | null, notes?: any | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type SermonsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -2390,7 +2390,7 @@ export type SermonsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type SermonsConnectionQuery = { __typename?: 'Query', sermonsConnection: { __typename?: 'SermonsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SermonsConnectionEdges', cursor: string, node?: { __typename: 'Sermons', id: string, title: string, date: string, speaker?: string | null, series?: string | null, scripture?: string | null, book?: string | null, youtubeId?: string | null, audioUrl?: string | null, notesUrl?: string | null, thumbnail?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type SermonsConnectionQuery = { __typename?: 'Query', sermonsConnection: { __typename?: 'SermonsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SermonsConnectionEdges', cursor: string, node?: { __typename: 'Sermons', id: string, title: string, date: string, speaker?: string | null, series?: string | null, scripture?: string | null, book?: string | null, youtubeId?: string | null, audioUrl?: string | null, thumbnail?: string | null, notes?: any | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type AnnouncementsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -2764,8 +2764,8 @@ export const SermonsPartsFragmentDoc = gql`
   book
   youtubeId
   audioUrl
-  notesUrl
   thumbnail
+  notes
   body
 }
     `;

@@ -6,12 +6,14 @@ import {
   dayOfWeekIndex,
   digestWeekWindow,
   dowOfDate,
-  localHourInZone,
 } from "@/lib/digest/week-helpers";
 
-// Vercel Cron — runs hourly (0 * * * * in vercel.json). We use one shared
-// schedule for all churches; the per-church send day/hour comes from the CMS
-// digest-settings.json file and is checked on each fire.
+// Vercel Cron. The template runs this hourly and gates on both
+// sendDay AND sendHour. MVC runs this daily (Hobby tier limit; see vercel.json),
+// so the hour check has been dropped — we send on the configured day if not
+// already sent this week. The sendHour field in digest-settings.json is
+// therefore unused under MVC's daily schedule. Per-week idempotency
+// (digest_send_log unique on weekStart) prevents double-sends.
 export async function GET(req: NextRequest) {
   const authHeader = req.headers.get("authorization");
   const cronSecret = process.env.CRON_SECRET;
@@ -32,7 +34,6 @@ export async function GET(req: NextRequest) {
   const now = new Date();
   const { weekStart, today } = digestWeekWindow(settings.sendTimezone, now);
   const todayDow = dowOfDate(today);
-  const localHour = localHourInZone(settings.sendTimezone, now);
 
   if (todayDow !== configuredDow) {
     return NextResponse.json({
@@ -42,16 +43,6 @@ export async function GET(req: NextRequest) {
       todayDow,
       configuredDow,
       configuredDayName: settings.sendDay,
-    });
-  }
-
-  if (localHour !== settings.sendHour) {
-    return NextResponse.json({
-      skipped: true,
-      reason: "wrong_hour",
-      today,
-      localHour,
-      configuredHour: settings.sendHour,
     });
   }
 

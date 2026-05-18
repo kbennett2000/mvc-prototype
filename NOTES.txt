@@ -295,10 +295,27 @@ ADMIN_PASSWORD env var. Functional but limited (single shared
 credential, browser-native dialog).
 
 
+CRON SCHEDULE (added 2026-05-18 — MVC-only deviation from template)
+--------------------------------------------------------------------
+MVC uses daily crons (Vercel Hobby tier limit). Devotionals send
+~6 AM Mountain (12:00 UTC; drifts to ~5 AM in winter due to DST —
+acceptable for devotional delivery). Digest sends on its configured
+day if not already sent that week. This is adequate for MVC as a
+single-timezone church. The template repo retains hourly crons for
+multi-timezone churches; do not cherry-pick this MVC cron change
+back to the template.
+
+Implementation notes:
+- vercel.json: devotionals "0 12 * * *", digest "0 20 * * *"
+- app/api/cron/digest/route.ts: hour check removed; only the day
+  check + per-week idempotency gate the send under daily firing.
+  sendHour in content/digest-settings.json is unused on MVC.
+
+
     DEPLOYMENT BLOCKERS (resolve before going to production)
 
-[ ] TinaCloud 403 — `tinacms build` fails with "not authorized to 
-    access branch" during the build step. Vercel will fail to deploy 
+[ ] TinaCloud 403 — `tinacms build` fails with "not authorized to
+    access branch" during the build step. Vercel will fail to deploy
     until this is resolved. Options:
     a) Set up MVC's own TinaCloud project (recommended if using 
        TinaCloud's hosted CMS auth)

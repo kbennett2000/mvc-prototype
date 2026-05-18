@@ -95,16 +95,8 @@
       ]
     },
     {
-      "label": "SOAP",
-      "href": "/pages/s-o-a-p-journaling"
-    },
-    {
       "label": "Calendar",
       "href": "/calendar"
-    },
-    {
-      "label": "Give",
-      "href": "/give"
     }
   ]
 }

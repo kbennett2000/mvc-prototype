@@ -7,6 +7,11 @@
 
 ---
 
+Try the live demo here:
+https://mvc-prototype.vercel.app/
+
+---
+
 ## 🚀 Start here — Use this template
 
 **Click the green "Use this template" button at the top of this page** to create your own copy of this repo under your GitHub account. That gives your church its own independent codebase, ready to customize and deploy.

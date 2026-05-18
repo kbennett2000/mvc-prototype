@@ -1,11 +1,11 @@
 {
-  "//": "MVC runs DAILY crons (Vercel Hobby tier limit). The upstream template uses hourly crons because it supports churches in any timezone; MVC is a single-timezone deployment (Mountain Time, Kiowa CO), so timezone-aware hourly sending is unnecessary. Do NOT cherry-pick this change back to the template.",
   "crons": [
     {
       "path": "/api/cron/devotionals",
       "schedule": "0 12 * * *"
     },
     {
+      "//": "Digest: 20:00 UTC = ~2 PM MDT / ~1 PM MST. The route only fires the send on the configured day-of-week, and is idempotent per week. The exact hour does not matter under a daily schedule (see app/api/cron/digest/route.ts).",
       "path": "/api/cron/digest",
       "schedule": "0 20 * * *"
     }

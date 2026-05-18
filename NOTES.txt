@@ -1,9 +1,3 @@
-auto post to social media accts when content on site changes?
-annoucements display on date / stop displaying date
-weekly announcements email/sms digest?
-
-
-
 SYNC CHANGES
 ------------
 git fetch template
@@ -15,13 +9,7 @@ git cherry-pick a3f9c21
 PUSH!
 
 
-http://localhost:3000/admin/digest/preview
-NNABRRtIjYfJYoN5J57begmRISFu_-X_
-
-
-
-
-
+---------------------------------------------------
 # Same for site.json — keep MVC's version
 git checkout --ours content/site.json
 git add content/site.json
@@ -34,6 +22,10 @@ git add components/sections/hero.tsx
 
 
 git cherry-pick --continue
+
+----------------------------------------------------
+
+
 
 
 
@@ -325,8 +317,119 @@ Implementation notes:
     c) Investigate why current token has wrong permissions
 [ ] Google OAuth setup checklist (see section above) — only if 
     flipping from basic to google auth
-[ ] Logo URL — currently points at WordPress (wp.com CDN). Migrate 
+[ ] Logo URL — currently points at WordPress (wp.com CDN). Migrate
     to a Vercel-hosted copy before WordPress goes away.
 
 
-    
+DEPLOYMENT KNOWLEDGE (learned 2026-05-18)
+------------------------------------------
+
+1. TINACLOUD ↔ GITHUB SYNC GOTCHA (most important)
+   - TinaCloud commits content edits DIRECTLY to the GitHub repo when
+     you save in the admin portal. The admin portal is NOT a staging
+     buffer — saves are pushes.
+   - If you edit content in the admin portal AND edit the same file
+     locally without `git pull` first, git makes a merge commit that
+     can silently revert one side of the change.
+   - RULE: pick ONE editing method per content file. Admin portal OR
+     local edit — never both in the same window.
+   - If you must edit content locally, run `git pull` FIRST to pick
+     up any commits TinaCloud made on your behalf.
+   - After editing in the admin portal, `git pull` locally before any
+     further local work.
+   - Non-issue for the church's non-technical editors (admin portal
+     only). Risk is purely developer-side.
+
+2. TINACLOUD PROJECT CREDENTIALS (MVC-specific)
+   - MVC's TinaCloud Client ID is the one shown at app.tina.io for
+     the project linked to github.com/kbennett2000/mvc-prototype.
+   - Symptom of wrong Client ID: build fails with a 404 "project not
+     found" during `tinacms build`. Cause: using the template's
+     TinaCloud credentials in MVC — they are separate projects.
+   - The Client ID + read-only token must be set in BOTH:
+       a) .env.local (for local production builds)
+       b) Vercel dashboard env vars (for Vercel builds)
+     .env.local is gitignored and is NEVER read by Vercel.
+
+3. TINACLOUD BRANCH INDEXING
+   - Symptom: build fails with "Branch 'main' is not on TinaCloud."
+     Cause: TinaCloud hasn't indexed main yet.
+     Fix: app.tina.io → project → Configuration → Branches → click
+     "Refresh Branches." Indexing takes 30s to a few minutes — wait
+     it out, it is NOT instant.
+   - TinaCloud indexes by reading tina/tina-lock.json from GitHub.
+     That file MUST be committed and pushed for indexing to succeed.
+   - CHERRY-PICK GOTCHA: the standard merge resolution for cherry-
+     picks from the template uses `git checkout --ours` on
+     tina/tina-lock.json and tina/__generated__/*. Those files do
+     NOT auto-regenerate from that resolution. After any schema
+     change or template cherry-pick that touches the schema, run
+     `npm run cms` LOCALLY to regenerate tina-lock.json and the
+     __generated__ files, then commit and push BEFORE deploying.
+     Local dev (`npm run cms`) hides this — it regenerates on the
+     fly. Production (`tinacms build`) reads the committed file.
+
+4. TINACLOUD SITE URLS
+   - Symptom: admin portal save works but production reads/writes
+     fail.
+     Cause: production origin not in TinaCloud's allowed Site URLs.
+     Fix: app.tina.io → project → Configuration → Site URLs. MVC
+     uses the glob `https://*.vercel.app` plus
+     `http://localhost:3000`. If a custom domain is added (e.g.
+     mvckiowa.com), add `https://mvckiowa.com` too. Save
+     Configuration after every change.
+
+5. VERCEL.JSON — NO COMMENT KEYS
+   - Symptom: Vercel build fails with a schema validation error
+     listing an unknown property.
+     Cause: vercel.json contains a `"//": "..."` comment key (or any
+     other non-schema key). Vercel's validator rejects unknown
+     properties — unlike package.json, which tolerates them.
+     Fix: remove all comment keys. vercel.json must contain ONLY
+     valid Vercel config keys. Documentation about cron schedules or
+     any other rationale lives in NOTES.txt, never in vercel.json.
+
+6. MVC CRON SCHEDULE
+   - Vercel Hobby (free) tier allows DAILY crons only — no hourly.
+     MVC's vercel.json uses daily schedules:
+       devotionals: "0 12 * * *"
+       digest:      "0 20 * * *"
+   - The digest route's hour-check was REMOVED so it sends on the
+     configured day if not already sent that week. Reason: DST would
+     otherwise break the hour check in winter under daily firing.
+   - MVC-ONLY change. Do NOT cherry-pick this back to the template —
+     the template stays hourly for multi-timezone churches.
+
+7. ENV VAR LOADING IN BUILDS
+   - Symptom: `npm run build` works in Next.js dev but fails in
+     local production builds with missing-env errors (e.g. TinaCloud
+     Client ID undefined).
+     Cause: `tinacms build` (part of `npm run build`) does NOT auto-
+     load .env.local the way the Next.js dev server does.
+     Fix (local production builds):
+       npx dotenv-cli -e .env.local -- npm run build
+   - Non-issue on Vercel — Vercel injects env vars from the
+     dashboard directly into the build environment.
+
+8. DEBUGGING BUILD FAILURES
+   - Symptom: Vercel build log viewer is truncated and swamped with
+     harmless `npm warn` peer-dependency noise; you can't find the
+     real error.
+     Fix: reproduce locally and tail past the warnings:
+       npx dotenv-cli -e .env.local -- npm run build 2>&1 | tail -50
+     The tail cuts through the npm warning noise to surface the
+     actual failure.
+
+
+SECURITY — ROTATE BEFORE LAUNCH
+--------------------------------
+[ ] TinaCloud read-only token: EXPOSED during the 2026-05-18
+    deployment debugging session (it ended up in chat logs and
+    earlier in this NOTES.txt file). Regenerate it in TinaCloud
+    before the church goes live. After regenerating, update the new
+    value in BOTH:
+      a) .env.local (local builds)
+      b) Vercel project Settings → Environment Variables (production
+         + preview scopes)
+    Procedure: see docs/runbook-rotate-secret.md — that runbook
+    applies directly here.

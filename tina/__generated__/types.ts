@@ -118,6 +118,8 @@ export type Query = {
   devotionalEmailSettingsConnection: DevotionalEmailSettingsConnection;
   digestSettings: DigestSettings;
   digestSettingsConnection: DigestSettingsConnection;
+  adminAccess: AdminAccess;
+  adminAccessConnection: AdminAccessConnection;
   digestNotes: DigestNotes;
   digestNotesConnection: DigestNotesConnection;
 };
@@ -414,6 +416,21 @@ export type QueryDigestSettingsConnectionArgs = {
 };
 
 
+export type QueryAdminAccessArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryAdminAccessConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<AdminAccessFilter>;
+};
+
+
 export type QueryDigestNotesArgs = {
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
@@ -447,6 +464,7 @@ export type DocumentFilter = {
   readingPlans?: InputMaybe<ReadingPlansFilter>;
   devotionalEmailSettings?: InputMaybe<DevotionalEmailSettingsFilter>;
   digestSettings?: InputMaybe<DigestSettingsFilter>;
+  adminAccess?: InputMaybe<AdminAccessFilter>;
   digestNotes?: InputMaybe<DigestNotesFilter>;
 };
 
@@ -487,7 +505,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Sermons | Announcements | Elders | Staff | Ministries | Groups | ServeRoles | Pages | PrayerRequests | Story | Site | BeliefsDoc | EventsDoc | Navigation | Giving | ReadingPlans | DevotionalEmailSettings | DigestSettings | DigestNotes | Folder;
+export type DocumentNode = Sermons | Announcements | Elders | Staff | Ministries | Groups | ServeRoles | Pages | PrayerRequests | Story | Site | BeliefsDoc | EventsDoc | Navigation | Giving | ReadingPlans | DevotionalEmailSettings | DigestSettings | AdminAccess | DigestNotes | Folder;
 
 export type Sermons = Node & Document & {
   __typename?: 'Sermons';
@@ -958,12 +976,18 @@ export type SiteFeatures = {
   digest?: Maybe<Scalars['Boolean']['output']>;
 };
 
+export type SiteAdminAuth = {
+  __typename?: 'SiteAdminAuth';
+  provider?: Maybe<Scalars['String']['output']>;
+};
+
 export type Site = Node & Document & {
   __typename?: 'Site';
   church?: Maybe<SiteChurch>;
   home?: Maybe<SiteHome>;
   about?: Maybe<SiteAbout>;
   features?: Maybe<SiteFeatures>;
+  adminAuth?: Maybe<SiteAdminAuth>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -1023,11 +1047,16 @@ export type SiteFeaturesFilter = {
   digest?: InputMaybe<BooleanFilter>;
 };
 
+export type SiteAdminAuthFilter = {
+  provider?: InputMaybe<StringFilter>;
+};
+
 export type SiteFilter = {
   church?: InputMaybe<SiteChurchFilter>;
   home?: InputMaybe<SiteHomeFilter>;
   about?: InputMaybe<SiteAboutFilter>;
   features?: InputMaybe<SiteFeaturesFilter>;
+  adminAuth?: InputMaybe<SiteAdminAuthFilter>;
 };
 
 export type SiteConnectionEdges = {
@@ -1514,6 +1543,46 @@ export type DigestSettingsConnection = Connection & {
   edges?: Maybe<Array<Maybe<DigestSettingsConnectionEdges>>>;
 };
 
+export type AdminAccessAdmins = {
+  __typename?: 'AdminAccessAdmins';
+  email: Scalars['String']['output'];
+  role?: Maybe<Scalars['String']['output']>;
+  addedAt?: Maybe<Scalars['String']['output']>;
+  addedBy?: Maybe<Scalars['String']['output']>;
+};
+
+export type AdminAccess = Node & Document & {
+  __typename?: 'AdminAccess';
+  admins?: Maybe<Array<Maybe<AdminAccessAdmins>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type AdminAccessAdminsFilter = {
+  email?: InputMaybe<StringFilter>;
+  role?: InputMaybe<StringFilter>;
+  addedAt?: InputMaybe<DatetimeFilter>;
+  addedBy?: InputMaybe<StringFilter>;
+};
+
+export type AdminAccessFilter = {
+  admins?: InputMaybe<AdminAccessAdminsFilter>;
+};
+
+export type AdminAccessConnectionEdges = {
+  __typename?: 'AdminAccessConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<AdminAccess>;
+};
+
+export type AdminAccessConnection = Connection & {
+  __typename?: 'AdminAccessConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<AdminAccessConnectionEdges>>>;
+};
+
 export type DigestNotes = Node & Document & {
   __typename?: 'DigestNotes';
   weekOf: Scalars['String']['output'];
@@ -1590,6 +1659,8 @@ export type Mutation = {
   createDevotionalEmailSettings: DevotionalEmailSettings;
   updateDigestSettings: DigestSettings;
   createDigestSettings: DigestSettings;
+  updateAdminAccess: AdminAccess;
+  createAdminAccess: AdminAccess;
   updateDigestNotes: DigestNotes;
   createDigestNotes: DigestNotes;
 };
@@ -1844,6 +1915,18 @@ export type MutationCreateDigestSettingsArgs = {
 };
 
 
+export type MutationUpdateAdminAccessArgs = {
+  relativePath: Scalars['String']['input'];
+  params: AdminAccessMutation;
+};
+
+
+export type MutationCreateAdminAccessArgs = {
+  relativePath: Scalars['String']['input'];
+  params: AdminAccessMutation;
+};
+
+
 export type MutationUpdateDigestNotesArgs = {
   relativePath: Scalars['String']['input'];
   params: DigestNotesMutation;
@@ -1874,6 +1957,7 @@ export type DocumentUpdateMutation = {
   readingPlans?: InputMaybe<ReadingPlansMutation>;
   devotionalEmailSettings?: InputMaybe<DevotionalEmailSettingsMutation>;
   digestSettings?: InputMaybe<DigestSettingsMutation>;
+  adminAccess?: InputMaybe<AdminAccessMutation>;
   digestNotes?: InputMaybe<DigestNotesMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1897,6 +1981,7 @@ export type DocumentMutation = {
   readingPlans?: InputMaybe<ReadingPlansMutation>;
   devotionalEmailSettings?: InputMaybe<DevotionalEmailSettingsMutation>;
   digestSettings?: InputMaybe<DigestSettingsMutation>;
+  adminAccess?: InputMaybe<AdminAccessMutation>;
   digestNotes?: InputMaybe<DigestNotesMutation>;
 };
 
@@ -2050,11 +2135,16 @@ export type SiteFeaturesMutation = {
   digest?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type SiteAdminAuthMutation = {
+  provider?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type SiteMutation = {
   church?: InputMaybe<SiteChurchMutation>;
   home?: InputMaybe<SiteHomeMutation>;
   about?: InputMaybe<SiteAboutMutation>;
   features?: InputMaybe<SiteFeaturesMutation>;
+  adminAuth?: InputMaybe<SiteAdminAuthMutation>;
 };
 
 export type BeliefsDocBeliefsMutation = {
@@ -2224,6 +2314,17 @@ export type DigestSettingsMutation = {
   introHtml?: InputMaybe<Scalars['JSON']['input']>;
 };
 
+export type AdminAccessAdminsMutation = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  addedAt?: InputMaybe<Scalars['String']['input']>;
+  addedBy?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type AdminAccessMutation = {
+  admins?: InputMaybe<Array<InputMaybe<AdminAccessAdminsMutation>>>;
+};
+
 export type DigestNotesMutation = {
   weekOf?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
@@ -2252,7 +2353,7 @@ export type PrayerRequestsPartsFragment = { __typename: 'PrayerRequests', initia
 
 export type StoryPartsFragment = { __typename: 'Story', body?: any | null };
 
-export type SitePartsFragment = { __typename: 'Site', church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null };
+export type SitePartsFragment = { __typename: 'Site', church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null, adminAuth?: { __typename: 'SiteAdminAuth', provider?: string | null } | null };
 
 export type BeliefsDocPartsFragment = { __typename: 'BeliefsDoc', beliefs?: Array<{ __typename: 'BeliefsDocBeliefs', title: string, statement?: string | null } | null> | null };
 
@@ -2267,6 +2368,8 @@ export type ReadingPlansPartsFragment = { __typename: 'ReadingPlans', title: str
 export type DevotionalEmailSettingsPartsFragment = { __typename: 'DevotionalEmailSettings', senderName?: string | null, senderEmail?: string | null, subjectTemplate?: string | null, intro?: string | null, outro?: string | null, brandColor?: string | null, logoUrl?: string | null, footerText?: string | null, soapOverride?: { __typename: 'DevotionalEmailSettingsSoapOverride', intro?: string | null, outro?: string | null } | null, simpleOverride?: { __typename: 'DevotionalEmailSettingsSimpleOverride', intro?: string | null, outro?: string | null } | null, lectioOverride?: { __typename: 'DevotionalEmailSettingsLectioOverride', intro?: string | null, outro?: string | null } | null };
 
 export type DigestSettingsPartsFragment = { __typename: 'DigestSettings', isEnabled?: boolean | null, senderName?: string | null, senderEmail?: string | null, subjectTemplate?: string | null, sendDay?: string | null, sendHour?: number | null, sendTimezone?: string | null, eventsLookaheadDays?: number | null, sermonsLookbackCount?: number | null, brandColor?: string | null, logoUrl?: string | null, footerText?: string | null, introHtml?: any | null };
+
+export type AdminAccessPartsFragment = { __typename: 'AdminAccess', admins?: Array<{ __typename: 'AdminAccessAdmins', email: string, role?: string | null, addedAt?: string | null, addedBy?: string | null } | null> | null };
 
 export type DigestNotesPartsFragment = { __typename: 'DigestNotes', weekOf: string, title?: string | null, signedBy?: string | null, status: string, body?: any | null };
 
@@ -2465,7 +2568,7 @@ export type SiteQueryVariables = Exact<{
 }>;
 
 
-export type SiteQuery = { __typename?: 'Query', site: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null } };
+export type SiteQuery = { __typename?: 'Query', site: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null, adminAuth?: { __typename: 'SiteAdminAuth', provider?: string | null } | null } };
 
 export type SiteConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -2477,7 +2580,7 @@ export type SiteConnectionQueryVariables = Exact<{
 }>;
 
 
-export type SiteConnectionQuery = { __typename?: 'Query', siteConnection: { __typename?: 'SiteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteConnectionEdges', cursor: string, node?: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null } | null } | null> | null } };
+export type SiteConnectionQuery = { __typename?: 'Query', siteConnection: { __typename?: 'SiteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteConnectionEdges', cursor: string, node?: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null, adminAuth?: { __typename: 'SiteAdminAuth', provider?: string | null } | null } | null } | null> | null } };
 
 export type BeliefsDocQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -2611,6 +2714,25 @@ export type DigestSettingsConnectionQueryVariables = Exact<{
 
 
 export type DigestSettingsConnectionQuery = { __typename?: 'Query', digestSettingsConnection: { __typename?: 'DigestSettingsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DigestSettingsConnectionEdges', cursor: string, node?: { __typename: 'DigestSettings', id: string, isEnabled?: boolean | null, senderName?: string | null, senderEmail?: string | null, subjectTemplate?: string | null, sendDay?: string | null, sendHour?: number | null, sendTimezone?: string | null, eventsLookaheadDays?: number | null, sermonsLookbackCount?: number | null, brandColor?: string | null, logoUrl?: string | null, footerText?: string | null, introHtml?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
+export type AdminAccessQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type AdminAccessQuery = { __typename?: 'Query', adminAccess: { __typename: 'AdminAccess', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, admins?: Array<{ __typename: 'AdminAccessAdmins', email: string, role?: string | null, addedAt?: string | null, addedBy?: string | null } | null> | null } };
+
+export type AdminAccessConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<AdminAccessFilter>;
+}>;
+
+
+export type AdminAccessConnectionQuery = { __typename?: 'Query', adminAccessConnection: { __typename?: 'AdminAccessConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'AdminAccessConnectionEdges', cursor: string, node?: { __typename: 'AdminAccess', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, admins?: Array<{ __typename: 'AdminAccessAdmins', email: string, role?: string | null, addedAt?: string | null, addedBy?: string | null } | null> | null } | null } | null> | null } };
 
 export type DigestNotesQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -2798,6 +2920,10 @@ export const SitePartsFragmentDoc = gql`
     devotionals
     digest
   }
+  adminAuth {
+    __typename
+    provider
+  }
 }
     `;
 export const BeliefsDocPartsFragmentDoc = gql`
@@ -2961,6 +3087,18 @@ export const DigestSettingsPartsFragmentDoc = gql`
   logoUrl
   footerText
   introHtml
+}
+    `;
+export const AdminAccessPartsFragmentDoc = gql`
+    fragment AdminAccessParts on AdminAccess {
+  __typename
+  admins {
+    __typename
+    email
+    role
+    addedAt
+    addedBy
+  }
 }
     `;
 export const DigestNotesPartsFragmentDoc = gql`
@@ -3999,6 +4137,63 @@ export const DigestSettingsConnectionDocument = gql`
   }
 }
     ${DigestSettingsPartsFragmentDoc}`;
+export const AdminAccessDocument = gql`
+    query adminAccess($relativePath: String!) {
+  adminAccess(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...AdminAccessParts
+  }
+}
+    ${AdminAccessPartsFragmentDoc}`;
+export const AdminAccessConnectionDocument = gql`
+    query adminAccessConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: AdminAccessFilter) {
+  adminAccessConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...AdminAccessParts
+      }
+    }
+  }
+}
+    ${AdminAccessPartsFragmentDoc}`;
 export const DigestNotesDocument = gql`
     query digestNotes($relativePath: String!) {
   digestNotes(relativePath: $relativePath) {
@@ -4166,6 +4361,12 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     digestSettingsConnection(variables?: DigestSettingsConnectionQueryVariables, options?: C): Promise<{data: DigestSettingsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DigestSettingsConnectionQueryVariables, query: string}> {
         return requester<{data: DigestSettingsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DigestSettingsConnectionQueryVariables, query: string}, DigestSettingsConnectionQueryVariables>(DigestSettingsConnectionDocument, variables, options);
+      },
+    adminAccess(variables: AdminAccessQueryVariables, options?: C): Promise<{data: AdminAccessQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AdminAccessQueryVariables, query: string}> {
+        return requester<{data: AdminAccessQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AdminAccessQueryVariables, query: string}, AdminAccessQueryVariables>(AdminAccessDocument, variables, options);
+      },
+    adminAccessConnection(variables?: AdminAccessConnectionQueryVariables, options?: C): Promise<{data: AdminAccessConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AdminAccessConnectionQueryVariables, query: string}> {
+        return requester<{data: AdminAccessConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AdminAccessConnectionQueryVariables, query: string}, AdminAccessConnectionQueryVariables>(AdminAccessConnectionDocument, variables, options);
       },
     digestNotes(variables: DigestNotesQueryVariables, options?: C): Promise<{data: DigestNotesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DigestNotesQueryVariables, query: string}> {
         return requester<{data: DigestNotesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DigestNotesQueryVariables, query: string}, DigestNotesQueryVariables>(DigestNotesDocument, variables, options);

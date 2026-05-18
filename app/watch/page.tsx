@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { getAllSermons, getLatestSermon } from "@/content/sermons";
 import { getAllSeries } from "@/content/sermons-series";
 import { churchInfo } from "@/lib/church-info";
+import { findSocial } from "@/lib/social";
 import { WatchArchive } from "@/components/sections/watch-archive";
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ export default function WatchPage() {
   const latestSermon = getLatestSermon();
   const archiveSermons = allSermons.slice(1);
   const hasSeries = getAllSeries().length > 0;
+  const youtubeSocial = findSocial(churchInfo.social, "youtube");
 
   return (
     <>
@@ -188,13 +190,15 @@ export default function WatchPage() {
             </div>
 
             <div className="grid gap-4 self-center">
-              <SubscribeCard
-                icon={Youtube}
-                title="MVC on YouTube"
-                description="Video of every Sunday sermon, plus the weekly livestream."
-                href={churchInfo.social.youtube}
-                cta="Open YouTube"
-              />
+              {youtubeSocial && (
+                <SubscribeCard
+                  icon={Youtube}
+                  title="MVC on YouTube"
+                  description="Video of every Sunday sermon, plus the weekly livestream."
+                  href={youtubeSocial.url}
+                  cta="Open YouTube"
+                />
+              )}
               <SubscribeCard
                 icon={Rss}
                 title="MVC Sermon Podcast"

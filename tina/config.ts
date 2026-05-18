@@ -51,8 +51,16 @@ export default defineConfig({
           { type: "string", name: "book", label: "Book" },
           { type: "string", name: "youtubeId", label: "YouTube ID" },
           { type: "string", name: "audioUrl", label: "Audio URL" },
-          { type: "string", name: "notesUrl", label: "Notes URL" },
           { type: "image", name: "thumbnail", label: "Thumbnail" },
+          {
+            type: "rich-text",
+            name: "notes",
+            label: "Sermon Notes / Outline",
+            ui: {
+              description:
+                "Type or paste the pastor's notes here. They'll display directly on the sermon page — no external link, no download. Pasting from Google Docs or Word usually works; review heavy formatting after pasting. Leave blank if there are no notes.",
+            },
+          },
           { type: "rich-text", name: "body", label: "Notes", isBody: true },
         ],
       },

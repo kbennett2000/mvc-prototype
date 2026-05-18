@@ -6,22 +6,36 @@ time: 10 minutes
 
 # Getting started with the church website editor
 
+Your church adopted a website template, and this guide shows you how to keep it updated.
+
+The good news: you'll do everything in your browser. You won't write code, you won't run terminals, and you can't break the site. Every change goes live automatically after saving — no tech volunteer needs to review it first. By the end of this guide you'll be able to add a sermon, edit a staff bio, change service times, post an announcement, and update the calendar — all in 5–10 clicks each.
+
 **Who this is for:** Church staff who need to update the website — pastors, secretaries, ministry leaders. No coding required.
 **What you'll accomplish:** Log into the website editor for the first time and learn what each section is for.
 **You'll need first:**
-- A free Tina Cloud account (you'll create one in step 2 if you don't have one).
-- A tech volunteer to invite you to the church's Tina Cloud project.
+- Your email address (a Google account works best).
+- Your tech volunteer to add your email address to the CMS — this takes about 2 minutes and only has to happen once.
 - The web address of your church's site, with `/admin/` on the end. For example, `https://yourchurch.org/admin/`.
 
-> **Important:** Before your first login will work, the tech volunteer at your church has to invite your email address in Tina Cloud. If you skip this, you'll see an authorization error when you try to log in. See **Common Mistakes** at the bottom.
+> **Important:** Before your first login will work, the tech volunteer at your church has to add your email to the CMS. If you skip this step, you'll see "Not authorized." See **Common Mistakes** at the bottom.
 
 ## What is this thing I'm logging into?
 
-You're about to use the **CMS** (Content Management System — a fancy term for "the website's editing screen"). Everything you change here ends up on the public website after a tech volunteer reviews it. You'll never see code, type any commands, or break anything that can't be undone.
+You're about to use the **CMS** (Content Management System — a fancy term for "the website's editing screen"). Everything you change here saves directly to the website. You'll never see code, type any commands, or break anything that can't be undone.
 
 ## Steps
 
-### 1. Open the editor in your browser
+### 1. Ask your tech volunteer to invite you
+
+**Tell** your tech volunteer your email address (the one you'll use to log in — a Gmail address works best).
+
+They'll add you in a tool called TinaCloud. You'll receive an invitation email from TinaCloud.
+
+**Check your inbox** for an email with subject like "You've been invited to edit content."
+
+**Click** the link in that email and follow the steps to create your account. You can use **Continue with Google** if you prefer — no new password needed.
+
+### 2. Open the editor in your browser
 
 **Type** your church's web address followed by `/admin/` into your browser's address bar.
 
@@ -29,86 +43,95 @@ For example: `https://yourchurch.org/admin/`
 
 **Press** Enter.
 
-You should now see a TinaCMS login screen with a button labeled **Sign in with Tina Cloud**.
+You should now see a sign-in screen.
 
 ![CMS login screen](/docs/screenshots/editor/getting-started-login.png)
 
-### 2. Create a Tina Cloud account (skip if you already have one)
+### 3. Sign in
 
-Tina Cloud is a free service that handles your editor login. You use it to authenticate with the website's CMS.
+**Click** **Continue with Google** (if you use a Gmail account) or enter your email and password.
 
-**Open** a new browser tab.
+You should now see the CMS dashboard.
 
-**Go to** [app.tina.io](https://app.tina.io).
+![CMS dashboard](/docs/screenshots/editor/getting-started-dashboard.png)
 
-**Click** **Sign up** and fill out the form with your email address (or sign in with GitHub if you prefer).
+### 4. Look around the dashboard
 
-**Write down** the email address you used. You'll send it to your tech volunteer.
+The dashboard shows a list of sections on the left. **The menu on the left is the easiest way to move between sections** — click any section name to jump to it. Stay in this menu for navigation rather than your browser's back button; the back button doesn't always land you somewhere useful inside the editor.
 
-> **Tip:** Use your personal or work email — not a shared church inbox. Your Tina Cloud account is yours.
+Each section is a content type:
 
-### 3. Ask the tech volunteer to invite you
+| Section | What's in it |
+| --- | --- |
+| **Site Settings** | Church name, address, phone, logo, service times |
+| **Sermons** | One entry per sermon — title, date, speaker, video link |
+| **Announcements** | Short posts that appear on the announcements page |
+| **Staff** | Staff bios and photos |
+| **Elders** | Elder bios and photos |
+| **Ministries** | Kids, Youth, Women's, etc. — each gets its own page |
+| **Small Groups** | Groups listed on the Connect page |
+| **Prayer Requests** | Requests on the prayer wall |
+| **Recurring Events** | Events that repeat weekly or monthly |
+| **Custom Pages** | One-off pages added to the site |
 
-**Email or text** your tech volunteer with the email address you used to sign up for Tina Cloud.
+### 5. Make a test change
 
-**Wait** for them to confirm they've added you. This usually takes a few minutes.
+**Click** **Announcements** in the left sidebar.
 
-You'll receive an invitation email from Tina Cloud. **Click** the link in that email to accept the invitation.
+**Click** on an existing announcement.
 
-> **Important:** You must accept the invitation before you can access the editor. Check your spam folder if you don't see it within a few minutes.
+**Change** a word in the body text.
 
-### 4. Sign in with Tina Cloud
+**Click** the blue **Save** button.
 
-**Go back** to the editor tab from step 1 (or reopen `https://yourchurch.org/admin/`).
+A brief confirmation appears near the **Save** button to let you know the change was sent. The form stays open on the screen you were just editing — that's expected and means everything worked. You don't need to click anything else or navigate away to "finish" the save. When you're ready to edit something else, use the menu on the left.
 
-**Click** the **Sign in with Tina Cloud** button.
+Wait about 2 minutes, then **open** your church's public website and check the announcements page. You should see your change.
 
-**Enter** your Tina Cloud email and password (or use the GitHub login if that's how you signed up).
+> **Tip:** If the change doesn't appear after 2 minutes, try a hard refresh in your browser (Ctrl+Shift+R on Windows, Cmd+Shift+R on Mac). The site rebuilds automatically after every save.
 
-You should now be looking at the editor dashboard.
+### 6. Moving around between sections
 
-![CMS dashboard with collections sidebar](/docs/screenshots/editor/getting-started-dashboard.png)
+Use the **menu on the left** any time you want to switch sections — for example, from Announcements to Sermons. Click the section name and you're there.
 
-### 5. Tour the dashboard
+**Tip:** Avoid your browser's **back** button while you're inside the editor. It doesn't always land you on the screen you expect (sometimes it logs you out, sometimes it drops you on a blank dashboard). The left-side menu is the reliable way to move around.
 
-The dashboard is the main screen you'll see every time you log in.
+### 7. Re-sorting a list (your browser remembers)
 
-On the **left sidebar** you'll see a list of **Collections** (categories of things you can edit):
+Several collection screens — Sermons especially — open with the list sorted alphabetically. You can change the sort (for example, sort Sermons by **Date** descending so the newest one is on top) using the sort control at the top of the list, and **your browser remembers your choice** for next time. You only need to set it once on each computer or browser you use. See [Seeing your newest sermons first](./02-add-a-sermon.md#seeing-your-newest-sermons-first) for a worked example.
 
-- **Sermons** — every Sunday's message. You'll add a new entry here each week. See [Add a sermon](./02-add-a-sermon.md).
-- **Announcements** — short bulletin-style notices on the homepage. See [Add an announcement](./09-add-an-announcement.md).
-- **Ministries** — the church's ministries (Kids, Youth, Women's, and so on). Each has its own page.
-- **Staff** — paid pastors and staff. See [Add a staff member](./04-add-a-staff-member.md).
-- **Elders** — the church's elder board.
-- **Site Settings** — church-wide information: name, address, phone, service times, social links. See [Update service times](./05-update-service-times.md).
-- **Beliefs** — the doctrinal statements that appear on the Beliefs page.
-- **Recurring Events** — the weekly and monthly events shown on the calendar. See [Add an event](./06-add-an-event.md).
-- **Pages** — custom pages on the site. See [Edit a page](./03-edit-a-page.md).
-- **Our Story** — the prose paragraph on the About page.
+### 8. Removing one item from a list
 
-### 6. Click around (you can't break anything)
+Some screens — like **Site Settings → Services** or a ministry's **Meeting Times** — have a list of entries. Each entry in the list now has a descriptive label (for example, `Sunday • 10:00 AM • Sunday Worship` instead of a generic `Services Item`) so you can tell them apart at a glance.
 
-**Click** any collection in the left sidebar. **Click** any entry. **Look** at the form. **Click** your browser's Back button to leave without saving.
+To remove one entry:
 
-Until you click **Save**, nothing is committed. Explore freely.
+1. **Read the label** to confirm you're about to remove the right one.
+2. **Click** the entry to expand it.
+3. **Click** the small remove/delete control on that entry (usually a trash icon or "Remove" button at the corner of the expanded item).
+4. **Click** **Save** at the top.
 
-## Common Mistakes
+The descriptive labels are the safety net here — if the label doesn't match what you intended to remove, stop and double-check before deleting.
 
-- **Authorization error after signing in.** The tech volunteer hasn't added your email address to the Tina Cloud project yet. Email them the address you used to sign up for Tina Cloud, wait for the invitation email, and accept it.
-- **The Tina Cloud invitation expired.** Invitations expire after a few days. Ask the tech volunteer to resend it from the Tina Cloud dashboard.
-- **The page at `/admin/` shows "404 Not Found".** Check that you typed the URL correctly — include the trailing slash. If still broken, contact your tech volunteer.
-- **You log in but see no collections.** Your account was invited but the site may not have been redeployed after the CMS was configured. Ask your tech volunteer to check.
+---
 
 ## What's next?
 
-- [Add a sermon](./02-add-a-sermon.md) — the most common task you'll do every week.
-- [Publishing changes](./08-publishing-changes.md) — understand what happens when you click **Publish**.
+- [Add a sermon](./02-add-a-sermon.md) — the most common content task.
+- [Update church info](./03-update-church-info.md) — address, phone, service times.
+- [Manage announcements](./05-manage-announcements.md) — add, edit, and expire announcements.
+
+## Common Mistakes
+
+- **"Not authorized" or login screen keeps refreshing.** Your email hasn't been added yet, or you accepted the invite but used a different email address. Contact your tech volunteer and confirm the exact email they added.
+- **I don't see the invitation email.** Check your spam folder. The email comes from TinaCloud (tina.io). If it's lost, ask your tech volunteer to re-invite you.
+- **I saved a change but the site looks the same.** The site rebuilds automatically but takes 1-3 minutes. Try hard-refreshing the page after waiting a moment.
+- **I can see the dashboard but some sections are missing.** Your tech volunteer may have set limited permissions. Ask them what access level you were given.
 
 ## Stuck?
 
 - [Troubleshooting](./troubleshooting.md) — common problems and fixes.
-- **Ask your church's tech volunteer.** They can sit next to you, share screens, or look over the problem with you. This is your fastest path to help.
-- If you'd rather report something in writing: [open a GitHub issue](https://github.com/your-org/your-repo/issues) (this is the tech-volunteer route — your tech volunteer can help you do it if needed).
+- Open an issue: [GitHub Issues](https://github.com/kbennett2000/church-site-template/issues)
 
 ---
-*Was this helpful? [Tell us how to improve this doc](https://github.com/your-org/your-repo/issues/new?template=docs-feedback.md&title=Feedback:%20Getting%20Started).*
+*Was this helpful? [Tell us how to improve this doc](https://github.com/kbennett2000/church-site-template/issues/new?template=docs-feedback.md&title=Feedback:%20Getting%20Started).*

@@ -3,10 +3,10 @@
     "shortName": "MVC",
     "logo": "/images/uploads/mvc-transparent-1.jpg",
     "name": "Majestic View Church",
-    "social": {
-      "facebook": "https://facebook.com/majesticviewchurch",
-      "youtube": "https://www.youtube.com/@majesticviewchurchlive407"
-    },
+    "social": [
+      { "platform": "facebook", "url": "https://facebook.com/majesticviewchurch" },
+      { "platform": "youtube", "url": "https://www.youtube.com/@majesticviewchurchlive407" }
+    ],
     "phone": "303-491-4339",
     "tagline": "A church for the people of Kiowa and Elbert County.",
     "officeHours": "Mon–Thu",

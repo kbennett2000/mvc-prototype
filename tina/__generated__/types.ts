@@ -923,8 +923,9 @@ export type SiteChurchAddress = {
 
 export type SiteChurchSocial = {
   __typename?: 'SiteChurchSocial';
-  facebook?: Maybe<Scalars['String']['output']>;
-  youtube?: Maybe<Scalars['String']['output']>;
+  platform?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
 };
 
 export type SiteChurchServices = {
@@ -946,7 +947,7 @@ export type SiteChurch = {
   email?: Maybe<Scalars['String']['output']>;
   officeHours?: Maybe<Scalars['String']['output']>;
   address?: Maybe<SiteChurchAddress>;
-  social?: Maybe<SiteChurchSocial>;
+  social?: Maybe<Array<Maybe<SiteChurchSocial>>>;
   services?: Maybe<Array<Maybe<SiteChurchServices>>>;
 };
 
@@ -1001,8 +1002,9 @@ export type SiteChurchAddressFilter = {
 };
 
 export type SiteChurchSocialFilter = {
-  facebook?: InputMaybe<StringFilter>;
-  youtube?: InputMaybe<StringFilter>;
+  platform?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
 };
 
 export type SiteChurchServicesFilter = {
@@ -2089,8 +2091,9 @@ export type SiteChurchAddressMutation = {
 };
 
 export type SiteChurchSocialMutation = {
-  facebook?: InputMaybe<Scalars['String']['input']>;
-  youtube?: InputMaybe<Scalars['String']['input']>;
+  platform?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SiteChurchServicesMutation = {
@@ -2110,7 +2113,7 @@ export type SiteChurchMutation = {
   email?: InputMaybe<Scalars['String']['input']>;
   officeHours?: InputMaybe<Scalars['String']['input']>;
   address?: InputMaybe<SiteChurchAddressMutation>;
-  social?: InputMaybe<SiteChurchSocialMutation>;
+  social?: InputMaybe<Array<InputMaybe<SiteChurchSocialMutation>>>;
   services?: InputMaybe<Array<InputMaybe<SiteChurchServicesMutation>>>;
 };
 
@@ -2353,7 +2356,7 @@ export type PrayerRequestsPartsFragment = { __typename: 'PrayerRequests', initia
 
 export type StoryPartsFragment = { __typename: 'Story', body?: any | null };
 
-export type SitePartsFragment = { __typename: 'Site', church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null, adminAuth?: { __typename: 'SiteAdminAuth', provider?: string | null } | null };
+export type SitePartsFragment = { __typename: 'Site', church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: Array<{ __typename: 'SiteChurchSocial', platform?: string | null, url?: string | null, label?: string | null } | null> | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null, adminAuth?: { __typename: 'SiteAdminAuth', provider?: string | null } | null };
 
 export type BeliefsDocPartsFragment = { __typename: 'BeliefsDoc', beliefs?: Array<{ __typename: 'BeliefsDocBeliefs', title: string, statement?: string | null } | null> | null };
 
@@ -2568,7 +2571,7 @@ export type SiteQueryVariables = Exact<{
 }>;
 
 
-export type SiteQuery = { __typename?: 'Query', site: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null, adminAuth?: { __typename: 'SiteAdminAuth', provider?: string | null } | null } };
+export type SiteQuery = { __typename?: 'Query', site: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: Array<{ __typename: 'SiteChurchSocial', platform?: string | null, url?: string | null, label?: string | null } | null> | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null, adminAuth?: { __typename: 'SiteAdminAuth', provider?: string | null } | null } };
 
 export type SiteConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -2580,7 +2583,7 @@ export type SiteConnectionQueryVariables = Exact<{
 }>;
 
 
-export type SiteConnectionQuery = { __typename?: 'Query', siteConnection: { __typename?: 'SiteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteConnectionEdges', cursor: string, node?: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: { __typename: 'SiteChurchSocial', facebook?: string | null, youtube?: string | null } | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null, adminAuth?: { __typename: 'SiteAdminAuth', provider?: string | null } | null } | null } | null> | null } };
+export type SiteConnectionQuery = { __typename?: 'Query', siteConnection: { __typename?: 'SiteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteConnectionEdges', cursor: string, node?: { __typename: 'Site', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, church?: { __typename: 'SiteChurch', name?: string | null, shortName?: string | null, tagline?: string | null, logo?: string | null, phone?: string | null, email?: string | null, officeHours?: string | null, address?: { __typename: 'SiteChurchAddress', street?: string | null, city?: string | null, state?: string | null, zip?: string | null } | null, social?: Array<{ __typename: 'SiteChurchSocial', platform?: string | null, url?: string | null, label?: string | null } | null> | null, services?: Array<{ __typename: 'SiteChurchServices', name?: string | null, day?: string | null, time?: string | null, note?: string | null, primary?: boolean | null } | null> | null } | null, home?: { __typename: 'SiteHome', hero?: { __typename: 'SiteHomeHero', headline?: string | null } | null } | null, about?: { __typename: 'SiteAbout', hero?: { __typename: 'SiteAboutHero', headline?: string | null } | null } | null, features?: { __typename: 'SiteFeatures', devotionals?: boolean | null, digest?: boolean | null } | null, adminAuth?: { __typename: 'SiteAdminAuth', provider?: string | null } | null } | null } | null> | null } };
 
 export type BeliefsDocQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -2889,8 +2892,9 @@ export const SitePartsFragmentDoc = gql`
     }
     social {
       __typename
-      facebook
-      youtube
+      platform
+      url
+      label
     }
     services {
       __typename

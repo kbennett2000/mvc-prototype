@@ -527,8 +527,9 @@ type SiteChurchAddress {
 }
 
 type SiteChurchSocial {
-  facebook: String
-  youtube: String
+  platform: String
+  url: String
+  label: String
 }
 
 type SiteChurchServices {
@@ -548,7 +549,7 @@ type SiteChurch {
   email: String
   officeHours: String
   address: SiteChurchAddress
-  social: SiteChurchSocial
+  social: [SiteChurchSocial]
   services: [SiteChurchServices]
 }
 
@@ -596,8 +597,9 @@ input SiteChurchAddressFilter {
 }
 
 input SiteChurchSocialFilter {
-  facebook: StringFilter
-  youtube: StringFilter
+  platform: StringFilter
+  url: StringFilter
+  label: StringFilter
 }
 
 input SiteChurchServicesFilter {
@@ -1362,8 +1364,9 @@ input SiteChurchAddressMutation {
 }
 
 input SiteChurchSocialMutation {
-  facebook: String
-  youtube: String
+  platform: String
+  url: String
+  label: String
 }
 
 input SiteChurchServicesMutation {
@@ -1383,7 +1386,7 @@ input SiteChurchMutation {
   email: String
   officeHours: String
   address: SiteChurchAddressMutation
-  social: SiteChurchSocialMutation
+  social: [SiteChurchSocialMutation]
   services: [SiteChurchServicesMutation]
 }
 

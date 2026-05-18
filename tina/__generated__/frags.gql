@@ -123,8 +123,9 @@ fragment SiteParts on Site {
     }
     social {
       __typename
-      facebook
-      youtube
+      platform
+      url
+      label
     }
     services {
       __typename

@@ -1,6 +1,6 @@
 ---
 title: Choosing a Side
-date: 2026-05-18T00:00:00.000Z
+date: 2026-05-17T00:00:00.000Z
 speaker: Pastor John Smith
 series: Victorious in 2026
 scripture: Joshua 3

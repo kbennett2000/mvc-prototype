@@ -3,6 +3,26 @@ import { defineConfig } from "tinacms";
 function slugify(str) {
   return str.toLowerCase().replace(/[^\w\s-]/g, "").replace(/[\s_]+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
 }
+var calendarDateParseImpl = (value) => {
+  if (value == null || value === "") return void 0;
+  if (typeof value === "string") return value.slice(0, 10);
+  const m = value;
+  if (typeof m.utc === "function") return m.utc().format("YYYY-MM-DD");
+  if (typeof m.format === "function") return m.format("YYYY-MM-DD");
+  if (value instanceof Date) {
+    const y = value.getUTCFullYear();
+    const mo = String(value.getUTCMonth() + 1).padStart(2, "0");
+    const d = String(value.getUTCDate()).padStart(2, "0");
+    return `${y}-${mo}-${d}`;
+  }
+  return void 0;
+};
+var calendarDateFormatImpl = (value) => {
+  if (typeof value !== "string" || value.length === 0) return void 0;
+  return value.slice(0, 10);
+};
+var calendarDateParse = calendarDateParseImpl;
+var calendarDateFormat = calendarDateFormatImpl;
 var config_default = defineConfig({
   branch: process.env.GITHUB_BRANCH || "main",
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || "",
@@ -36,7 +56,7 @@ var config_default = defineConfig({
         },
         fields: [
           { type: "string", name: "title", label: "Title", required: true, isTitle: true },
-          { type: "datetime", name: "date", label: "Date", required: true },
+          { type: "datetime", name: "date", label: "Date", required: true, ui: { parse: calendarDateParse, format: calendarDateFormat } },
           { type: "string", name: "speaker", label: "Speaker" },
           { type: "string", name: "series", label: "Series" },
           { type: "string", name: "scripture", label: "Scripture" },
@@ -72,7 +92,7 @@ var config_default = defineConfig({
         },
         fields: [
           { type: "string", name: "title", label: "Title", required: true, isTitle: true },
-          { type: "datetime", name: "date", label: "Date", required: true },
+          { type: "datetime", name: "date", label: "Date", required: true, ui: { parse: calendarDateParse, format: calendarDateFormat } },
           { type: "boolean", name: "pinned", label: "Pinned" },
           { type: "string", name: "link", label: "Link URL" },
           { type: "string", name: "linkLabel", label: "Link Label" },
@@ -256,7 +276,7 @@ var config_default = defineConfig({
         },
         fields: [
           { type: "string", name: "initials", label: "Initials", required: true, isTitle: true },
-          { type: "datetime", name: "date", label: "Date" },
+          { type: "datetime", name: "date", label: "Date", ui: { parse: calendarDateParse, format: calendarDateFormat } },
           { type: "rich-text", name: "body", label: "Request", isBody: true }
         ]
       },
@@ -954,6 +974,8 @@ var config_default = defineConfig({
             label: "Start Date",
             ui: {
               dateFormat: "YYYY-MM-DD",
+              parse: calendarDateParse,
+              format: calendarDateFormat,
               description: "The date of the first entry. Used to display the plan's duration and progress bar."
             }
           },
@@ -963,6 +985,8 @@ var config_default = defineConfig({
             label: "End Date",
             ui: {
               dateFormat: "YYYY-MM-DD",
+              parse: calendarDateParse,
+              format: calendarDateFormat,
               description: "The date of the last entry. Must be on or after the start date."
             }
           },
@@ -1000,6 +1024,8 @@ var config_default = defineConfig({
                 label: "Date",
                 ui: {
                   dateFormat: "YYYY-MM-DD",
+                  parse: calendarDateParse,
+                  format: calendarDateFormat,
                   description: "The date this entry is sent and displayed. Must be unique within this plan."
                 }
               },
@@ -1368,6 +1394,8 @@ var config_default = defineConfig({
                 label: "Added On",
                 ui: {
                   dateFormat: "YYYY-MM-DD",
+                  parse: calendarDateParse,
+                  format: calendarDateFormat,
                   description: "When this person was given access. For audit purposes only."
                 }
               },
@@ -1409,6 +1437,8 @@ var config_default = defineConfig({
             required: true,
             ui: {
               dateFormat: "YYYY-MM-DD",
+              parse: calendarDateParse,
+              format: calendarDateFormat,
               description: "The Monday of the week this note belongs to. Use YYYY-MM-DD format."
             }
           },

@@ -77,7 +77,18 @@
       "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype diff --stat origin/main..HEAD -- 'content/staff/*' 'content/ministries/*' 'content/sermons/*' 'content/events/*' 'content/announcements/*' 'content/digest-notes/*' 'content/reading-plans/*' 'content/elders/*' 'content/groups/*' 'content/pages/*' 'content/prayer-requests/*' 'content/serve-roles/*' 'content/story/*')",
       "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype diff --name-only origin/main..HEAD -- content/)",
       "Bash(git -C /home/kb/Desktop/Projects/mvc-prototype log --oneline origin/main..HEAD)",
-      "Bash(node -e \"const p = require\\('./package.json'\\); console.log\\(JSON.stringify\\(p.scripts, null, 2\\)\\);\")"
+      "Bash(node -e \"const p = require\\('./package.json'\\); console.log\\(JSON.stringify\\(p.scripts, null, 2\\)\\);\")",
+      "Bash(sed -n 's/^[[:space:]]*\\\\\\([A-Z][A-Z0-9_]*\\\\\\)[[:space:]]*=.*/\\\\1\\\\t<comment-context>/p' /home/kb/Desktop/Projects/mvc-prototype/.env.local.example | head -50)",
+      "Bash(grep -RhE '\\(`|\\\\\"\\)https://content\\\\.tinajs\\\\.io' /home/kb/Desktop/Projects/mvc-prototype/node_modules/tinacms/dist)",
+      "Bash(grep -RhEB1 'content\\\\.tinajs\\\\.io' /home/kb/Desktop/Projects/mvc-prototype/node_modules/@tinacms)",
+      "Bash(grep -RhEB2 -A2 'this\\\\.contentApiBase' /home/kb/Desktop/Projects/mvc-prototype/node_modules/tinacms/dist)",
+      "Bash(grep -RhE 'github/[$]\\\\{' /home/kb/Desktop/Projects/mvc-prototype/node_modules/tinacms/dist)",
+      "Bash(grep -RhEA1 'getTinaGraphQLVersion\\\\\\(\\\\\\)' /home/kb/Desktop/Projects/mvc-prototype/node_modules/@tinacms)",
+      "Bash(grep -RhEA8 'getTinaGraphQLVersion\\\\\\(\\\\\\) \\\\{' /home/kb/Desktop/Projects/mvc-prototype/node_modules/@tinacms)",
+      "Bash(grep -RhEA20 'getTinaGraphQLVersion\\\\\\(\\\\\\) \\\\{' /home/kb/Desktop/Projects/mvc-prototype/node_modules/@tinacms/app/dist)",
+      "Bash(node -e 'console.log\\(\"crons[1] keys:\", Object.keys\\(JSON.parse\\(require\\(\"fs\"\\).readFileSync\\(\"vercel.json\",\"utf8\"\\)\\).crons[1]\\).join\\(\",\"\\)\\)')",
+      "Bash(echo \"---exit=$?---\")",
+      "Bash(echo \"npm doctor exit=$?\")"
     ],
     "deny": [
       "Bash(sudo*)",
@@ -95,7 +106,8 @@
     ],
     "additionalDirectories": [
       "/home/kb/Desktop/Projects/church-site-template/components",
-      "/tmp"
+      "/tmp",
+      "/home/kb/Desktop/Projects/mvc-prototype"
     ]
   }
 }

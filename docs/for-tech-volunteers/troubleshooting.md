@@ -12,6 +12,8 @@ time: as needed
 
 > **Tip:** Always run `npm run doctor` first. It catches most setup-time problems and tells you exactly which fix applies.
 
+> **What `npm run doctor` covers:** loads `.env.local` automatically, scans for placeholder/sentinel values (like the Resend sandbox sender), validates `vercel.json` for nested comment keys, and runs live read-only probes against TinaCloud, Resend, and your Postgres database. Add `--quick` to skip the network probes (static checks only), or `--fix-env` to scaffold a missing `.env.local` from the template (never overwrites an existing file).
+
 ---
 
 ## Setup script problems

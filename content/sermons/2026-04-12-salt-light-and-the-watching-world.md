@@ -5,7 +5,7 @@ date: 2026-04-12T00:00:00.000Z
 speaker: Pastor Nathan Smith (Guest Pastor)
 series: Victorious in 2026
 scripture: 'Jerimiah 29:1-11'
-book: Jerimiah
+book: Jeremiah
 youtubeId: 6PcsF6DZmvo
 audioUrl: '#'
 thumbnail: /images/uploads/9rxhr.jpg

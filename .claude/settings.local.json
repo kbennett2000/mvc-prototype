@@ -88,7 +88,14 @@
       "Bash(grep -RhEA20 'getTinaGraphQLVersion\\\\\\(\\\\\\) \\\\{' /home/kb/Desktop/Projects/mvc-prototype/node_modules/@tinacms/app/dist)",
       "Bash(node -e 'console.log\\(\"crons[1] keys:\", Object.keys\\(JSON.parse\\(require\\(\"fs\"\\).readFileSync\\(\"vercel.json\",\"utf8\"\\)\\).crons[1]\\).join\\(\",\"\\)\\)')",
       "Bash(echo \"---exit=$?---\")",
-      "Bash(echo \"npm doctor exit=$?\")"
+      "Bash(echo \"npm doctor exit=$?\")",
+      "Bash(awk 'NR==733,/^>>>>>>>/' tina/config.ts)",
+      "Bash(cp tina/config.ts /tmp/mvc-config-precheckpoint.ts)",
+      "Bash(sed -i *)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(git -c core.editor=true cherry-pick --continue)",
+      "Bash([ -f \"content/sermons/$f\" ])",
+      "Bash(grep -E ^date: content/sermons/__TRACKED_VAR__)"
     ],
     "deny": [
       "Bash(sudo*)",

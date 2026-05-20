@@ -29,6 +29,8 @@ git cherry-pick --continue
 
 
 
+On ANY schema change: tina-lock.json must be regenerated AND committed AND pushed to GitHub BEFORE the TinaCloud reindex. TinaCloud indexes the lock from GitHub; a regenerated-but-uncommitted lock causes a persistent local-vs-remote schema mismatch that NO reindex fixes. Always git status immediately after the Tina regen step and confirm tina-lock.json is staged in the commit, not stranded in the working tree.
+
 GIVING SYSTEM (added 2026-05-15)
 ---------------------------------
 Giving system: Planning Center modal integration live. Test with a real
